@@ -1,0 +1,12 @@
+.page-header {
+  &__nav {}
+
+  &__nav-list {
+    display: flex;
+  }
+
+  &__nav-item {
+    padding: 10px 0;
+    padding-left: 16px;
+  }
+}

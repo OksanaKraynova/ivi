@@ -1,8 +1,11 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+import { Footer } from "@/src/components/Footer/Footer";
 
-      привет!!
-    </main>
+const Index = () => {
+  return (
+    <div>
+      <Footer />
+    </div>
   )
-}
+};
+
+export default Index;
