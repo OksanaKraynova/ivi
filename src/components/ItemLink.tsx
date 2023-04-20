@@ -4,8 +4,7 @@ import { A } from './A/A';
 
 interface ItemLinkProps {
   item: IItemLink;
-  color: string;
-  hoverColor: string;
+  color: "white" | "grey";
   fontWeight?: number;
   itemClass?: string;
   onClick?: () => void;
@@ -19,7 +18,6 @@ export const ItemLink: FC<ItemLinkProps> = (props) => {
         text={props.item.text}
         href={props.item.link}
         color={props.color}
-        hoverColor={props.hoverColor}
         fontWeight={props.fontWeight}
         onClick={props.onClick}
         onMouseOver={props.onMouseOver}

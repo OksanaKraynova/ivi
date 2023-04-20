@@ -1,7 +1,26 @@
-.storybook-a {
+.link {
   font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
   font-size: 15px;
-  cursor: pointer;
   line-height: 20px;
-  text-decoration: none;
+  cursor: pointer;
+}
+
+.white {
+  color: #FFFFFF;
+
+  &:hover {
+    color: rgba(255, 255, 255, .48);
+  }
+}
+
+.grey {
+  color: rgba(255, 255, 255, .48);
+
+  &:hover {
+    color: #FFFFFF;
+  }
+}
+
+.fontWeight-500 {
+  font-weight: 500;
 }
