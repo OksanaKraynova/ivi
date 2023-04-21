@@ -1,0 +1,30 @@
+.row {
+  display: flex;
+  padding: 48px 0;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.box {
+  width: 25%;
+}
+
+.linkTitle {
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.linkSubTitle {
+  color: rgba(255, 255, 255, .48);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.linkItem {}
