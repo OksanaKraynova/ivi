@@ -1,0 +1,44 @@
+.box {
+  width: 50%;
+}
+
+.boxImg {
+  width: 50%;
+  position: relative;
+}
+
+.idadImg {
+  position: absolute;
+  width: 200px;
+  height: 136px;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.tvImg {
+  position: relative;
+  width: 536px;
+  height: 272px;
+  z-index: 8;
+}
+
+.idadPoster {
+  position: absolute;
+  right: 8px;
+  bottom: 7px;
+  width: 188px;
+  height: 102px;
+  border-radius: 4px;
+  z-index: 9;
+}
+
+.tvPoster {
+  position: absolute;
+  left: 100px;
+  top: 3px;
+  width: 337px;
+  height: 192px;
+  border-radius: 2px;
+  z-index: 7;
+}

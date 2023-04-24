@@ -1,0 +1,28 @@
+.box {
+  display: flex;
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  transition-duration: .4s;
+  font-weight: 500;
+  padding: 24px 0;
+}
+
+.dot {
+  &:not(:first-child):before {
+    display: inline-block;
+    content: '';
+    width: 2px;
+    height: 2px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .56);
+    margin: 3px 8px;
+    margin-top: 0;
+  }
+}
+
+.text {
+  font-size: 15px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, .56);
+}

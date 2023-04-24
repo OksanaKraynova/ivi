@@ -1,0 +1,71 @@
+.container {
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.row {
+  padding: 48px 152px;
+  display: flex;
+}
+
+.box {
+  width: 584px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 900;
+}
+
+.subTitle {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.linkIcon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, .16);
+  margin-bottom: 32px;
+}
+
+.active {
+  position: relative;
+
+  &::after {
+    display: block;
+    content: "";
+    height: 4px;
+    width: 100%;
+    background-color: #ea003d;
+    position: absolute;
+    bottom: -3px;
+  }
+}
+
+.creators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+
+.img {
+  max-width: 50%;
+  max-height: 50%;
+}

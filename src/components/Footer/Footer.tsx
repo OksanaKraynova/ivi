@@ -1,102 +1,86 @@
-import { IItemLink } from '@/src/types/types';
-import { List } from '../List';
-import { ItemLink } from '../ItemLink';
-import { Container } from '../Container';
+import { IItemLink } from '@/types/IItemLink';
+import { AGradient } from '../AGradient/AGradient';
+import { FooterNav } from './FooterNav/FooterNav';
+import { FooterSupport } from './FooterSupport/FooterSupport';
+import { FooterSub } from './FooterSub/FooterSub';
+import { FooterButtonsDevice } from './FooterButtonsDevice/FooterButtonsDevice';
+import { FooterButtonsIcon } from './FooterButtonsIcon/FooterButtonsIcon';
 import styles from './Footer.module.scss';
-import { A } from '../A/A';
 
 const aboutList: IItemLink[] = [
-  { text: "О компании", link: "!#" },
-  { text: "Вакансии", link: "!#" },
-  { text: "Программа бета - тестирования", link: "!#" },
-  { text: "Информация для партнёров", link: "!#" },
-  { text: "Размещение рекламы", link: "!#" },
-  { text: "Пользовательское соглашение", link: "!#" },
-  { text: "Политика конфиденциальности", link: "!#" },
-  { text: "Комплаенс", link: "!#" },
+  { text: "О компании", link: "https://corp.ivi.ru" },
+  { text: "Вакансии", link: "https://corp.ivi.ru/career" },
+  { text: "Программа бета-тестирования", link: "https://www.ivi.ru/pages/beta" },
+  { text: "Информация для партнёров", link: "https://www.ivi.ru/info/partners" },
+  { text: "Размещение рекламы", link: "https://corp.ivi.ru/advertisers" },
+  { text: "Пользовательское соглашение", link: "https://www.ivi.ru/info/agreement" },
+  { text: "Политика конфиденциальности", link: "https://www.ivi.ru/info/confidential" },
+  { text: "Комплаенс", link: "https://www.ivi.ru/info/goryachaya-liniya-komplaens" },
 ];
 
 const sectionsList: IItemLink[] = [
-  { text: "Мой Иви", link: "!#" },
-  { text: "Что нового", link: "!#" },
+  { text: "Мой Иви", link: "/" },
+  { text: "Что нового", link: "https://www.ivi.ru/new" },//мб фильтр
   { text: "Фильмы", link: "!#" },
   { text: "Сериалы", link: "!#" },
   { text: "Мультфильмы", link: "!#" },
-  { text: "TV +", link: "!#" },
-  { text: "Что посмотреть", link: "!#" },
-  { text: "Активация сертификата", link: "!#" },
+  { text: "TV +", link: "https://www.ivi.ru/tvplus" },
+  { text: "Что посмотреть", link: "!#" }
 ];
 
 export const Footer = () => {
   return (
-    <div>
-      <Container containerClass={styles.row}>
+    <div className={`${styles.container} container`}>
 
-        <Container containerClass={styles.box}>
+      <div className={styles.rowBorder}>
 
-          <p className={styles.linkTitle}>О нас</p>
+        <div className={styles.boxNarrow}>
+          <FooterNav list={aboutList} title='О нас' titleClass={styles.title} />
+        </div>
 
-          <List<IItemLink>
-            listClass={styles.linkList}
-            list={aboutList}
-            renderItem={item =>
-              <ItemLink
-                itemClass={styles.linkItem}
-                item={item}
-                color='grey'
-              />}
+        <div className={styles.boxNarrow}>
+          <FooterNav list={sectionsList} title='Разделы' titleClass={styles.title}>
+            <AGradient
+              text="Активация сертификата"
+              href="https://www.ivi.ru/cert"
+            />
+          </FooterNav>
+        </div>
+
+        <div className={styles.boxNarrow}>
+          <FooterSupport
+            titleClass={styles.title}
+            subTitleClass={styles.subTitle}
+            buttonBoxClass={styles.buttons}
           />
+        </div>
 
-        </Container>
+        <div className={styles.subBox}>
+          <FooterSub textClass={`${styles.subTitle} ${styles.subTitleMargin}`} />
+        </div>
 
-        <Container containerClass={styles.box}>
+      </div>
 
-          <p className={styles.linkTitle}>Разделы</p>
+      <div className={styles.rowBorder}>
 
-          <List<IItemLink>
-            listClass={styles.linkList}
-            list={sectionsList}
-            renderItem={item =>
-              <ItemLink
-                itemClass={styles.linkItem}
-                item={item}
-                color='grey'
-              />}
-          />
+        <div className={styles.boxWide}>
+          <div className={styles.row}>
+            <div className={styles.buttons}>
+              <FooterButtonsDevice />
+            </div>
 
-        </Container>
+            <div className={styles.buttons}>
+              <FooterButtonsIcon />
+            </div>
+          </div>
 
-        <Container containerClass={styles.box}>
+          <div className={styles.row}>
+            <p className={`${styles.subTitle} ${styles.subTitleMargin}`}>© 2023 ООО «Иви.ру»<br />
+              HBO ® and related service marks are the property of Home Box Office, Inc</p>
+          </div>
+        </div>
 
-          <p className={styles.linkTitle}>Служба поддержки</p>
-          <p className={styles.linkSubTitle}>Мы всегда готовы вам помочь.<br />Наши операторы онлайн 24/7</p>
-          <button>Написать в чате</button>
-          <button>Трубка</button>
-          <A
-            text="ask.ivi.ru"
-            href="!#"
-            color='white'
-          />
-          <p className={styles.linkSubTitle}>Ответы на вопросы</p>
-
-        </Container>
-
-        <Container containerClass={styles.box}>
-
-          <button>Трубка</button>
-          <p className={styles.linkSubTitle}>Смотрите фильмы, сериалы и мультфильмы без рекламы</p>
-
-        </Container>
-
-      </Container>
-
-      <Container containerClass={styles.row}>
-
-        <button>Трубка</button>
-        <p className={styles.linkSubTitle}>© 2023 ООО «Иви.ру»<br />
-          HBO ® and related service marks are the property of Home Box Office, Inc</p>
-
-      </Container>
+      </div>
     </div>
   );
 };

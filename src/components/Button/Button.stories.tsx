@@ -1,5 +1,5 @@
 import { IButton } from '@/types/IButton'
-import Button from '../components/Button/Button'
+import Button from './Button'
 import type { Meta, StoryObj } from '@storybook/react';
 
 const btn = {
@@ -14,7 +14,7 @@ const btn = {
             control: {
                 type: 'select'
             }
-        }        
+        }
     }
 } satisfies Meta<typeof Button>;
 

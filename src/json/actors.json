@@ -1,0 +1,94 @@
+{
+    "actors": [
+        {
+            "id": 1,
+            "firstName": "Джеки",
+            "secondName": "Чан",
+            "img": "https://thumbs.dfs.ivi.ru/storage38/contents/b/c/45102370a23e374f4146fe2d106f26.jpeg"
+        },
+        {
+            "id": 2,
+            "firstName": "Элейн",
+            "secondName": "Чжун",
+            "img": "https://thumbs.dfs.ivi.ru/storage33/contents/d/5/592ef39737e7160625734b292a105f.jpg"
+        },
+        {
+            "id": 3,
+            "firstName": "Остин",
+            "secondName": "Линь",
+            "img": "https://thumbs.dfs.ivi.ru/storage28/contents/f/b/25c555db63545efc1b9b5323f6bc2c.jpg"
+        },
+        {
+            "id": 4,
+            "firstName": "Этан",
+            "secondName": "Жуань",
+            "img": "https://thumbs.dfs.ivi.ru/storage30/contents/0/1/eed0cb27c5e57e33450e70a910e647.jpg"
+        },
+        {
+            "id": 5,
+            "firstName": "Линь",
+            "secondName": "Пэн",
+            "img": "https://thumbs.dfs.ivi.ru/storage4/contents/f/c/3a8e8f83d9ea56b85d64335b514244.jpg"
+        },
+        {
+            "id": 6,
+            "firstName": "Цяо",
+            "secondName": "Шун",
+            "img": "https://thumbs.dfs.ivi.ru/storage33/contents/d/2/5abb375c75c4b299c9826ea784092d.jpg"
+        },
+        {
+            "id": 7,
+            "firstName": "Пань",
+            "secondName": "Чанцзян",
+            "img": "https://thumbs.dfs.ivi.ru/storage5/contents/6/3/fe2446617d20ff60b1162f03427d42.jpg"
+        },
+        {
+            "id": 8,
+            "firstName": "Саманта",
+            "secondName": "Райан",
+            "img": "https://thumbs.dfs.ivi.ru/storage33/contents/b/c/4fecc7b5dd4d96485c2df25fdc1841.jpg"
+        },
+        {
+            "id": 9,
+            "firstName": "Ава",
+            "secondName": "Торрес",
+            "img": "https://thumbs.dfs.ivi.ru/storage15/contents/4/1/7f88a2e42b4fc730bf5dc80ce7abfb.jpg"
+        },
+        {
+            "id": 10,
+            "firstName": "Скип",
+            "secondName": "Швинк",
+            "img": "https://thumbs.dfs.ivi.ru/storage8/contents/2/7/8373f7c572d36d24e7841594e0e57d.jpg"
+        },
+        {
+            "id": 11,
+            "firstName": "Кэти",
+            "secondName": "Бёрджес",
+            "img": "https://thumbs.dfs.ivi.ru/storage9/contents/8/f/5feeedad3ace43c577a3dfc7daf521.jpg"
+        },
+        {
+            "id": 12,
+            "firstName": "Натали",
+            "secondName": "Дэниелс",
+            "img": "https://thumbs.dfs.ivi.ru/storage4/contents/b/e/4caddb86172b9e0287d7a202e8d9dd.jpg"
+        },
+        {
+            "id": 13,
+            "firstName": "Дрю",
+            "secondName": "Поллок",
+            "img": "https://thumbs.dfs.ivi.ru/storage8/contents/b/d/9b2297b8ad35c5599aadc778aa600d.jpg"
+        },
+        {
+            "id": 14,
+            "firstName": "Кэтрин",
+            "secondName": "Беллантоне",
+            "img": "https://thumbs.dfs.ivi.ru/storage3/contents/e/2/d8ca7c03b9a273f3ca8505d86505ac.jpg"
+        },
+        {
+            "id": 15,
+            "firstName": "Николас",
+            "secondName": "Греко",
+            "img": "https://thumbs.dfs.ivi.ru/storage2/contents/8/2/0a5780d7352ea28488ff6531eca1a3.jpg"
+        }
+    ]
+}

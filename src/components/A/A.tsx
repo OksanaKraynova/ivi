@@ -4,30 +4,32 @@ import styles from './A.module.scss';
 interface AProps {
   text: string;
   href: string;
+  color: "white" | "grey" | "greyLight";
   fontWeight?: number;
-  color: "white" | "grey";
-  onClick?: () => void;
+  linkClass?: string;
   onMouseOver?: () => void;
 }
 
-export const A = ({
+export const A = (props: AProps) => {
+  let className = `${styles.link} ${styles[props.color]}`;
 
-  text = "Text",
-  href = '!#',
-  fontWeight = 400,
-  color = "white",
-  ...props
-}: AProps) => {
+  props.linkClass === undefined ?
+    className = className :
+    className += ` ${props.linkClass}`;
+
+  props.fontWeight === undefined ?
+    className = className :
+    className += `fontWeight${props.fontWeight}`;
 
   return (
     <Link
-      href={href}
-      className={`${styles.link} ${styles[color]} ${styles[`fontWeight${fontWeight}`]}`}
-      onClick={props.onClick}
+      href={props.href}
+      className={className}
       onMouseOver={props.onMouseOver}
     >
 
-      {text}
+      {props.text}
+
     </Link>
   );
 };

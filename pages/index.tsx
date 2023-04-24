@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <>
       <Header />
-     
-      
 
-     
+      <Card />
+
+
       <Footer />
     </>
   )
