@@ -3,19 +3,19 @@ import styles from './ratingButtons.module.scss'
 
 const buttons = [
     {
-        img: '/bookmark.svg',
+        img: '/icons/bookmark.svg',
         label: 'Смотреть позже'
     },
     {
-        img: '/magic.svg',
+        img: '/icons/magic.svg',
         label: 'Похожее'
     },
     {
-        img: '/star.svg',
+        img: '/icons/star.svg',
         label: 'Уже смотрел, оценить'
     },
     {
-        img: '/slash-circle.svg',
+        img: '/icons/slash-circle.svg',
         label: 'Не нравится такое'
     },
 ]

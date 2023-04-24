@@ -6,43 +6,43 @@ import 'swiper/css';
 
 const list = [
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Драмы'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Комедии'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Боевики'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Триллеры'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Приключения'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Зарубежные'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Мелодрамы'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Фантастика'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Фентези'
     },
     {
-        img: '/clock.svg',
+        img: '/icons/clock.svg',
         title: 'Семейные'
     },
 ]

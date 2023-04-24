@@ -1,9 +1,23 @@
 .block{
-    border-radius: 8px;
-    overflow: hidden;
+       
 }
 
 .image{
+    padding: 6px 6px 0px 6px;
     border-radius: 8px;
-    overflow: hidden !important;
+    position: relative;
+    width: 100%;
+    height: 240px;
+    transition: transform 0.3s;
+    &:hover{
+        transform: scale(1.05);
+        .show{
+            opacity:1;
+        }
+    }
+    img{
+        max-width: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+    }
 }

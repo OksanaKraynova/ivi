@@ -20,7 +20,7 @@ const ListCountries = () => {
     return (
         <Swiper
             spaceBetween={10}
-            slidesPerView={'auto'}
+            slidesPerView={6}
         >
             {list.map(item => (
                 <SwiperSlide key={item.title} >

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Actors = () => {
     return (
-        <ButtonFilter text='Актеры' img='/close.svg' className='btn' />
+        <ButtonFilter text='Актеры' img='icons/search.svg' className='btn' />
     );
 };
 

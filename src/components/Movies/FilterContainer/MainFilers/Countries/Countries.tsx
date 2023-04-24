@@ -48,7 +48,7 @@ const Countries = () => {
    
       return (
         <div className={styles.container}>
-            <ButtonFilter img={ show ? '/up.svg' : '/down.svg' }  text='Страны' onClick={() => setShow(!show)} className='btn' />
+            <ButtonFilter img={ show ? '/icons/up.svg' : '/icons/down.svg' }  text='Страны' onClick={() => setShow(!show)} className='btn' />
             {show &&
                 <BgWrapper className={styles.dop} >
                     <ListCountries />

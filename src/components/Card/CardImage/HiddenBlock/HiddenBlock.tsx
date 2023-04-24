@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styles from './hiddenBlock.module.scss'
 import InfoBlock from './InfoBlock/InfoBlock';
