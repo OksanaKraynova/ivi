@@ -1,0 +1,19 @@
+.rowCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.description {
+  color: rgba(255, 255, 255, .72);
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+.sign {
+  color: rgba(255, 255, 255, 0.48);
+  margin-bottom: 24px;
+  cursor: pointer;
+}

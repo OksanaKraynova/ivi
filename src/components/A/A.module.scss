@@ -2,7 +2,7 @@
   font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
   font-size: 15px;
   line-height: 20px;
-  cursor: pointer;
+  transition-duration: .4s;
 }
 
 .white {
@@ -21,6 +21,14 @@
   }
 }
 
-.fontWeight-500 {
+.greyLight {
+  color: rgba(255, 255, 255, .72);
+
+  &:hover {
+    color: #FFFFFF;
+  }
+}
+
+.fontWeight500 {
   font-weight: 500;
 }
