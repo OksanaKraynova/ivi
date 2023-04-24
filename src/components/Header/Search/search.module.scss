@@ -1,0 +1,18 @@
+.search{
+  display: flex;
+  align-items: center;
+  color: rgba(255,255,255,.48);
+  font-size: 15px;
+  gap: 10px;
+  margin:  0 24px 0 auto ;
+  transition: all 0.3s;
+  &:hover{
+    color: #fff;
+    svg{
+        fill: rgba(255,255,255, 1);
+    }
+  }
+  svg{
+    fill: rgba(255,255,255,.48);
+}
+}

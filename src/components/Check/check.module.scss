@@ -1,0 +1,22 @@
+
+.check{
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+    color: rgba(217,215,224,.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    svg{
+        opacity: 0;
+        transition: opacity 0.5s;
+        fill: rgba(217,215,224,.8);
+    }
+    &:hover{
+        svg{
+            opacity: 1;
+        }
+    }
+}

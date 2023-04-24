@@ -1,0 +1,28 @@
+.wrapper{
+    position: absolute;
+display: flex;
+flex-direction: column;
+top: 20px;
+right: 20px;
+gap: 10px;
+    button{
+        position: relative;
+        &:hover{
+            span{
+                display: inline-flex;
+            }
+        }
+      span{
+        background-color: #1f1b2e;
+        color:#fff;
+        padding: 4px 6px;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 999;
+        min-width:100px;
+        display: none;
+        bottom: 90%;
+    right: -80px;
+    }
+    }
+}

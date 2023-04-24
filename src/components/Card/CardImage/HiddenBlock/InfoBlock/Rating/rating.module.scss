@@ -1,0 +1,25 @@
+.lines{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    
+}
+
+.line{
+        background-color: rgba(255, 255, 255, 0.48);
+        width: 20px;
+        height: 2px;
+        border-radius: 4px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        &:before{
+            content: '';
+            position: absolute;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.78);
+            top: 0;
+            left: 0;
+            width: 3px;
+        }
+    }

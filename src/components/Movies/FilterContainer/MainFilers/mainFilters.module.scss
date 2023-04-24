@@ -1,0 +1,14 @@
+.wrapper{
+    margin-top: 38px;
+    box-sizing: border-box;
+    background-color: #1f1b2e; 
+    padding: 16px;
+    border-radius: 6px;
+    &__row{
+        display: flex;
+        gap: 12px;
+        .btn{
+            flex: 0 0 25% !important;
+        }
+    }
+}

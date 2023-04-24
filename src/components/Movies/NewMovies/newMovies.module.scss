@@ -1,0 +1,21 @@
+
+.wrapper{
+    margin-top: 24px;
+    
+}
+.slider{
+    margin-top: 16px;
+}
+.img{
+    width: 285px;
+    height: 196px;
+    border-radius: 10px;
+    border: 5px solid #312b45;
+}
+
+.slide{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15px;
+}

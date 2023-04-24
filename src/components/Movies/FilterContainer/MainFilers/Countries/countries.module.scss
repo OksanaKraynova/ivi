@@ -1,0 +1,14 @@
+.container{
+    position: relative;
+    flex: 0 0 23%;
+    button{
+     width: 100%;
+     flex: 100%;
+    }
+    .dop{
+        position: absolute;
+        left: -50%;
+        top: 60px;
+        z-index: 9999;
+    }
+}
