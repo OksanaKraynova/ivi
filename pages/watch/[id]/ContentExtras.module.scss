@@ -16,19 +16,6 @@
   flex-shrink: 0;
 }
 
-.title {
-  margin-bottom: 20px;
-  font-size: 40px;
-  line-height: 44px;
-  font-weight: 900;
-}
-
-.subTitle {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 700;
-}
-
 .linkIcon {
   display: flex;
   align-items: center;
@@ -38,9 +25,9 @@
 
 .nav {
   display: flex;
+  padding-bottom: 5px;
   gap: 10px;
   border-bottom: 2px solid rgba(255, 255, 255, .16);
-  margin-bottom: 32px;
 }
 
 .active {
@@ -53,19 +40,78 @@
     width: 100%;
     background-color: #ea003d;
     position: absolute;
-    bottom: -3px;
+    bottom: -8px;
   }
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 900;
+}
+
+.subTitle {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-top: 32px;
 }
 
 .creators {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.creator {
+  flex: 0 0 calc(25% - 9px);
+  max-width: calc(25% - 9px);
 }
 
 
-
 .img {
-  max-width: 50%;
-  max-height: 50%;
+  max-width: 30%;
+  max-height: 30%;
+  padding-left: 30px;
+}
+
+.padding {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.combox {
+  background-color: rgb(20, 51, 41);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.tgh {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 8px;
+  padding: 20px;
+  background-color: #1f1b2e;
+  border-radius: 8px;
+}
+
+.pad {
+  margin-left: -20px;
+  display: flex;
+  align-items: start;
+  gap: 10px;
+}
+
+.padd {
+  margin-top: 15px;
+  background-color: #ea003d;
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

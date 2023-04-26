@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import styles from './BreadCrumbs.module.scss';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { IItemLink } from '@/types/IItemLink';
-import { List } from '../List';
-import { A } from '../A/A';
+import { List } from '../../../../src/components/List';
+import { A } from '../../../../src/components/A/A';
 
 interface BreadCrumbsProps {
   page?: string;

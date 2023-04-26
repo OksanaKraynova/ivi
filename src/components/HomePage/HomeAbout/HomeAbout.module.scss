@@ -1,0 +1,50 @@
+.box {
+  margin-top: 48px;
+  width: 70%;
+}
+
+.aboutСollapsed {
+  width: 100%;
+}
+
+.aboutСollapsed {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.subTitle {
+  font-weight: 600;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.text {
+  margin-top: 12px;
+}
+
+.listItem {
+  margin-top: 12px;
+  margin-left: 12px;
+  padding-left: 16px;
+  position: relative;
+
+  &:before {
+    background-color: #a5a1b2;
+    border-radius: 50%;
+    content: "";
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 10px;
+    width: 6px;
+  }
+}
