@@ -4,6 +4,7 @@ import styles from "./redWrapper.module.scss";
 type Props = {
     children: React.ReactNode;
     onClick?: () => void;
+    
 };
 
 const RedWrapper = ({ children, onClick }: Props) => {

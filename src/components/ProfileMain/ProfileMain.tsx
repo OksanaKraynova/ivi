@@ -5,33 +5,35 @@ import RedWrapper from "../RedWrapper/RedWrapper";
 import Image from "next/image";
 import DarkBlueWrapper from "../DarkBlueWrapper/DarkBlueWrapper";
 import { iconData } from "./profileData";
-import Modal from "../Modal/Modal";
+
+import AuthModal from "../AuthModal/AuthModal";
 
 type Props = {};
 
 const ProfileMain = (props: Props) => {
     const [loggedIn, setLoggedIn] = useState<boolean>(false);
     const [authOpened, setAuthOpened] = useState<boolean>(false);
-    
 
-    const handleOpenModal = () =>{
-        setAuthOpened(true)        
-    }
+    const handleOpenModal = () => {
+        setAuthOpened(true);
+    };
 
-    const handleCloseModal = () =>{
-        setAuthOpened(false)       
-    }
+    const handleCloseModal = () => {
+        setAuthOpened(false);
+    };
 
     return (
         <main className={`${styles.hero} container`}>
-            <div className={styles.buttonWrapper} >
-                <RedWrapper onClick = {handleOpenModal}>
+            <div className={styles.buttonWrapper}>
+                <RedWrapper onClick={handleOpenModal}>
                     <span>
                         <span className={styles.arrowRightUp}></span>
                         Войти или зарегистрироваться
                     </span>
                 </RedWrapper>
-                {authOpened && <Modal onClose={handleCloseModal}>Check</Modal>}
+                {authOpened && (
+                    <AuthModal handleCloseModal={handleCloseModal} />
+                )}
                 <div className={styles.profileMain}>
                     <ul className={styles.profileNameRow}>
                         <li
@@ -82,7 +84,7 @@ const ProfileMain = (props: Props) => {
                                 } ${
                                     i === iconData.length - 1 ? styles.mr0 : ""
                                 }`}
-                                key={i * 7}
+                                key={(i + 1) * 7}
                             >
                                 <DarkBlueWrapper center={true} key={i}>
                                     <Image src={data.url} alt={""} />

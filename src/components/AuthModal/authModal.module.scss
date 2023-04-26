@@ -1,0 +1,36 @@
+.authContainer {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    max-width: 600px;
+    min-height: 400px;
+
+    background-color: #100e19;
+    z-index: 21;
+}
+
+.authWrapper {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.headline {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.input {
+    padding: 12px 20px;
+    margin-bottom: 25px;
+}
+
+.inputsWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    color: red;
+}

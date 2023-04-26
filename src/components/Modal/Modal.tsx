@@ -7,9 +7,15 @@ interface Props {
 }
 
 const Modal: React.FC<Props> = ({ onClose, children }) => {
+    const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+    };
+
     return (
         <div onClick={onClose} className={styles.modalOverlay}>
-            {children}
+            <div onClick={handleContentClick} className={styles.modalContent}>
+                {children}
+            </div>
         </div>
     );
 };
