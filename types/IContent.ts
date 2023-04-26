@@ -1,5 +1,3 @@
-import { IReview } from "./IReview";
-
 export interface IContent {
   id: string,
   name: string,
@@ -16,7 +14,7 @@ export interface IContent {
   ageLimit: number,
   tagline: string,
   description: string,
-  reviews: IReview[],
+  comments: number[],
   rating: number
 }
 

@@ -8,7 +8,7 @@ interface AImageProps {
   color?: "green" | "grey";
   href: string;
   img: string;
-  form: "square" | "circle";
+  form: "square" | "circle" | "circleBig";
   children?: React.ReactElement | React.ReactNode;
   onClick?: () => void;
   onMouseOver?: () => void;

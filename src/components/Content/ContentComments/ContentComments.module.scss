@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.count {
+  position: absolute;
+  top: -0.3em;
+  right: -0.3em;
+  font-size: 15px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, .48);
+}
+
+.title {
+  position: relative;
+}
+
+.slider {
+  margin: 0;
+}

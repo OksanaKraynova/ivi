@@ -3,17 +3,6 @@ import { IContent } from "@/types/IContent";
 import styles from './ContentExtras.module.scss';
 import contentData from "../../../src/json/content.json"
 import actorsData from "../../../src/json/actors.json"
-import { ContentTrailer } from "./components/ContentTrailer/ContentTrailer";
-import { ContentTitle } from "./components/ContentTitle/ContentTitle";
-import { ContentActors } from "./components/ContentActors/ContentActors";
-import { ContentDescripton } from "./components/ContentDescripton/ContentDescripton";
-import { ContentRating } from "./components/ContentRating/ContentRating";
-import { ContentSimilar } from "./components/ContentSimilar/ContentSimilar";
-import { ContentCreators } from "./components/ContentCreators/ContentCreators";
-import { ContentAdditional } from "./components/ContentAdditional/ContentAdditional";
-import { ContentReviews } from "./components/ContentReviews/ContentReviews";
-import { ContentDevices } from "./components/ContentDevices/ContentDevices";
-import { BreadCrumbs } from "@/src/components/BreadCrumbs/BreadCrumbs";
 import { A } from "@/src/components/A/A";
 import Link from "next/link";
 import { AImage } from "@/src/components/AImage/AImage";
@@ -36,12 +25,15 @@ const Person = (params: { content: IContent }) => {
 
   director === undefined ?
     directorLink = <></> :
-    directorLink = <AImage
-      textUnderImg={[director.firstName, director.secondName]}
-      href=""
-      img={director.img}
-      form="circle"
-    />
+    directorLink =
+    <div className={styles.creator}>
+      <AImage
+        textUnderImg={[director.firstName, director.secondName]}
+        href=""
+        img={director.img}
+        form="circleBig"
+      />
+    </div>
 
 
   if (params.content === null) {
@@ -94,16 +86,17 @@ const Person = (params: { content: IContent }) => {
 
           <div className={styles.creators}>
 
-            {params.content.actors.map((actorId, index) => {
+            {params.content.actors.map(actorId => {
               let actor = actorsData.actors.find(actor => actor.id === actorId);
-              if (index > 8) return;
               if (actor !== undefined)
-                return <AImage
-                  textUnderImg={[actor.firstName, actor.secondName]}
-                  href=""
-                  img={actor.img}
-                  form="circle"
-                />
+                return <div className={styles.creator}>
+                  <AImage
+                    textUnderImg={[actor.firstName, actor.secondName]}
+                    href=""
+                    img={actor.img}
+                    form="circleBig"
+                  />
+                </div>
             })}
 
           </div>

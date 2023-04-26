@@ -4,24 +4,23 @@ import Card from '@/src/components/Card/Card';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import 'swiper/css';
 
-interface ISlide {
-  spaceBetween: number
-  slidesPerView: number
-  arr: any
+interface ISlide<T> {
+  spaceBetween: number;
+  slidesPerView: number;
+  listCardsProps: T[];
+  renderItem: (item: T) => React.ReactNode;
 }
 
-const CardsBlock = ({ spaceBetween, slidesPerView, arr }: ISlide) => {
+export default function CardsBlock<T>({ spaceBetween, slidesPerView, listCardsProps, renderItem }: ISlide<T>) {
   return (
     <div className={styles.wrapper}>
       <Swiper spaceBetween={spaceBetween} slidesPerView={slidesPerView} >
-        {arr.map((slide: any, i: any) => (
-          <SwiperSlide key={i}>
-          <Card />
-        </SwiperSlide>
+        {listCardsProps.map((cardProps, index) => (
+          <SwiperSlide key={index}>
+            {renderItem(cardProps)}
+          </SwiperSlide>
         ))}
-              </Swiper>
+      </Swiper>
     </div>
   );
 };
-
-export default CardsBlock;

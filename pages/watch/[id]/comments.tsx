@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from "next";
 import { IContent } from "@/types/IContent";
+<<<<<<< HEAD
 import styles from "./ContentExtras.module.scss";
 import contentData from "../../../src/json/content.json";
 import actorsData from "../../../src/json/actors.json";
@@ -14,9 +15,14 @@ import { ContentAdditional } from "./components/ContentAdditional/ContentAdditio
 import { ContentReviews } from "./components/ContentReviews/ContentReviews";
 import { ContentDevices } from "./components/ContentDevices/ContentDevices";
 import { BreadCrumbs } from "@/src/components/BreadCrumbs/BreadCrumbs";
+=======
+import styles from './ContentExtras.module.scss';
+import contentData from "../../../src/json/content.json"
+>>>>>>> 4fd29451c2ce593d7f5ffcf25015db05fd399fce
 import { A } from "@/src/components/A/A";
 import Link from "next/link";
-import { AImage } from "@/src/components/AImage/AImage";
+import commentsData from "../../../src/json/comments.json"
+import { Comment } from '../../../src/components/Comment/Comment';
 
 const leftIcon = (
     <svg
@@ -43,9 +49,37 @@ export const getServerSideProps = async (
 };
 
 const Comments = (params: { content: IContent }) => {
+<<<<<<< HEAD
     if (params.content === null) {
         return <div className={`${styles.container} container`}>Пусто</div>;
     }
+=======
+  //проверить что имя есть
+  function func(id: number, childes: React.ReactElement[]): React.ReactElement {
+    let childe: React.ReactElement;
+    let comment = commentsData.comments.find(comment => comment.id === id);
+    if (comment !== undefined) {
+      if (comment.comments.length > 0) {
+        for (let id of comment.comments) {
+          console.log(id)
+          childe = func(id, []);
+          childes.push(childe);
+        }
+      }
+      return (
+        <div className={styles.padding}>
+
+          <div className={styles.pad}>
+            <div className={styles.padd}>{comment.userName[0].toLowerCase()}</div>
+            <Comment comment={comment} type="fullLength" />
+          </div>
+          {childes.map(childe => childe)}
+        </div>
+      );
+    }
+    return (<></>);
+  }
+>>>>>>> 4fd29451c2ce593d7f5ffcf25015db05fd399fce
 
     return (
         <div className={`${styles.container} container`}>
@@ -77,10 +111,18 @@ const Comments = (params: { content: IContent }) => {
                     </nav>
                 </div>
 
+<<<<<<< HEAD
                 <div className={styles.box}>
                     <img className={styles.img} src={params.content.cover} />
                 </div>
             </div>
+=======
+
+          {params.content.comments.map(commentId =>
+            func(commentId, [])
+          )}
+
+>>>>>>> 4fd29451c2ce593d7f5ffcf25015db05fd399fce
         </div>
     );
 };

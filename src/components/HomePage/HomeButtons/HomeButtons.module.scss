@@ -1,0 +1,17 @@
+.box {
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.icon {
+  line-height: 0;
+}

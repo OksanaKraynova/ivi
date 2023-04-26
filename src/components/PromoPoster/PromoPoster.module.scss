@@ -1,0 +1,33 @@
+.box {
+  position: relative;
+}
+
+.inner {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  width: 40%;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.poster {
+  max-width: 100%;
+  border-radius: 26px;
+}
+
+.title {
+  max-width: 100%;
+}
+
+.description {
+  margin: 40px 0;
+}
+
+.white {
+  color: #FFFFFF;
+}
+
+.grey {
+  color: #2e2e2e
+}

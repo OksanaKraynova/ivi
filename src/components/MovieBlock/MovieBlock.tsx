@@ -3,20 +3,33 @@ import styles from './movieBlock.module.scss'
 import TitleBlock from './TitleBlock/TitleBlock';
 import CardsBlock from './CardsBlock/CardsBlock';
 
-interface IMovieBlock{
-    title: string
+interface IMovieBlock<T> {
+    title?: string
     spaceBetween: number
     slidesPerView: number
-    arr: any
+    listCardsProps: T[]
+    blockClass?: string
+    renderItem: (item: T) => React.ReactNode
 }
 
-const MovieBlock = ({title, spaceBetween, slidesPerView, arr}:IMovieBlock) => {
+export default function MovieBlock<T>
+    ({ title, spaceBetween, slidesPerView, listCardsProps, blockClass = styles.wrapper, renderItem }: IMovieBlock<T>) {
+
+    let titleElement: React.ReactElement;
+    title === undefined ?
+        titleElement = <></> :
+        titleElement = <TitleBlock title={title} img='/up.svg' />
+
     return (
-        <div className={styles.wrapper}  >
-          <TitleBlock title={title} img='/up.svg' />
-          <CardsBlock slidesPerView={slidesPerView} spaceBetween={spaceBetween} arr={arr} />
+        <div className={blockClass}>
+            {titleElement}
+            <CardsBlock
+                slidesPerView={slidesPerView}
+                spaceBetween={spaceBetween}
+                listCardsProps={listCardsProps}
+                renderItem={renderItem}
+            />
         </div>
     );
-};
 
-export default MovieBlock;
+};

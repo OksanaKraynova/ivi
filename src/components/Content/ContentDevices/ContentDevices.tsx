@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { IContent } from '@/types/IContent';
 import styles from './ContentDevices.module.scss';
-import idadImg from "../../../../../src/img/ipad-without-poster.png"
-import tvImg from "../../../../../src/img/tv-without-poster.png"
+import idadImg from "../../../img/ipad-without-poster.png"
+import tvImg from "../../../img/tv-without-poster.png"
 import Button from '@/src/components/Button/Button';
 
 interface ContentDevicesProps {
