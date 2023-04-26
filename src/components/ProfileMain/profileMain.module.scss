@@ -1,0 +1,80 @@
+.hero {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.buttonWrapper {
+    padding: 50px 0;
+}
+
+.arrowRightUp {
+    font-weight: 400 !important;
+    font-style: normal !important;
+    margin-right: 5px;
+    &::before {
+        content: "\3d8";
+    }
+}
+
+.profileMain {
+    width: 100%;
+    padding: 32px 0;
+}
+
+.profileNameRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    
+}
+
+.rowElement1 {
+    width: calc(3 / 7 * 100% - 15px);
+    flex: 1 250px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rowElement2 {
+    width: calc(2 / 7 * 100% - 15px);
+    flex: 1 250px;
+}
+
+.rowElement3 {
+    width: calc(2 / 7 * 100%);
+    flex: 1 250px;
+}
+
+.rowElement4 {
+    width: 100%;
+    text-align: center;
+}
+
+.profileNameRowMain{
+   display: flex;
+   justify-content: space-around;
+   
+}
+
+
+.ml0{
+    margin-left: 0;
+}
+
+.mr0{
+    margin-right: 0;
+}
+
+.rowElement{
+    width: calc(100%/7.67899999);
+    height: 119px;
+}
+
+.subString{    
+    display: flex;    
+    align-items: flex-start;
+    margin-top: auto;
+}

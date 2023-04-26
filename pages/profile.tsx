@@ -1,14 +1,17 @@
-import Layout from '@/src/components/Layout/Layout'
-import React from 'react'
+import Layout from "@/src/components/Layout/Layout";
+import ProfileMain from "@/src/components/ProfileMain/ProfileMain";
+import React from "react";
 
-type Props = {}
+type Props = {};
+
+
 
 const Profile = (props: Props) => {
-  return (
-    <Layout>
-        
-    </Layout>
-  )
-}
+    return (
+        <Layout>
+            <ProfileMain/>
+        </Layout>
+    );
+};
 
-export default Profile
+export default Profile;
