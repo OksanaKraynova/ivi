@@ -3,10 +3,11 @@ import styles from "./redWrapper.module.scss";
 
 type Props = {
     children: React.ReactNode;
+    onClick?: () => void;
 };
 
-const RedWrapper = ({ children }: Props) => {
-    return <div className={styles.redWrapper}>{children}</div>;
+const RedWrapper = ({ children, onClick }: Props) => {
+    return <div onClick={onClick} className={styles.redWrapper}>{children}</div>;
 };
 
 export default RedWrapper;

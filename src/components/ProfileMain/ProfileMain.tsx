@@ -5,21 +5,33 @@ import RedWrapper from "../RedWrapper/RedWrapper";
 import Image from "next/image";
 import DarkBlueWrapper from "../DarkBlueWrapper/DarkBlueWrapper";
 import { iconData } from "./profileData";
+import Modal from "../Modal/Modal";
 
 type Props = {};
 
 const ProfileMain = (props: Props) => {
     const [loggedIn, setLoggedIn] = useState<boolean>(false);
+    const [authOpened, setAuthOpened] = useState<boolean>(false);
+    
+
+    const handleOpenModal = () =>{
+        setAuthOpened(true)        
+    }
+
+    const handleCloseModal = () =>{
+        setAuthOpened(false)       
+    }
 
     return (
         <main className={`${styles.hero} container`}>
-            <div className={styles.buttonWrapper}>
-                <RedWrapper>
+            <div className={styles.buttonWrapper} >
+                <RedWrapper onClick = {handleOpenModal}>
                     <span>
                         <span className={styles.arrowRightUp}></span>
                         Войти или зарегистрироваться
                     </span>
                 </RedWrapper>
+                {authOpened && <Modal onClose={handleCloseModal}>Check</Modal>}
                 <div className={styles.profileMain}>
                     <ul className={styles.profileNameRow}>
                         <li
