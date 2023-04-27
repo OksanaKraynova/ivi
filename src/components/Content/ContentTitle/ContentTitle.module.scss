@@ -15,7 +15,7 @@
     height: 2px;
     text-align: center;
     background-color: rgba(255, 255, 255, .72);
-    margin-right: 6px;
+    margin-right: 8px;
     margin-bottom: 3px;
   }
 }
@@ -23,6 +23,7 @@
 .props {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 4px;
   gap: 8px;
 }

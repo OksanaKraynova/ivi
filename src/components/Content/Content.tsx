@@ -48,13 +48,21 @@ export const Content: FC<ContentProps> = (props) => {
 
         <div className={styles.boxCenter}>
 
-          <ContentTitle content={props.content} textClass={styles.text} />
+          <ContentTitle
+            content={props.content}
+            textClass={styles.text}
+            borderedClass={styles.bordered}
+          />
 
           <div className={styles.actors}>
             <ContentActors content={props.content} actors={actorsData.actors} />
           </div>
 
-          <ContentDescripton content={props.content} textClass={styles.text} />
+          <ContentDescripton
+            content={props.content}
+            textClass={styles.text}
+            borderedClass={styles.bordered}
+          />
           <ContentRating rating={props.content.rating} textClass={styles.text} />
         </div>
 

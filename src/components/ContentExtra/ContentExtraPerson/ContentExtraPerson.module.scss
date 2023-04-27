@@ -1,0 +1,19 @@
+.title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-top: 32px;
+}
+
+.creators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  row-gap: 36px;
+  margin-top: 16px;
+}
+
+.creator {
+  flex: 0 0 calc(25% - 9px);
+  max-width: calc(25% - 9px);
+}

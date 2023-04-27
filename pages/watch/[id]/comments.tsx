@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import { IContent } from "@/types/IContent";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import styles from "./ContentExtras.module.scss";
 import contentData from "../../../src/json/content.json";
 import actorsData from "../../../src/json/actors.json";
@@ -23,6 +24,12 @@ import { A } from "@/src/components/A/A";
 import Link from "next/link";
 import commentsData from "../../../src/json/comments.json"
 import { Comment } from '../../../src/components/Comment/Comment';
+=======
+import contentData from "../../../src/json/content.json"
+import { ContentExtra } from "@/src/components/ContentExtra/ContentExtra";
+import Header from "@/src/components/Header/Header";
+import { Footer } from "@/src/components/Footer/Footer";
+>>>>>>> comment-tanya
 
 const leftIcon = (
     <svg
@@ -49,6 +56,7 @@ export const getServerSideProps = async (
 };
 
 const Comments = (params: { content: IContent }) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (params.content === null) {
         return <div className={`${styles.container} container`}>Пусто</div>;
@@ -128,3 +136,19 @@ const Comments = (params: { content: IContent }) => {
 };
 
 export default Comments;
+=======
+
+
+  return (
+
+    <>
+      <Header />
+      <ContentExtra content={params.content} extra={"Отзывы"} />
+      <Footer />
+    </ >
+
+  );
+}
+
+export default Comments;
+>>>>>>> comment-tanya

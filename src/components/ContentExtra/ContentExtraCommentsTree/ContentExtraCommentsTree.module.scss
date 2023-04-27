@@ -1,0 +1,37 @@
+.treeComments {
+  padding-top: 20px;
+  margin-left: 20px;
+}
+
+.comment {
+  margin-left: -20px;
+  display: flex;
+  align-items: start;
+  gap: 10px;
+}
+
+.icon {
+  margin-top: 15px;
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red {
+  background-color: #a01313;
+}
+
+.green {
+  background-color: #127432;
+}
+
+.blue {
+  background-color: #036c96;
+}
+
+.purple {
+  background-color: #401274;
+}
