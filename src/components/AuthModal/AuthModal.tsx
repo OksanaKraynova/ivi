@@ -25,7 +25,7 @@ const AuthModal = ({ handleCloseModal }: Props) => {
         e.preventDefault();
 
         if (error) setError(false);
-        
+
         setPasswordValue(e.target?.value);
     };
 
@@ -77,7 +77,7 @@ const AuthModal = ({ handleCloseModal }: Props) => {
                                 политики конфидециальности
                             </a>
                         </div>
-                        <RedWrapper onClick={() => {}}>
+                        <RedWrapper onClick={() => { }}>
                             <button type="submit" style={{ color: "white" }}>
                                 Регистрация
                             </button>
