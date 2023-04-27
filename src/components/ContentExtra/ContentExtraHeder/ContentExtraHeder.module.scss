@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  padding-bottom: 5px;
+  gap: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, .16);
+}
+
+.active {
+  position: relative;
+
+  &::after {
+    display: block;
+    content: "";
+    height: 4px;
+    width: 100%;
+    background-color: #ea003d;
+    position: absolute;
+    bottom: -8px;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 900;
+}

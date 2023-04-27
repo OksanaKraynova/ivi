@@ -7,7 +7,6 @@
 }
 
 .description {
-  color: rgba(255, 255, 255, .72);
   margin-top: 32px;
   margin-bottom: 8px;
 }
@@ -16,4 +15,38 @@
   color: rgba(255, 255, 255, 0.48);
   margin-bottom: 24px;
   cursor: pointer;
+}
+
+.text {
+  color: rgba(255, 255, 255, .72);
+  margin-top: 8px;
+}
+
+.props {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  padding-top: 12px;
+  padding-bottom: 24px;
+  border-top: 1px solid rgba(255, 255, 255, .24);
+  border-bottom: 1px solid rgba(255, 255, 255, .24);
+}
+
+.row {
+  display: flex;
+  margin-top: 12px;
+  font-weight: 500;
+  gap: 0.5em;
+}
+
+.propsText {
+  margin-top: 4px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.inline {
+  margin-left: 0.3em;
+  ;
 }

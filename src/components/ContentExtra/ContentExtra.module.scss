@@ -1,0 +1,31 @@
+.container {
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.row {
+  padding: 48px 152px;
+  display: flex;
+}
+
+.box {
+  width: 584px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.card {
+  width: 384px;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.linkIcon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}

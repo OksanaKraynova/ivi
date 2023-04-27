@@ -10,6 +10,7 @@ const branchLeft = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="40
 interface ContentDescriptonProps {
   content: IContent;
   textClass: string;
+  borderedClass: string;
 }
 
 export const ContentDescripton: FC<ContentDescriptonProps> = (props) => {
@@ -32,24 +33,53 @@ export const ContentDescripton: FC<ContentDescriptonProps> = (props) => {
           if (index > 0)
             return (
               <p
-                className={props.textClass}
+                className={styles.text}
                 hidden={hidden}
               >
                 {paragraph}
               </p>
             );
           return (
-            <p className={props.textClass}>{paragraph}</p>
+            <p className={styles.text}>{paragraph}</p>
           );
         }
         )}
+      </div>
+
+      <div className={styles.props} hidden={hidden}>
+
+        <div className={styles.text}>
+          Языки
+          <p className={styles.propsText}>Русский</p>
+        </div>
+
+        <div className={styles.text}>
+          Субтитры
+          <p className={styles.propsText}>Английский, Русский</p>
+        </div>
+
+        <div className={styles.text}>
+          Изображение и звук.
+          <span className={`${styles.propsText} ${styles.inline}`}>
+            Фактическое качество зависит от устройства и ограничений правообладателя.
+          </span>
+        </div>
+
+        <div className={styles.row}>
+          <p className={props.borderedClass}>FullHD</p>
+          <p className={props.borderedClass}>HD</p>
+          <p className={props.borderedClass}>1080</p>
+          <p className={props.borderedClass}>720</p>
+          <p className={props.borderedClass}>5.1</p>
+        </div>
+
       </div>
 
       <p
         className={styles.sign}
         onClick={() => SetHidden(!hidden)}
       >
-        {hidden ? "Детали о фильме" : "Свернуть детали"}
+        {hidden ? `Детали о ${props.content.type.toLowerCase()}е` : "Свернуть детали"}
       </p>
 
     </>
