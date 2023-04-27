@@ -1,0 +1,18 @@
+.links{
+    display: flex;
+    flex: 45%;
+}
+
+.first{
+    flex: 70%;
+}
+.second{
+    flex: 50%;
+}
+
+.column{
+    flex: 32%;
+    div + div{
+        margin-top: 20px;
+    }
+}

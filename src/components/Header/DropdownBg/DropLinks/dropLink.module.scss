@@ -1,0 +1,19 @@
+.title{
+    
+    font-size: 15px;
+    font-weight: 500;
+}
+.links{
+    display: flex;
+    
+    gap: 16px;
+    flex-wrap: wrap;
+    flex: 40%;
+    li{
+        flex: 47%;
+    }
+}
+
+.container{
+   margin-top: 20px;
+}

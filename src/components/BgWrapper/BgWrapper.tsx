@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './bgWrapper.module.scss'
 
-const BgWrapper = ({children, ref, className}: any) => {
+interface IWrapper {
+        className?: string
+    children: any
+}
+
+const BgWrapper = ({children, className}: IWrapper) => {
     return (
-        <div className={`${styles.wrapper} ${className}`} ref={ref} >
+        <div className={`${styles.wrapper} ${className}`} >
             {children}
         </div>
     );

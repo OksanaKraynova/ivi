@@ -23,6 +23,7 @@ export const FooterNav: FC<FooterNavProps> = (props) => {
           <ItemLink
             item={item}
             color='grey'
+            key={item.text}
           />}
       />
 

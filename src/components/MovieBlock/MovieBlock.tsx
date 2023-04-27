@@ -7,9 +7,9 @@ interface IMovieBlock<T> {
     title?: string
     spaceBetween: number
     slidesPerView: number
-    listCardsProps: T[]
+    listCardsProps: any[]
     blockClass?: string
-    renderItem: (item: T) => React.ReactNode
+    renderItem: (item: any) => React.ReactNode
 }
 
 export default function MovieBlock<T>

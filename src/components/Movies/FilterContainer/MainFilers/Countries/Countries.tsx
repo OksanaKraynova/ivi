@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { LegacyRef, MouseEvent, useEffect, useRef, useState } from 'react';
 import styles from './countries.module.scss'
 import ButtonFilter from '@/src/components/ButtonFilter/ButtonFilter';
 import BgWrapper from '@/src/components/BgWrapper/BgWrapper';
@@ -45,15 +45,18 @@ const list = [
 ]
 const Countries = () => {
     const [show, setShow] = useState(false)
-   
-      return (
+
+    return (
         <div className={styles.container}>
-            <ButtonFilter img={ show ? '/icons/up.svg' : '/icons/down.svg' }  text='Страны' onClick={() => setShow(!show)} className='btn' />
+            <ButtonFilter img={show ? '/icons/up.svg' : '/icons/down.svg'} text='Страны' onClick={() => setShow(!show)} className='btn' />
             {show &&
-                <BgWrapper className={styles.dop} >
+            <div >
+                <BgWrapper className={styles.dop}  >
                     <ListCountries />
                     <ListChoose list={list} />
                 </BgWrapper>
+            </div>
+                
             }
         </div>
     );

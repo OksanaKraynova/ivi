@@ -1,0 +1,38 @@
+.image{
+    position: relative;
+    width: 153px;
+    height: 153px;
+    transition: transform 0.3s;
+        &:hover{
+        transform: scale(1.05);
+        }
+    img{
+        width: 153px;
+        height: 153px;
+        object-fit: cover;
+        border-radius: 50%; 
+    }
+    span{
+        position: absolute;
+        background-color: #a869f0;
+        bottom: 0;
+        left: 2px;
+        width: 25px;
+        height: 30px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.name{
+    margin: 10px 0 4px 0;
+    color: #d9d7e0;
+    
+ 
+}
+.movie{
+    font-size: 13px;
+    color: #a5a1b2;
+}

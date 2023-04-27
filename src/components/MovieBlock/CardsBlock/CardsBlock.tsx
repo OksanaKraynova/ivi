@@ -7,8 +7,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 interface ISlide<T> {
   spaceBetween: number;
   slidesPerView: number;
-  listCardsProps: T[];
-  renderItem: (item: T) => React.ReactNode;
+  listCardsProps: any[];
+  renderItem: (item: any) => React.ReactNode;
 }
 
 export default function CardsBlock<T>({ spaceBetween, slidesPerView, listCardsProps, renderItem }: ISlide<T>) {
