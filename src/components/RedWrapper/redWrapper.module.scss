@@ -1,0 +1,17 @@
+.redWrapper {
+    padding: 9px 15px;
+    background-color: #ea003d;
+    border-color: #ea003d;
+    width: fit-content;
+
+    border-width: 1px;
+    border-radius: 8px;
+    color: white;
+
+    cursor: pointer;
+
+    &:active {
+        background-color: #8d0026;
+    }
+}
+
