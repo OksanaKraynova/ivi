@@ -5,7 +5,7 @@ import React from 'react';
 const HeaderLogo = () => {
     return (
         <Link href='/'>
-            <Image src='/logo.jpeg' alt='logo' width={66} height={48} />
+            <Image src='/icons/logo.svg' alt='logo' width={66} height={48} />
         </Link>
     );
 };

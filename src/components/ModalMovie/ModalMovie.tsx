@@ -17,8 +17,7 @@ const Modal = ({ placeholder, setActive, arr }: IModal) => {
 
                 </button>
             <div className={styles.modal__overlay}>
-              
-                <div className={styles.modal__content}>
+                              <div className={styles.modal__content}>
                     <h4>Поиск</h4>
                     <form >
                         <label>

@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './dropdownBg.module.scss'
 
-const DropdownBg = ({children}:any) => {
+const DropdownBg = ({children, className}:any) => {
     return (
-        <div className={styles.wrapper}>
+        <div className={`${styles.wrapper} ${className}`}>
             {children}
         </div>
     );

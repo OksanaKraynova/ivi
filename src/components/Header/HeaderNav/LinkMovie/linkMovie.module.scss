@@ -8,11 +8,20 @@
 }
 .second{
     flex: 50%;
+    display: flex;
 }
 
 .column{
     flex: 32%;
     div + div{
         margin-top: 20px;
+    }
+}
+
+.block{
+    &:hover{
+        .drop{
+            display: flex;
+        }
     }
 }

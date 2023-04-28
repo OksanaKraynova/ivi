@@ -122,3 +122,54 @@ export const years = [
         "title": "Фильмы 2020 года"
     }
 ]
+
+export const dopFilter = [
+    {
+        'url': 'https://www.ivi.ru/new/movie-new',
+        'title': 'Новинки'
+    },
+    {
+        'url': 'https://www.ivi.ru/collections',
+        'title': 'Подборки'
+    },
+    {
+        'url': 'https://www.ivi.ru/movies/all?ivi_rating_10_gte=7&sort=ivi&rating_part=main&rating_model=ready',
+        'title': 'Иви.Рейтинг'
+    },
+    {
+        'url': 'https://www.ivi.ru/new/soon-ivi',
+        'title': 'Скоро на Иви'
+    },
+    {
+        'url': 'https://www.ivi.ru/trailers',
+        'title': 'Трейллеры'
+    },
+    {
+        'url': 'https://www.ivi.ru/goodmovies',
+        'title': 'Что посмотреть'
+    },
+    {
+        'url': 'https://www.ivi.ru/collections/movies-hd',
+        'title': 'Фильмы в HD'
+    },
+    {
+        'url': 'https://www.ivi.ru/collections/vyibor-ivi',
+        'title': 'Выбор Иви'
+    },
+    {
+        'url': 'https://www.ivi.ru/collections/very-new-svod?sort=priority_in_collection',
+        'title': 'Новинки подписки'
+    },
+    {
+        'url': 'https://www.ivi.ru/collections/filmyi-amediateka',
+        'title': 'Фильмы Amediateka'
+    },
+    {
+        'url': 'https://www.ivi.ru/collections/best-movies',
+        'title': 'Популярные фильмы'
+    },
+    {
+        'url': 'https://www.ivi.ru/collections/ivi-originals',
+        'title': 'Фильмы Иви'
+    },
+]

@@ -37,7 +37,7 @@ export const AImage = ({ ...props }: AImageProps) => {
       {content}
 
       {props.textUnderImg.map(item =>
-        <p className={styles.linkText}>{item}</p>
+        <p className={styles.linkText} key={item}>{item}</p>
       )}
 
       {props.children}

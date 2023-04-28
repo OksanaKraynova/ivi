@@ -30,7 +30,7 @@ const sectionsList: IItemLink[] = [
 
 export const Footer = () => {
   return (
-    <div className={`${styles.container} container`}>
+    <footer className={`${styles.container} container`}>
 
       <div className={styles.rowBorder}>
 
@@ -81,6 +81,6 @@ export const Footer = () => {
         </div>
 
       </div>
-    </div>
+    </footer>
   );
 };
