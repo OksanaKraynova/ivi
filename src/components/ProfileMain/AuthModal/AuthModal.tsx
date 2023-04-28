@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import Modal from "../Modal/Modal";
+import Modal from "../../Modal/Modal";
 import styles from "./authModal.module.scss";
-import RedWrapper from "../RedWrapper/RedWrapper";
+import RedWrapper from "../../RedWrapper/RedWrapper";
 import { spawn } from "child_process";
 
 type Props = {
