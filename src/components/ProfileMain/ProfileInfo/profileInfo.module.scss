@@ -1,0 +1,33 @@
+.profileWrapper {
+    height: 106px;
+}
+
+.topContainer {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottomInfo {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    
+}
+
+.phone {
+   
+    display: flex;
+    align-items: center;
+}
+
+.phoneImg{
+    fill: gray;
+}
+
+.email {
+   
+    display: flex;
+    align-items: center;
+}
