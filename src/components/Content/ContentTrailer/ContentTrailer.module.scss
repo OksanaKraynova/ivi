@@ -1,5 +1,77 @@
-.linkList {
+.box {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  padding: 48px 0;
+  background-color: #04020e;
+  grid-area: trailer;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  line-height: 0;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.size {
+  position: absolute;
+  display: flex;
+  align-items: center;
   gap: 8px;
+  right: 20px;
+  top: 14px;
+  opacity: 0.72;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.text {
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  align-items: start;
+  width: 100%;
+  gap: 12px;
+  margin: 0 auto;
+  color: #FFFFFF;
+  font-weight: 500;
+  grid-area: buttons;
+
+  & button:last-child {
+    margin-left: auto;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0.72;
+}
+
+@media (max-width: 1279px) {
+  .buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    & button:last-child {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
 }

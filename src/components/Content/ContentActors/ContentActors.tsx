@@ -25,10 +25,11 @@ export const ContentActors: FC<ContentActorsProps> = (props) => {
 
             {props.content.actors.map((actorId, index) => {
                 let actor = props.actors.find((actor) => actor.id === actorId);
-                if (index > 3) return;
+                if (index > 4) return;
                 if (actor !== undefined)
                     return (
                         <AImage
+                            key={index}
                             textUnderImg={[actor.firstName, actor.secondName]}
                             href=""
                             img={actor.img}

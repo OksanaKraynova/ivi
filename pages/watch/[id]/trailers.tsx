@@ -5,7 +5,6 @@ import { ContentExtra } from "@/src/components/ContentExtra/ContentExtra";
 import Header from "@/src/components/Header/Header";
 import { Footer } from "@/src/components/Footer/Footer";
 
-
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const id = context.params?.id;
   const content = contentData.content.find(content => content.id === id) ?? null;

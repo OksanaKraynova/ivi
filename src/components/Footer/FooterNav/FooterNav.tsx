@@ -19,12 +19,13 @@ export const FooterNav: FC<FooterNavProps> = (props) => {
       <List<IItemLink>
         title={<p className={props.titleClass}>{props.title}</p>}
         list={props.list}
-        renderItem={item =>
+        renderItem={(item, index) =>
           <ItemLink
+            key={index}
             item={item}
             color='grey'
-            key={item.text}
-          />}
+          />
+        }
       />
 
       {props.children}

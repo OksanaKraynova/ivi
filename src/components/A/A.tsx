@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './A.module.scss';
+import classNames from 'classnames';
 
 interface AProps {
   text: string;
@@ -11,7 +12,7 @@ interface AProps {
 }
 
 export const A = (props: AProps) => {
-  let className = `${styles.link} ${styles[props.color]}`;
+  let className = classNames(styles.link, styles[props.color]);
 
   props.linkClass === undefined ?
     className = className :
@@ -19,7 +20,7 @@ export const A = (props: AProps) => {
 
   props.fontWeight === undefined ?
     className = className :
-    className += `fontWeight${props.fontWeight}`;
+    className = classNames(className, styles[`fontWeight${props.fontWeight}`]);
 
   return (
     <Link

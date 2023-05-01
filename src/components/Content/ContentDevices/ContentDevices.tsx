@@ -20,7 +20,10 @@ export const ContentDevices: FC<ContentDevicesProps> = (props) => {
 
         <p className={props.titleClass}>{`Cмотреть «${props.content.name}» на всех устройствах`}</p>
         <p className={props.textClass}>Приложение доступно для скачивания на iOS, Android, SmartTV и приставках</p>
-        <Button variant='square'>Подключить устройства</Button>
+
+        <div className={styles.button}>
+          <Button variant='medium' href={"https://www.ivi.ru/devices"} color={'pink'}>Подключить устройства</Button>
+        </div>
 
       </div>
 

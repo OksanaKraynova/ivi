@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import Button from '@/src/components/Button/Button';
 import styles from './ContentRating.module.scss';
+import classNames from 'classnames';
 
 interface ContentRatingProps {
   rating: number;
@@ -15,7 +16,7 @@ export const ContentRating: FC<ContentRatingProps> = (props) => {
 
     <div className={styles.box}>
 
-      <p className={`${styles.rating} ${styles[color]}`}>{props.rating}</p>
+      <p className={classNames(styles.rating, styles[color])}>{props.rating}</p>
 
       <div className={styles.boxGrow}>
         <p className={styles.title}>Рейтинг Иви</p>
@@ -23,7 +24,7 @@ export const ContentRating: FC<ContentRatingProps> = (props) => {
         <p className={props.textClass}>10 000 оценок</p>
       </div>
 
-      <Button variant='square'>Оценить</Button>
+      <Button variant='minimal' effect='bordered'>Оценить</Button>
 
     </div >
   );

@@ -1,7 +1,8 @@
-import styles from './ContentExtraCommentsTree.module.scss';
 import React, { FC } from "react";
+import classNames from 'classnames';
 import { Comment } from '../../Comment/Comment';
 import { IComment } from "@/types/IComment";
+import styles from './ContentExtraCommentsTree.module.scss';
 
 interface ContentExtraCommentsTreeProps {
   comment: IComment;
@@ -16,16 +17,17 @@ export const ContentExtraCommentsTree: FC<ContentExtraCommentsTreeProps> = (prop
     userNameIcon = " ";
 
   let coloIcon: string;
-  /[0-9]/.test(userNameIcon) ? coloIcon = "red" :
-    /[a-z]/.test(userNameIcon) ? coloIcon = "green" :
-      /[а-яё]/.test(userNameIcon) ? coloIcon = "blue" : coloIcon = "purple";
+  /[a-n]/.test(userNameIcon) ? coloIcon = "red" :
+    /[o-z]/.test(userNameIcon) ? coloIcon = "orange" :
+      /[а-п]/.test(userNameIcon) ? coloIcon = "blue" :
+        /[р-яё]/.test(userNameIcon) ? coloIcon = "purple" : coloIcon = "green";
 
   return (
 
     <div className={styles.treeComments}>
 
       <div className={styles.comment}>
-        <div className={`${styles.icon} ${styles[coloIcon]}`}>{userNameIcon}</div>
+        <div className={classNames(styles.icon, styles[coloIcon])}>{userNameIcon}</div>
         <Comment comment={props.comment} type="fullLength" />
       </div>
 

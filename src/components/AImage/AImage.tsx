@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ImgBox } from '../ImgBox';
 import styles from './AImage.module.scss';
+import classNames from 'classnames';
 
 interface AImageProps {
   textUnderImg: string[];
@@ -18,7 +19,7 @@ export const AImage = ({ ...props }: AImageProps) => {
   let contentClass: string;
   props.color === undefined ?
     contentClass = styles.content :
-    contentClass = `${styles.content} ${styles[props.color]}`;
+    contentClass = classNames(styles.content, styles[props.color]);
 
   let content: React.ReactElement;
   props.textInsteadImg === undefined ?
@@ -29,15 +30,20 @@ export const AImage = ({ ...props }: AImageProps) => {
 
     <Link
       href={props.href}
-      className={`${styles.link} ${styles[props.form]}`}
+      className={classNames(styles.link, styles[props.form])}
       onClick={props.onClick}
       onMouseOver={props.onMouseOver}
     >
 
       {content}
 
-      {props.textUnderImg.map(item =>
-        <p className={styles.linkText}>{item}</p>
+      {props.textUnderImg.map((item, index) =>
+        <p
+          key={index}
+          className={styles.linkText}
+        >
+          {item}
+        </p>
       )}
 
       {props.children}

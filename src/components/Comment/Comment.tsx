@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import styles from './Comment.module.scss';
 import { IComment } from '@/types/IComment';
+import classNames from 'classnames';
 
 const likeIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -21,7 +22,7 @@ export const Comment: FC<CommentProps> = ({ comment, type }) => {
 
   return (
 
-    <div className={`${styles.box} ${styles[`${type}Box`]}`}>
+    <div className={classNames(styles.box, styles[`${type}Box`])}>
 
       <p className={styles.title}>{comment.userName}</p>
       <p className={styles.date}>{comment.date}</p>
@@ -33,7 +34,7 @@ export const Comment: FC<CommentProps> = ({ comment, type }) => {
           {likeIcon}
         </div>
 
-        <p className={`${styles.title} ${styles.green}`}>36</p>
+        <p className={classNames(styles.title, styles.green)}>36</p>
 
         <div className={styles.likeIcon}>
           {disLikeIcon}
