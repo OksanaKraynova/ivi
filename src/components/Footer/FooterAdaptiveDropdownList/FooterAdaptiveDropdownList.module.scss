@@ -1,0 +1,40 @@
+.box {
+  display: grid;
+  grid-template-columns: calc(100% / 3) calc(200% / 3);
+}
+
+.rightCol {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.innerBox {
+  display: block;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.listTitle {
+  font-weight: 500;
+}
+
+@media (max-width: 799px) {
+
+  .box {
+    grid-template-columns: 50% 50%;
+  }
+
+  .rightCol {
+    grid-template-columns: 100%;
+  }
+
+  .innerBox:last-child {
+    margin-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+  }
+}

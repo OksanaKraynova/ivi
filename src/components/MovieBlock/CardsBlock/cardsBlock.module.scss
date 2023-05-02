@@ -1,5 +1,6 @@
 .wrapper {
     margin-top: 12px;
+    position: relative;
 
     .swiper {
         overflow: visible !important;
@@ -7,6 +8,21 @@
 
     .swiper-slide {
         overflow: visible !important;
-
     }
+}
+
+.next,
+.prev {
+    position: absolute;
+    top: calc(50% - 20px);
+    z-index: 1000000;
+    cursor: pointer;
+}
+
+.next {
+    right: -35px;
+}
+
+.prev {
+    left: -35px;
 }

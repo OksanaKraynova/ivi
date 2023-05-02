@@ -17,6 +17,31 @@
   position: relative;
 }
 
-.slider {
-  margin: 0;
+.titleBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commentAdd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  background-color: #1f1b2e;
+  border-radius: 8px;
+  width: 286px;
+  height: 162px;
+  transition-duration: .4s;
+  color: rgba(255, 255, 255, .48);
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.block {
+  margin-top: 18px;
 }

@@ -37,7 +37,14 @@ export const HomeAbout = () => {
           <List<string>
             title={<p className={styles.text}>Онлайн-кинотеатр ivi.ru – это:</p>}
             list={advantages}
-            renderItem={(item) => <li key={item} className={styles.listItem}>{item}</li>}
+            renderItem={(item, index) =>
+              <li
+                key={index}
+                className={styles.listItem}
+              >
+                {item}
+              </li>
+            }
           />
         </ul>
 

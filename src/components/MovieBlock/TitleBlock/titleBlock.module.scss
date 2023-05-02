@@ -4,9 +4,9 @@
     align-items: center;
     line-height: 28px;
     font-weight: 700;
+    gap: 8px;
+}
 
-    img {
-        transform: rotate(90deg);
-        margin-left: 8px;
-    }
+.img {
+    line-height: 0;
 }

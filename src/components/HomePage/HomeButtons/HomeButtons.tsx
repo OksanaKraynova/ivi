@@ -12,7 +12,12 @@ export const HomeButtons = () => {
 
     <div className={styles.box}>
 
-      <Button variant='square'>
+      <Button
+        variant='long'
+        color={'img'}
+        href={'/'}
+        onClick={(event) => event.preventDefault()}
+      >
         <div className={styles.button}>
           <div className={styles.icon}>
             {importantIcon}
@@ -21,7 +26,12 @@ export const HomeButtons = () => {
         </div>
       </Button>
 
-      <Button variant='square'>
+      <Button
+        variant='long'
+        color={'darkBlue'}
+        href={'/'}
+        onClick={(event) => event.preventDefault()}
+      >
         <div className={styles.button}>
           <div className={styles.icon}>
             {giftIcon}

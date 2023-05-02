@@ -4,49 +4,67 @@
   align-items: center;
   text-align: center;
   gap: 8px;
+  grid-area: tagline;
 }
 
 .description {
-  margin-top: 32px;
-  margin-bottom: 8px;
+  grid-area: description;
 }
 
 .sign {
   color: rgba(255, 255, 255, 0.48);
-  margin-bottom: 24px;
   cursor: pointer;
-}
-
-.text {
-  color: rgba(255, 255, 255, .72);
-  margin-top: 8px;
-}
-
-.props {
-  margin-top: 24px;
-  margin-bottom: 12px;
-  padding-top: 12px;
-  padding-bottom: 24px;
-  border-top: 1px solid rgba(255, 255, 255, .24);
-  border-bottom: 1px solid rgba(255, 255, 255, .24);
+  margin-top: -24px;
+  grid-area: sign;
 }
 
 .row {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.props {
+  margin-bottom: 12px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, .24);
+  border-bottom: 1px solid rgba(255, 255, 255, .24);
+  grid-area: props;
+}
+
+.quality {
   display: flex;
-  margin-top: 12px;
+  margin-top: 4px;
   font-weight: 500;
   gap: 0.5em;
 }
 
+.propsName {
+  color: rgba(255, 255, 255, .72);
+}
+
 .propsText {
   margin-top: 4px;
-  margin-bottom: 12px;
-  font-size: 15px;
-  line-height: 20px;
   color: #FFFFFF;
 }
 
-.inline {
-  margin-left: 0.3em;
-  ;
+@media (max-width: 1279px) {
+  .props {
+    display: block;
+    margin-bottom: 0;
+    border: none;
+  }
+
+  .sign {
+    margin-top: 0;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, .24);
+  }
 }

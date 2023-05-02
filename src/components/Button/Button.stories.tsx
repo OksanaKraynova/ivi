@@ -1,4 +1,3 @@
-import { IButton } from '@/types/IButton'
 import Button from './Button'
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -9,8 +8,8 @@ const btn = {
         variant: {
             type: 'string',
             description: 'Форма ссылки',
-            defaultValue: 'square',
-            options: ['square', 'circle', 'minimal', 'huge'],
+            defaultValue: 'medium',
+            options: ["minimal", "small", "medium", "large", "huge", "circle", "square", "long"],
             control: {
                 type: 'select'
             }
@@ -25,7 +24,9 @@ type Story = StoryObj<typeof btn>;
 
 export const Example = {
     args: {
-        variant: 'square',
+        variant: "medium",
+        color: "darkBlue",
+        href: "",
         children: 'Click'
     },
 } satisfies Story;
