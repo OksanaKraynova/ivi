@@ -14,19 +14,6 @@ const rightIcon = <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
 
 interface ISlide<T> {
   spaceBetween: number;
-<<<<<<< HEAD
-  slidesPerView?: number | "auto" | undefined
-  listCardsProps: any[];
-  renderItem: (item: any) => React.ReactNode;
-  
-}
-
-export default function CardsBlock<T>({ spaceBetween, slidesPerView, listCardsProps, renderItem,
-   }: ISlide<T>) {
-  return (
-    <div className={styles.wrapper}>
-      <Swiper spaceBetween={spaceBetween} slidesPerView={slidesPerView}>
-=======
   slidesPerView: number;
   listCardsProps: T[];
   loop?: boolean;
@@ -76,7 +63,6 @@ export default function CardsBlock<T>({
         onBeforeInit={(swipper) => setSwipper(swipper)}
       >
 
->>>>>>> tanya-adaptive
         {listCardsProps.map((cardProps, index) => (
 
           <SwiperSlide key={index}>

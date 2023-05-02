@@ -9,13 +9,6 @@ const rightIcon = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 interface IMovieBlock<T> {
     title?: string
     spaceBetween: number
-<<<<<<< HEAD
-    slidesPerView: number | "auto"
-    listCardsProps: any[]
-    blockClass?: string
-    renderItem: (item: any) => React.ReactNode
-    
-=======
     slidesPerView: number
     listCardsProps: T[]
     blockClass?: string
@@ -25,7 +18,6 @@ interface IMovieBlock<T> {
     carsBlockClass?: string;
     breakpoints?: { [width: number]: SwiperOptions };
     renderItem: (item: T) => React.ReactNode
->>>>>>> tanya-adaptive
 }
 
 export default function MovieBlock<T>(
