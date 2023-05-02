@@ -19,6 +19,7 @@
 }
 
 .block{
+    padding: 0 8px;
     &:hover{
         .drop{
             display: flex;

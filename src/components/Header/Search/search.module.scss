@@ -6,6 +6,9 @@
   gap: 10px;
   margin:  0 24px 0 auto ;
   transition: all 0.3s;
+  @media(max-width: 1149px){
+    display: none;
+  }
   &:hover{
     color: #fff;
     svg{

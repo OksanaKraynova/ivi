@@ -6,10 +6,11 @@ import CardsBlock from './CardsBlock/CardsBlock';
 interface IMovieBlock<T> {
     title?: string
     spaceBetween: number
-    slidesPerView: number
+    slidesPerView: number | "auto"
     listCardsProps: any[]
     blockClass?: string
     renderItem: (item: any) => React.ReactNode
+    
 }
 
 export default function MovieBlock<T>

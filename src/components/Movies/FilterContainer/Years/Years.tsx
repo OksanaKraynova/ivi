@@ -1,6 +1,8 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './years.module.scss'
+import MovieBlock from '@/src/components/MovieBlock/MovieBlock';
+import Button from '@/src/components/Button/Button';
 
 const list = [
     { title: '2022 год' },
@@ -27,14 +29,8 @@ const list = [
 const Years = () => {
     return (
         <div className={styles.wrapper}>
-            <Swiper slidesPerView={7} spaceBetween={10}>
-                {list.map(slide => (
-                    <SwiperSlide key={slide.title}>
-<button className={styles.btn}>{slide.title}</button>
-                    </SwiperSlide>
-                ))}
-
-            </Swiper>
+           <MovieBlock<Parameters<typeof Button>> title='Выбор Иви' listCardsProps={list} slidesPerView={8} spaceBetween={0} renderItem={(item) => <button className={styles.btn}>{item.title}</button>}/>
+                  
         </div>
     );
 };
