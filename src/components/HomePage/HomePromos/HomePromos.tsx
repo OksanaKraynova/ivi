@@ -15,30 +15,34 @@ const promos: Parameters<typeof PromoPoster>[0][] = [
   {
     posterImg: cornPoster.src,
     titleImg: cornTitle.src,
-    description: 'Дети из глубинки попадают под влияние таинственной и зловещей силы. По рассказу Стивена Кинга',
+    description: 'Пробегающий по коже мороз и острое желание забраться под одеяло с головой  после просмотра этого и других ужастиков гарантированы',
     descriptionColor: "white",
-    button: "Показать подборку"//Ужастики
+    button: "Показать подборку",
+    href: ""
   },
   {
     posterImg: sonPoster.src,
     titleImg: sonTitle.src,
-    description: 'Преступник Айзек вступает в смертельную схватку с собственным сыном. Вестерн с Сэмом Уортингтоном',
+    description: 'Хочется острых ощущений? Значит, пришла пора посмотреть фильм «Последний сын» или другой леденящий кровь триллер',
     descriptionColor: "white",
-    button: "Показать подборку"//Вестрены
+    button: "Показать подборку",
+    href: ""
   },
   {
     posterImg: huntPoster.src,
     titleImg: huntTitle.src,
-    description: 'Решивший испытать свои навыки выживания Джозеф оказывается в таинственном лесу, в котором живёт смерть',
+    description: 'Вы предпочитаете по-настоящему душевное кино? Помимо «Смертельной охоты» еще море семейных, психологических и исторических драм ждут именно Вас',
     descriptionColor: "grey",
-    button: "Показать подборку"
+    button: "Показать подборку",
+    href: ""
   },
   {
     posterImg: ghostPoster.src,
     titleImg: ghostTitle.src,
-    description: 'Неуклюжий призрак Бубух и юная волшебница отправляются в магический лес на поиски ведьмы',
+    description: 'Погрузитесь вместе с призраком Бубухом и героями других фэнтези в реальность выдуманных миров, пронизанных магией и волшебством',
     descriptionColor: "white",
-    button: "Показать подборку"//фэнтези
+    button: "Показать подборку",
+    href: ""
   }
 ];
 
@@ -51,6 +55,11 @@ export const HomePromos = () => {
       spaceBetween={24}
       slidesPerView={1}
       listCardsProps={promos}
+      loop={true}
+      // autoplay={{
+      //   delay: 5000,
+      //   disableOnInteraction: false,
+      // }}
       renderItem={(item) => <PromoPoster {...item} />}
     />
 

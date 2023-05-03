@@ -1,6 +1,8 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Button from '../../Button/Button';
 import { A } from '../../A/A';
+import styles from './FooterSupport.module.scss';
+import classNames from 'classnames';
 
 const mailIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffffff" viewBox="0 0 256 256"><path d="M224,44H32A12,12,0,0,0,20,56V192a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V56A12,12,0,0,0,224,44ZM193.15,68,128,127.72,62.85,68ZM44,188V83.28l75.89,69.57a12,12,0,0,0,16.22,0L212,83.28V188Z"></path></svg>
 
@@ -13,21 +15,70 @@ interface FooterSupportProps {
 }
 
 export const FooterSupport: FC<FooterSupportProps> = (props) => {
+
+  const [hidden, SetHidden] = useState<boolean>(true);
+
+
   return (
 
     <>
       <p className={props.titleClass}>Служба поддержки</p>
       <p className={props.subTitleClass}>Мы всегда готовы вам помочь.<br />Наши операторы онлайн 24/7</p>
-      <Button variant='square'>Написать в чате</Button>
 
-      <div className={props.buttonBoxClass}>
-        <Button variant='square'>{mailIcon}</Button>
-        <Button variant='square'>{phoneIcon}</Button>
-      </div>
+      <div className={styles.box}>
+
+        <Button
+          variant='medium'
+          href={"https://www.ivi.ru/profile"}
+          color={'darkBlue'}
+          onClick={(event) => event.preventDefault()}
+        >
+          Написать в чате
+        </Button>
+
+        <div className={props.buttonBoxClass}>
+
+          <Button
+            variant='square'
+            href={"support@ivi.ru"}
+            color={'darkBlue'}
+            onClick={(event) => event.preventDefault()}
+          >
+            <div className={styles.icon}>
+              {mailIcon}
+            </div>
+          </Button>
+
+          <Button
+            variant='square'
+            color={'darkBlue'}
+            onClick={() => SetHidden(!hidden)}
+          >
+            <div className={styles.icon}>
+              {phoneIcon}
+            </div>
+          </Button>
+
+        </div>
+
+        <div className={hidden ? classNames(styles.telephone, styles.hidden) : styles.telephone}>
+
+          <Button
+            variant='medium'
+            href={"tel:+73422554561"}
+            color={'darkBlue'}
+            onClick={(event) => { event.preventDefault(); SetHidden(!hidden); }}
+          >
+            +7 342 255-45-61
+          </Button>
+
+        </div>
+
+      </div >
 
       <A
         text="ask.ivi.ru"
-        href="!#"
+        href="https://ask.ivi.ru"
         color='white'
       />
       <p className={props.subTitleClass}>Ответы на вопросы</p>

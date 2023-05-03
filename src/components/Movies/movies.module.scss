@@ -3,4 +3,10 @@
     margin: 0 auto;
     padding: 24px 0px 80px 0px;
     color: #fff;
+    @media(max-width: 1249px){
+        padding: 24px 10px 50px 10px;
+    }
+@media(max-width: 998px){
+    padding-bottom: calc(0px + (50 - 0) * ((100vw - 320px) / (1170 - 320)));
+}
 }

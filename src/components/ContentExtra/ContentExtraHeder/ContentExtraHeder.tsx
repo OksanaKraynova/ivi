@@ -13,42 +13,46 @@ export const ContentExtraHeder: FC<ContentExtraHederProps> = (props) => {
   const extraProps = {
     Создатели:
     {
-      title: `${props.content.name}: актеры и создатели фильма`,
+      title: `${props.content.name}: актеры и создатели ${props.content.type.toLowerCase()}а`,
       index: 0
     },
     Отзывы:
     {
-      title: `Отзывы на фильм ${props.content.name}`,
+      title: `Отзывы на ${props.content.type.toLowerCase()} ${props.content.name}`,
       index: 1
     },
     Трейлеры:
     {
-      title: `Трейлеры к фильму ${props.content.name} смотреть онлайн`,
+      title: `Трейлеры к ${props.content.type.toLowerCase()}у ${props.content.name} смотреть онлайн`,
       index: 2
     }
   }
 
   const nav = [
     <A
+      key={0}
       text="Создатели"
       href={`/watch/${props.content.id}/person`}
       color={"greyLight"}
     />,
 
     <A
+      key={1}
       text="Отзывы"
       href={`/watch/${props.content.id}/comments`}
       color={"greyLight"}
     />,
 
     <A
+      key={2}
       text="Трейлеры"
       href={`/watch/${props.content.id}/trailers`}
       color={"greyLight"}
     />,
   ];
 
-  nav[extraProps[props.extra].index] = <p className={styles.active}>{props.extra}</p>
+  nav[extraProps[props.extra].index] =
+    <p key={extraProps[props.extra].index} className={styles.active}>{props.extra}</p>
 
   return (
 

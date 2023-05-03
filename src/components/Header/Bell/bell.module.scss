@@ -1,5 +1,8 @@
 .bell{
     margin: 0px 24px 0px 0;
+    @media(max-width: 1149px){
+      margin: 0px 24px 0px auto;
+    }
   &:hover{
     svg{
         fill: rgba(255,255,255, 1);

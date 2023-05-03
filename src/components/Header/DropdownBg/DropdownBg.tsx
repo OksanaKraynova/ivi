@@ -4,7 +4,10 @@ import styles from './dropdownBg.module.scss'
 const DropdownBg = ({children, className}:any) => {
     return (
         <div className={`${styles.wrapper} ${className}`}>
-            {children}
+            <div className={styles.content}>
+                 {children}
+            </div>
+           
         </div>
     );
 };

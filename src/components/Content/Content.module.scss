@@ -5,37 +5,33 @@
   color: #FFFFFF;
 }
 
-.row {
-  display: flex;
-  align-items: flex-start;
+.box {
+  display: grid;
+  grid-template-columns: calc(65% - 18px) calc(35% - 18px);
+  column-gap: 36px;
+  row-gap: 24px;
+  grid-template-areas:
+    "trailer title" "trailer actors" "trailer tagline"
+    "buttons description"
+    ". props" ". sign" ". raiting";
 }
 
-.box {
+.row {
   padding: 24px 0;
 }
 
-.rowCenter {
+.devices {
   display: flex;
   align-items: center;
   padding: 24px 0;
 }
 
-.trailer {
-  min-width: 65%;
-  width: 65%;
-  text-align: center;
-  padding-top: 20px;
-
-  & img {
-    max-width: 80%;
-    max-height: 80%;
-  }
-}
-
 .actors {
-  display: flex;
-  justify-content: space-around;
-  margin: 24px 0;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20% 0%;
+  overflow: hidden;
+  margin: 0 12px;
+  grid-area: actors;
 }
 
 .title {
@@ -43,7 +39,7 @@
   font-size: 24px;
   line-height: 28px;
   font-weight: 700;
-  padding-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .text {
@@ -55,7 +51,7 @@
   text-underline-position: under;
   text-decoration-color: rgba(255, 255, 255, .16);
   transition-duration: .4s;
-  padding-bottom: 15px;
+  margin-bottom: 18px;
   padding-right: 0.4em;
 
   &:hover {
@@ -69,4 +65,46 @@
   background-color: rgba(255, 255, 255, .16);
   padding: 2px 6px;
   border-radius: 4px
+}
+
+.slider {
+  margin: -12px;
+}
+
+@media (max-width: 1279px) {
+
+  .box {
+    grid-template-columns: calc(65% - 12px) calc(35% - 12px);
+    column-gap: 24px;
+    grid-template-areas:
+      "title title"
+      "trailer trailer"
+      "actors buttons"
+      "description tagline" "sign ." "raiting ." "props .";
+  }
+
+  .actors {
+    grid-template-columns: calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6);
+  }
+}
+
+@media (max-width: 899px) {
+
+  .box {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "title"
+      "trailer"
+      "buttons"
+      "actors"
+      "tagline"
+      "description"
+      "sign"
+      "raiting"
+      "props";
+  }
+
+  .actors {
+    grid-template-columns: calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6);
+  }
 }

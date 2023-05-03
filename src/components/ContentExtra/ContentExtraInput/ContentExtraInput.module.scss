@@ -1,0 +1,64 @@
+.box {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.inputBox {
+  position: relative;
+  height: 40px;
+  flex-grow: 1;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.input {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px 12px 6px;
+  background-color: #d9d7e0;
+  color: #1f1b2e;
+}
+
+.input:not(:focus) {
+  cursor: pointer;
+}
+
+.placholder {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 12px;
+  color: #a5a1b2;
+  pointer-events: none;
+}
+
+.error {
+  position: absolute;
+  bottom: -24px;
+  color: #ff542e;
+  pointer-events: none;
+}
+
+.overText {
+  top: 6px;
+  left: 12px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.orange {
+  color: #ff542e;
+}
+
+.icon {
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #127432;
+}

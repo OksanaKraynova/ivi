@@ -3,6 +3,10 @@
 }
 
 .inner {
+  display: grid;
+  grid-template-areas: "title" "desc" "button";
+  row-gap: 40px;
+  column-gap: 16px;
   position: absolute;
   bottom: 50px;
   left: 50px;
@@ -13,15 +17,22 @@
 
 .poster {
   max-width: 100%;
+  width: 100%;
   border-radius: 26px;
 }
 
 .title {
   max-width: 100%;
+  grid-area: title;
 }
 
 .description {
-  margin: 40px 0;
+  grid-area: desc;
+}
+
+.button {
+  grid-area: button;
+  align-self: self-end;
 }
 
 .white {
@@ -30,4 +41,43 @@
 
 .grey {
   color: #2e2e2e
+}
+
+@media (max-width: 1099px) {
+
+  .inner {
+    grid-template-areas: "title button" "desc button";
+    grid-template-columns: 60% 40%;
+    width: 60%;
+  }
+}
+
+@media (max-width: 899px) {
+
+  .inner {
+    grid-template-areas: "title button" "desc button";
+    grid-template-columns: 65% 35%;
+    width: 80%;
+    bottom: 35px;
+    left: 35px;
+  }
+
+  .title {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 719px) {
+
+  .inner {
+    grid-template-areas: "desc button";
+    grid-template-columns: auto;
+    width: calc(100% - 40px);
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .title {
+    display: none;
+  }
 }

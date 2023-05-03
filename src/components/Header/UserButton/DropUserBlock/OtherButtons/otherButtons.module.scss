@@ -1,0 +1,31 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-left: 24px;
+    justify-content: space-between;
+    position: relative;
+    flex:1;
+    &:before{
+        position: absolute;
+        content: '';
+        width: 0.5px;
+        background-color: rgba(255,255,255,0.2);
+        height: 100%;
+        left: 0;
+        top:0px;
+    }
+}
+
+.btn{
+    height: 40px;
+    color: #fff;
+    background-color: #ea003d;
+    border-radius: 8px;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #ffffff7a;
+    font-size: 15px;
+}

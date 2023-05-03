@@ -1,5 +1,5 @@
 .wrapper{
-    padding: 100px 32px 32px 32px;
+    padding: 66px 0px 0px 0px;
     background-color: #1f1b2e;
     position: absolute;
     left: -10px;
@@ -9,5 +9,11 @@
     border-radius: 16px;
     height: 508px;
     display: none;
+    
+}
+
+.content{
     border-top: 1px solid #949393;
+    display: flex;
+    padding: 32px 32px 32px 32px;
 }

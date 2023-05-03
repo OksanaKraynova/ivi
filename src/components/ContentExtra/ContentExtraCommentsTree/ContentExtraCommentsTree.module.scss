@@ -1,9 +1,9 @@
 .treeComments {
-  padding-top: 20px;
   margin-left: 20px;
 }
 
 .comment {
+  margin-top: 16px;
   margin-left: -20px;
   display: flex;
   align-items: start;
@@ -21,7 +21,11 @@
 }
 
 .red {
-  background-color: #a01313;
+  background-color: #ff2d2d;
+}
+
+.orange {
+  background-color: #da6900;
 }
 
 .green {
@@ -29,9 +33,9 @@
 }
 
 .blue {
-  background-color: #036c96;
+  background-color: #0092cc;
 }
 
 .purple {
-  background-color: #401274;
+  background-color: #712bc0;
 }

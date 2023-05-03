@@ -20,7 +20,7 @@ const Movies = () => {
             <FilterContainer />
            <NewFilmRow />
 
-            <MovieBlock<Parameters<typeof Card>> title='Лучшие фильмы' slidesPerView={7} spaceBetween={10} listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], []]} renderItem={() => <Card />} />
+            <MovieBlock<Parameters<typeof Card>> title='Лучшие фильмы' slidesPerView={7} spaceBetween={10}  listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], []]} renderItem={() => <Card />} />
 
             <MovieBlock<Parameters<typeof Card>> title='Выбор Иви' listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]} slidesPerView={7} spaceBetween={10} renderItem={() => <Card />}/>
 

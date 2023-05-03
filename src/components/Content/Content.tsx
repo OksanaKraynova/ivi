@@ -14,6 +14,8 @@ import { ContentComments } from "./ContentComments/ContentComments";
 import { ContentDevices } from "./ContentDevices/ContentDevices";
 import { BreadCrumbs } from "./BreadCrumbs/BreadCrumbs";
 import { FC } from "react";
+import classNames from "classnames";
+import Button from "../Button/Button";
 
 interface ContentProps {
   content: IContent;
@@ -23,7 +25,7 @@ export const Content: FC<ContentProps> = (props) => {
 
   if (props.content === null) {
     return (
-      <div className={`${styles.container} container`}>
+      <div className={classNames(styles.container, "container")}>
         Пусто
       </div>
     )
@@ -31,7 +33,7 @@ export const Content: FC<ContentProps> = (props) => {
 
   return (
 
-    <div className={`${styles.container} container`}>
+    <div className={classNames(styles.container, "container")}>
 
       <BreadCrumbs
         prevPages={[
@@ -40,68 +42,68 @@ export const Content: FC<ContentProps> = (props) => {
         ]}
       />
 
+      <div className={styles.box}>
+
+        <ContentTrailer img={props.content.cover} />
+
+        <ContentTitle
+          content={props.content}
+          textClass={styles.text}
+          borderedClass={styles.bordered}
+        />
+
+        <div className={styles.actors}>
+          <ContentActors content={props.content} actors={actorsData.actors} />
+        </div>
+
+        <ContentDescripton
+          content={props.content}
+          textClass={styles.text}
+          borderedClass={styles.bordered}
+        />
+
+        <ContentRating rating={props.content.rating} textClass={styles.text} />
+
+      </div>
+
       <div className={styles.row}>
-
-        <div className={styles.trailer}>
-          <ContentTrailer img={props.content.cover} />
-        </div>
-
-        <div className={styles.boxCenter}>
-
-          <ContentTitle
-            content={props.content}
-            textClass={styles.text}
-            borderedClass={styles.bordered}
-          />
-
-          <div className={styles.actors}>
-            <ContentActors content={props.content} actors={actorsData.actors} />
-          </div>
-
-          <ContentDescripton
-            content={props.content}
-            textClass={styles.text}
-            borderedClass={styles.bordered}
-          />
-          <ContentRating rating={props.content.rating} textClass={styles.text} />
-        </div>
-
+        <ContentSimilar
+          content={props.content}
+          titleClass={styles.title}
+          sliderlass={styles.slider}
+        />
       </div>
 
-      <div className={styles.box}>
-        <ContentSimilar content={props.content} titleClass={styles.title} />
-      </div>
-
-      <div className={styles.box}>
+      <div className={styles.row}>
         <ContentCreators
           content={props.content}
-          linkClass={`${styles.title} ${styles.link}`}
+          linkClass={classNames(styles.title, styles.link)}
           actors={actorsData.actors}
         />
       </div>
 
-      <div className={styles.box}>
+      <div className={styles.row}>
 
         <ContentAdditional
           content={props.content}
           titleClass={styles.title}
-          linkClass={`${styles.title} ${styles.link}`}
+          linkClass={classNames(styles.title, styles.link)}
         />
 
       </div>
 
-      <div className={styles.box}>
+      <div className={styles.row}>
 
         <ContentComments
           content={props.content}
-          linkClass={`${styles.title} ${styles.link}`}
+          linkClass={classNames(styles.title, styles.link)}
           textClass={styles.text}
           comments={commentsData.comments}
         />
 
       </div>
 
-      <div className={styles.rowCenter}>
+      <div className={styles.devices}>
 
         <ContentDevices
           content={props.content}
