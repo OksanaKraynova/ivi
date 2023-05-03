@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./profileMain.module.scss";
 
+import reg_img from "../../../public/icons/profile/Frame.svg";
+
 import RedWrapper from "../RedWrapper/RedWrapper";
 import Image from "next/image";
 import DarkBlueWrapper from "../DarkBlueWrapper/DarkBlueWrapper";
@@ -30,7 +32,7 @@ const ProfileMain = (props: Props) => {
                 {loggedIn ? (
                     <>
                         <div className={styles.chooseProfile}>
-                            <p>Выбор профиля</p>
+                            <p className={styles.choseProfile}>Выбор профиля</p>
                             <div className={styles.profiles}>
                                 {profiles.map((profile) => (
                                     <SubProfile
@@ -40,12 +42,13 @@ const ProfileMain = (props: Props) => {
                                 ))}
                             </div>
                         </div>
-                        <ProfileInfo profile = {testProfile}/>
+                        <ProfileInfo profile={testProfile} />
+                        <hr />
                     </>
                 ) : (
                     <RedWrapper onClick={handleOpenModal}>
                         <span>
-                            <span className={styles.arrowRightUp}></span>
+                            <Image src={reg_img} alt={"icon"} />
                             Войти или зарегистрироваться
                         </span>
                     </RedWrapper>
@@ -97,8 +100,8 @@ const ProfileMain = (props: Props) => {
                         className={`${styles.profileNameRowMain} ${styles.profileNameRow}`}
                     >
                         {iconData.map((data, i) => (
-                            <li className={styles.rowElement} key={(i + 1) * 7}>
-                                <DarkBlueWrapper center={true} key={i}>
+                            <li className={styles.rowElement} key={i}>
+                                <DarkBlueWrapper center={true} key={i / 2}>
                                     <Image src={data.url} alt={""} />
                                     <div>{data.text}</div>
                                 </DarkBlueWrapper>

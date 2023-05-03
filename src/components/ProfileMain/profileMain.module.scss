@@ -21,6 +21,7 @@
 .profileMain {
     width: 100%;
     padding: 32px 0;
+    margin-top: 50px;
 }
 
 .profileNameRow {
@@ -38,6 +39,14 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.choseProfile {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;    
 }
 
 .rowElement2 {
@@ -78,8 +87,9 @@
 
 .subString{    
     display: flex;    
-    align-items: flex-start;
-    margin-top: auto;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 85%;    
 }
 
 .profiles{

@@ -35,12 +35,12 @@ export const profiles: SubProfile[] = [
         title: "Profile",
     },
     {
-        id: 1,
+        id: 2,
         url: "text",
         title: "Profile",
     },
     {
-        id: 1,
+        id: 3,
         url: "text",
         title: "Profile",
     },

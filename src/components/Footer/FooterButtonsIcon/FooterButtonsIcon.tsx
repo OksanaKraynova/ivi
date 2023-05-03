@@ -25,8 +25,8 @@ export const FooterButtonsIcon = () => {
   return (
     <>
       {
-        icons.map(icon =>
-          <Button key={icon.key} variant='circle'>
+        icons.map((icon, i) =>
+          <Button key={i} variant='circle'>
             {icon}
           </Button>
         )
