@@ -22,12 +22,10 @@ const icons: JSX.Element[] = [
   telegrammIcon
 ];
 
+
 export const FooterButtonsIcon = () => {
   return (
     <>
-      {
-        icons.map((icon, i) =>
-          <Button key={i} variant='circle'>
 
       {icons.map((icon, index) =>
 
