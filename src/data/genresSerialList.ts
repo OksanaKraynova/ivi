@@ -2,59 +2,48 @@ export const genresS = [
     {
         "url": "https://www.ivi.ru/series/biography",
         "title": "Биография",
-        "img": "/icons/genres/1.svg"
     },
     {
         "url": "https://www.ivi.ru/series/boeviki",
         "title": "Боевики",
-        "img": "/icons/genres/1.svg"
     },
     {
         "url": "https://www.ivi.ru/series/voennye",
-        "title": "Военные",
-        "img": "/icons/genres/1.svg"
+        "title": "Военные",   
     },
     {
         "url": "https://www.ivi.ru/series/detective",
         "title": "Детективы",
-        "img": "/icons/genres/1.svg"
     },
          {
         "url": "https://www.ivi.ru/series/dlya_vsej_semi",
         "title": "Для всей семьи",
-        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/series/doramy",
         "title": "Дорамы",
-        "img": "/icons/genres/1.svg"
-    },
+       },
       {
         "url": "https://www.ivi.ru/series/dramy",
         "title": "Драмы",
-        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/series/documentary",
         "title": "Документальные",
-        "img": "/icons/genres/1.svg"
     },
    
        {
         "url": "https://www.ivi.ru/series/history",
         "title": "Исторические",
-        "img": "/icons/genres/1.svg"
     },
 
        {
         "url": "https://www.ivi.ru/series/comedy",
         "title": "Комедийные",
-        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/series/crime",
         "title": "Криминальные",
-        "img": "/icons/genres/1.svg"
     },
     {
         "url": "https://www.ivi.ru/series/medicine",
@@ -63,28 +52,22 @@ export const genresS = [
        {
         "url": "https://www.ivi.ru/series/melodramyi",
         "title": "Мелодрамы",
-        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/series/misticheskie",
         "title": "Мистичексие",
-        "img": "/icons/genres/1.svg"
-    },
-
+       },
        {
         "url": "https://www.ivi.ru/series/adventures",
         "title": "Приключения",
-        "img": "/icons/genres/1.svg"
     },
     {
         "url": "https://www.ivi.ru/series/romanticheskie",
         "title": "Романтические",
-        "img": "/icons/genres/1.svg"
     },
      {
         "url": "https://www.ivi.ru/series/romanticheskie",
         "title": "Телешоу",
-        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/series/thriller",
@@ -93,22 +76,22 @@ export const genresS = [
     {
         "url": "https://www.ivi.ru/series/turetskie",
         "title": "Турецкие",
-        "img": "/icons/genres/1.svg"
+      
     },
        {
         "url": "https://www.ivi.ru/series/horror",
         "title": "Ужасы",
-        "img": "/icons/genres/1.svg"
+      
     },
     {
         "url": "https://www.ivi.ru/series/scifi",
         "title": "Фантастические",
-        "img": "/icons/genres/1.svg"
+      
     },
        {
         "url": "https://www.ivi.ru/series/fantasy",
         "title": "Фентези",
-        "img": "/icons/genres/1.svg"
+      
     }
 ]
 

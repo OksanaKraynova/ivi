@@ -8,10 +8,12 @@ interface ILink {
 }
 const NewMovieLink = ({img, title, href }: ILink) => {
     return (
-        <div>
+        <div className={styles.wrapper}>
             <a href={href}>
                 <div className={styles.slide}>
-                    <img className={styles.img} alt='' src={img} />
+                    <div className={styles.image}>
+                         <img className={styles.img} alt='' src={img} />
+                    </div>
                     <span>{title}</span>
                 </div>
             </a>

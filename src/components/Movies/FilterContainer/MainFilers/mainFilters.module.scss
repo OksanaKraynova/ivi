@@ -7,8 +7,9 @@
     &__row{
         display: flex;
         gap: 12px;
-        .btn{
-            flex: 0 0 25% !important;
+      
+        @media(max-width: 849px){
+flex-wrap: wrap;
         }
     }
 }

@@ -41,7 +41,7 @@ const Genres = () => {
 
     return (
         <div className={styles.container}>
-            <ButtonFilter img={show ? '/icons/up.svg' : '/icons/down.svg'} className='btn' text='Жанры' onClick={() => setShow(!show)} />
+            <ButtonFilter img={show ? '/icons/up.svg' : '/icons/down.svg'} className={styles.btn} text='Жанры' onClick={() => setShow(!show)} />
             {show &&
                 <BgWrapper className={styles.dop}>
                     <ListGenres />

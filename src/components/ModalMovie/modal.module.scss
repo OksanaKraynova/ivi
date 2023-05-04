@@ -5,7 +5,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.9);
-    z-index: 9999;
+    z-index: 999999;
     &__overlay{
         margin-top: 60px;
     }
@@ -15,14 +15,17 @@
         top: 30px;
         &:hover {
             -webkit-animation: swing 1s ease;
-    animation: swing 1s ease;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
+            animation: swing 1s ease;
+            -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
         }
     }
     &__content{
         max-width: 860px;
         margin: 0 auto;
+        @media(max-width: 998px){
+            max-width: 90%;
+        }
         h4{
             margin-bottom: 40px;
             font-size: 40px;

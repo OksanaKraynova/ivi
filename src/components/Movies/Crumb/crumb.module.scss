@@ -1,12 +1,31 @@
 .crumb{
     color: #fff;
+    padding-bottom: 3px;
+    overflow: hidden ;
     a{
         font-weight: 500;
-        padding-bottom: 3px;
-            box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
-            &:before{
-                
+        font-size: 15px;
+        box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+        position: relative;
+           
+       z-index: 5;
+        &:after{
+            content: '';
+            background-color: #7e798f;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: transform 0.3s;
+            transform: translateY(100%);
+            z-index: -1;
+        }
+        &:hover{
+            &:after{
+                transform: translateY(0%);
             }
+        }
     }
     span{
         color: rgba(255, 255, 255, 0.48);

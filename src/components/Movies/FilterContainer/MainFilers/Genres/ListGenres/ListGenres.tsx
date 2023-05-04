@@ -1,8 +1,7 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './listGenres.module.scss'
-// Import Swiper styles
-import 'swiper/css';
+import ItemGenre from './ItemGenre/ItemGenre';
+import MovieBlock from '@/src/components/MovieBlock/MovieBlock';
 
 const list = [
     {
@@ -49,20 +48,9 @@ const list = [
 
 const ListGenres = () => {
     return (
-        <Swiper
-            spaceBetween={10}
-            slidesPerView={5}
-        >
-            {list.map(item => (
-                <SwiperSlide key={item.title} >
-                    <div className={styles.slide} >
-                        <img src={item.img} alt="" />
-                        <span>{item.title}</span>
-                    </div>
-                </SwiperSlide>
-            ))}
-
-        </Swiper>
+        
+        <MovieBlock<Parameters<typeof ItemGenre>[0]> blockClass={styles.slider} slidesPerView={5} spaceBetween={10} breakpoints={ { 320: { slidesPerView: 3, spaceBetween: 5 }, 429: { slidesPerView: 4, spaceBetween: 20 },  649: { slidesPerView: 4, spaceBetween: 10 },   799: { slidesPerView: 5, spaceBetween: 15 },}
+    } listCardsProps={ list} renderItem={(props) => <ItemGenre {...props} />} />
     );
 };
 

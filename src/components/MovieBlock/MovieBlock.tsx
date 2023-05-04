@@ -10,7 +10,7 @@ interface IMovieBlock<T> {
     title?: string
     spaceBetween: number
     slidesPerView: number
-    listCardsProps: T[]
+    listCardsProps: any[]
     blockClass?: string
     loop?: boolean
     autoplay?: AutoplayOptions | boolean;

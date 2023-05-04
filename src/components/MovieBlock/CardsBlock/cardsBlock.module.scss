@@ -21,8 +21,14 @@
 
 .next {
     right: -35px;
+    @media(max-width: 768px){
+        right: -20px;
+    }
 }
 
 .prev {
     left: -35px;
+    @media(max-width: 768px){
+        left: -20px;
+    }
 }

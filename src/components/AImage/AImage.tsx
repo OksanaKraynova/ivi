@@ -37,10 +37,6 @@ export const AImage = ({ ...props }: AImageProps) => {
 
       {content}
 
-<<<<<<< HEAD
-      {props.textUnderImg.map(item =>
-        <p className={styles.linkText} key={item}>{item}</p>
-=======
       {props.textUnderImg.map((item, index) =>
         <p
           key={index}
@@ -48,7 +44,6 @@ export const AImage = ({ ...props }: AImageProps) => {
         >
           {item}
         </p>
->>>>>>> tanya-adaptive
       )}
 
       {props.children}

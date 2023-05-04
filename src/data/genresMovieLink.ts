@@ -1,91 +1,113 @@
 export const genres = [
     {
         "url": "https://www.ivi.ru/movies/arthouse",
-        "title": "Артхаус"
+        "title": "Артхаус",
+        "img": "/icons/genres/1.svg"
     },
     {
         "url": "https://www.ivi.ru/movies/boeviki",
-        "title": "Боевики"
+        "title": "Боевики",
+        "img": "/icons/genres/1.svg"
     },
     {
         "url": "https://www.ivi.ru/movies/western",
-        "title": "Вестерн"
+        "title": "Вестерн",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/voennye",
-        "title": "Военные"
+        "title": "Военные",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/detective",
-        "title": "Детективы"
+        "title": "Детективы",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/dlya_vsej_semi",
-        "title": "Для всей семьи"
+        "title": "Для всей семьи",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/detskiy",
-        "title": "Для детей"
+        "title": "Для детей",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/documentary",
-        "title": "Документальные"
+        "title": "Документальные",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/drama",
-        "title": "Драмы"
+        "title": "Драмы",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/istoricheskie",
-        "title": "Исторические"
+        "title": "Исторические",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/disaster",
-        "title": "Катастрофы"
+        "title": "Катастрофы",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/comedy",
-        "title": "Комедии"
+        "title": "Комедии",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/crime",
-        "title": "Криминальные"
+        "title": "Криминальные",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/melodramy",
-        "title": "Мелодрамы"
+        "title": "Мелодрамы",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/misticheskie",
-        "title": "Мистичексие"
+        "title": "Мистичексие",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/comics",
-        "title": "По комиксам"
+        "title": "По комиксам",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/adventures",
-        "title": "Приключения"
+        "title": "Приключения",
+        "img": "/icons/genres/1.svg"
     },
     {
         "url": "https://www.ivi.ru/movies/sport",
-        "title": "Спорт"
+        "title": "Спорт",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/thriller",
-        "title": "Триллеры"
+        "title": "Триллеры",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/horror",
-        "title": "Ужасы"
+        "title": "Ужасы",
+        "img": "/icons/genres/1.svg"
     },
     {
         "url": "https://www.ivi.ru/movies/fantastika",
-        "title": "Фантастика"
+        "title": "Фантастика",
+        "img": "/icons/genres/1.svg"
     },
        {
         "url": "https://www.ivi.ru/movies/fentezi",
-        "title": "Фентези"
+        "title": "Фентези",
+        "img": "/icons/genres/1.svg"
     }
 ]
 

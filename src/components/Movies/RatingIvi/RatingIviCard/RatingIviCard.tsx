@@ -9,7 +9,7 @@ interface ICardRating {
 
 const RatingIviCard = ({ title, href, image }: ICardRating) => {
     return (
-        <a href={href} key={title} >
+        <a href={href} key={title} className={styles.wrapper} >
             <div className={styles.card}>
                 <img alt={title} src={image} />
                 <span>{title}</span>
