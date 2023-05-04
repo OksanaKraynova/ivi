@@ -22,6 +22,7 @@ const icons: JSX.Element[] = [
   telegrammIcon
 ];
 
+
 export const FooterButtonsIcon = () => {
   return (
     <>
