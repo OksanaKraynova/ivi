@@ -9,8 +9,11 @@ const MovieCard = () => {
     return (
         <Link href='/' className={styles.card}>
             <ImageCard />
-            <DescCard />
-            <Button variant='square' >Смотреть</Button>
+            <div className={styles.row}>
+               <DescCard />
+            <Button variant='square' color='darkBlue'  >Смотреть</Button> 
+            </div>
+            
         </Link>
     );
 };

@@ -1,5 +1,8 @@
 .header{
     height: 72px;
+    @media(max-width: 1230px){
+        padding: 0 20px;
+    }
     &__container{
         position: relative;
         max-width: 1210px;
