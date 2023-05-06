@@ -1,5 +1,6 @@
 .box {
-  display: flex;
+  display: grid;
+  grid-template-areas: "rating textBox button";
   align-items: center;
   background-color: rgba(255, 255, 255, .08);
   border-radius: 12px;
@@ -10,6 +11,7 @@
 }
 
 .rating {
+  grid-area: rating;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,12 +26,17 @@
   border-radius: 8px;
 }
 
-.boxGrow {
-  flex-grow: 1;
-}
-
 .title {
   font-weight: 500;
+}
+
+.text {
+  grid-area: textBox;
+}
+
+.button {
+  grid-area: button;
+  display: inline-block;
 }
 
 .grey {
@@ -38,4 +45,11 @@
 
 .green {
   background-color: #73a32f;
+}
+
+@media (max-width: 359px) {
+
+  .box {
+    grid-template-areas: "rating textBox" "button button";
+  }
 }

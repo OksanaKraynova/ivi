@@ -7,21 +7,20 @@
 }
 
 .row {
-  padding: 48px 152px;
-  display: flex;
+  padding: 48px 0;
+  width: 968px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 60% 40%;
 }
 
 .box {
-  width: 584px;
-  flex-grow: 0;
-  flex-shrink: 0;
+  display: block;
 }
 
 .card {
-  width: 384px;
-  text-align: center;
-  flex-grow: 0;
-  flex-shrink: 0;
+  display: block;
+  text-align: right;
 }
 
 .linkIcon {
@@ -29,4 +28,22 @@
   align-items: center;
   gap: 10px;
   font-weight: 500;
+}
+
+@media (max-width: 1049px) {
+
+  .row {
+    width: auto;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 899px) {
+  .card {
+    display: none;
+  }
+
+  .row {
+    grid-template-columns: 100%;
+  }
 }

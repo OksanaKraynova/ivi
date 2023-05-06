@@ -4,7 +4,7 @@ import React from "react";
 
 const movies = () => {
     return (
-        <Layout>
+        <Layout activePage="Каталог">
             <Movies />
         </Layout>
     );

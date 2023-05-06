@@ -14,6 +14,31 @@
 }
 
 .creator {
-  flex: 0 0 calc(25% - 9px);
+  flex-basis: calc(25% - 9px);
   max-width: calc(25% - 9px);
+  min-width: 128px;
+}
+
+@media (max-width: 799px) {
+
+  .creator {
+    flex-basis: calc(100% / 3 - 8px);
+    max-width: calc(100% / 3 - 8px);
+  }
+}
+
+@media (max-width: 599px) {
+
+  .creator {
+    flex-basis: calc(50% - 6px);
+    max-width: calc(50% - 6px);
+  }
+}
+
+@media (max-width: 399px) {
+
+  .creator {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }

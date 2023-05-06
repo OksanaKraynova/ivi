@@ -45,3 +45,14 @@
 .block {
   margin-top: 18px;
 }
+
+@media (max-width: 399px) {
+
+  .titleBox {
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+}

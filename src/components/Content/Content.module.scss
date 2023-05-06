@@ -23,12 +23,15 @@
 .devices {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 24px 0;
 }
 
 .actors {
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20% 0%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 101px;
   overflow: hidden;
   margin: 0 12px;
   grid-area: actors;
@@ -82,9 +85,14 @@
       "actors buttons"
       "description tagline" "sign ." "raiting ." "props .";
   }
+}
 
-  .actors {
-    grid-template-columns: calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6);
+@media (max-width: 969px) {
+
+  .devices {
+    flex-direction: column;
+    gap: 24px;
+    justify-content: flex-start;
   }
 }
 
@@ -102,9 +110,5 @@
       "sign"
       "raiting"
       "props";
-  }
-
-  .actors {
-    grid-template-columns: calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6) calc(100% / 6);
   }
 }

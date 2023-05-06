@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import styles from './cardsBlock.module.scss'
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperObject, Autoplay, Navigation } from 'swiper';
-// import 'swiper/css';
-import "swiper/css/navigation";
 import { AutoplayOptions, SwiperOptions } from 'swiper/types';
+import Image from 'next/image';
 import classNames from 'classnames';
-
-const leftIcon = <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#ffffff" viewBox="0 0 256 256"><path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"></path></svg>
-
-const rightIcon = <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#ffffff" viewBox="0 0 256 256"><path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path></svg>
+import styles from './cardsBlock.module.scss'
+import "swiper/css/navigation";
+// import 'swiper/css';
+import leftIcon from "../../../../public/icons/to-left.svg"
+import rightIcon from "../../../../public/icons/to-right.svg"
 
 interface ISlide<T> {
   spaceBetween: number;
@@ -80,7 +78,7 @@ export default function CardsBlock<T>({
         className={styles.prev}
         onClick={() => swipper?.slidePrev()}
       >
-        {leftIcon}
+        <Image className="icon" src={leftIcon} alt='to-left' />
       </div>
 
       <div
@@ -88,7 +86,7 @@ export default function CardsBlock<T>({
         className={styles.next}
         onClick={() => swipper?.slideNext()}
       >
-        {rightIcon}
+        <Image className="icon" src={rightIcon} alt='to-right' />
       </div>
 
     </div >

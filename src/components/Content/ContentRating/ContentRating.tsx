@@ -18,13 +18,15 @@ export const ContentRating: FC<ContentRatingProps> = (props) => {
 
       <p className={classNames(styles.rating, styles[color])}>{props.rating}</p>
 
-      <div className={styles.boxGrow}>
+      <div className={styles.text}>
         <p className={styles.title}>Рейтинг Иви</p>
         <p className={props.textClass}>Интересный сюжет</p>
         <p className={props.textClass}>10 000 оценок</p>
       </div>
 
-      <Button variant='minimal' effect='bordered'>Оценить</Button>
+      <div className={styles.button}>
+        <Button variant='long' effect='bordered'>Оценить</Button>
+      </div>
 
     </div >
   );

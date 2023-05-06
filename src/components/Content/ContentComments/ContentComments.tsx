@@ -38,6 +38,14 @@ export const ContentComments: FC<ContentCommentsProps> = (props) => {
       spaceBetween={24}
       slidesPerView={4}
       listCardsProps={comments}
+      breakpoints={
+        {
+          0: { slidesPerView: 1, spaceBetween: 24 },
+          600: { slidesPerView: 2, spaceBetween: 24 },
+          900: { slidesPerView: 3, spaceBetween: 24 },
+          1200: { slidesPerView: 4, spaceBetween: 24 },
+        }
+      }
       renderItem={(item) => <Comment comment={item} type='less' />}
     /> :
 
@@ -67,6 +75,7 @@ export const ContentComments: FC<ContentCommentsProps> = (props) => {
           effect="bordered">
           Оставить комментарий
         </Button>
+
       </div>
 
       <p className={props.textClass}>{`о фильме «${props.content.name}»`}</p>

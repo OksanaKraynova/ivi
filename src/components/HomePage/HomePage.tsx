@@ -27,6 +27,17 @@ export const HomePage = () => {
         slidesPerView={7}
         listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]}
         lastSlide={<div>Посмотреть все</div>}
+        breakpoints={
+          {
+            0: { slidesPerView: 1 },
+            200: { slidesPerView: 2, spaceBetween: 20 },
+            400: { slidesPerView: 3, spaceBetween: 20 },
+            600: { slidesPerView: 4, spaceBetween: 20 },
+            1000: { slidesPerView: 5, spaceBetween: 20 },
+            1100: { slidesPerView: 6, spaceBetween: 24 },
+            1200: { slidesPerView: 7, spaceBetween: 24 },
+          }
+        }
         renderItem={() => <Card />}
       />
 
@@ -36,6 +47,17 @@ export const HomePage = () => {
         slidesPerView={7}
         listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]}
         lastSlide={<div>Посмотреть все</div>}
+        breakpoints={
+          {
+            0: { slidesPerView: 1 },
+            200: { slidesPerView: 2, spaceBetween: 20 },
+            400: { slidesPerView: 3, spaceBetween: 20 },
+            600: { slidesPerView: 4, spaceBetween: 20 },
+            1000: { slidesPerView: 5, spaceBetween: 20 },
+            1100: { slidesPerView: 6, spaceBetween: 24 },
+            1200: { slidesPerView: 7, spaceBetween: 24 },
+          }
+        }
         renderItem={() => <Card />}
       />
 

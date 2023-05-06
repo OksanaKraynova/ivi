@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Image from 'next/image';
 
 interface ImgBoxProps {
   url: string;
@@ -9,7 +10,7 @@ interface ImgBoxProps {
 export const ImgBox: FC<ImgBoxProps> = (props) => {
   return (
     <div className={props.boxClass}>
-      <img className={props.imgClass} src={props.url} />
+      <img className={props.imgClass} src={props.url} alt='img' />
     </div>
   );
 }

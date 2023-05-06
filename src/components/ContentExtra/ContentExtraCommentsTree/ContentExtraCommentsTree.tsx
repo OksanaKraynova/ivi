@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import classNames from 'classnames';
-import { Comment } from '../../Comment/Comment';
+import { Comment, CommentParent } from '../../Comment/Comment';
 import { IComment } from "@/types/IComment";
 import styles from './ContentExtraCommentsTree.module.scss';
+import { ICommentParents } from "@/types/ICommentParents";
 
 interface ContentExtraCommentsTreeProps {
   comment: IComment;
@@ -29,6 +30,41 @@ export const ContentExtraCommentsTree: FC<ContentExtraCommentsTreeProps> = (prop
       <div className={styles.comment}>
         <div className={classNames(styles.icon, styles[coloIcon])}>{userNameIcon}</div>
         <Comment comment={props.comment} type="fullLength" />
+      </div>
+
+      {props.childes.map(childe => childe)}
+
+    </div>
+  );
+}
+
+
+
+interface ContentExtraCommentsTreeParentProps {
+  comment: ICommentParents;
+  childes: React.ReactElement[];
+}
+
+export const ContentExtraCommentsTreeParent: FC<ContentExtraCommentsTreeParentProps> = (props) => {
+
+  let userNameIcon: string;
+  props.comment.userName.length > 0 ?
+    userNameIcon = props.comment.userName[0].toLowerCase() :
+    userNameIcon = " ";
+
+  let coloIcon: string;
+  /[a-n]/.test(userNameIcon) ? coloIcon = "red" :
+    /[o-z]/.test(userNameIcon) ? coloIcon = "orange" :
+      /[а-п]/.test(userNameIcon) ? coloIcon = "blue" :
+        /[р-яё]/.test(userNameIcon) ? coloIcon = "purple" : coloIcon = "green";
+
+  return (
+
+    <div className={styles.treeComments}>
+
+      <div className={styles.comment}>
+        <div className={classNames(styles.icon, styles[coloIcon])}>{userNameIcon}</div>
+        <CommentParent comment={props.comment} type="fullLength" />
       </div>
 
       {props.childes.map(childe => childe)}
