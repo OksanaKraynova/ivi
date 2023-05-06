@@ -1,0 +1,80 @@
+.container {
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  background-color: #100e19;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  margin: 0;
+  padding: 80px 40px 80px;
+}
+
+.rowBorder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+}
+
+.button {
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.48;
+  }
+}
+
+.support {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttonBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.textBox {
+  text-align: center;
+}
+
+.text {
+  margin-bottom: 2.5%;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: calc(50% - 6px) calc(50% - 6px);
+  gap: 12px;
+  width: 100%;
+}
+
+.buttonsIcon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.subTitle {
+  color: rgba(255, 255, 255, .48);
+}
+
+@media (max-width: 599px) {
+  .buttons {
+    grid-template-columns: 100%;
+  }
+}

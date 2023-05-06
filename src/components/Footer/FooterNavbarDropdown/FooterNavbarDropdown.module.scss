@@ -1,0 +1,23 @@
+.button {
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.48;
+  }
+}
+
+.icon {
+  display: inline-block;
+}
+
+.up {
+  transform: rotate(180deg);
+}
+
+.dropdownBox {
+  margin-top: 8px;
+  width: 100%;
+}
