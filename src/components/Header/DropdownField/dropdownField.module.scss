@@ -1,0 +1,28 @@
+.links{
+    display: flex;
+    flex: 45%;
+}
+
+.first{
+    flex: 70%;
+}
+.second{
+    flex: 50%;
+    display: flex;
+}
+
+.column{
+    flex: 32%;
+    div + div{
+        margin-top: 20px;
+    }
+}
+
+.block{
+    padding: 0 8px;
+    &:hover{
+        .drop{
+            display: flex;
+        }
+    }
+}

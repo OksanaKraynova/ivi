@@ -1,9 +1,11 @@
 .hero {
     max-width: 1280px;
     margin: 0 auto;
+   
 }
 
-.buttonWrapper {
+.heroWrapper {
+    margin: 0 20px;
     padding: 50px 0;
 }
 
@@ -19,6 +21,7 @@
 .profileMain {
     width: 100%;
     padding: 32px 0;
+    margin-top: 50px;
 }
 
 .profileNameRow {
@@ -35,7 +38,15 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+}
+
+.choseProfile {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;    
 }
 
 .rowElement2 {
@@ -45,7 +56,7 @@
 
 .rowElement3 {
     width: calc(2 / 7 * 100%);
-    flex: 1 250px;
+    flex: 1 160px;
 }
 
 .rowElement4 {
@@ -69,12 +80,19 @@
 }
 
 .rowElement{
-    width: calc(100%/7.67899999);
+    width: 160px;
     height: 119px;
+    white-space: nowrap;
 }
 
 .subString{    
     display: flex;    
-    align-items: flex-start;
-    margin-top: auto;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 85%;    
+}
+
+.profiles{
+    display: flex;
+    gap: 15px;
 }

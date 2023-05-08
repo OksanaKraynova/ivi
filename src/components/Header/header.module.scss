@@ -1,5 +1,8 @@
 .header{
     height: 72px;
+    @media(max-width: 1230px){
+        padding: 0 20px;
+    }
     &__container{
         position: relative;
         max-width: 1210px;
@@ -8,5 +11,7 @@
         display: flex;
         align-items: center;
         border-bottom: 1px solid #949393;
+        z-index: 99;
+     
     }
 }

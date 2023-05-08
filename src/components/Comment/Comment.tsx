@@ -13,52 +13,59 @@ interface CommentProps {
 }
 
 export const Comment: FC<CommentProps> = ({ comment, type }) => {
-
   return (
-
     <div className={classNames(styles.box, styles[`${type}Box`])}>
-
       <p className={styles.title}>{comment.userName}</p>
       <p className={styles.date}>{comment.date}</p>
       <p className={styles.comment}>{comment.comment}</p>
 
       <div className={styles.likeBox}>
+        <div className={styles.likeIcon}>{likeIcon}</div>
 
-        <Image className={styles.icon} src={likeIcon} alt='like' />
         <p className={classNames(styles.title, styles.green)}>36</p>
-        <Image className={styles.icon} src={disLikeIcon} alt='dislike' />
+
+        <p className={styles.title}>{comment.userName}</p>
+        <p className={styles.date}>{comment.date}</p>
+        <p className={styles.comment}>{comment.comment}</p>
+
+        <div className={styles.likeBox}>
+
+          <Image className={styles.icon} src={likeIcon} alt='like' />
+          <p className={classNames(styles.title, styles.green)}>36</p>
+          <Image className={styles.icon} src={disLikeIcon} alt='dislike' />
+
+        </div>
 
       </div>
-
-    </div>
-  );
+      );
 };
 
 
 
-interface CommentParentProps {
-  comment: ICommentParents;
-  type: "fullLength" | "less";
+      interface CommentParentProps {
+        comment: ICommentParents;
+      type: "fullLength" | "less";
 }
 
-export const CommentParent: FC<CommentParentProps> = ({ comment, type }) => {
+      export const CommentParent: FC<CommentParentProps> = ({comment, type}) => {
 
   return (
 
-    <div className={classNames(styles.box, styles[`${type}Box`])}>
+        <div className={classNames(styles.box, styles[`${type}Box`])}>
 
-      <p className={styles.title}>{comment.userName}</p>
-      <p className={styles.date}>{comment.date}</p>
-      <p className={styles.comment}>{comment.comment}</p>
+          <p className={styles.title}>{comment.userName}</p>
+          <p className={styles.date}>{comment.date}</p>
+          <p className={styles.comment}>{comment.comment}</p>
 
-      <div className={styles.likeBox}>
+          <div className={styles.likeBox}>
 
-        <Image className={styles.icon} src={likeIcon} alt='like' />
-        <p className={classNames(styles.title, styles.green)}>36</p>
-        <Image className={styles.icon} src={disLikeIcon} alt='dislike' />
+            <Image className={styles.icon} src={likeIcon} alt='like' />
+            <p className={classNames(styles.title, styles.green)}>36</p>
+            <Image className={styles.icon} src={disLikeIcon} alt='dislike' />
 
-      </div>
+          </div>
 
-    </div>
-  );
-};
+        </div>
+        );
+
+        };

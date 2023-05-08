@@ -9,7 +9,7 @@ interface IActor {
 
 const ActorsBlock = ({ name, img, movies }: IActor) => {
     return (
-        <a href='https://www.ivi.ru/collections/luchshie-aktyoryi'>
+        <a className={styles.link} href='https://www.ivi.ru/collections/luchshie-aktyoryi'>
             <div className={styles.slide}>
                 <div className={styles.image}>
                     <img className={styles.img} alt='' src={img} />

@@ -1,0 +1,11 @@
+.wrapper{
+    flex:  0 0 23%;
+    .btn{
+        width: 100% !important;
+        flex: 1;
+    }
+    @media(max-width: 849px){
+        flex: 1 1 49%;
+        order: 2;
+    }
+}

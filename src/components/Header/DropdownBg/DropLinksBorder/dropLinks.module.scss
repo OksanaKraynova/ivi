@@ -1,0 +1,44 @@
+.list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    &:before{
+        position: absolute;
+        content: '';
+        width: 0.5px;
+        background-color: rgba(255,255,255,0.2);
+        height: 100%;
+        left: 0;
+        top:4px;
+    }
+   
+   li{
+    font-size: 16px;
+    padding: 8px 0px 8px 16px;
+    overflow: hidden;
+    position: relative;
+    &:before{
+        position: absolute;
+        content: '';
+        width: 0.5px;
+        background-color: #fff;
+        height: 36px;
+        left: 0;
+        top: -2px;
+        opacity: 0;
+        z-index: 5;
+      transition: opacity 0.3s;
+    }
+    &:hover{
+        &:before{
+            opacity: 1;
+        }
+        
+    }
+   }
+}
+.wrapper{
+    display: flex;
+    flex: 45%;
+}

@@ -1,6 +1,7 @@
 import MovieBlock from '@/src/components/MovieBlock/MovieBlock';
-import RatingIviCard from '@/src/components/RatingIviCard/RatingIviCard';
+import RatingIviCard from '@/src/components/Movies/RatingIvi/RatingIviCard/RatingIviCard';
 import React from 'react';
+import styles from './ratingIvi.module.scss'
 
 const list = [
     {
@@ -31,8 +32,11 @@ const list = [
 ]
 const RatingIvi = () => {
     return (
-             <MovieBlock<Parameters<typeof RatingIviCard>> title='Рейтинг Иви' listCardsProps={list} slidesPerView={7} spaceBetween={10} renderItem={(item) => <RatingIviCard title={item.title} image={item.image} href={item.href} />} />
-           );
+        <div className={styles.wrapper}>
+            <MovieBlock<Parameters<typeof RatingIviCard>[0]> title='Рейтинг Иви' listCardsProps={list} slidesPerView={7} spaceBetween={10} breakpoints={{ 320: { slidesPerView: 2, spaceBetween: 10 }, 499: { slidesPerView: 3, spaceBetween: 20 }, 649: { slidesPerView: 4, spaceBetween: 10 }, 799: { slidesPerView: 5, spaceBetween: 10 }, }} renderItem={(props) => <RatingIviCard {...props} />} />
+        </div>
+
+    );
 };
 
 export default RatingIvi;

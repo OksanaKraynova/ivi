@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import styles from "./profileMain.module.scss";
 
+import reg_img from "../../../public/icons/profile/Frame.svg";
+
 import RedWrapper from "../RedWrapper/RedWrapper";
 import Image from "next/image";
 import DarkBlueWrapper from "../DarkBlueWrapper/DarkBlueWrapper";
-import { iconData } from "./profileData";
+import { iconData, profiles, testProfile } from "./profileData";
 
-import AuthModal from "../AuthModal/AuthModal";
+import AuthModal from "./AuthModal/AuthModal";
+import SubProfile from "./SubProfiles/SubProfile";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 type Props = {};
 
 const ProfileMain = (props: Props) => {
-    const [loggedIn, setLoggedIn] = useState<boolean>(false);
+    const [loggedIn, setLoggedIn] = useState<boolean>(true);
     const [authOpened, setAuthOpened] = useState<boolean>(false);
 
     const handleOpenModal = () => {
@@ -24,13 +28,31 @@ const ProfileMain = (props: Props) => {
 
     return (
         <main className={`${styles.hero} container`}>
-            <div className={styles.buttonWrapper}>
-                <RedWrapper onClick={handleOpenModal}>
-                    <span>
-                        <span className={styles.arrowRightUp}></span>
-                        Войти или зарегистрироваться
-                    </span>
-                </RedWrapper>
+            <div className={styles.heroWrapper}>
+                {loggedIn ? (
+                    <>
+                        <div className={styles.chooseProfile}>
+                            <p className={styles.choseProfile}>Выбор профиля</p>
+                            <div className={styles.profiles}>
+                                {profiles.map((profile) => (
+                                    <SubProfile
+                                        key={profile.id}
+                                        profile={profile}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                        <ProfileInfo profile={testProfile} />
+                        <hr />
+                    </>
+                ) : (
+                    <RedWrapper onClick={handleOpenModal}>
+                        <span>
+                            <Image src={reg_img} alt={"icon"} />
+                            Войти или зарегистрироваться
+                        </span>
+                    </RedWrapper>
+                )}
                 {authOpened && (
                     <AuthModal handleCloseModal={handleCloseModal} />
                 )}
@@ -78,15 +100,8 @@ const ProfileMain = (props: Props) => {
                         className={`${styles.profileNameRowMain} ${styles.profileNameRow}`}
                     >
                         {iconData.map((data, i) => (
-                            <li
-                                className={`${styles.rowElement}  ${
-                                    i === 1 ? styles.ml0 : ""
-                                } ${
-                                    i === iconData.length - 1 ? styles.mr0 : ""
-                                }`}
-                                key={(i + 1) * 7}
-                            >
-                                <DarkBlueWrapper center={true} key={i}>
+                            <li className={styles.rowElement} key={i}>
+                                <DarkBlueWrapper center={true} key={i / 2}>
                                     <Image src={data.url} alt={""} />
                                     <div>{data.text}</div>
                                 </DarkBlueWrapper>

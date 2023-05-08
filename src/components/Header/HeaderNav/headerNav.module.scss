@@ -1,5 +1,10 @@
 .nav{
     display: flex;
-    gap: 16px;
     margin-left: 30px;
+    @media(max-width: 1149px){
+        display: none;
+      }
+    a:nth-child(2){
+        margin: 0 8px 0 16px;
+    }
 }

@@ -36,3 +36,9 @@
     font-size: 13px;
     color: #a5a1b2;
 }
+
+.link{
+    @media(max-width: 998px){
+flex: 1;
+    }
+}

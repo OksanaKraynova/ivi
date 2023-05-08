@@ -1,0 +1,20 @@
+.card{
+    width: 153px;
+    height: 105px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    img{
+        max-width: 100%;
+    }
+    span{
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+    }
+}
+
+.wrapper{
+
+    max-width: 153px;
+}

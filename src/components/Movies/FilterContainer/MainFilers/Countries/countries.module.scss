@@ -1,6 +1,10 @@
 .container{
     position: relative;
     flex: 0 0 23%;
+    @media(max-width: 849px){
+        flex: 49%;
+        order: 3;
+           }
     button{
      width: 100%;
      flex: 100%;
@@ -10,5 +14,16 @@
         left: -50%;
         top: 60px;
         z-index: 9999;
+        margin-top: 0;
+        @media(max-width: 849px){
+            left: 0;
+        }
+        @media(max-width:689px){
+            max-width: 600px;
+          }
+        @media(max-width: 640px){
+            width: 100%;
+            right: 0;
+                    }
+        }
     }
-}

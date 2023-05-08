@@ -17,6 +17,7 @@ const icons: string[] = [
   telegrammIcon
 ];
 
+
 export const FooterButtonsIcon = () => {
   return (
     <>

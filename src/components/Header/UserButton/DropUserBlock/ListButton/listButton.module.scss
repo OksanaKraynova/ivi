@@ -1,0 +1,26 @@
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 810px;
+    gap: 24px;      
+    li{
+        flex: 0 0 22%;
+        height: 108px;  
+        a{
+            display: flex;
+            background-color: #312b45;
+            flex-direction: column;   
+            justify-content: space-between;
+            padding: 18px;
+            height: 100%;
+            transition: background 0.2s; 
+            &:hover{
+                background: #393252;
+            }
+            img{
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

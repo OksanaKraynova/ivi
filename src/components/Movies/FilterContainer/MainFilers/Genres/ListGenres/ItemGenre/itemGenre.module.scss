@@ -1,0 +1,42 @@
+.slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 108px;
+        background-color: #312b45;
+    border: 1px solid rgba(255,255,255,.32);
+    padding: 16px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    @media(max-width: 630px){
+width: 90px;
+white-space: nowrap; /* Запрещаем перенос строк */
+            overflow: hidden; /* Обрезаем все, что не помещается в область */
+            padding: 5px; /* Поля вокруг текста */
+            text-overflow: clip;
+    }
+    @media(max-width: 499px){
+        width: 70px;
+            }
+    cursor: pointer;
+    &:hover{
+        background: #7e798f;
+    }
+    img{
+        width: 32px;
+        height: 32px;
+        margin-bottom: 8px;
+    }
+    span{
+        font-size: 13px;
+        font-weight: 700px;
+        display: inline-block;
+        @media(max-width: 630px){
+            white-space: nowrap; /* Запрещаем перенос строк */
+            overflow: hidden; /* Обрезаем все, что не помещается в область */
+            padding: 5px; /* Поля вокруг текста */
+            text-overflow: ellipsis;
+        }
+    }
+}

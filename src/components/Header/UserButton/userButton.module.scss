@@ -22,3 +22,13 @@
         
     }
 }
+.drop{
+    height: 380px;
+}
+.wrapper{
+    &:hover{
+        .drop{
+            display: flex;
+        }
+    }
+}

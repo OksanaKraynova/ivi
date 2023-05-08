@@ -1,0 +1,26 @@
+.wrapper{
+    color: #d9d7e0;
+    font-size: 15px;
+    line-height: 22px;
+    margin-top: 12px;
+    h1{
+        margin: 0px 0px 16px 0px;
+        
+        font-size: 56px;
+        font-weight: 700;
+        line-height: 56px;
+        color: #fff;
+        @media(max-width: 1216px){
+            font-size: calc(40px + (56 - 40) * ((100vw - 768px) / (1170 - 768)));
+        }
+        @media(max-width: 768px){
+            font-size: 40px;
+        }
+    }
+    p{
+        margin: 16px 0px 6px 0px;
+    }
+button{
+    color: #fff;
+}
+}

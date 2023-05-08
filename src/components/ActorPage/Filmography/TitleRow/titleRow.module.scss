@@ -1,0 +1,13 @@
+.title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    @media(max-width: 768px){
+flex-wrap: wrap;
+gap: 4px;
+    }
+}
+.number{
+        color: #a5a1b2;
+    }
+   

@@ -9,9 +9,12 @@
     transition: background 0.2s;
     font-size: 15px;
     font-weight: 700;
-    flex: 0 0 23%;
+    // flex: 0 0 23%;
     padding: 0 8px;
     &:active{
         background: #7e798f;
     }
+    @media(max-width: 849px){
+        // flex: 49%;
+           }
 }
