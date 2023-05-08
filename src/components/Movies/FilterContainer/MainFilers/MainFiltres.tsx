@@ -5,6 +5,7 @@ import Countries from './Countries/Countries';
 import Producer from './Producer/Producer';
 import Actors from './Actors/Actors';
 import ButtonResset from './ButtonReset/ButtonResset';
+import RatingRow from './RatingRow/RatingRow';
 
 const MainFiltres = () => {
     return (
@@ -15,6 +16,7 @@ const MainFiltres = () => {
                 <Producer />
                 <Actors />
             </div>
+            <RatingRow />
             <ButtonResset/>
         </div>
     );

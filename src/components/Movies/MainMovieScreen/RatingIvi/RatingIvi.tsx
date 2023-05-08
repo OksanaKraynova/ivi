@@ -1,5 +1,5 @@
 import MovieBlock from '@/src/components/MovieBlock/MovieBlock';
-import RatingIviCard from '@/src/components/Movies/RatingIvi/RatingIviCard/RatingIviCard';
+import RatingIviCard from '@/src/components/Movies/MainMovieScreen/RatingIvi/RatingIviCard/RatingIviCard';
 import React from 'react';
 import styles from './ratingIvi.module.scss'
 

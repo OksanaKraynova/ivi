@@ -1,0 +1,21 @@
+.wrapper{
+    margin-top: 24px;
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    @media(max-width: 768px){
+flex-wrap: wrap;
+    }
+    @media(max-width: 670px){
+        gap: 24px;
+    }
+    div{
+        flex: 0 0  23%;
+        @media(max-width: 849px){
+flex: 48%;
+        }
+        @media(max-width: 670px){
+            flex:  100%;
+                    }
+    }
+}
