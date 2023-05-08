@@ -5,22 +5,22 @@
   margin-top: auto;
 }
 
-.ordinary {
+.desktop {
   display: block;
 }
 
-.adaptive {
+.navbar {
   display: block;
 }
 
 @media (max-width: 1023px) {
-  .ordinary {
+  .desktop {
     display: none;
   }
 }
 
 @media (min-width: 1024px) {
-  .adaptive {
+  .navbar {
     display: none;
   }
 }

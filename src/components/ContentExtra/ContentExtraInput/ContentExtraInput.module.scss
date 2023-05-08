@@ -41,6 +41,10 @@
   pointer-events: none;
 }
 
+.button {
+  display: block;
+}
+
 .overText {
   top: 6px;
   left: 12px;
@@ -53,12 +57,29 @@
 }
 
 .icon {
-  border-radius: 5px;
   width: 25px;
   height: 25px;
-  line-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 5px;
+  padding: 5px;
   background-color: #127432;
+}
+
+@media (max-width: 499px) {
+
+  .box {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .button {
+    order: 2;
+  }
+
+  .icon {
+    order: 1;
+  }
+
+  .inputBox {
+    order: 3;
+  }
 }

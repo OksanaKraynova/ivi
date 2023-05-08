@@ -1,7 +1,6 @@
+import { FC } from "react";
+import classNames from "classnames";
 import { IContent } from "@/types/IContent";
-import styles from './Content.module.scss';
-import actorsData from "../../json/actors.json"
-import commentsData from "../../json/comments.json"
 import { ContentTrailer } from "./ContentTrailer/ContentTrailer";
 import { ContentTitle } from "./ContentTitle/ContentTitle";
 import { ContentActors } from "./ContentActors/ContentActors";
@@ -13,9 +12,9 @@ import { ContentAdditional } from "./ContentAdditional/ContentAdditional";
 import { ContentComments } from "./ContentComments/ContentComments";
 import { ContentDevices } from "./ContentDevices/ContentDevices";
 import { BreadCrumbs } from "./BreadCrumbs/BreadCrumbs";
-import { FC } from "react";
-import classNames from "classnames";
-import Button from "../Button/Button";
+import styles from './Content.module.scss';
+import actorsData from "../../json/actors.json"
+import commentsData from "../../json/comments.json"
 
 interface ContentProps {
   content: IContent;

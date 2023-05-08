@@ -63,9 +63,16 @@
   }
 }
 
-@media (max-width: 384px) {
+@media (max-width: 484px) {
 
   .item:nth-child(n+3) {
+    display: none;
+  }
+}
+
+@media (max-width: 384px) {
+
+  .item:nth-child(n+2) {
     display: none;
   }
 }

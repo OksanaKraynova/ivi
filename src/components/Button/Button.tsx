@@ -10,7 +10,11 @@ interface ButtonProps {
     effect?: "bordered" | "shine";
     disabled?: boolean;
     children?: React.ReactElement | React.ReactNode;
-    onClick?: ((event: React.MouseEvent<HTMLAnchorElement> | React.MouseEvent<HTMLButtonElement>) => void) |
+    onClick?: ((event:
+        React.MouseEvent<HTMLAnchorElement> |
+        React.MouseEvent<HTMLDivElement> |
+        React.MouseEvent<HTMLButtonElement>
+    ) => void) |
     (() => void);
 }
 
@@ -29,13 +33,22 @@ const Button = ({ variant = "medium", disabled = false, ...props }: ButtonProps)
         linkClasses = linkClasses :
         linkClasses = classNames(linkClasses, styles[props.effect]);
 
-    if (props.href === undefined)
+    if (props.href === undefined) {
+
+        if (disabled === undefined)
+
+            return (
+                <div className={linkClasses} onClick={props.onClick}>
+                    {props.children}
+                </div>
+            );
 
         return (
-            <button type="button" className={linkClasses} onClick={props.onClick} disabled={disabled}>
+            <button type='button' className={linkClasses} onClick={props.onClick} disabled={disabled}>
                 {props.children}
             </button>
         );
+    }
 
     return (
         <Link href={props.href} className={linkClasses} onClick={props.onClick}>

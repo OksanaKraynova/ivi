@@ -1,9 +1,11 @@
 import { FC } from 'react';
+import Image from 'next/image';
 import { IContent } from '@/types/IContent';
+import classNames from 'classnames';
+import Button from '@/src/components/Button/Button';
 import styles from './ContentDevices.module.scss';
 import idadImg from "../../../img/ipad-without-poster.png"
 import tvImg from "../../../img/tv-without-poster.png"
-import Button from '@/src/components/Button/Button';
 
 interface ContentDevicesProps {
   content: IContent;
@@ -27,18 +29,19 @@ export const ContentDevices: FC<ContentDevicesProps> = (props) => {
 
       </div>
 
-      <div className={styles.boxImg}>
+      <div className={classNames(styles.box, styles.boxRight)}>
 
+        <div className={styles.tv}>
+          <img className={styles.tvImg} src={tvImg.src} alt="tv" />
+          <img className={styles.tvPoster} src={props.content.cover} alt="poster" />
+        </div>
 
-        <img className={styles.tvImg} src={tvImg.src} />
-        <img className={styles.tvPoster} src={props.content.cover} />
-
-        <img className={styles.idadImg} src={idadImg.src} />
-        <img className={styles.idadPoster} src={props.content.cover} />
+        <div className={styles.ipad}>
+          <img className={styles.ipadImg} src={idadImg.src} alt="ipad" />
+          <img className={styles.ipadPoster} src={props.content.cover} alt="poster" />
+        </div>
 
       </div>
-
-
 
     </>
   );

@@ -3,17 +3,18 @@ import Header from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 
 type Props = {
+    activePage?: "Мой Иви" | "Каталог";
     children: React.ReactNode;
 };
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children, activePage }: Props) => {
     return (
         <>
             <Header />
             <main>
-            {children}
+                {children}
             </main>
-            <Footer />
+            <Footer activePage={activePage} />
         </>
     );
 };

@@ -1,19 +1,25 @@
 .box {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.buttons {
   position: relative;
-  margin-top: 18px;
-  margin-bottom: 18px;
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 12px;
+  margin: 10px 0;
 }
 
-.icon {
+.buttonIcon {
   line-height: 0;
 }
 
 .telephone {
   position: absolute;
+  white-space: nowrap;
   top: calc(100% + 18px);
   left: 0;
 }

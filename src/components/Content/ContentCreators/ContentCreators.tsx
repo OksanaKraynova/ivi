@@ -65,17 +65,13 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
 
         </div>
 
-        <div className={styles.item}>
-
-          <AImage
-            textUnderImg={[]}
-            href={`/watch/${props.content.id}/person`}
-            img=""
-            form="circle"
-            textInsteadImg='Ещё'
-          />
-
-        </div>
+        <AImage
+          textUnderImg={[]}
+          href={`/watch/${props.content.id}/person`}
+          img=""
+          form="circle"
+          textInsteadImg='Ещё'
+        />
 
       </div>
 

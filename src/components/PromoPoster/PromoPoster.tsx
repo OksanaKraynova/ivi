@@ -1,6 +1,7 @@
-import styles from './PromoPoster.module.scss';
-import Button from '../Button/Button';
 import classNames from 'classnames';
+import Button from '../Button/Button';
+import styles from './PromoPoster.module.scss';
+import Link from 'next/link';
 
 interface PromoPosterProps {
   posterImg: string;
@@ -15,24 +16,26 @@ export const PromoPoster =
   ({ posterImg, titleImg, description, descriptionColor, button, href }: PromoPosterProps) => {
 
     return (
-      <div className={styles.box}>
 
-        <img className={styles.poster} src={posterImg} />
+      <Link className={styles.box} href={href}>
+
+        <img className={styles.poster} src={posterImg} alt="poster" />
 
         <div className={styles.inner}>
 
-          <img className={styles.title} src={titleImg} />
+          <img className={styles.title} src={titleImg} alt="title" />
 
           <p className={classNames(styles.description, styles[descriptionColor])}>
             {description}
           </p>
 
           <div className={styles.button}>
-            <Button variant='medium' color={'pink'} href={href}>{button}</Button>
+            <Button variant='medium' color={'pink'} >{button}</Button>
           </div>
 
         </div>
 
-      </div>
+      </Link>
+
     );
   };

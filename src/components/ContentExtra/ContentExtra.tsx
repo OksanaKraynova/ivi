@@ -1,14 +1,14 @@
-import { IContent } from "@/types/IContent";
-import styles from './ContentExtra.module.scss';
-import Link from "next/link";
 import { FC } from "react";
-import { ContentExtraHeder } from "./ContentExtraHeder/ContentExtraHeder";
-import Card from "../Card/Card";
-import { ContentExtraPerson } from "./ContentExtraPerson/ContentExtraPerson";
-import { ContentExtraComments } from "./ContentExtraComments/ContentExtraComments";
+import Image from 'next/image';
+import Link from "next/link";
 import classNames from "classnames";
-
-const leftIcon = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 256 256"><path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"></path></svg>
+import { IContent } from "@/types/IContent";
+import { ContentExtraHeder } from "./ContentExtraHeder/ContentExtraHeder";
+import { ContentExtraPerson } from "./ContentExtraPerson/ContentExtraPerson";
+import { ContentExtraComments, ContentExtraCommentsParent } from "./ContentExtraComments/ContentExtraComments";
+import Card from "../Card/Card";
+import styles from './ContentExtra.module.scss';
+import leftIcon from "../../../public/icons/to-left.svg"
 
 interface ContentExtraProps {
   content: IContent;
@@ -22,7 +22,7 @@ export const ContentExtra: FC<ContentExtraProps> = (props) => {
     content = <ContentExtraPerson content={props.content} /> :
     props.extra === "Отзывы" ?
       content = <ContentExtraComments content={props.content} /> :
-      content = <></>;
+      content = <ContentExtraCommentsParent content={props.content} />;
 
   if (props.content === null) {
     return (
@@ -40,7 +40,7 @@ export const ContentExtra: FC<ContentExtraProps> = (props) => {
         className={styles.linkIcon}
         href={`/watch/${props.content.id}`}
       >
-        {leftIcon}
+        <Image className={styles.icon} src={leftIcon} alt='to left' width={20} height={20} />
         {`К ${props.content.type.toLowerCase()}у`}
       </Link>
 

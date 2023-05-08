@@ -23,8 +23,10 @@ export const AImage = ({ ...props }: AImageProps) => {
 
   let content: React.ReactElement;
   props.textInsteadImg === undefined ?
-    content = <ImgBox boxClass={styles.imgBox} imgClass={contentClass} url={props.img} /> :
-    content = <div className={styles.imgBox}><p className={contentClass}>{props.textInsteadImg}</p></div>
+    content =
+    <ImgBox boxClass={styles.imgBox} imgClass={contentClass} url={props.img} /> :
+    content =
+    <div className={styles.imgBox}><p className={contentClass}>{props.textInsteadImg}</p></div>
 
   return (
 

@@ -1,13 +1,18 @@
 import React from 'react';
+import Image from 'next/image';
 import styles from './titleBlock.module.scss'
 
-const TitleBlock = ({ title, img }: { title: string, img?: JSX.Element }) => {
+const TitleBlock = ({ title, img }: { title: string, img?: string }) => {
+
+    let image: React.ReactElement;
+    img === undefined ?
+        image = <></> :
+        image = <Image className={styles.img} src={img} alt='img' width={18} height={18} />
+
     return (
         <div className={styles.title}>
             <span>{title}</span>
-            <div className={styles.img}>
-                {img}
-            </div>
+            {image}
         </div>
     );
 };

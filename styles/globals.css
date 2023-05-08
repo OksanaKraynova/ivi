@@ -94,20 +94,23 @@ h6 {
 }
 
 .container {
-  max-width: 1210px;
+  width: 1230px;
   margin: auto;
 }
 
-#__next{
+#__next {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-main{
+main {
   flex: 1;
+}
+
 @media (max-width: 1279px) {
   .container {
+    width: auto;
     margin: 0 40px;
   }
-}}
+}

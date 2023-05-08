@@ -35,6 +35,8 @@
 
 .quality {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   margin-top: 4px;
   font-weight: 500;
   gap: 0.5em;
@@ -42,6 +44,7 @@
 
 .propsName {
   color: rgba(255, 255, 255, .72);
+  margin-right: 12px;
 }
 
 .propsText {

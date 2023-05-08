@@ -1,13 +1,13 @@
 import MovieBlock from '../../MovieBlock/MovieBlock';
 import { PromoPoster } from '../../PromoPoster/PromoPoster';
-import cornPoster from "../../../img/CornPoster.jpg"
-import cornTitle from "../../../img/CornTitle.png"
-import ghostPoster from "../../../img/GhostPoster.jpg"
-import ghostTitle from "../../../img/GhostTitle.png"
-import huntPoster from "../../../img/HuntPoster.jpg"
-import huntTitle from "../../../img/HuntTitle.png"
-import sonPoster from "../../../img/SonPoster.jpg"
-import sonTitle from "../../../img/SonTitle.png"
+import cornPoster from "../../../img/corn-poster.jpg"
+import cornTitle from "../../../img/corn-title.png"
+import ghostPoster from "../../../img/ghost-poster.jpg"
+import ghostTitle from "../../../img/ghost-title.png"
+import huntPoster from "../../../img/hunt-poster.jpg"
+import huntTitle from "../../../img/hunt-title.png"
+import sonPoster from "../../../img/son-poster.jpg"
+import sonTitle from "../../../img/son-title.png"
 import styles from './HomePromos.module.scss';
 import 'swiper/css';
 
@@ -18,7 +18,7 @@ const promos: Parameters<typeof PromoPoster>[0][] = [
     description: 'Пробегающий по коже мороз и острое желание забраться под одеяло с головой  после просмотра этого и других ужастиков гарантированы',
     descriptionColor: "white",
     button: "Показать подборку",
-    href: ""
+    href: "watch/506252"
   },
   {
     posterImg: sonPoster.src,
@@ -26,7 +26,7 @@ const promos: Parameters<typeof PromoPoster>[0][] = [
     description: 'Хочется острых ощущений? Значит, пришла пора посмотреть фильм «Последний сын» или другой леденящий кровь триллер',
     descriptionColor: "white",
     button: "Показать подборку",
-    href: ""
+    href: "watch/210066"
   },
   {
     posterImg: huntPoster.src,
@@ -34,7 +34,7 @@ const promos: Parameters<typeof PromoPoster>[0][] = [
     description: 'Вы предпочитаете по-настоящему душевное кино? Помимо «Смертельной охоты» еще море семейных, психологических и исторических драм ждут именно Вас',
     descriptionColor: "grey",
     button: "Показать подборку",
-    href: ""
+    href: "watch/506252"
   },
   {
     posterImg: ghostPoster.src,
@@ -42,7 +42,7 @@ const promos: Parameters<typeof PromoPoster>[0][] = [
     description: 'Погрузитесь вместе с призраком Бубухом и героями других фэнтези в реальность выдуманных миров, пронизанных магией и волшебством',
     descriptionColor: "white",
     button: "Показать подборку",
-    href: ""
+    href: "watch/210066"
   }
 ];
 
@@ -56,10 +56,10 @@ export const HomePromos = () => {
       slidesPerView={1}
       listCardsProps={promos}
       loop={true}
-      // autoplay={{
-      //   delay: 5000,
-      //   disableOnInteraction: false,
-      // }}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
       renderItem={(item) => <PromoPoster {...item} />}
     />
 

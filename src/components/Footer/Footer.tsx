@@ -1,20 +1,26 @@
 import classNames from 'classnames';
-import { FooterOrdinary } from './FooterOrdinary/FooterOrdinary';
-import { FooterAdaptive } from './FooterAdaptive/FooterAdaptive';
+import { FooterDesktop } from './FooterDesktop/FooterDesktop';
+import { FooterNavbar } from './FooterNavbar/FooterNavbar';
 import styles from './Footer.module.scss';
+import { FC } from 'react';
 
-export const Footer = () => {
+interface FooterProps {
+  activePage?: "Мой Иви" | "Каталог";
+}
+
+export const Footer: FC<FooterProps> = (props) => {
   return (
     <>
       <div className={classNames(styles.container, "container")}>
 
-        <div className={styles.ordinary}>
-          <FooterOrdinary />
+        <div className={styles.desktop}>
+          <FooterDesktop />
         </div>
+
       </div>
 
-      <div className={styles.adaptive}>
-        <FooterAdaptive />
+      <div className={styles.navbar}>
+        <FooterNavbar activePage={props.activePage} />
       </div>
 
     </>

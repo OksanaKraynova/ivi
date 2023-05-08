@@ -1,4 +1,7 @@
 .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #FFFFFF;
     transition-duration: 0.4s;
     border-radius: 8px;
@@ -31,7 +34,7 @@
 }
 
 .circle {
-    padding: 8px;
+    padding: 10px;
     border-radius: 50%;
 }
 

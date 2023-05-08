@@ -29,8 +29,7 @@
   width: 80px;
 }
 
-.likeIcon {
-  line-height: 0;
+.icon {
   opacity: 0.5;
   cursor: pointer;
 
@@ -40,7 +39,6 @@
 }
 
 .lessBox {
-  width: 286px;
   height: 162px;
   overflow: hidden;
   cursor: pointer;
@@ -94,4 +92,26 @@
 
 .green {
   color: #73a32f;
+}
+
+@media (max-width: 499px) {
+
+  .fullLengthBox {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+
+    .date {
+      padding-left: 0;
+    }
+
+    .comment {
+      margin-top: 0;
+    }
+
+    .likeBox {
+      top: calc(100% - 30px);
+      right: 20px;
+    }
+  }
 }

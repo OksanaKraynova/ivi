@@ -61,7 +61,19 @@ export const ContentExtraHeder: FC<ContentExtraHederProps> = (props) => {
       <p className={styles.title}>{extraProps[props.extra].title}</p>
 
       <nav className={styles.nav}>
-        {nav.map(link => link)}
+        {nav.map((link, index) =>
+          <div key={index} className={styles.titleBox}>
+            {link}
+            {
+              index === 1 &&
+              <p className={styles.counter}>{props.content.comments.length}</p>
+            }
+            {
+              index === 2 &&
+              <p className={styles.counter}>?!</p>//количество трейлеров
+            }
+          </div>
+        )}
       </nav>
 
     </>
