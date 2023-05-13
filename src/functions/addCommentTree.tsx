@@ -31,9 +31,10 @@ export function addCommentTree(
 
 export function addCommentTreeParent(
   comment: ICommentParents,
+  nestingLevel: number,
   childes: React.ReactElement[],
   comments: ICommentParents[],
-  renderComment: (comment: ICommentParents, childes: React.ReactElement[]) => React.ReactElement
+  renderComment: (comment: ICommentParents, nestingLevel: number, childes: React.ReactElement[]) => React.ReactElement
 ): React.ReactElement {
 
   let childe: React.ReactElement;
@@ -43,10 +44,10 @@ export function addCommentTreeParent(
   if (commentChildrens.length > 0) {
 
     for (let comment of commentChildrens) {
-      childe = addCommentTreeParent(comment, [], comments, renderComment);
+      childe = addCommentTreeParent(comment, nestingLevel + 1, [], comments, renderComment);
       childes.push(childe);
     }
   }
 
-  return renderComment(comment, childes);
+  return renderComment(comment, nestingLevel, childes);
 }

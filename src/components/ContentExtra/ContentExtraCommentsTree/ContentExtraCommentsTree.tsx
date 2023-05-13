@@ -43,6 +43,7 @@ export const ContentExtraCommentsTree: FC<ContentExtraCommentsTreeProps> = (prop
 interface ContentExtraCommentsTreeParentProps {
   comment: ICommentParents;
   childes: React.ReactElement[];
+  nestingLevel: number;
 }
 
 export const ContentExtraCommentsTreeParent: FC<ContentExtraCommentsTreeParentProps> = (props) => {
@@ -58,17 +59,48 @@ export const ContentExtraCommentsTreeParent: FC<ContentExtraCommentsTreeParentPr
       /[а-п]/.test(userNameIcon) ? coloIcon = "blue" :
         /[р-яё]/.test(userNameIcon) ? coloIcon = "purple" : coloIcon = "green";
 
-  return (
+  if (props.nestingLevel % 2 === 0 && props.nestingLevel !== 0)
 
-    <div className={styles.treeComments}>
+    return (
 
-      <div className={styles.comment}>
-        <div className={classNames(styles.icon, styles[coloIcon])}>{userNameIcon}</div>
-        <CommentParent comment={props.comment} type="fullLength" />
+      <div className={styles.treeComments}>
+
+        <div className={styles.comment}>
+          <div className={classNames(styles.icon, styles[coloIcon])}>{props.nestingLevel}</div>
+          <CommentParent comment={props.comment} type="fullLength" />
+        </div>
+
+        <>
+          {
+            props.childes.length > 0 ?
+              (
+                <div className={styles.treeCommentsS}>
+                  {props.childes.map(childe => childe)}
+                </div>
+              ) :
+              <>
+                {props.childes.map(childe => childe)}
+              </>
+          }
+        </>
+
       </div>
 
-      {props.childes.map(childe => childe)}
+    );
 
-    </div>
-  );
+  else
+
+    return (
+
+      <div className={styles.treeComments}>
+
+        <div className={styles.comment}>
+          <div className={classNames(styles.icon, styles[coloIcon])}>{props.nestingLevel}</div>
+          <CommentParent comment={props.comment} type="fullLength" />
+        </div>
+
+        {props.childes.map(childe => childe)}
+
+      </div>
+    );
 }

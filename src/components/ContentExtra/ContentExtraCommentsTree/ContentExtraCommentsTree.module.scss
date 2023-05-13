@@ -2,11 +2,32 @@
   margin-left: 20px;
 }
 
+.treeCommentsS {
+  margin: 16px 0 0 -58px;
+  border: 1px solid #1f1b2e;
+  padding: 16px;
+  padding-top: 0;
+  border-radius: 6px;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -32px;
+    left: 0;
+    width: 72px;
+    height: 32px;
+    border-top: 1px solid rebeccapurple;
+    border-left: 1px solid rebeccapurple;
+  }
+}
+
 .comment {
   margin-top: 16px;
   margin-left: -20px;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: 10px;
 }
 

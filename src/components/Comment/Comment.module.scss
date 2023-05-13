@@ -70,6 +70,7 @@
 .fullLengthBox {
   width: 100%;
   display: block;
+  padding: 14px 16px;
 
   .title {
     display: inline-block;
@@ -85,13 +86,14 @@
   }
 
   .likeBox {
-    top: 20px;
-    right: 20px;
+    top: 14px;
+    right: 16px;
   }
 }
 
-.green {
+.likes {
   color: #73a32f;
+  font-weight: 500;
 }
 
 @media (max-width: 499px) {
