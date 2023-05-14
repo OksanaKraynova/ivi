@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IContent } from "@/types/IContent";
-import { AImage } from "@/src/components/AImage/AImage";
+import { LinkAvatar } from "@/src/components/LinkAvatar/LinkAvatar";
 import { IActor } from "@/types/IActor";
 
 interface ContentActorsProps {
@@ -14,7 +14,7 @@ export const ContentActors: FC<ContentActorsProps> = (props) => {
 
     return (
         <>
-            <AImage
+            <LinkAvatar
                 textUnderImg={["Рейтинг", "Иви"]}
                 textInsteadImg={props.content.rating.toString()}
                 href={`/watch/${props.content.id}`}
@@ -28,7 +28,7 @@ export const ContentActors: FC<ContentActorsProps> = (props) => {
                 if (index > 4) return;
                 if (actor !== undefined)
                     return (
-                        <AImage
+                        <LinkAvatar
                             key={index}
                             textUnderImg={[actor.firstName, actor.secondName]}
                             href=""

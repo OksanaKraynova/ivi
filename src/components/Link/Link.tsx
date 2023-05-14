@@ -1,17 +1,17 @@
-import Link from 'next/link';
-import styles from './A.module.scss';
+import { default as LinkNext } from 'next/link';
+import styles from './Link.module.scss';
 import classNames from 'classnames';
 
-interface AProps {
+interface LinkProps {
   text: string;
   href: string;
-  color: "white" | "grey" | "greyLight";
+  color: "white" | "grey" | "greyLight" | "pinkGradient";
   fontWeight?: number;
   linkClass?: string;
   onMouseOver?: () => void;
 }
 
-export const A = (props: AProps) => {
+export const Link = (props: LinkProps) => {
   let className = classNames(styles.link, styles[props.color]);
 
   props.linkClass === undefined ?
@@ -23,7 +23,7 @@ export const A = (props: AProps) => {
     className = classNames(className, styles[`fontWeight${props.fontWeight}`]);
 
   return (
-    <Link
+    <LinkNext
       href={props.href}
       className={className}
       onMouseOver={props.onMouseOver}
@@ -31,6 +31,6 @@ export const A = (props: AProps) => {
 
       {props.text}
 
-    </Link>
+    </LinkNext>
   );
 };

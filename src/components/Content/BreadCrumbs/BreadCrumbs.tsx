@@ -1,9 +1,8 @@
-import Link from 'next/link';
 import styles from './BreadCrumbs.module.scss';
 import { FC } from 'react';
 import { IItemLink } from '@/types/IItemLink';
 import { List } from '../../../../src/components/List';
-import { A } from '../../../../src/components/A/A';
+import { Link } from '../../../../src/components/Link/Link';
 import classNames from 'classnames';
 
 interface BreadCrumbsProps {
@@ -23,7 +22,7 @@ export const BreadCrumbs: FC<BreadCrumbsProps> = (props) => {
       <List<IItemLink>
         list={props.prevPages}
         renderItem={(item, index) =>
-          <A
+          <Link
             key={index}
             text={item.text}
             href={item.link}

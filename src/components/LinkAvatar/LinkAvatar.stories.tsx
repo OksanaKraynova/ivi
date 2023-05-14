@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AImage } from './AImage';
-import textStyles from '../A/A.module.scss';
+import { LinkAvatar } from './LinkAvatar';
+import textStyles from '../Link/Link.module.scss';
 
-const meta: Meta<typeof AImage> = {
-  title: 'AImage',
-  component: AImage,
+const meta: Meta<typeof LinkAvatar> = {
+  title: 'LinkAvatar',
+  component: LinkAvatar,
   tags: ['autodocs'],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof AImage>;
+type Story = StoryObj<typeof LinkAvatar>;
 
 export const Primary: Story = {
   args: {

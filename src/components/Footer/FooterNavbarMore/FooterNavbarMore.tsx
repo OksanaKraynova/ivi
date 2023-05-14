@@ -1,7 +1,7 @@
-import Link from 'next/link';
+import { default as LinkNext } from 'next/link';
 import Image from 'next/image';
 import Button from '../../Button/Button';
-import { A } from '../../A/A';
+import { Link } from '../../Link/Link';
 import { FooterSupport } from '../FooterSupport/FooterSupport';
 import { FooterButtonsIcon } from '../FooterButtonsIcon/FooterButtonsIcon';
 import { FooterNavbarDropdown } from '../FooterNavbarDropdown/FooterNavbarDropdown';
@@ -430,7 +430,7 @@ export const FooterNavbarMore = () => {
       <div className={styles.rowBorder}>
 
         {linkListFirst.map((item, index) =>
-          <A
+          <Link
             key={index}
             text={item.text}
             href={item.link}
@@ -446,7 +446,7 @@ export const FooterNavbarMore = () => {
           />
         )}
 
-        <A
+        <Link
           text="Что посмотреть"
           href="https://www.ivi.ru/goodmovies"
           color={'white'}
@@ -458,7 +458,7 @@ export const FooterNavbarMore = () => {
       <div className={styles.rowBorder}>
 
         {linkListSecond.map((item, index) =>
-          <A
+          <Link
             key={index}
             text={item.text}
             href={item.link}
@@ -472,10 +472,10 @@ export const FooterNavbarMore = () => {
       <div className={styles.rowBorder}>
 
         <FooterNavbarDropdown {...dropdownAbout} />
-        <Link className={styles.button} href="/">
+        <LinkNext className={styles.button} href="/">
           <Image className="icon" src={codeIcon} alt='icon' />
           Вход по коду
-        </Link>
+        </LinkNext>
 
         <div className={styles.buttons}>
 

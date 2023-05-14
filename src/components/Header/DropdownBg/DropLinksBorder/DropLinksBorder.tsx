@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './dropLinks.module.scss'
-import { A } from '@/src/components/A/A';
+import { Link } from '@/src/components/Link/Link';
 
 const DropLinksBorder = ({ arr }: any) => {
     return (
@@ -8,7 +8,7 @@ const DropLinksBorder = ({ arr }: any) => {
             <ul className={styles.list} >
                 {arr.map((li: any) => (
                     <li key={li.title}>
-                        <A href={li.url} text={li.title} color='grey' />
+                        <Link href={li.url} text={li.title} color='grey' />
                     </li>
                 ))}
             </ul>

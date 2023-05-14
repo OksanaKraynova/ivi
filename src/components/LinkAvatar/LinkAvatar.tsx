@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { ImgBox } from '../ImgBox';
-import styles from './AImage.module.scss';
+import styles from './LinkAvatar.module.scss';
 import classNames from 'classnames';
 
-interface AImageProps {
+interface LinkAvatarProps {
   textUnderImg: string[];
   textInsteadImg?: string;
   color?: "green" | "grey";
@@ -15,7 +15,7 @@ interface AImageProps {
   onMouseOver?: () => void;
 }
 
-export const AImage = ({ ...props }: AImageProps) => {
+export const LinkAvatar = ({ ...props }: LinkAvatarProps) => {
   let contentClass: string;
   props.color === undefined ?
     contentClass = styles.content :

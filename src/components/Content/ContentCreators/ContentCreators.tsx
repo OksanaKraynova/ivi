@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { IContent } from '@/types/IContent';
 import styles from './ContentCreators.module.scss';
-import { AImage } from '@/src/components/AImage/AImage';
+import { LinkAvatar } from '@/src/components/LinkAvatar/LinkAvatar';
 import { IActor } from '@/types/IActor';
 import Link from 'next/link';
 
@@ -17,14 +17,14 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
 
   director === undefined ?
     directorLink = <></> :
-    directorLink = <AImage
+    directorLink = <LinkAvatar
       textUnderImg={[director.firstName, director.secondName]}
       href=""
       img={director.img}
       form="circle"
     >
       <p>режиссёр</p>
-    </AImage>
+    </LinkAvatar>
 
   return (
 
@@ -49,7 +49,7 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
               return (
                 <div className={styles.item}>
 
-                  <AImage
+                  <LinkAvatar
                     key={index}
                     textUnderImg={[actor.firstName, actor.secondName]}
                     href=""
@@ -57,7 +57,7 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
                     form="circle"
                   >
                     <p>актёр</p>
-                  </AImage>
+                  </LinkAvatar>
 
                 </div>
               )
@@ -65,7 +65,7 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
 
         </div>
 
-        <AImage
+        <LinkAvatar
           textUnderImg={[]}
           href={`/watch/${props.content.id}/person`}
           img=""

@@ -2,7 +2,7 @@ import { IItemLink } from '@/types/IItemLink';
 import styles from './FooterNavbarDropdownList.module.scss';
 import { FC } from 'react';
 import { List } from '../../List';
-import { A } from '../../A/A';
+import { Link } from '../../Link/Link';
 
 interface dropdownBlock {
   title?: string;
@@ -22,7 +22,7 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
   props.subTitle === undefined ?
     firstLink = <></> :
     firstLink =
-    <A
+    <Link
       text={props.subTitle.text}
       href={props.subTitle.link}
       color={'grey'}
@@ -46,7 +46,7 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
             list={props.firstColumn.list}
             renderItem={(item, index) =>
 
-              <A
+              <Link
                 key={index}
                 text={item.text}
                 href={item.link}
@@ -78,7 +78,7 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
                       list={block.list}
                       renderItem={(item, index) =>
 
-                        <A
+                        <Link
                           key={index}
                           text={item.text}
                           href={item.link}
@@ -111,7 +111,7 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
                         list={block.list}
                         renderItem={(item, index) =>
 
-                          <A
+                          <Link
                             key={index}
                             text={item.text}
                             href={item.link}

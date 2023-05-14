@@ -12,7 +12,7 @@ import seven from "../../../public/icons/numbers/7.svg"
 import eight from "../../../public/icons/numbers/8.svg"
 import nine from "../../../public/icons/numbers/9.svg"
 
-const numbers = [
+const numbersIcon = [
   zero, one, two, three, four,
   five, six, seven, eight, nine,
 ];
@@ -20,11 +20,12 @@ const numbers = [
 interface TopCardProps {
   img: string;
   href: string;
-  // index: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   index: number;
 }
 
 export const TopCard = ({ img, href, index }: TopCardProps) => {
+
+  let numbers = Array.from(Math.abs(index).toString())
 
   return (
 
@@ -35,14 +36,9 @@ export const TopCard = ({ img, href, index }: TopCardProps) => {
       <div className={styles.fade} />
 
       <div className={styles.index}>
-        {
-          index === 10 ?
-            <>
-              <Image className="icon" src={numbers[1]} alt="1" />
-              <Image className="icon" src={numbers[0]} alt="0" />
-            </> :
-            <Image className="icon" src={numbers[index]} alt={`${index}`} />
-        }
+        {numbers.map((number, index) =>
+          <Image key={index} className="icon" src={numbersIcon[+number]} alt={number} />
+        )}
       </div>
 
     </Link>

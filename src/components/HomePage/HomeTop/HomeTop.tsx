@@ -4,7 +4,7 @@ import { TopCard } from '../../TopCard/TopCard';
 import styles from './HomeTop.module.scss';
 import 'swiper/css';
 import topIcon from "../../../../public/icons/top.svg"
-import sample from "../../../img/sample.jpg"
+import sample from "../../../../public/img/sample.jpg"
 
 const top = [
   {
