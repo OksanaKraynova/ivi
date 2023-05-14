@@ -36,7 +36,7 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
 
     <>
 
-      <ContentExtraInput />
+      <ContentExtraInput placholder="Написать отзыв" />
 
       {props.content.comments.map((commentId, index) =>
 
@@ -112,7 +112,7 @@ export const ContentExtraCommentsParent: FC<ContentExtraCommentsProps> = (props)
 
     <>
 
-      <ContentExtraInput />
+      <ContentExtraInput placholder="Написать отзыв" />
 
       {comments.map((comment, index) =>
 

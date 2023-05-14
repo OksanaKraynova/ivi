@@ -5,7 +5,11 @@ import Button from '../../Button/Button';
 import styles from './ContentExtraInput.module.scss';
 import userIcon from "../../../../public/icons/user.svg"
 
-export const ContentExtraInput: FC = () => {
+interface ContentExtraInputProps {
+  placholder: string;
+}
+
+export const ContentExtraInput: FC<ContentExtraInputProps> = (props) => {
 
   const [placholderClass, SetPlacholderClass] = useState<string>(styles.placholder);
   const [comment, SetComment] = useState<string>("");
@@ -39,7 +43,7 @@ export const ContentExtraInput: FC = () => {
           }}
         />
 
-        <div className={placholderClass}>Написать отзыв</div>
+        <div className={placholderClass}>{props.placholder}</div>
 
         <div
           className={styles.error}

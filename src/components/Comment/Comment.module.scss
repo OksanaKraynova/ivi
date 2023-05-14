@@ -1,32 +1,36 @@
 .box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  align-items: center;
+  row-gap: 8px;
   padding: 20px;
   background-color: #1f1b2e;
   border-radius: 8px;
-  position: relative;
 }
 
 .title {
   color: rgba(255, 255, 255, .72);
   font-weight: 500;
+  grid-area: userName;
 }
 
 .comment {
   line-height: 22px;
+  grid-area: comment;
 }
 
 .date {
   color: rgba(255, 255, 255, .72);
+  white-space: nowrap;
+  grid-area: date;
 }
 
 .likeBox {
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 80px;
+  grid-area: like;
+  justify-self: end;
 }
 
 .icon {
@@ -38,82 +42,106 @@
   }
 }
 
+.likes {
+  color: #73a32f;
+  font-weight: 500;
+}
+
 .lessBox {
+  grid-template-areas: "userName userName" "comment comment" "date like";
+  grid-template-columns: auto auto;
   height: 162px;
   overflow: hidden;
   cursor: pointer;
 
-  .title {
-    order: 1;
-  }
-
-  .date {
-    order: 3;
-  }
-
   .comment {
-    order: 2;
-    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
-
-  .likeBox {
-    bottom: 20px;
-    right: 20px;
-  }
 }
 
 .fullLengthBox {
+  grid-template-areas: "avatar userName date like"
+    ". comment comment comment";
+  grid-template-columns: auto auto auto 1fr;
+  column-gap: 8px;
   width: 100%;
-  display: block;
-  padding: 14px 16px;
-
-  .title {
-    display: inline-block;
-  }
-
-  .date {
-    display: inline-block;
-    padding-left: 0.4em;
-  }
-
-  .comment {
-    margin-top: 8px;
-  }
-
-  .likeBox {
-    top: 14px;
-    right: 16px;
-  }
+  padding: 12px;
 }
 
-.likes {
-  color: #73a32f;
-  font-weight: 500;
+.avatar {
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: avatar;
+}
+
+.red {
+  background-color: #ff2d2d;
+}
+
+.orange {
+  background-color: #da6900;
+}
+
+.green {
+  background-color: #127432;
+}
+
+.blue {
+  background-color: #0092cc;
+}
+
+.purple {
+  background-color: #712bc0;
 }
 
 @media (max-width: 499px) {
-
   .fullLengthBox {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 40px;
+    grid-template-areas: "avatar userName userName"
+      ". comment comment"
+      ". date like";
+    grid-template-columns: auto auto 1fr;
+  }
+}
+
+@media (max-width: 399px) {
+  .fullLengthBox {
+    grid-template-areas: "avatar userName"
+      "comment comment"
+      "date date"
+      "like like";
+    grid-template-columns: auto 1fr;
 
     .date {
-      padding-left: 0;
+      justify-self: end;
+    }
+  }
+}
+
+@media (max-width: 309px) {
+
+  .lessBox {
+    grid-template-areas: "userName" "comment" "date" "like";
+
+    .date {
+      justify-self: end;
     }
 
     .comment {
-      margin-top: 0;
-    }
-
-    .likeBox {
-      top: calc(100% - 30px);
-      right: 20px;
+      -webkit-line-clamp: 2;
     }
   }
+}
+
+
+
+.response {
+  height: auto;
 }

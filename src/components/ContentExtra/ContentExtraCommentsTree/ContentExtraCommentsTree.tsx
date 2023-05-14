@@ -48,39 +48,23 @@ interface ContentExtraCommentsTreeParentProps {
 
 export const ContentExtraCommentsTreeParent: FC<ContentExtraCommentsTreeParentProps> = (props) => {
 
-  let userNameIcon: string;
-  props.comment.userName.length > 0 ?
-    userNameIcon = props.comment.userName[0].toLowerCase() :
-    userNameIcon = " ";
-
-  let coloIcon: string;
-  /[a-n]/.test(userNameIcon) ? coloIcon = "red" :
-    /[o-z]/.test(userNameIcon) ? coloIcon = "orange" :
-      /[а-п]/.test(userNameIcon) ? coloIcon = "blue" :
-        /[р-яё]/.test(userNameIcon) ? coloIcon = "purple" : coloIcon = "green";
-
-  if (props.nestingLevel % 2 === 0 && props.nestingLevel !== 0)
+  if (props.nestingLevel % 4 === 0 && props.nestingLevel !== 0)
 
     return (
 
       <div className={styles.treeComments}>
 
-        <div className={styles.comment}>
-          <div className={classNames(styles.icon, styles[coloIcon])}>{props.nestingLevel}</div>
-          <CommentParent comment={props.comment} type="fullLength" />
-        </div>
+        <CommentParent comment={props.comment} type="fullLength" />
 
         <>
           {
             props.childes.length > 0 ?
               (
-                <div className={styles.treeCommentsS}>
+                <div className={classNames(styles.childeComments, styles.bordered)}>
                   {props.childes.map(childe => childe)}
                 </div>
               ) :
-              <>
-                {props.childes.map(childe => childe)}
-              </>
+              <></>
           }
         </>
 
@@ -94,12 +78,19 @@ export const ContentExtraCommentsTreeParent: FC<ContentExtraCommentsTreeParentPr
 
       <div className={styles.treeComments}>
 
-        <div className={styles.comment}>
-          <div className={classNames(styles.icon, styles[coloIcon])}>{props.nestingLevel}</div>
-          <CommentParent comment={props.comment} type="fullLength" />
-        </div>
+        <CommentParent comment={props.comment} type="fullLength" />
 
-        {props.childes.map(childe => childe)}
+        <>
+          {
+            props.childes.length > 0 ?
+              (
+                <div className={styles.childeComments}>
+                  {props.childes.map(childe => childe)}
+                </div>
+              ) :
+              <></>
+          }
+        </>
 
       </div>
     );

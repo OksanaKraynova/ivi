@@ -114,3 +114,9 @@ main {
     margin: 0 40px;
   }
 }
+
+@media (max-width: 599px) {
+  .container {
+    margin: 0 25px;
+  }
+}
