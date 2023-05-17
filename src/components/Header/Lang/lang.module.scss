@@ -1,0 +1,23 @@
+.lang{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 24px;
+    cursor: pointer;
+    svg{
+        transition: fill 0.3s;
+    }
+    select{
+        background: transparent;
+        color: #ffffff7a;
+        transition: color 0.3s;
+    }
+    &:hover{
+        svg{
+            fill: #fff;
+        }
+        select{
+            color: #fff;
+        }
+    }
+}
