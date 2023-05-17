@@ -1,7 +1,8 @@
+import { FC } from 'react';
+import Link from 'next/link';
 import classNames from 'classnames';
 import Button from '../Button/Button';
 import styles from './PromoPoster.module.scss';
-import Link from 'next/link';
 
 interface PromoPosterProps {
   posterImg: string;
@@ -12,30 +13,29 @@ interface PromoPosterProps {
   href: string;
 }
 
-export const PromoPoster =
-  ({ posterImg, titleImg, description, descriptionColor, button, href }: PromoPosterProps) => {
+export const PromoPoster: FC<PromoPosterProps> = (props) => {
 
-    return (
+  return (
 
-      <Link className={styles.box} href={href}>
+    <Link className={styles.box} href={props.href}>
 
-        <img className={styles.poster} src={posterImg} alt="poster" />
+      <img className={styles.poster} src={props.posterImg} alt="poster" />
 
-        <div className={styles.inner}>
+      <div className={styles.inner}>
 
-          <img className={styles.title} src={titleImg} alt="title" />
+        <img className={styles.title} src={props.titleImg} alt="title" />
 
-          <p className={classNames(styles.description, styles[descriptionColor])}>
-            {description}
-          </p>
+        <p className={classNames(styles.description, styles[props.descriptionColor])}>
+          {props.description}
+        </p>
 
-          <div className={styles.button}>
-            <Button variant='medium' color={'pink'} >{button}</Button>
-          </div>
-
+        <div className={styles.button}>
+          <Button variant='medium' color={'pink'} >{props.button}</Button>
         </div>
 
-      </Link>
+      </div>
 
-    );
-  };
+    </Link>
+
+  );
+};

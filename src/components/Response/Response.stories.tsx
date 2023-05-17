@@ -1,4 +1,4 @@
-import Response from './Response'
+import { Response } from './Response'
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Response> = {
@@ -6,7 +6,18 @@ const meta: Meta<typeof Response> = {
     component: Response,
     tags: ['autodocs'],
     argTypes: {
-        buttonColor: ["pink", "lightGrey"],
+        placholder: {
+            type: 'string',
+            description: 'Подпись в поле для ввода ответа',
+        },
+        buttonColor: {
+            type: 'string',
+            description: 'Цвет кнопки для отправки ответа',
+            options: ["pink", "lightGrey"],
+            control: {
+                type: 'select'
+            }
+        }
     }
 };
 

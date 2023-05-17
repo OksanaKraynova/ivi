@@ -10,7 +10,7 @@ interface ResponseProps {
   buttonColor: "pink" | "lightGrey";
 }
 
-const Response: FC<ResponseProps> = (props) => {
+export const Response: FC<ResponseProps> = (props) => {
 
   const [placholderClass, SetPlacholderClass] = useState<string>(styles.placholder);
   const [comment, SetComment] = useState<string>("");
@@ -63,5 +63,3 @@ const Response: FC<ResponseProps> = (props) => {
 
   );
 }
-
-export default Response;

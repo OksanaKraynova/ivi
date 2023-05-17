@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { ContentExtraCommentsTree, ContentExtraCommentsTreeParent } from "../ContentExtraCommentsTree/ContentExtraCommentsTree";
-import Response from "../../Response/Response";
+import { Response } from "../../Response/Response";
 import Button from "../../Button/Button";
 import { IContent } from "@/types/IContent";
 import { addCommentTree, addCommentTreeParent } from "@/src/functions/addCommentTree";

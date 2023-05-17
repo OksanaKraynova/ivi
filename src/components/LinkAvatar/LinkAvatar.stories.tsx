@@ -6,13 +6,57 @@ const meta: Meta<typeof LinkAvatar> = {
   title: 'LinkAvatar',
   component: LinkAvatar,
   tags: ['autodocs'],
+  argTypes: {
+    img: {
+      type: 'string',
+      description: 'Ссылка на картинку аватара',
+    },
+    href: {
+      type: 'string',
+      description: 'Ссылка',
+    },
+    textUnderImg: {
+      description: 'Текст под аватаром',
+    },
+    textInsteadImg: {
+      type: { name: 'string', required: false },
+      description: 'Текст вместо аватара',
+    },
+    color: {
+      type: { name: 'string', required: false },
+      description: 'Фон вместо аватара',
+      options: ["green", "grey"],
+      control: {
+        type: 'select'
+      }
+    },
+    form: {
+      type: 'string',
+      description: 'Форма аватара',
+      options: ["square", "circle", "circleBig"],
+      control: {
+        type: 'select'
+      }
+    },
+    onClick: {
+      type: { name: 'function', required: false },
+      description: 'Действие при клике',
+    },
+    onMouseOver: {
+      type: { name: 'function', required: false },
+      description: 'Действие при наведении',
+    },
+    children: {
+      description: 'Элемент внизу ссылки',
+    },
+  }
 };
 
 export default meta;
 
 type Story = StoryObj<typeof LinkAvatar>;
 
-export const Primary: Story = {
+export const Example: Story = {
   args: {
     textUnderImg: ["Екатерина", "Гороховская"],
     href: '!#',

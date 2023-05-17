@@ -3,12 +3,12 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import { IComment } from '@/types/IComment';
 import { ICommentParents } from '@/types/ICommentParents';
-import Response from '../Response/Response';
+import { Response } from '../Response/Response';
 import styles from './Comment.module.scss';
-import likeIcon from "../../../public/icons/like.svg"
-import disLikeIcon from "../../../public/icons/disLike.svg"
-import messegeIcon from "../../../public/icons/message.svg"
-import messegeOffIcon from "../../../public/icons/message-off.svg"
+import likeIcon from "@/public/icons/like.svg"
+import disLikeIcon from "@/public/icons/disLike.svg"
+import messegeIcon from "@/public/icons/message.svg"
+import messegeOffIcon from "@/public/icons/message-off.svg"
 
 interface CommentProps {
   comment: IComment;

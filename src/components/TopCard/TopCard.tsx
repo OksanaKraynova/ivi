@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './TopCard.module.scss';
@@ -23,15 +24,15 @@ interface TopCardProps {
   index: number;
 }
 
-export const TopCard = ({ img, href, index }: TopCardProps) => {
+export const TopCard: FC<TopCardProps> = (props) => {
 
-  let numbers = Array.from(Math.abs(index).toString())
+  let numbers = Array.from(props.index.toString()).filter(item => Number.isInteger(+item));
 
   return (
 
-    <Link className={styles.box} href={href}>
+    <Link className={styles.box} href={props.href}>
 
-      <img className={styles.img} src={img} alt="poster" />
+      <img className={styles.img} src={props.img} alt="poster" />
 
       <div className={styles.fade} />
 
