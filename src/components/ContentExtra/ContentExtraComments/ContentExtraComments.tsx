@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { ContentExtraCommentsTree, ContentExtraCommentsTreeParent } from "../ContentExtraCommentsTree/ContentExtraCommentsTree";
-import { ContentExtraInput } from "../ContentExtraInput/ContentExtraInput";
+import Response from "../../Response/Response";
 import Button from "../../Button/Button";
 import { IContent } from "@/types/IContent";
 import { addCommentTree, addCommentTreeParent } from "@/src/functions/addCommentTree";
@@ -36,7 +36,7 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
 
     <>
 
-      <ContentExtraInput placholder="Написать отзыв" />
+      <Response placholder="Написать отзыв" buttonColor="pink" />
 
       {props.content.comments.map((commentId, index) =>
 
@@ -112,7 +112,7 @@ export const ContentExtraCommentsParent: FC<ContentExtraCommentsProps> = (props)
 
     <>
 
-      <ContentExtraInput placholder="Написать отзыв" />
+      <Response placholder="Написать отзыв" buttonColor="pink" />
 
       {comments.map((comment, index) =>
 

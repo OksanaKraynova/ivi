@@ -48,7 +48,10 @@
 }
 
 .lessBox {
-  grid-template-areas: "userName userName" "comment comment" "date like";
+  grid-template-areas:
+    "userName userName"
+    "comment comment"
+    "date like";
   grid-template-columns: auto auto;
   height: 162px;
   overflow: hidden;
@@ -64,12 +67,22 @@
 }
 
 .fullLengthBox {
-  grid-template-areas: "avatar userName date like"
-    ". comment comment comment";
+  grid-template-areas:
+    "avatar userName date like"
+    "button comment comment comment";
   grid-template-columns: auto auto auto 1fr;
   column-gap: 8px;
   width: 100%;
   padding: 12px;
+}
+
+.response {
+  height: auto;
+}
+
+.button {
+  grid-area: button;
+  align-self: end;
 }
 
 .avatar {
@@ -104,19 +117,21 @@
 
 @media (max-width: 499px) {
   .fullLengthBox {
-    grid-template-areas: "avatar userName userName"
+    grid-template-areas:
+      "avatar userName userName"
       ". comment comment"
-      ". date like";
+      "button date like";
     grid-template-columns: auto auto 1fr;
   }
 }
 
 @media (max-width: 399px) {
   .fullLengthBox {
-    grid-template-areas: "avatar userName"
+    grid-template-areas:
+      "avatar userName"
       "comment comment"
       "date date"
-      "like like";
+      "button like";
     grid-template-columns: auto 1fr;
 
     .date {
@@ -138,10 +153,4 @@
       -webkit-line-clamp: 2;
     }
   }
-}
-
-
-
-.response {
-  height: auto;
 }

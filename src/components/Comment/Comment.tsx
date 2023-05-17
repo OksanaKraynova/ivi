@@ -2,11 +2,13 @@ import React, { FC, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
 import { IComment } from '@/types/IComment';
+import { ICommentParents } from '@/types/ICommentParents';
+import Response from '../Response/Response';
 import styles from './Comment.module.scss';
 import likeIcon from "../../../public/icons/like.svg"
 import disLikeIcon from "../../../public/icons/disLike.svg"
-import { ICommentParents } from '@/types/ICommentParents';
-import { ContentExtraInput } from '../ContentExtra/ContentExtraInput/ContentExtraInput';
+import messegeIcon from "../../../public/icons/message.svg"
+import messegeOffIcon from "../../../public/icons/message-off.svg"
 
 interface CommentProps {
   comment: IComment;
@@ -44,7 +46,8 @@ interface CommentParentProps {
 
 export const CommentParent: FC<CommentParentProps> = (props) => {
 
-  const [response, setResponse] = useState<React.ReactElement | null>(null)
+  const [response, setResponse] = useState<React.ReactElement | null>(null);
+  const [hidden, setHidden] = useState<boolean>(false);
 
   let userNameIcon: string;
   props.comment.userName.length > 0 ?
@@ -58,9 +61,9 @@ export const CommentParent: FC<CommentParentProps> = (props) => {
         /[р-яё]/.test(userNameIcon) ? coloIcon = "purple" : coloIcon = "green";
 
   function addResponse(): void {
-    if (response !== null)
-      return;
-    setResponse(<ContentExtraInput placholder="Ответить" />);
+    setResponse(
+      <Response placholder="Ответить" buttonColor="lightGrey" />
+    );
   }
 
   return (
@@ -72,7 +75,20 @@ export const CommentParent: FC<CommentParentProps> = (props) => {
         <>
           {
             props.type === "fullLength" ?
-              <div className={classNames(styles.avatar, styles[coloIcon])}>{userNameIcon}</div>
+              <>
+                <div className={classNames(styles.avatar, styles[coloIcon])}>{userNameIcon}</div>
+                <Image
+                  className={classNames(styles.icon, styles.button)}
+                  src={hidden || response === null ? messegeIcon : messegeOffIcon}
+                  alt={hidden || response === null ? "ответ" : "отмена"}
+                  onClick={() => {
+                    if (response === null)
+                      addResponse();
+                    else
+                      setHidden(!hidden);
+                  }}
+                />
+              </>
               :
               <></>
           }
@@ -90,11 +106,9 @@ export const CommentParent: FC<CommentParentProps> = (props) => {
 
         </div>
 
-        <button onClick={() => addResponse()}>Ответить</button>
-
       </div>
 
-      <div className={styles.response}>
+      <div className={styles.response} hidden={hidden}>
         {response}
       </div>
 

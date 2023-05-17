@@ -1,15 +1,16 @@
 import React, { FC, useState } from "react";
 import Image from 'next/image';
 import classNames from 'classnames';
-import Button from '../../Button/Button';
-import styles from './ContentExtraInput.module.scss';
-import userIcon from "../../../../public/icons/user.svg"
+import Button from "../Button/Button";
+import styles from './Response.module.scss';
+import userIcon from "../../../public/icons/user.svg"
 
-interface ContentExtraInputProps {
+interface ResponseProps {
   placholder: string;
+  buttonColor: "pink" | "lightGrey";
 }
 
-export const ContentExtraInput: FC<ContentExtraInputProps> = (props) => {
+const Response: FC<ResponseProps> = (props) => {
 
   const [placholderClass, SetPlacholderClass] = useState<string>(styles.placholder);
   const [comment, SetComment] = useState<string>("");
@@ -55,10 +56,12 @@ export const ContentExtraInput: FC<ContentExtraInputProps> = (props) => {
       </div>
 
       <div className={styles.button}>
-        <Button variant="small" color="pink" disabled={comment.length < 10} >Отправить</Button>
+        <Button variant="small" color={props.buttonColor} disabled={comment.length < 10} >Отправить</Button>
       </div>
 
     </div>
 
   );
 }
+
+export default Response;
