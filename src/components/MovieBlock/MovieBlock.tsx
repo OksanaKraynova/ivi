@@ -32,14 +32,17 @@ export default function MovieBlock<T>(
         ...props
     }: IMovieBlock<T>) {
 
-    let titleElement: React.ReactElement;
-    title === undefined ?
-        titleElement = <></> :
-        titleElement = <TitleBlock title={title} img={rightIcon} />
-
     return (
         <div className={blockClass}>
-            {titleElement}
+
+            <>
+                {
+                    title === undefined ?
+                        <></> :
+                        <TitleBlock title={title} img={rightIcon} />
+                }
+            </>
+
             <CardsBlock
                 slidesPerView={slidesPerView}
                 spaceBetween={spaceBetween}

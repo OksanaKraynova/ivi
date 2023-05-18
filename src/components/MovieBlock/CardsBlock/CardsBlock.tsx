@@ -6,7 +6,7 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import styles from './cardsBlock.module.scss'
 import "swiper/css/navigation";
-// import 'swiper/css';
+import 'swiper/css';
 import leftIcon from "../../../../public/icons/to-left.svg"
 import rightIcon from "../../../../public/icons/to-right.svg"
 
@@ -33,13 +33,11 @@ export default function CardsBlock<T>({
 }: ISlide<T>) {
 
   const cardsMorePerview = slidesPerView >= listCardsProps.length;
+  const lastSlideNumber = props.lastSlide === undefined ? 0 : 1;
 
   const [swipper, setSwipper] = useState<SwiperObject>();
 
-  let lastSlideNode: React.ReactNode;
-
-  props.lastSlide === undefined ? lastSlideNode = <></> :
-    lastSlideNode = <SwiperSlide>{props.lastSlide}</SwiperSlide>;
+  const [hidden, setHidden] = useState<{ prev: boolean, next: boolean }>();
 
   let wrapperClass: string;
 
@@ -58,7 +56,13 @@ export default function CardsBlock<T>({
         loop={loop}
         watchOverflow={true}
         breakpoints={props.breakpoints}
-        onBeforeInit={(swipper) => setSwipper(swipper)}
+        onBeforeInit={swipper => {
+          setSwipper(swipper);
+          setHidden({
+            prev: swipper.activeIndex === 0 && !loop,
+            next: false
+          });
+        }}
       >
 
         {listCardsProps.map((cardProps, index) => (
@@ -69,22 +73,40 @@ export default function CardsBlock<T>({
 
         ))}
 
-        {lastSlideNode}
+        <>
+          {
+            props.lastSlide === undefined ?
+              <></> :
+              <SwiperSlide>{props.lastSlide}</SwiperSlide>
+          }
+        </>
 
       </Swiper >
 
       <div
-        hidden={cardsMorePerview}
+        hidden={cardsMorePerview || hidden?.prev}
         className={styles.prev}
-        onClick={() => swipper?.slidePrev()}
+        onClick={() => {
+          swipper?.slidePrev();
+          setHidden({
+            prev: swipper?.activeIndex === 0 && !loop,
+            next: (swipper?.activeIndex || 0) + slidesPerView === listCardsProps.length + lastSlideNumber && !loop
+          });
+        }}
       >
         <Image className="icon" src={leftIcon} alt='to-left' />
       </div>
 
       <div
-        hidden={cardsMorePerview}
+        hidden={cardsMorePerview || hidden?.next}
         className={styles.next}
-        onClick={() => swipper?.slideNext()}
+        onClick={() => {
+          swipper?.slideNext();
+          setHidden({
+            prev: swipper?.activeIndex === 0 && !loop,
+            next: (swipper?.activeIndex || 0) + slidesPerView === listCardsProps.length + lastSlideNumber && !loop
+          });
+        }}
       >
         <Image className="icon" src={rightIcon} alt='to-right' />
       </div>
