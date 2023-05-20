@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import Button from '../../Button/Button';
 import { Link } from '../../Link/Link';
 import styles from './FooterSupport.module.scss';
-import mailIcon from "../../../../public/icons/mail.svg"
-import phoneIcon from "../../../../public/icons/phone.svg"
+import mailIcon from "@/public/icons/mail.svg"
+import phoneIcon from "@/public/icons/phone.svg"
 
 interface FooterSupportProps {
   subTitleClass: string;

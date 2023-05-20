@@ -8,7 +8,7 @@ import { ContentExtraPerson } from "./ContentExtraPerson/ContentExtraPerson";
 import { ContentExtraComments, ContentExtraCommentsParent } from "./ContentExtraComments/ContentExtraComments";
 import Card from "../Card/Card";
 import styles from './ContentExtra.module.scss';
-import leftIcon from "../../../public/icons/to-left.svg"
+import leftIcon from "@/public/icons/to-left.svg"
 
 interface ContentExtraProps {
   content: IContent;

@@ -3,8 +3,8 @@ import MovieBlock from '../../MovieBlock/MovieBlock';
 import { TopCard } from '../../TopCard/TopCard';
 import styles from './HomeTop.module.scss';
 import 'swiper/css';
-import topIcon from "../../../../public/icons/top.svg"
-import sample from "../../../../public/img/sample.jpg"
+import topIcon from "@/public/icons/top.svg"
+import sample from "@/public/img/sample.jpg"
 
 const top = [
   {

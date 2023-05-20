@@ -4,8 +4,8 @@ import { IContent } from '@/types/IContent';
 import { getDuration } from '@/src/functions/getDuration';
 import styles from './ContentTitle.module.scss';
 import classNames from 'classnames';
-import soundIcon from "../../../../public/icons/sound.svg"
-import subIcon from "../../../../public/icons/subtitles.svg"
+import soundIcon from "@/public/icons/sound.svg"
+import subIcon from "@/public/icons/subtitles.svg"
 
 interface ContentTitleProps {
   content: IContent;

@@ -3,7 +3,7 @@ import { AutoplayOptions, SwiperOptions } from 'swiper/types';
 import TitleBlock from './TitleBlock/TitleBlock';
 import CardsBlock from './CardsBlock/CardsBlock';
 import styles from './movieBlock.module.scss'
-import rightIcon from "../../../public/icons/to-right.svg"
+import rightIcon from "@/public/icons/to-right.svg"
 
 interface IMovieBlock<T> {
     title?: string

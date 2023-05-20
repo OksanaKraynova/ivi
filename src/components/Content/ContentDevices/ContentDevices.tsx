@@ -4,8 +4,8 @@ import { IContent } from '@/types/IContent';
 import classNames from 'classnames';
 import Button from '@/src/components/Button/Button';
 import styles from './ContentDevices.module.scss';
-import idadImg from "../../../../public/img/ipad-without-poster.png"
-import tvImg from "../../../../public/img/tv-without-poster.png"
+import idadImg from "@/public/img/ipad-without-poster.png"
+import tvImg from "@/public/img/tv-without-poster.png"
 
 interface ContentDevicesProps {
   content: IContent;

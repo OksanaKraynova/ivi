@@ -2,12 +2,12 @@ import { FC, useState } from 'react';
 import Image from 'next/image';
 import Button from '../../Button/Button';
 import styles from './FooterNavbarNav.module.scss';
-import iviIcon from "../../../../public/icons/drop.svg"
-import catalogIcon from "../../../../public/icons/folder.svg"
-import searchIcon from "../../../../public/icons/search-bold.svg"
-import tvIcon from "../../../../public/icons/devices/tv+.svg"
-import moreIcon from "../../../../public/icons/open.svg"
-import closeIcon from "../../../../public/icons/close.svg"
+import iviIcon from "@/public/icons/drop.svg"
+import catalogIcon from "@/public/icons/folder.svg"
+import searchIcon from "@/public/icons/search-bold.svg"
+import tvIcon from "@/public/icons/devices/tv+.svg"
+import moreIcon from "@/public/icons/open.svg"
+import closeIcon from "@/public/icons/close.svg"
 import classNames from 'classnames';
 
 const navList = [

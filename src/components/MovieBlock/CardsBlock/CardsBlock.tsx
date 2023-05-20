@@ -7,8 +7,8 @@ import classNames from 'classnames';
 import styles from './cardsBlock.module.scss'
 import "swiper/css/navigation";
 import 'swiper/css';
-import leftIcon from "../../../../public/icons/to-left.svg"
-import rightIcon from "../../../../public/icons/to-right.svg"
+import leftIcon from "@/public/icons/to-left.svg"
+import rightIcon from "@/public/icons/to-right.svg"
 
 interface ISlide<T> {
   spaceBetween: number;

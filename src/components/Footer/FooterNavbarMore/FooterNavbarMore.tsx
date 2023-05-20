@@ -8,16 +8,16 @@ import { FooterNavbarDropdown } from '../FooterNavbarDropdown/FooterNavbarDropdo
 import { FooterNavbarDropdownList } from '../FooterNavbarDropdownList/FooterNavbarDropdownList';
 import { IItemLink } from '@/types/IItemLink';
 import styles from './FooterNavbarMore.module.scss';
-import filmsIcon from "../../../../public/icons/camera.svg"
-import serialsIcon from "../../../../public/icons/folders.svg"
-import animationsIcon from "../../../../public/icons/locomotive.svg"
-import tvLogo from "../../../../public/icons/devices/tv+.svg"
-import aboutIcon from "../../../../public/icons/info.svg"
-import codeIcon from "../../../../public/icons/code.svg"
-import supportIcon from "../../../../public/icons/dialog.svg"
-import subLogo from "../../../../public/icons/diamond.svg"
-import sertificateLogo from "../../../../public/icons/reward.svg"
-import devicesLogo from "../../../../public/icons/devices/devices.svg"
+import filmsIcon from "@/public/icons/camera.svg"
+import serialsIcon from "@/public/icons/folders.svg"
+import animationsIcon from "@/public/icons/locomotive.svg"
+import tvLogo from "@/public/icons/devices/tv+.svg"
+import aboutIcon from "@/public/icons/info.svg"
+import codeIcon from "@/public/icons/code.svg"
+import supportIcon from "@/public/icons/dialog.svg"
+import subLogo from "@/public/icons/diamond.svg"
+import sertificateLogo from "@/public/icons/reward.svg"
+import devicesLogo from "@/public/icons/devices/devices.svg"
 import classNames from 'classnames';
 
 const buttonsFirst = [
