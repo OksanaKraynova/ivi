@@ -3,7 +3,7 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import Button from "../Button/Button";
 import styles from './Response.module.scss';
-import userIcon from "@/public/icons/user.svg"
+import userIcon from "../../../public/icons/user.svg"
 
 interface ResponseProps {
   placholder: string;
