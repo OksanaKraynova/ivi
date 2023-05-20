@@ -24,6 +24,7 @@ export const Response: FC<ResponseProps> = (props) => {
       <div className={styles.inputBox}>
 
         <input
+          type="text"
           className={styles.input}
           onChange={(event) => {
             SetComment(event.target.value);

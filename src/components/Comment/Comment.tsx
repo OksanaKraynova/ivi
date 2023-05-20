@@ -49,16 +49,15 @@ export const CommentParent: FC<CommentParentProps> = (props) => {
   const [response, setResponse] = useState<React.ReactElement | null>(null);
   const [hidden, setHidden] = useState<boolean>(false);
 
-  let userNameIcon: string;
-  props.comment.userName.length > 0 ?
-    userNameIcon = props.comment.userName[0].toLowerCase() :
-    userNameIcon = " ";
+  const userNameIcon =
+    props.comment.userName.length > 0 ?
+      props.comment.userName[0].toLowerCase() : " ";
 
-  let coloIcon: string;
-  /[a-n]/.test(userNameIcon) ? coloIcon = "red" :
-    /[o-z]/.test(userNameIcon) ? coloIcon = "orange" :
-      /[а-п]/.test(userNameIcon) ? coloIcon = "blue" :
-        /[р-яё]/.test(userNameIcon) ? coloIcon = "purple" : coloIcon = "green";
+  const coloIcon =
+    /[a-n]/.test(userNameIcon) ? "red" :
+      /[o-z]/.test(userNameIcon) ? "orange" :
+        /[а-п]/.test(userNameIcon) ? "blue" :
+          /[р-яё]/.test(userNameIcon) ? "purple" : "green";
 
   function addResponse(): void {
     setResponse(
