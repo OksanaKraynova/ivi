@@ -42,3 +42,11 @@
         left: -20px;
     }
 }
+
+@media(max-width: 599px) {
+
+    .next,
+    .prev {
+        display: none;
+    }
+}
