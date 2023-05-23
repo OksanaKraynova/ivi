@@ -1,0 +1,26 @@
+.row{
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+        &:first-child{
+            flex: 0 0 70%;
+        }
+}
+.btn{
+    &:first-child{
+        flex:  1 0 60%;
+    }
+    flex: 0 0 322px; 
+    @media(max-width: 998px){
+        flex: 1 1 320px; 
+    }
+}
+.wrapper{
+    display: flex;
+    gap: 24px;
+    @media(max-width: 768px){
+flex-wrap: wrap;
+    }
+}

@@ -4,5 +4,6 @@ export default {
     movies : 'Movies',
     new: 'What`s news',
     seriales: 'Seriales',
-    cartoons: 'Cartoons'
+    cartoons: 'Cartoons',
+    search: 'Search'
 }

@@ -1,0 +1,27 @@
+.row{
+    display: flex;
+    margin-top: 24px;
+    gap:24px;
+    @media(max-width: 1199px){
+        flex-wrap: wrap;
+    }
+}
+
+.card{
+    height: 120px;
+    text-align: center;
+    flex: 1 0 12%;
+    span{
+        display: inline-block;
+        margin-top: 10px;
+    }
+    @media(max-width: 1199px){
+        flex: 1 0 18%;
+    }
+    @media(max-width: 768px){
+        flex: 0 0 30%;
+    }
+    @media(max-width: 520px){
+        flex: 1 0 28%;
+    }
+}

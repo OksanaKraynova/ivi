@@ -31,17 +31,17 @@ export const iconData = [
 export const profiles: SubProfile[] = [
     {
         id: 1,
-        url: "text",
+        url: "",
         title: "Profile",
     },
     {
         id: 2,
-        url: "text",
+        url: "",
         title: "Profile",
     },
     {
         id: 3,
-        url: "text",
+        url: "",
         title: "Profile",
     },
 ];

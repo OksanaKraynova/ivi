@@ -1,16 +1,18 @@
-.profileContainer{
-    margin: 15px 0;
-}
-
-.avatar {
+.item{
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 48px;
-    height: 48px;
-    border-radius: 15px;
-    background: green;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    margin-top: 12px;
+    img{
+        height: 48px;
+        border-radius: 8px;
+        width: 48px;
+    }
 }
-
-
+.avatar{
+    height: 48px;
+        border-radius: 8px;
+        width: 48px;
+        background-color: lightpink;
+}

@@ -4,5 +4,6 @@ export default {
     movies : 'Фильмы',
     new: 'Что нового',
     seriales: 'Сериалы',
-    cartoons: 'Мультфильмы'
+    cartoons: 'Мультфильмы',
+    search: 'Поиск'
 }
