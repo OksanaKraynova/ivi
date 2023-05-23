@@ -1,0 +1,35 @@
+.box {
+  padding: 0 0 12px 12px;
+  background-color: #1f1b2e;
+  border-radius: 8px;
+}
+
+.button {
+  display: inline-block;
+  margin-right: 12px;
+  margin-top: 12px;
+  border: 1px solid #b1b1b1;
+  border-radius: 8px;
+}
+
+.buttonTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.text {
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  color: #FFFFFF;
+}
+
+.icon {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}

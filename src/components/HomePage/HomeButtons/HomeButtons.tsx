@@ -1,8 +1,8 @@
 import Button from '../../Button/Button';
 import Image from 'next/image';
 import styles from './HomeButtons.module.scss';
-import importantIcon from "../../../../public/icons/lightning.svg"
-import giftIcon from "../../../../public/icons/gift.svg"
+import importantIcon from "@/public/icons/lightning.svg"
+import giftIcon from "@/public/icons/gift.svg"
 
 export const HomeButtons = () => {
 

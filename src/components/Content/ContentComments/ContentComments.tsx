@@ -1,13 +1,13 @@
 import { FC } from 'react';
-import { IContent } from '@/types/IContent';
 import Link from 'next/link';
-import { Comment } from '../../Comment/Comment';
-import { IComment } from '@/types/IComment';
-import MovieBlock from '../../MovieBlock/MovieBlock';
-import styles from './ContentComments.module.scss';
-import 'swiper/css';
 import classNames from 'classnames';
 import Button from '../../Button/Button';
+import MovieBlock from '../../MovieBlock/MovieBlock';
+import { Comment } from '../../Comment/Comment';
+import { IContent } from '@/types/IContent';
+import { IComment } from '@/types/IComment';
+import styles from './ContentComments.module.scss';
+import 'swiper/css';
 
 interface ContentCommentsProps {
   content: IContent;
@@ -29,6 +29,7 @@ export const ContentComments: FC<ContentCommentsProps> = (props) => {
   }, new Array<IComment>);
 
   let commentsBlock: React.ReactElement;
+
   comments.length > 0 ?
 
     commentsBlock =

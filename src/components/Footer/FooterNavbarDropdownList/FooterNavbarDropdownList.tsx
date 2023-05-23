@@ -2,7 +2,7 @@ import { IItemLink } from '@/types/IItemLink';
 import styles from './FooterNavbarDropdownList.module.scss';
 import { FC } from 'react';
 import { List } from '../../List';
-import { A } from '../../A/A';
+import { Link } from '../../Link/Link';
 
 interface dropdownBlock {
   title?: string;
@@ -18,11 +18,9 @@ interface FooterNavbarDropdownListProps {
 
 export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (props) => {
 
-  let firstLink: React.ReactElement;
-  props.subTitle === undefined ?
-    firstLink = <></> :
-    firstLink =
-    <A
+  const firstLink = props.subTitle === undefined ?
+    <></> :
+    <Link
       text={props.subTitle.text}
       href={props.subTitle.link}
       color={'grey'}
@@ -46,7 +44,7 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
             list={props.firstColumn.list}
             renderItem={(item, index) =>
 
-              <A
+              <Link
                 key={index}
                 text={item.text}
                 href={item.link}
@@ -59,15 +57,49 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
         </div>
 
         {
-          props.secondColumn !== undefined ?
+          props.secondColumn !== undefined &&
 
-            < div className={styles.rightCol}>
+          < div className={styles.rightCol}>
+
+            <div className={styles.innerBox}>
+
+              {props.secondColumn.map((block, blockIndex) =>
+
+                <div key={blockIndex} className={styles.list}>
+
+                  <List<IItemLink>
+                    title={
+                      block.title === undefined ?
+                        undefined :
+                        <p className={styles.listTitle}>{block.title}</p>
+                    }
+                    list={block.list}
+                    renderItem={(item, index) =>
+
+                      <Link
+                        key={index}
+                        text={item.text}
+                        href={item.link}
+                        color={'grey'}
+                      />
+
+                    }
+                  />
+
+                </div>
+
+              )}
+
+            </div>
+
+            {
+              props.thirdColumn !== undefined &&
 
               <div className={styles.innerBox}>
 
-                {props.secondColumn.map((block, blockIndex) =>
+                {props.thirdColumn.map((block, index) =>
 
-                  <div key={blockIndex} className={styles.list}>
+                  <div key={index} className={styles.list}>
 
                     <List<IItemLink>
                       title={
@@ -78,7 +110,7 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
                       list={block.list}
                       renderItem={(item, index) =>
 
-                        <A
+                        <Link
                           key={index}
                           text={item.text}
                           href={item.link}
@@ -89,51 +121,12 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
                     />
 
                   </div>
-
                 )}
 
               </div>
+            }
 
-              {props.thirdColumn !== undefined ?
-
-                <div className={styles.innerBox}>
-
-                  {props.thirdColumn.map((block, index) =>
-
-                    <div key={index} className={styles.list}>
-
-                      <List<IItemLink>
-                        title={
-                          block.title === undefined ?
-                            undefined :
-                            <p className={styles.listTitle}>{block.title}</p>
-                        }
-                        list={block.list}
-                        renderItem={(item, index) =>
-
-                          <A
-                            key={index}
-                            text={item.text}
-                            href={item.link}
-                            color={'grey'}
-                          />
-
-                        }
-                      />
-
-                    </div>
-
-                  )}
-
-                </div>
-
-                : <></>
-
-              }
-
-            </div>
-
-            : <></>
+          </div>
         }
 
       </div >

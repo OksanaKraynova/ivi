@@ -1,14 +1,14 @@
 .box {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .buttons {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   gap: 12px;
   margin: 10px 0;
 }

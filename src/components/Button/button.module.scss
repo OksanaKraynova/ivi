@@ -1,7 +1,7 @@
 .link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
     color: #FFFFFF;
     transition-duration: 0.4s;
     border-radius: 8px;
@@ -61,6 +61,11 @@
     &:hover {
         background-color: rgba(255, 255, 255, .16);
     }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: auto;
+    }
 }
 
 .pink {
@@ -95,7 +100,7 @@
 }
 
 .bordered {
-    border: 1px solid rgba(255, 255, 255, .48);
+    border: 1px solid #afafaf;
 
     &:hover {
         border-color: #FFFFFF;

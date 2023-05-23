@@ -11,13 +11,12 @@ interface FooterNavbarProps {
 export const FooterNavbar: FC<FooterNavbarProps> = (props) => {
 
   const [hidden, SetHidden] = useState<boolean>(true);
-  ///onClose
   return (
 
     <>
 
       <div className={styles.box} hidden={hidden}>
-        <Modal onClose={() => console.log("123")}>
+        <Modal>
           <FooterNavbarMore />
         </Modal>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './headerNav.module.scss';
-import { A } from '../../A/A';
+import { Link } from '../../Link/Link';
 import DropdownField from '../DropdownField/DropdownField';
 import { genres, years, countries, dopFilter } from './../../../data/genresMovieLink'
 import { genresS, yearsS, countriesS, dopFilterS } from './../../../data/genresSerialList'
@@ -14,7 +14,7 @@ const HeaderNav = () => {
     const { locale } = router
     const t = locale === 'ru' ? ru : en
     return (
-        <div className={styles.nav}>
+        <div className={styles.nav}>     
             <A text={t.myIvi} href='/' color='grey' fontWeight={500} />
             <A text={t.new} href='/' color='grey' fontWeight={500} />
             <DropdownField text={t.movies} genres={genres} countries={countries} years={years} dopFilter={dopFilter} />

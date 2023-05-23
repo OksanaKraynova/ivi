@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Button from '../../Button/Button';
 import styles from './FooterSub.module.scss';
-import noAds from "../../../../public/icons/no-sound.svg"
+import noAds from "@/public/icons/no-sound.svg"
 
 interface FooterSubProps {
   textClass: string;

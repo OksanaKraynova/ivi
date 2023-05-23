@@ -1,0 +1,32 @@
+.box {
+  position: relative;
+  border: 1px solid #afafaf;
+  border-radius: 8px;
+}
+
+.input {
+  cursor: pointer;
+}
+
+.list {
+  position: absolute;
+  top: calc(100% - 6px);
+  left: -1px;
+  z-index: 1;
+  height: 150px;
+  width: calc(100% + 2px);
+  overflow: auto;
+  padding: 6px;
+  background-color: #1f1b2e;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #afafaf;
+  border-top: none;
+}
+
+.option {
+  border: 1px solid #1f1b2e;
+  padding: 6px;
+  border-radius: 6px;
+  margin: 8px 6px;
+  cursor: pointer;
+}

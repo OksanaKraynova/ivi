@@ -5,10 +5,10 @@ import classNames from "classnames";
 import { IContent } from "@/types/IContent";
 import { ContentExtraHeder } from "./ContentExtraHeder/ContentExtraHeder";
 import { ContentExtraPerson } from "./ContentExtraPerson/ContentExtraPerson";
-import { ContentExtraComments, ContentExtraCommentsParent } from "./ContentExtraComments/ContentExtraComments";
+import { ContentExtraComments } from "./ContentExtraComments/ContentExtraComments";
 import Card from "../Card/Card";
 import styles from './ContentExtra.module.scss';
-import leftIcon from "../../../public/icons/to-left.svg"
+import leftIcon from "@/public/icons/to-left.svg"
 
 interface ContentExtraProps {
   content: IContent;
@@ -22,7 +22,7 @@ export const ContentExtra: FC<ContentExtraProps> = (props) => {
     content = <ContentExtraPerson content={props.content} /> :
     props.extra === "Отзывы" ?
       content = <ContentExtraComments content={props.content} /> :
-      content = <ContentExtraCommentsParent content={props.content} />;
+      content = <ContentExtraComments content={props.content} />;
 
   if (props.content === null) {
     return (

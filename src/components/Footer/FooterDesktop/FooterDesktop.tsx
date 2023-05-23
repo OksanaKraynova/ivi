@@ -1,5 +1,5 @@
 import { IItemLink } from '@/types/IItemLink';
-import { AGradient } from '../../AGradient/AGradient';
+import { Link } from '../../Link/Link';
 import { FooterDesktopNav } from '../FooterDesktopNav/FooterDesktopNav';
 import { FooterSupport } from '../FooterSupport/FooterSupport';
 import { FooterSub } from '../FooterSub/FooterSub';
@@ -39,9 +39,10 @@ export const FooterDesktop = () => {
         <FooterDesktopNav list={aboutList} title='О нас' titleClass={styles.title} />
 
         <FooterDesktopNav list={sectionsList} title='Разделы' titleClass={styles.title}>
-          <AGradient
+          <Link
             text="Активация сертификата"
             href="https://www.ivi.ru/cert"
+            color="pinkGradient"
           />
         </FooterDesktopNav>
 
