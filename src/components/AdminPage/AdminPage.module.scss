@@ -1,0 +1,26 @@
+.container {
+  padding: 36px 0;
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.breadCrumbs {
+  display: flex;
+}
+
+.link {
+  padding: 0 16px;
+  font-weight: 500;
+  border-left: 2px solid #b4b4b4;
+
+  &:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  &:hover {
+    color: #b4b4b4;
+  }
+}

@@ -35,13 +35,10 @@ export default function MovieBlock<T>(
     return (
         <div className={blockClass}>
 
-            <>
-                {
-                    title === undefined ?
-                        <></> :
-                        <TitleBlock title={title} img={rightIcon} />
-                }
-            </>
+            {
+                title !== undefined &&
+                <TitleBlock title={title} img={rightIcon} />
+            }
 
             <CardsBlock
                 slidesPerView={slidesPerView}

@@ -17,5 +17,3 @@ export interface IContent {
   comments: number[],
   rating: number
 }
-
-

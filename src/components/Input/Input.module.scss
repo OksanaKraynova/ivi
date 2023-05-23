@@ -1,0 +1,63 @@
+.box {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 24px 12px 8px;
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  color: #FFFFFF;
+  background-color: #1f1b2e;
+  border-radius: 8px;
+
+  &:read-only {
+    color: #b1b1b1;
+  }
+
+  &:not(:focus) {
+    cursor: pointer;
+  }
+}
+
+.button {
+  position: absolute;
+  right: 12px;
+  top: calc(50% - 10px);
+  padding: 4px;
+  background-color: #100e19;
+  border-radius: 50%;
+  border: 1px solid #b1b1b1;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1f1b2e;
+  }
+}
+
+.placholder {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 12px;
+  color: #a5a1b2;
+  pointer-events: none;
+}
+
+.error {
+  position: absolute;
+  bottom: -24px;
+  color: #ff542e;
+  pointer-events: none;
+}
+
+.overText {
+  top: 8px;
+  left: 12px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.orange {
+  color: #ff542e;
+}

@@ -12,12 +12,10 @@ interface ContentCreatorsProps {
 }
 
 export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
-  let director = props.actors.find(actor => actor.id === props.content.director);
-  let directorLink: React.ReactElement;
-
-  director === undefined ?
-    directorLink = <></> :
-    directorLink = <LinkAvatar
+  const director = props.actors.find(actor => actor.id === props.content.director);
+  const directorLink = director === undefined ?
+    <></> :
+    <LinkAvatar
       textUnderImg={[director.firstName, director.secondName]}
       href=""
       img={director.img}

@@ -1,52 +1,16 @@
 import React, { FC } from "react";
 import classNames from 'classnames';
-import { Comment, CommentParent } from '../../Comment/Comment';
-import { IComment } from "@/types/IComment";
+import { Comment } from '../../Comment/Comment';
 import styles from './ContentExtraCommentsTree.module.scss';
-import { ICommentParents } from "@/types/ICommentParents";
+import { IComment } from "@/types/IComment";
 
 interface ContentExtraCommentsTreeProps {
   comment: IComment;
   childes: React.ReactElement[];
-}
-
-export const ContentExtraCommentsTree: FC<ContentExtraCommentsTreeProps> = (props) => {
-
-  let userNameIcon: string;
-  props.comment.userName.length > 0 ?
-    userNameIcon = props.comment.userName[0].toLowerCase() :
-    userNameIcon = " ";
-
-  let coloIcon: string;
-  /[a-n]/.test(userNameIcon) ? coloIcon = "red" :
-    /[o-z]/.test(userNameIcon) ? coloIcon = "orange" :
-      /[а-п]/.test(userNameIcon) ? coloIcon = "blue" :
-        /[р-яё]/.test(userNameIcon) ? coloIcon = "purple" : coloIcon = "green";
-
-  return (
-
-    <div className={styles.treeComments}>
-
-      <div className={styles.comment}>
-        <div className={classNames(styles.icon, styles[coloIcon])}>{userNameIcon}</div>
-        <Comment comment={props.comment} type="fullLength" />
-      </div>
-
-      {props.childes.map(childe => childe)}
-
-    </div>
-  );
-}
-
-
-
-interface ContentExtraCommentsTreeParentProps {
-  comment: ICommentParents;
-  childes: React.ReactElement[];
   nestingLevel: number;
 }
 
-export const ContentExtraCommentsTreeParent: FC<ContentExtraCommentsTreeParentProps> = (props) => {
+export const ContentExtraCommentsTree: FC<ContentExtraCommentsTreeProps> = (props) => {
 
   if (props.nestingLevel % 4 === 0 && props.nestingLevel !== 0)
 
@@ -54,19 +18,14 @@ export const ContentExtraCommentsTreeParent: FC<ContentExtraCommentsTreeParentPr
 
       <div className={styles.treeComments}>
 
-        <CommentParent comment={props.comment} type="fullLength" />
+        <Comment comment={props.comment} type="fullLength" />
 
-        <>
-          {
-            props.childes.length > 0 ?
-              (
-                <div className={classNames(styles.childeComments, styles.bordered)}>
-                  {props.childes.map(childe => childe)}
-                </div>
-              ) :
-              <></>
-          }
-        </>
+        {
+          props.childes.length > 0 &&
+          <div className={classNames(styles.childeComments, styles.bordered)}>
+            {props.childes.map(childe => childe)}
+          </div>
+        }
 
       </div>
 
@@ -78,19 +37,14 @@ export const ContentExtraCommentsTreeParent: FC<ContentExtraCommentsTreeParentPr
 
       <div className={styles.treeComments}>
 
-        <CommentParent comment={props.comment} type="fullLength" />
+        <Comment comment={props.comment} type="fullLength" />
 
-        <>
-          {
-            props.childes.length > 0 ?
-              (
-                <div className={styles.childeComments}>
-                  {props.childes.map(childe => childe)}
-                </div>
-              ) :
-              <></>
-          }
-        </>
+        {
+          props.childes.length > 0 &&
+          <div className={styles.childeComments}>
+            {props.childes.map(childe => childe)}
+          </div>
+        }
 
       </div>
     );

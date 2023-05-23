@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CommentParent } from './Comment';
+import { Comment } from './Comment';
 
-const meta: Meta<typeof CommentParent> = {
+const meta: Meta<typeof Comment> = {
   title: 'Comment',
-  component: CommentParent,
+  component: Comment,
   tags: ['autodocs'],
   argTypes: {
     comment: {
@@ -22,7 +22,7 @@ const meta: Meta<typeof CommentParent> = {
 
 export default meta;
 
-type Story = StoryObj<typeof CommentParent>;
+type Story = StoryObj<typeof Comment>;
 
 export const Example: Story = {
   args: {

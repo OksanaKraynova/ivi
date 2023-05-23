@@ -11,10 +11,9 @@ interface BreadCrumbsProps {
 }
 
 export const BreadCrumbs: FC<BreadCrumbsProps> = (props) => {
-  let page: React.ReactElement;
-  props.page === undefined ?
-    page = <></> :
-    page = <p className={classNames(styles.text, styles.dot)}>{props.page}</p>
+  const page = props.page === undefined ?
+    <></> :
+    <p className={classNames(styles.text, styles.dot)}>{props.page}</p>
 
   return (
     <div className={styles.box}>

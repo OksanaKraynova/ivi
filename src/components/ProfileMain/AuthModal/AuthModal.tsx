@@ -70,10 +70,10 @@ const AuthModal = ({ handleCloseModal }: Props) => {
                         </div>
                         <div>
                             Я принемаю условия
-                            <Link href="" className={styles.anchor}>
+                            <a href="" className={styles.anchor}>
                                 клиентского соглашения
                             </a>
-                            <Link href="" className={styles.anchor}>
+                            <a href="" className={styles.anchor}>
                                 политики конфидециальности
                             </a>
                         </div>

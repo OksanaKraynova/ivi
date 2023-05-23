@@ -10,12 +10,9 @@ interface ContentExtraPersonProps {
 
 export const ContentExtraPerson: FC<ContentExtraPersonProps> = (props) => {
 
-  let director = actorsData.actors.find(actor => actor.id === props.content.director);
-  let directorLink: React.ReactElement;
-
-  director === undefined ?
-    directorLink = <></> :
-    directorLink =
+  const director = actorsData.actors.find(actor => actor.id === props.content.director);
+  const directorLink = director === undefined ?
+    <></> :
     <div className={styles.creator}>
       <LinkAvatar
         textUnderImg={[director.firstName, director.secondName]}

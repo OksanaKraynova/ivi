@@ -5,12 +5,15 @@ interface ListProps<T> {
 }
 
 export function List<T>(props: ListProps<T>) {
+
   return (
+
     <>
 
       {props.title}
       {props.list.map((item, index) => props.renderItem(item, index))}
 
     </>
+
   );
 }

@@ -15,7 +15,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   };
 }
 
-const Person = (params: { content: IContent }) => {
+const Trailers = (params: { content: IContent }) => {
 
   return (
 
@@ -28,4 +28,4 @@ const Person = (params: { content: IContent }) => {
   );
 }
 
-export default Person;
+export default Trailers;

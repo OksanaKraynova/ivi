@@ -6,7 +6,7 @@ const meta: Meta<typeof Response> = {
     component: Response,
     tags: ['autodocs'],
     argTypes: {
-        placholder: {
+        placeholder: {
             type: 'string',
             description: 'Подпись в поле для ввода ответа',
         },
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Response>;
 
 export const Example: Story = {
     args: {
-        placholder: "Написать отзыв",
+        placeholder: "Написать ответ",
         buttonColor: "lightGrey"
     },
 };

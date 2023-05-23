@@ -3,5 +3,5 @@ export interface IComment {
   userName: string,
   date: string,
   comment: string,
-  comments: number[]
+  parentComment: number | null
 }

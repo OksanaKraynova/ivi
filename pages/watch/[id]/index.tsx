@@ -3,7 +3,7 @@ import { IContent } from "@/types/IContent";
 import contentData from "../../../src/json/content.json"
 import Header from "@/src/components/Header/Header";
 import { Footer } from "@/src/components/Footer/Footer";
-import { Content } from "@/src/components/Content/Content";
+import { Content as ContentBlock } from "@/src/components/Content/Content";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const id = context.params?.id;
@@ -15,15 +15,15 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   };
 }
 
-const content = (params: { content: IContent }) => {
+const Content = (params: { content: IContent }) => {
 
   return (
     <>
       <Header />
-      <Content content={params.content} />
+      <ContentBlock content={params.content} />
       <Footer />
     </>
   );
 }
 
-export default content;
+export default Content;

@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { CommentParent } from './Comment';
-import { ICommentParents } from '@/types/ICommentParents';
+import { Comment } from './Comment';
+import { IComment } from '@/types/IComment';
 
-const comment: ICommentParents = {
+const comment: IComment = {
   id: 123,
   userName: "userName",
   date: "20.05.2023",
@@ -21,7 +21,7 @@ describe("Комментарий с ответом", () => {
   test("Раскрытие и скрытие ответа", () => {
 
     render(
-      <CommentParent
+      <Comment
         comment={comment}
         type="fullLength"
       />);
@@ -40,8 +40,7 @@ describe("Комментарий с ответом", () => {
 
     expect(screen.queryByAltText("отмена")).toBeInTheDocument();
     expect(screen.queryByAltText("ответ")).toBeNull();
-    expect(screen.queryByText(`${error} 0`)).toBeInTheDocument();
-    expect(screen.queryByText(`${error} 0`)).not.toBeVisible();
+    expect(screen.queryByText(`${error} 0`)).toBeNull();
 
     const input = screen.getByRole("textbox");
     fireEvent.change(input, { target: { value: smallResponse } });
@@ -53,7 +52,7 @@ describe("Комментарий с ответом", () => {
 
     expect(input).toHaveValue(bigResponse);
     expect(screen.getByDisplayValue(bigResponse)).toBeVisible();
-    expect(screen.queryByText(`${error} ${bigResponse.length}`)).not.toBeVisible();
+    expect(screen.queryByText(`${error} 9`)).toBeNull();
 
     fireEvent.click(button);
 
