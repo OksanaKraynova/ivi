@@ -8,10 +8,10 @@ import { Link } from '../../Link/Link';
 
 interface IField {
     text: string
-    genres: { url: string; title: string; }[],
-    countries: { url: string; title: string; }[]
-    years: { url: string; title: string; }[]
-    dopFilter: { url: string; title: string; }[]
+    genres: { url: string; title: string; img?:string }[],
+    countries: { url: string; title: string; img?:string }[]
+    years: { url: string; title: string;img?:string  }[]
+    dopFilter: { url: string; title: string; img?:string }[]
 }
 const DropdownField = ({ text, genres, countries, years, dopFilter }: IField) => {
     return (

@@ -1,0 +1,15 @@
+.user{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    span{
+        color: #ffffff7a;
+    }
+}
+
+.username {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 700;
+    font-style: normal;
+}

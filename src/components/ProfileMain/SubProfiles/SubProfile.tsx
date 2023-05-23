@@ -9,9 +9,13 @@ interface Props {
 
 const SubProfile = ({ profile }: Props) => {
     return (
-        <div className={styles.profileContainer}>
-            <div className={styles.avatar}>{profile.url}</div>
-            <div>{profile.title}</div>
+        <div className={styles.item}>
+            {profile.url ?
+                <img alt={profile.title} src={profile.url} />
+                :
+                <div className={styles.avatar} ></div>
+            }
+            <span>{profile.title}</span>
         </div>
     );
 };
