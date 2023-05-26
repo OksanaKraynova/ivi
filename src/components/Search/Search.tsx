@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { Input } from '../Input/Input';
 import { List } from '../List';
 import styles from './Search.module.scss';
@@ -9,11 +9,14 @@ interface SearchProps<T> {
   placeholder: string;
   required?: boolean;
   addItem?: (item: T) => void;
+  renderItem: (item: T) => string;
+  compareItem: (item: T, value: string) => boolean;
 }
 
 export default function Search<T>(props: SearchProps<T>) {
 
   const [visibile, setVisibile] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("");
 
   return (
 
@@ -22,29 +25,28 @@ export default function Search<T>(props: SearchProps<T>) {
       <div className={styles.input} onClick={() => setVisibile(!visibile)}>
         <Input
           placeholder={props.placeholder}
-          disabled={true}
           required={props.required ?? false}
-          readOnly={true}
           buttonIcon={searchIcon.src}
+          onChange={(event) => setValue(event.target.value)}
         />
       </div>
 
-      <div
-        className={styles.list}
-        hidden={!visibile}
-      >
-        <List<T>
-          list={props.options}
-          renderItem={(item, index) =>
-            <p
-              key={index}
-              className={styles.option}
-              onClick={() => props.addItem && props.addItem(item)}
-            >
-              {index}
-            </p>
-          }
-        />
+      <div className={styles.list} hidden={!visibile}>
+
+        {value.length >= 3 &&
+          <List<T>
+            list={props.options.filter(item => props.compareItem(item, value))}
+            renderItem={(item, index) =>
+              <p
+                key={index}
+                className={styles.option}
+                onClick={() => props.addItem && props.addItem(item)}
+              >
+                {props.renderItem(item)}
+              </p>
+            }
+          />
+        }
 
       </div>
 

@@ -9,10 +9,11 @@ import Search from '../../Search/Search';
 import { IContent } from '@/types/IContent';
 import { DataBlock } from '../../DataBlock/DataBlock';
 import { IActor } from '@/types/IActor';
-import styles from './AdminPageFilms.module.scss';
-import downIcon from "@/public/icons/down.svg"
 import Button from '../../Button/Button';
 import { TextArea } from '../../TextArea/TextArea';
+import styles from './AdminPageFilms.module.scss';
+import downIcon from "@/public/icons/down.svg"
+import actorsData from "../../../json/actors.json";
 
 const allGenres: IGenre[] = [
   { id: 1, name: "Ужас", englishName: "Horror" },
@@ -25,15 +26,6 @@ const allGenres: IGenre[] = [
 
 const allCountries: string[] = [
   "Россия", "СССР", "Южная Корея", "Северная Корея", "Уругвай", "Индия", "Китай"
-];
-
-const allActors: IActor[] = [
-  { id: 1, firstName: "Один", secondName: "Первый", img: "" },
-  { id: 2, firstName: "Два", secondName: "Второй", img: "" },
-  { id: 3, firstName: "Три", secondName: "Третий", img: "" },
-  { id: 4, firstName: "Четыре", secondName: "Четвертый", img: "" },
-  { id: 5, firstName: "Пять", secondName: "Пятый", img: "" },
-  { id: 6, firstName: "Шесть", secondName: "Шестой", img: "" }
 ];
 
 interface AdminPageFilmsProps {
@@ -69,7 +61,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
   const [upadateFilm, setUpdateFilm] = useState<IGenre | null>(null);
   const [newFilm, setNewFilm] = useState<IContent>(defaultFilm);
   const [genres, setGenres] = useState<IGenre[]>([]);
-  const [actors, setActors] = useState<IActor[]>([allActors[0]]);
+  const [actors, setActors] = useState<IActor[]>([]);
   const [directors, setDirectors] = useState<IActor[]>([]);
 
   return (
@@ -187,7 +179,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
           />
 
           <Input
-            placeholder="Возрастное ограничение"
+            placeholder="Возрастной рейтинг"
             onChange={(event) => setNewFilm({ ...newFilm, ageLimit: +event.target.value })}
             type="number"
           />
@@ -208,12 +200,10 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Актеры'
-            options={allActors}
-            addItem={(actor) => {
-              setActors(actors.includes(actor) ? actors : [...actors, actor])
-              console.log(actors)
-            }
-            }
+            options={actorsData.actors}
+            addItem={actor => setActors(actors.includes(actor) ? actors : [...actors, actor])}
+            renderItem={actor => `${actor.firstName} ${actor.secondName}`}
+            compareItem={(actor, value) => actor.firstName.includes(value) || actor.secondName.includes(value)}
           />
 
           {actors.length > 0 &&
@@ -228,8 +218,10 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Режиссеры'
-            options={allActors}
+            options={actorsData.actors}
             addItem={director => setDirectors(directors.includes(director) ? directors : [...directors, director])}
+            renderItem={director => `${director.firstName} ${director.secondName}`}
+            compareItem={(director, value) => director.firstName.includes(value) || director.secondName.includes(value)}
           />
 
           {directors.length > 0 &&
@@ -244,8 +236,10 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Похожие'
-            options={allActors}
+            options={actorsData.actors}
             addItem={director => setDirectors(directors.includes(director) ? directors : [...directors, director])}
+            renderItem={director => `${director.firstName} ${director.secondName}`}
+            compareItem={(director, value) => director.firstName.includes(value) || director.secondName.includes(value)}
           />
 
           {directors.length > 0 &&
