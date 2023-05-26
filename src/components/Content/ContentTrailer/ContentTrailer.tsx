@@ -19,7 +19,10 @@ export const ContentTrailer: FC<ContentTrailerProps> = (props) => {
 
       <div className={styles.box}>
 
-        <img className={styles.video} src={props.img} alt="video" />
+        <video className={styles.video} controls={true} >
+          <source src="https://widgets.kinopoisk.ru/discovery/film/4412061/trailer/187431" />
+        </video>
+
         <div className={styles.size}>
           <Image className={styles.icon} src={fullSizeIcon} alt='full size' />
           <p className={styles.text}>Развернуть трейлер</p>

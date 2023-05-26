@@ -11,6 +11,11 @@
   color: #FFFFFF;
   background-color: #1f1b2e;
   border-radius: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 
   &:read-only {
     color: #b1b1b1;
@@ -19,6 +24,10 @@
   &:not(:focus) {
     cursor: pointer;
   }
+}
+
+.inputButton {
+  padding-right: 24px;
 }
 
 .button {

@@ -1,9 +1,15 @@
+.container {
+  width: 100%;
+}
+
 .box {
+  margin: auto;
+  margin-top: 24px;
   max-width: 600px;
 }
 
 .link {
-  margin: 24px 0 12px;
+  margin: 48px 0;
   display: flex;
   gap: 6px;
   align-items: center;
@@ -32,10 +38,14 @@
 .inputBox {
   align-items: flex-start;
   width: 100%;
-  margin-top: 12px;
+  margin-top: 24px;
   display: grid;
   grid-template-columns: calc(50% - 6px) calc(50% - 6px);
   gap: 12px;
+}
+
+.oneEl {
+  grid-template-columns: 100%;
 }
 
 .fourEl {

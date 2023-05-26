@@ -25,6 +25,14 @@
   border-radius: 0 0 8px 8px;
   border: 1px solid #afafaf;
   border-top: none;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-left: 3px solid #afafaf;
+  }
 }
 
 .option {

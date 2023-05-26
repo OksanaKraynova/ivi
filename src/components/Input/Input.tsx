@@ -35,7 +35,7 @@ export const Input: FC<InputProps> = (props) => {
     <div className={styles.box}>
 
       <input
-        className={styles.input}
+        className={props.buttonIcon === undefined ? styles.input : classNames(styles.input, styles.inputButton)}
         type={props.type ?? "text"}
         value={props.value}
         disabled={props.disabled ?? false}

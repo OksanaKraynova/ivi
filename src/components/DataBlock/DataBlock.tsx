@@ -6,6 +6,7 @@ import closeIcon from "../../../public/icons/close.svg"
 
 interface DataBlockProps {
   items: string[];
+  placeholder?: string;
   deliteItem?: (index: number) => void;
 }
 
@@ -35,6 +36,10 @@ export const DataBlock: FC<DataBlockProps> = (props) => {
         </div>
 
       )}
+
+      <div className={styles.placholder}>
+        {props.placeholder}
+      </div>
 
     </div>
 

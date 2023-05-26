@@ -12,6 +12,7 @@ import { IActor } from '@/types/IActor';
 import styles from './AdminPageFilms.module.scss';
 import downIcon from "@/public/icons/down.svg"
 import Button from '../../Button/Button';
+import { TextArea } from '../../TextArea/TextArea';
 
 const allGenres: IGenre[] = [
   { id: 1, name: "Ужас", englishName: "Horror" },
@@ -20,6 +21,10 @@ const allGenres: IGenre[] = [
   { id: 4, name: "Триллер", englishName: "Thriller" },
   { id: 5, name: "Романтика", englishName: "Romance" },
   { id: 6, name: "Дорама", englishName: "Dorama" }
+];
+
+const allCountries: string[] = [
+  "Россия", "СССР", "Южная Корея", "Северная Корея", "Уругвай", "Индия", "Китай"
 ];
 
 const allActors: IActor[] = [
@@ -69,7 +74,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
   return (
 
-    <div className={styles.box} hidden={props.hidden}>
+    <div className={styles.container} hidden={props.hidden}>
 
       <div
         className={styles.link}
@@ -86,7 +91,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       </div>
 
       <div
-        className={styles.dropdownBox}
+        className={styles.box}
         hidden={hidden.update}
       >
 
@@ -128,7 +133,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       </div>
 
       <div
-        className={styles.dropdownBox}
+        className={styles.box}
         hidden={hidden.create}
       >
 
@@ -152,8 +157,8 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
           />
 
           <Input
-            placeholder="Страна"
-            onChange={(event) => setNewFilm({ ...newFilm, country: event.target.value })}
+            placeholder="Слоган"
+            onChange={(event) => setNewFilm({ ...newFilm, tagline: event.target.value })}
           />
         </div>
 
@@ -162,13 +167,15 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
             placeholder='Жанр'
             options={allGenres.map(item => item.name)}
             type='multiple'
-            addCheck={(index => setGenres([...genres, allGenres[index]]))}
-            deliteCheck={(index => setGenres(genres.filter(item => item !== allGenres[index])))}
+            addCheck={index => setGenres([...genres, allGenres[index]])}
+            deliteCheck={index => setGenres(genres.filter(item => item !== allGenres[index]))}
           />
 
-          <Input
-            placeholder="Слоган"
-            onChange={(event) => setNewFilm({ ...newFilm, tagline: event.target.value })}
+          <Select
+            placeholder="Страна"
+            options={allCountries}
+            type='one'
+            addCheck={index => setNewFilm({ ...newFilm, country: allCountries[index] })}
           />
         </div>
 
@@ -208,49 +215,67 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
             }
             }
           />
-          <DataBlock
-            items={actors.map(actor => `${actor.firstName} ${actor.secondName}`)}
-            deliteItem={(index) => setActors(actors.filter((actor, currentIndex) => currentIndex !== index))}
-          />
+
+          {actors.length > 0 &&
+            <DataBlock
+              items={actors.map(actor => `${actor.firstName} ${actor.secondName}`)}
+              placeholder='Актеры'
+              deliteItem={index => setActors(actors.filter((actor, currentIndex) => currentIndex !== index))}
+            />
+          }
         </div>
 
         <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Режиссеры'
             options={allActors}
-            addItem={(director) => setDirectors(directors.includes(director) ? directors : [...directors, director])}
+            addItem={director => setDirectors(directors.includes(director) ? directors : [...directors, director])}
           />
-          <DataBlock
-            items={directors.map(director => `${director.firstName} ${director.secondName}`)}
-            deliteItem={(index) => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
-          />
+
+          {directors.length > 0 &&
+            <DataBlock
+              items={directors.map(director => `${director.firstName} ${director.secondName}`)}
+              placeholder='Режиссеры'
+              deliteItem={index => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
+            />
+          }
         </div>
 
         <div className={styles.inputBox}>
-          Похожие
+          <Search<IActor>
+            placeholder='Похожие'
+            options={allActors}
+            addItem={director => setDirectors(directors.includes(director) ? directors : [...directors, director])}
+          />
+
+          {directors.length > 0 &&
+            <DataBlock
+              items={directors.map(director => `${director.firstName} ${director.secondName}`)}
+              placeholder='Похожие'
+              deliteItem={index => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
+            />
+          }
         </div>
 
-        <div className={styles.inputBox}>
-          Тип
+        <div className={classNames(styles.inputBox, styles.oneEl)}>
+          <TextArea
+            placeholder="Описание"
+            onChange={(event) => setNewFilm({ ...newFilm, description: event.target.value })}
+          />
         </div>
 
         <div className={styles.inputBox}>
           Файлы
         </div>
-
-
-
-
-        <Input
-          placeholder="Описание"
-          onChange={(event) => setNewFilm({ ...newFilm, description: event.target.value })}
-        />
+        <div className={styles.button}>
+          <Button variant="long" effect="bordered" color="darkBlue">Создать</Button>
+        </div>
 
       </div>
 
-      <div className={styles.button}>
-        <Button variant="long" effect="bordered" color="darkBlue">Создать</Button>
-      </div>
+      {Object.values(newFilm).map(item =>
+        <p>{item}</p>
+      )}
 
     </div>
 

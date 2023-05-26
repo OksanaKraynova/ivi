@@ -14,9 +14,9 @@ const HeaderNav = () => {
     const { locale } = router
     const t = locale === 'ru' ? ru : en
     return (
-        <div className={styles.nav}>     
-            <A text={t.myIvi} href='/' color='grey' fontWeight={500} />
-            <A text={t.new} href='/' color='grey' fontWeight={500} />
+        <div className={styles.nav}>
+            <Link text={t.myIvi} href='/' color='grey' fontWeight={500} />
+            <Link text={t.new} href='/' color='grey' fontWeight={500} />
             <DropdownField text={t.movies} genres={genres} countries={countries} years={years} dopFilter={dopFilter} />
             <DropdownField text={t.seriales} genres={genresS} countries={countriesS} years={yearsS} dopFilter={dopFilterS} />
             <DropdownField text={t.cartoons} genres={genresCartoon} countries={countriesCartoon} years={yearsCartoon} dopFilter={dopFilterCartoon} />
