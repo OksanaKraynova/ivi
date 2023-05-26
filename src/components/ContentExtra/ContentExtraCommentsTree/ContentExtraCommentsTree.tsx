@@ -12,7 +12,7 @@ export const ContentExtraCommentsTree: FC<ContentExtraCommentsTreeProps> = (prop
 
   return (
 
-    <div className={styles.treeComments} id={props.comment.id.toString()}>
+    <div className={styles.treeComments}>
 
       <Comment comment={props.comment} type="full" />
 
