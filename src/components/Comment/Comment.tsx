@@ -11,7 +11,7 @@ import messegeOffIcon from "../../../public/icons/message-off.svg"
 
 interface CommentProps {
   comment: IComment;
-  type: "fullLength" | "less";
+  type: "full" | "preview";
 }
 
 export const Comment: FC<CommentProps> = (props) => {
@@ -39,10 +39,10 @@ export const Comment: FC<CommentProps> = (props) => {
 
     <>
 
-      <div className={classNames(styles.box, styles[`${props.type}Box`])}>
+      <div className={classNames(styles.box, styles[props.type])}>
 
         {
-          props.type === "fullLength" &&
+          props.type === "full" &&
           <>
             <div className={classNames(styles.avatar, styles[coloIcon])}>{userNameIcon}</div>
             <Image

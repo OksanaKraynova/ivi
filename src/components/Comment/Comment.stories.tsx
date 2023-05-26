@@ -12,7 +12,7 @@ const meta: Meta<typeof Comment> = {
     type: {
       type: 'string',
       description: 'Тип',
-      options: ["fullLength", "less"],
+      options: ["full", "preview"],
       control: {
         type: 'select'
       }
@@ -33,6 +33,6 @@ export const Example: Story = {
       comment: "Комментарий",
       parentComment: null
     },
-    type: "fullLength"
+    type: "full"
   },
 };

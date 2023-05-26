@@ -45,15 +45,13 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
           {
             addCommentTree(
               comment,
-              0,
               [],
               commentsDataParent.comments,
-              (comment, nestingLevel, childes) =>
+              (comment, childes) =>
                 <ContentExtraCommentsTree
                   key={comment.id}
                   comment={comment}
                   childes={childes}
-                  nestingLevel={nestingLevel}
                 />
             )
           }
