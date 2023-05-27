@@ -1,7 +1,7 @@
 import { IContent } from "@/types/IContent";
 import styles from './ContentExtraPerson.module.scss';
 import { FC } from "react";
-import { AImage } from "../../AImage/AImage";
+import { LinkAvatar } from "../../LinkAvatar/LinkAvatar";
 import actorsData from "../../../json/actors.json"
 
 interface ContentExtraPersonProps {
@@ -10,14 +10,11 @@ interface ContentExtraPersonProps {
 
 export const ContentExtraPerson: FC<ContentExtraPersonProps> = (props) => {
 
-  let director = actorsData.actors.find(actor => actor.id === props.content.director);
-  let directorLink: React.ReactElement;
-
-  director === undefined ?
-    directorLink = <></> :
-    directorLink =
+  const director = actorsData.actors.find(actor => actor.id === props.content.director);
+  const directorLink = director === undefined ?
+    <></> :
     <div className={styles.creator}>
-      <AImage
+      <LinkAvatar
         textUnderImg={[director.firstName, director.secondName]}
         href=""
         img={director.img}
@@ -44,7 +41,7 @@ export const ContentExtraPerson: FC<ContentExtraPersonProps> = (props) => {
           if (actor !== undefined)
             return (
               <div className={styles.creator}>
-                <AImage
+                <LinkAvatar
                   textUnderImg={[actor.firstName, actor.secondName]}
                   href=""
                   img={actor.img}

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IItemLink } from '@/types/IItemLink';
-import { A } from './A/A';
+import { Link } from './Link/Link';
 
 interface ItemLinkProps {
   item: IItemLink;
@@ -11,7 +11,7 @@ interface ItemLinkProps {
 
 export const ItemLink: FC<ItemLinkProps> = (props) => {
   return (
-    <A
+    <Link
       text={props.item.text}
       href={props.item.link}
       color={props.color}

@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Button from '../../Button/Button';
 import styles from './FooterDesktopButtonsDevice.module.scss'
-import appStoreLogo from "../../../../public/icons/devices/apple.svg"
-import googlePlayLogo from "../../../../public/icons/devices/google.svg"
-import tvLogo from "../../../../public/icons/devices/tv+.svg"
-import devicesLogo from "../../../../public/icons/devices/devices.svg"
+import appStoreLogo from "@/public/icons/devices/apple.svg"
+import googlePlayLogo from "@/public/icons/devices/google.svg"
+import tvLogo from "@/public/icons/devices/tv+.svg"
+import devicesLogo from "@/public/icons/devices/devices.svg"
 
 const buttons = [
   { logo: appStoreLogo, text: "Загрузить в", device: "App Store" },

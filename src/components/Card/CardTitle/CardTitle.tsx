@@ -1,11 +1,11 @@
 import React from 'react';
-import { A } from '../../A/A';
+import { Link } from '../../Link/Link';
 import styles from './cardTitle.module.scss'
 
 const CardTitle = () => {
     return (
         <div className={styles.title}>
-            <A text='Губка боб'
+            <Link text='Губка боб'
                 href='/'
                 color='white'
                 fontWeight={500}

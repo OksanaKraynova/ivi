@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
 import styles from './FooterNavbarDropdown.module.scss';
-import downIcon from "../../../../public/icons/down.svg"
+import downIcon from "@/public/icons/down.svg"
 
 interface FooterNavbarDropdownProps<T> {
   buttonTitle: string;

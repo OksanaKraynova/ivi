@@ -1,0 +1,41 @@
+.box {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0 30px;
+}
+
+.inputBox {
+  flex-grow: 1;
+}
+
+.button {
+  display: block;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #127432;
+}
+
+@media (max-width: 499px) {
+
+  .box {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .button {
+    order: 2;
+  }
+
+  .icon {
+    order: 1;
+  }
+
+  .inputBox {
+    order: 3;
+  }
+}

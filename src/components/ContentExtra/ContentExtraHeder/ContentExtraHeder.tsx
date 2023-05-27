@@ -1,6 +1,6 @@
 import { IContent } from "@/types/IContent";
 import styles from './ContentExtraHeder.module.scss';
-import { A } from "@/src/components/A/A";
+import { Link } from "@/src/components/Link/Link";
 import { FC } from "react";
 
 interface ContentExtraHederProps {
@@ -29,21 +29,21 @@ export const ContentExtraHeder: FC<ContentExtraHederProps> = (props) => {
   }
 
   const nav = [
-    <A
+    <Link
       key={0}
       text="Создатели"
       href={`/watch/${props.content.id}/person`}
       color={"greyLight"}
     />,
 
-    <A
+    <Link
       key={1}
       text="Отзывы"
       href={`/watch/${props.content.id}/comments`}
       color={"greyLight"}
     />,
 
-    <A
+    <Link
       key={2}
       text="Трейлеры"
       href={`/watch/${props.content.id}/trailers`}

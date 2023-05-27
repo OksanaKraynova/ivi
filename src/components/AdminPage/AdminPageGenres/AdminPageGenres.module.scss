@@ -1,0 +1,32 @@
+.box {
+  padding-top: 24px;
+  max-width: 600px;
+}
+
+.propsBox {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.title {
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  color: #FFFFFF;
+}
+
+.inputBox {
+  align-items: flex-start;
+  width: 100%;
+  display: grid;
+  grid-template-columns: calc(50% - 6px) calc(50% - 6px);
+  gap: 12px;
+}
+
+.button {
+  padding-top: 24px;
+  width: calc(50% - 6px);
+}

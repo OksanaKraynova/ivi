@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './TopCard.module.scss';
@@ -12,7 +13,7 @@ import seven from "../../../public/icons/numbers/7.svg"
 import eight from "../../../public/icons/numbers/8.svg"
 import nine from "../../../public/icons/numbers/9.svg"
 
-const numbers = [
+const numbersIcon = [
   zero, one, two, three, four,
   five, six, seven, eight, nine,
 ];
@@ -20,29 +21,25 @@ const numbers = [
 interface TopCardProps {
   img: string;
   href: string;
-  // index: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   index: number;
 }
 
-export const TopCard = ({ img, href, index }: TopCardProps) => {
+export const TopCard: FC<TopCardProps> = (props) => {
+
+  let numbers = Array.from(props.index.toString()).filter(item => Number.isInteger(+item));
 
   return (
 
-    <Link className={styles.box} href={href}>
+    <Link className={styles.box} href={props.href}>
 
-      <img className={styles.img} src={img} alt="poster" />
+      <img className={styles.img} src={props.img} alt="poster" />
 
       <div className={styles.fade} />
 
       <div className={styles.index}>
-        {
-          index === 10 ?
-            <>
-              <Image className="icon" src={numbers[1]} alt="1" />
-              <Image className="icon" src={numbers[0]} alt="0" />
-            </> :
-            <Image className="icon" src={numbers[index]} alt={`${index}`} />
-        }
+        {numbers.map((number, index) =>
+          <Image key={index} className="icon" src={numbersIcon[+number]} alt={number} />
+        )}
       </div>
 
     </Link>

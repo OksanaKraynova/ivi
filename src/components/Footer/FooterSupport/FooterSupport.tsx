@@ -2,10 +2,10 @@ import { FC, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
 import Button from '../../Button/Button';
-import { A } from '../../A/A';
+import { Link } from '../../Link/Link';
 import styles from './FooterSupport.module.scss';
-import mailIcon from "../../../../public/icons/mail.svg"
-import phoneIcon from "../../../../public/icons/phone.svg"
+import mailIcon from "@/public/icons/mail.svg"
+import phoneIcon from "@/public/icons/phone.svg"
 
 interface FooterSupportProps {
   subTitleClass: string;
@@ -75,7 +75,7 @@ export const FooterSupport: FC<FooterSupportProps> = (props) => {
 
       <div className={styles.box}>
 
-        <A
+        <Link
           text="ask.ivi.ru"
           href="https://ask.ivi.ru"
           color='white'

@@ -2,11 +2,11 @@ import { FC } from "react";
 import Image from 'next/image';
 import Button from "../../Button/Button";
 import styles from './ContentTrailer.module.scss';
-import fullSizeIcon from "../../../../public/icons/full-size.svg"
-import playIcon from "../../../../public/icons/play.svg"
-import bookmarkIcon from "../../../../public/icons/bookmark.svg"
-import shareIcon from "../../../../public/icons/share.svg"
-import freeMoviesIcon from "../../../../public/icons/folder.svg"
+import fullSizeIcon from "@/public/icons/full-size.svg"
+import playIcon from "@/public/icons/play.svg"
+import bookmarkIcon from "@/public/icons/bookmark.svg"
+import shareIcon from "@/public/icons/share.svg"
+import freeMoviesIcon from "@/public/icons/folder.svg"
 
 interface ContentTrailerProps {
   img: string;

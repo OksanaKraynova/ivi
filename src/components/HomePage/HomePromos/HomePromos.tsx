@@ -1,13 +1,13 @@
 import MovieBlock from '../../MovieBlock/MovieBlock';
 import { PromoPoster } from '../../PromoPoster/PromoPoster';
-import cornPoster from "../../../img/corn-poster.jpg"
-import cornTitle from "../../../img/corn-title.png"
-import ghostPoster from "../../../img/ghost-poster.jpg"
-import ghostTitle from "../../../img/ghost-title.png"
-import huntPoster from "../../../img/hunt-poster.jpg"
-import huntTitle from "../../../img/hunt-title.png"
-import sonPoster from "../../../img/son-poster.jpg"
-import sonTitle from "../../../img/son-title.png"
+import cornPoster from "@/public/img/corn-poster.jpg"
+import cornTitle from "@/public/img/corn-title.png"
+import ghostPoster from "@/public/img/ghost-poster.jpg"
+import ghostTitle from "@/public/img/ghost-title.png"
+import huntPoster from "@/public/img/hunt-poster.jpg"
+import huntTitle from "@/public/img/hunt-title.png"
+import sonPoster from "@/public/img/son-poster.jpg"
+import sonTitle from "@/public/img/son-title.png"
 import styles from './HomePromos.module.scss';
 import 'swiper/css';
 

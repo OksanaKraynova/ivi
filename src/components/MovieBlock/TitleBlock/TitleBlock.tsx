@@ -4,10 +4,9 @@ import styles from './titleBlock.module.scss'
 
 const TitleBlock = ({ title, img }: { title: string, img?: string }) => {
 
-    let image: React.ReactElement;
-    img === undefined ?
-        image = <></> :
-        image = <Image className={styles.img} src={img} alt='img' width={18} height={18} />
+    const image = img === undefined ?
+        <></> :
+        <Image className={styles.img} src={img} alt='img' width={18} height={18} />
 
     return (
         <div className={styles.title}>

@@ -2,12 +2,14 @@ import { FC, useState } from 'react';
 import Image from 'next/image';
 import { IContent } from '@/types/IContent';
 import { getParagraphs } from '@/src/functions/getParagraphs';
-import branchRight from "../../../../public/icons/branch-right.svg"
-import branchLeft from "../../../../public/icons/branch-left.svg"
+import branchRight from "@/public/icons/branch-right.svg"
+import branchLeft from "@/public/icons/branch-left.svg"
 import styles from './ContentDescripton.module.scss';
 
 interface ContentDescriptonProps {
-  content: IContent;
+  tagline: string;
+  description: string;
+  type: string;
   textClass: string;
   borderedClass: string;
 }
@@ -22,13 +24,13 @@ export const ContentDescripton: FC<ContentDescriptonProps> = (props) => {
       <div className={styles.rowCenter}>
 
         <Image className="icon" src={branchLeft} alt='branch' />
-        <p className={props.textClass}>{props.content.tagline}</p>
+        <p className={props.textClass}>{props.tagline}</p>
         <Image className="icon" src={branchRight} alt='branch' />
 
       </div>
 
       <div className={styles.description}>
-        {getParagraphs(props.content.description).map((paragraph, index) => {
+        {getParagraphs(props.description).map((paragraph, index) => {
           if (index > 0)
             return (
               <p
@@ -81,7 +83,7 @@ export const ContentDescripton: FC<ContentDescriptonProps> = (props) => {
         className={styles.sign}
         onClick={() => SetHidden(!hidden)}
       >
-        {hidden ? `Детали о ${props.content.type.toLowerCase()}е` : "Свернуть детали"}
+        {hidden ? `Детали о ${props.type.toLowerCase()}е` : "Свернуть детали"}
       </p>
 
     </>

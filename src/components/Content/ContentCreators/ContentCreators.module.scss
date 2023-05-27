@@ -1,13 +1,13 @@
 .row {
   display: flex;
   gap: 20px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .visible {
   display: flex;
   gap: 20px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .item {

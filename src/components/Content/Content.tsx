@@ -56,7 +56,9 @@ export const Content: FC<ContentProps> = (props) => {
         </div>
 
         <ContentDescripton
-          content={props.content}
+          tagline={props.content.tagline}
+          description={props.content.description}
+          type={props.content.type}
           textClass={styles.text}
           borderedClass={styles.bordered}
         />

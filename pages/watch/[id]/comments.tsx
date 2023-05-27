@@ -17,7 +17,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
 
 const Comments = (params: { content: IContent }) => {
 
-
   return (
 
     <>

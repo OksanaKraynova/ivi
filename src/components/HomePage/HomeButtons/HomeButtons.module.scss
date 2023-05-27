@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   font-size: 15px;
   line-height: 20px;
   font-weight: 500;
@@ -16,4 +17,11 @@
 
 .icon {
   line-height: 0;
+}
+
+@media (max-width: 599px) {
+  .box {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }
