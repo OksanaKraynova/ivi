@@ -3,13 +3,17 @@ import Image from 'next/image';
 import styles from './HomeButtons.module.scss';
 import importantIcon from "../../../../public/icons/lightning.svg"
 import giftIcon from "../../../../public/icons/gift.svg"
+import { useRouter } from 'next/router';
+import en from '@/locales/titles/en';
+import ru from '@/locales/titles/ru';
 
 export const HomeButtons = () => {
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
 
   return (
-
     <div className={styles.box}>
-
       <Button
         variant='long'
         color={'img'}
@@ -19,9 +23,7 @@ export const HomeButtons = () => {
         <div className={styles.button}>
           <div className={styles.icon}>
             <Image className="icon" src={importantIcon} alt='icon' />
-          </div>
-          30 дней подписки за 1 ₽
-        </div>
+          </div>{t.subscription} </div>
       </Button>
 
       <Button
@@ -33,9 +35,7 @@ export const HomeButtons = () => {
         <div className={styles.button}>
           <div className={styles.icon}>
             <Image className="icon" src={giftIcon} alt='icon' />
-          </div>
-          Активировать сертификат
-        </div>
+          </div>{t.certificate} </div>
       </Button>
 
     </div>

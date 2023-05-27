@@ -1,0 +1,189 @@
+version: "3.8"
+services:
+
+  ganres:
+    container_name: ganres_app
+    image: tirex78/ganres:v1
+    depends_on:
+      - postgres_ganres
+      - rabbitmq
+      - gateway
+    ports:
+      - '3001:3001'
+
+  movie:
+    container_name: movie_app
+    image: tirex78/movie:v1
+    depends_on:
+      - postgres_movie
+      - rabbitmq
+      - gateway
+    ports:
+      - '3003:3003'
+
+  comments:
+    container_name: comments_app
+    image: tirex78/comments:v1
+    depends_on:
+      - postgres_comments
+      - rabbitmq
+      - gateway
+    ports:
+      - '3006:3006'
+
+  auth:
+    container_name: auth_app
+    image: tirex78/auth:v1
+    depends_on:
+      - postgres_auth
+      - rabbitmq
+      - gateway
+    ports:
+      - '3005:3005'
+
+  persons:
+    container_name: persons_app
+    image: tirex78/persons:v1
+    depends_on:
+      - postgres_persons
+      - rabbitmq
+      - gateway
+    ports:
+      - '3002:3002'
+
+  files:
+    container_name: files_app
+    image: tirex78/files:v1
+    volumes:
+      - ./files_app/uploadedFiles:/usr/src/app/uploadedFiles
+    depends_on:
+      - postgres_files
+      - rabbitmq
+      - gateway
+    ports:
+      - '3004:3004'
+
+  query:
+    container_name: query_app
+    image: tirex78/query:v3
+    depends_on:
+      - postgres_query
+      - rabbitmq
+      - gateway
+    ports:
+      - '3007:3007'
+
+  postgres_ganres:
+    container_name: postgres_ganres
+    image: postgres:latest
+    hostname: postgres_ganres
+    environment:
+      - POSTGRES_PASSWORD=postgresql
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=ganres_app
+    ports:
+      - '5434:5432'
+    volumes:
+      - ./ganres_app:/var/lib/postgresql/data
+
+  postgres_movie:
+    container_name: postgres_movie
+    image: postgres:latest
+    hostname: postgres_movie
+    environment:
+      - POSTGRES_PASSWORD=postgresql
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=movies_app
+    ports:
+      - '5435:5432'
+    volumes:
+      - ./movies_app:/var/lib/postgresql/data
+
+  postgres_comments:
+    container_name: postgres_comments
+    image: postgres:latest
+    hostname: postgres_comments
+    environment:
+      - POSTGRES_PASSWORD=postgresql
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=comments_app
+    ports:
+      - '5436:5432'
+    volumes:
+      - ./comments_app:/var/lib/postgresql/data
+
+  postgres_auth:
+    container_name: postgres_auth
+    image: postgres:latest
+    hostname: postgres_auth
+    environment:
+      - POSTGRES_PASSWORD=postgresql
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=auth_app
+    ports:
+      - '5437:5432'
+    volumes:
+      - ./auth_app:/var/lib/postgresql/data
+
+  postgres_persons:
+    container_name: postgres_persons
+    image: postgres:latest
+    hostname: postgres_persons
+    environment:
+      - POSTGRES_PASSWORD=postgresql
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=persons_app
+    ports:
+      - '5438:5432'
+    volumes:
+      - ./persons_app:/var/lib/postgresql/data
+
+  postgres_files:
+    container_name: postgres_files
+    image: postgres:latest
+    hostname: postgres_files
+    environment:
+      - POSTGRES_PASSWORD=postgresql
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=files_app
+    ports:
+      - '5439:5432'
+    volumes:
+      - ./files_app:/var/lib/postgresql/data
+
+  postgres_query:
+    container_name: postgres_query
+    image: postgres:latest
+    hostname: postgres_query
+    environment:
+      - POSTGRES_PASSWORD=postgresql
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=query_app
+    ports:
+      - '5440:5432'
+    volumes:
+      - ./query_app:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    volumes:
+      - /var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  gateway:
+    container_name: gateway
+    image: tirex78/gateway:v3
+    restart: always
+    ports:
+      - "8081:8080"
+    command: [ "run", "-c", "/etc/krakend/krakend.json" ]
+    depends_on:
+      - rabbitmq

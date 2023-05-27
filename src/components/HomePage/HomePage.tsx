@@ -6,10 +6,15 @@ import { HomeAbout } from './HomeAbout/HomeAbout';
 import { HomePromos } from './HomePromos/HomePromos';
 import { HomeTop } from './HomeTop/HomeTop';
 import { HomeButtons } from './HomeButtons/HomeButtons';
+import { useRouter } from 'next/router';
+import en from '@/locales/titles/en';
+import ru from '@/locales/titles/ru';
 import classNames from 'classnames';
 
 export const HomePage = () => {
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
   return (
     <div className={classNames(styles.container, "container")}>
 
@@ -22,11 +27,11 @@ export const HomePage = () => {
       <HomeAbout />
 
       <MovieBlock
-        title={'Добрые мультфильмы'}
+        title={t.kind}
         spaceBetween={24}
         slidesPerView={7}
         listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]}
-        lastSlide={<div>Посмотреть все</div>}
+        lastSlide={<div>{t.viewAll}</div>}
         breakpoints={
           {
             0: { slidesPerView: 1 },
@@ -42,11 +47,11 @@ export const HomePage = () => {
       />
 
       <MovieBlock
-        title={'Криминальные боевики'}
+        title={t.criminal}
         spaceBetween={24}
         slidesPerView={7}
         listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]}
-        lastSlide={<div>Посмотреть все</div>}
+        lastSlide={<div>{t.viewAll}</div>}
         breakpoints={
           {
             0: { slidesPerView: 1 },
