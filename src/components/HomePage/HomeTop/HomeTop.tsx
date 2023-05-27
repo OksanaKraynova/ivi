@@ -3,16 +3,11 @@ import MovieBlock from '../../MovieBlock/MovieBlock';
 import { TopCard } from '../../TopCard/TopCard';
 import styles from './HomeTop.module.scss';
 import 'swiper/css';
-<<<<<<< HEAD
 import topIcon from "../../../../public/icons/top.svg"
-import sample from "../../../img/sample.jpg"
+import sample from "@/public/img/sample.jpg"
 import { useRouter } from 'next/router';
 import en from '@/locales/titles/en';
 import ru from '@/locales/titles/ru';
-=======
-import topIcon from "@/public/icons/top.svg"
-import sample from "@/public/img/sample.jpg"
->>>>>>> cca3b16057a64d40222c3b604121cc05542f4036
 
 const top = [
   {
