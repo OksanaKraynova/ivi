@@ -22,8 +22,13 @@
   white-space: nowrap;
   top: calc(100% + 18px);
   left: 0;
-}
+  height: 0;
+  width: 0;
+  overflow: hidden;
 
-.hidden {
-  display: none;
+  &:focus-within {
+    height: auto;
+    width: auto;
+  }
+
 }

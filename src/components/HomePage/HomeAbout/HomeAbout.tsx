@@ -6,14 +6,18 @@ import ru from '@/locales/homeAbout/ru';
 import en from '@/locales/homeAbout/en';
 
 export const HomeAbout = () => {
+  
   const [hidden, SetHidden] = useState<boolean>(true);
   const router = useRouter()
   const { locale } = router
   const t = locale === 'ru' ? ru : en
   
   return (
+    
     <div className={styles.box}>
+      
       <p className={styles.title}>{t.titleMainPage} </p>
+      
       <div className={hidden ? styles.aboutСollapsed : styles.about}>
         <p className={styles.text}>{t.text1}</p>
         <p className={styles.text}>{t.text2}</p>
@@ -29,9 +33,12 @@ export const HomeAbout = () => {
         </ul>
         <p className={styles.text}>{t.text4} </p>
       </div>
+            
       <p className={styles.subTitle} onClick={() => SetHidden(!hidden)} >
         {hidden ? t.deploy : t.hide}
       </p>
+            
     </div>
+            
   );
 };

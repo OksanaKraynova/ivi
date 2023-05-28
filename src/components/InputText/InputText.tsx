@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import classNames from 'classnames';
 import Image from 'next/image';
-import styles from './Input.module.scss';
+import styles from './InputText.module.scss';
 
-interface InputProps {
+interface InputTextProps {
   placeholder?: string;
   buttonIcon?: string;
   buttonClass?: string;
@@ -11,20 +11,20 @@ interface InputProps {
   required?: boolean;
   readOnly?: boolean;
   value?: string;
-  type?: "number";
   minSize?: number;
-  onClick?: () => void;
+  onClick?: ((event: React.MouseEvent<HTMLImageElement, MouseEvent>) => void) |
+  (() => void);
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input: FC<InputProps> = (props) => {
+export const InputText: FC<InputTextProps> = (props) => {
 
   const minSize = props.minSize ?? 0;
   const defaultEffect = props.value !== undefined && props.value.length > 0 ?
     styles.overText : null;
 
-  const [placeholderEffect, SetPlacholderEffect] = useState<string | null>(null);
-  const [wantage, SetWantage] = useState<number>(0);
+  const [placeholderEffect, setPlacholderEffect] = useState<string | null>(null);
+  const [wantage, setWantage] = useState<number>(0);
 
   const buttonClass = props.buttonClass === undefined ?
     styles.button :
@@ -36,7 +36,6 @@ export const Input: FC<InputProps> = (props) => {
 
       <input
         className={styles.input}
-        type={props.type ?? "text"}
         value={props.value}
         disabled={props.disabled ?? false}
         required={props.required ?? false}
@@ -45,21 +44,21 @@ export const Input: FC<InputProps> = (props) => {
           props.onChange && props.onChange(event);
           (event.target.value.length > 0 && event.target.value.length < minSize) ?
             (
-              SetPlacholderEffect(classNames(styles.overText, styles.orange)),
-              SetWantage(minSize - event.target.value.length)
+              setPlacholderEffect(classNames(styles.overText, styles.orange)),
+              setWantage(minSize - event.target.value.length)
             ) :
             (
-              SetPlacholderEffect(styles.overText),
-              SetWantage(0)
+              setPlacholderEffect(styles.overText),
+              setWantage(0)
             );
         }}
         onFocus={(event) => {
           if (event.target.value.length === 0)
-            SetPlacholderEffect(styles.overText);
+            setPlacholderEffect(styles.overText);
         }}
         onBlur={(event) => {
           if (event.target.value.length === 0)
-            SetPlacholderEffect(null);
+            setPlacholderEffect(null);
         }}
       />
 

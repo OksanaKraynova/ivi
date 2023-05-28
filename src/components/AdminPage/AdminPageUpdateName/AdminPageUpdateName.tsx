@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { IGenre } from '@/types/IGenre';
-import { Input } from '../../Input/Input';
+import { Input } from '../../InputText/InputText';
 import styles from './AdminPageUpdateName.module.scss';
 import Button from '../../Button/Button';
 

@@ -14,7 +14,7 @@ interface ContentExtraCommentsProps {
 
 export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
 
-  const [hidden, SetHidden] = useState<boolean[]>(new Array(props.content.comments.length).fill(true));
+  const [hidden, setHidden] = useState<boolean[]>(new Array(props.content.comments.length).fill(true));
 
   const comments = commentsDataParent.comments.filter(comment => props.content.comments.includes(comment.id));
   const commentsLimit = 10;
@@ -30,7 +30,7 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
     newIndex++;
   }
 
-  const [currentIndex, SetCurrentIndex] = useState<number>(newIndex);
+  const [currentIndex, setCurrentIndex] = useState<number>(newIndex);
 
   return (
 
@@ -45,15 +45,13 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
           {
             addCommentTree(
               comment,
-              0,
               [],
               commentsDataParent.comments,
-              (comment, nestingLevel, childes) =>
+              (comment, childes) =>
                 <ContentExtraCommentsTree
                   key={comment.id}
                   comment={comment}
                   childes={childes}
-                  nestingLevel={nestingLevel}
                 />
             )
           }
@@ -74,7 +72,7 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
               commentsInBlock += commentsChidrens[newIndex] + 1;
               newIndex++;
             }
-            SetCurrentIndex(newIndex);
+            setCurrentIndex(newIndex);
           }}
           disabled={currentIndex === hidden.length}
         >

@@ -23,7 +23,7 @@ describe("Комментарий с ответом", () => {
     render(
       <Comment
         comment={comment}
-        type="fullLength"
+        type="full"
       />);
 
     const div = screen.getByText(comment.userName).closest("div")!;

@@ -13,14 +13,14 @@ interface FooterNavbarDropdownProps<T> {
 
 export function FooterNavbarDropdown<T>(props: FooterNavbarDropdownProps<T>) {
 
-  const [hidden, SetHidden] = useState<boolean>(true);
+  const [hidden, setHidden] = useState<boolean>(true);
 
   return (
     <>
 
       <div
         className={styles.button}
-        onClick={() => SetHidden(!hidden)}
+        onClick={() => setHidden(!hidden)}
       >
         <Image className={styles.icon} src={props.buttonIcon} alt='icon' />
         {props.buttonTitle}

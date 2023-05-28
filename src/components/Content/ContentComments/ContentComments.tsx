@@ -28,11 +28,7 @@ export const ContentComments: FC<ContentCommentsProps> = (props) => {
 
   }, new Array<IComment>);
 
-  let commentsBlock: React.ReactElement;
-
-  comments.length > 0 ?
-
-    commentsBlock =
+  const commentsBlock = comments.length > 0 ?
 
     <MovieBlock<IComment>
       blockClass={styles.block}
@@ -47,10 +43,10 @@ export const ContentComments: FC<ContentCommentsProps> = (props) => {
           1200: { slidesPerView: 4, spaceBetween: 24 },
         }
       }
-      renderItem={(item) => <Comment comment={item} type='less' />}
-    /> :
+      renderItem={(item) => <Comment comment={item} type='preview' />}
+    />
 
-    commentsBlock =
+    :
 
     <Link className={styles.commentAdd} href={`/watch/${props.content.id}/comments`}>
       Пока нет отзывов

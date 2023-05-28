@@ -14,7 +14,7 @@ import { ContentDevices } from "./ContentDevices/ContentDevices";
 import { BreadCrumbs } from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
 import actorsData from "../../json/actors.json"
-import commentsData from "../../json/comments.json"
+import commentsData from "../../json/comments-children.json"
 
 interface ContentProps {
   content: IContent;

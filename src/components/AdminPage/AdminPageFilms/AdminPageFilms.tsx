@@ -4,14 +4,17 @@ import classNames from 'classnames';
 import { IGenre } from '@/types/IGenre';
 import { Select } from '../../Select/Select';
 import AdminPageUpdateName from '../AdminPageUpdateName/AdminPageUpdateName';
-import { Input } from '../../Input/Input';
+import { InputText } from '../../InputText/InputText';
 import Search from '../../Search/Search';
 import { IContent } from '@/types/IContent';
 import { DataBlock } from '../../DataBlock/DataBlock';
 import { IActor } from '@/types/IActor';
+import Button from '../../Button/Button';
+import { TextArea } from '../../TextArea/TextArea';
 import styles from './AdminPageFilms.module.scss';
 import downIcon from "@/public/icons/down.svg"
-import Button from '../../Button/Button';
+import actorsData from "../../../json/actors.json";
+import { InputNumber } from '../../InputNumber/InputNumber';
 
 const allGenres: IGenre[] = [
   { id: 1, name: "Ужас", englishName: "Horror" },
@@ -22,13 +25,12 @@ const allGenres: IGenre[] = [
   { id: 6, name: "Дорама", englishName: "Dorama" }
 ];
 
-const allActors: IActor[] = [
-  { id: 1, firstName: "Один", secondName: "Первый", img: "" },
-  { id: 2, firstName: "Два", secondName: "Второй", img: "" },
-  { id: 3, firstName: "Три", secondName: "Третий", img: "" },
-  { id: 4, firstName: "Четыре", secondName: "Четвертый", img: "" },
-  { id: 5, firstName: "Пять", secondName: "Пятый", img: "" },
-  { id: 6, firstName: "Шесть", secondName: "Шестой", img: "" }
+const allCountries: string[] = [
+  "Россия", "СССР", "Южная Корея", "Северная Корея", "Уругвай", "Индия", "Китай"
+];
+
+const allAges: number[] = [
+  0, 6, 12, 18, 21
 ];
 
 interface AdminPageFilmsProps {
@@ -64,31 +66,32 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
   const [upadateFilm, setUpdateFilm] = useState<IGenre | null>(null);
   const [newFilm, setNewFilm] = useState<IContent>(defaultFilm);
   const [genres, setGenres] = useState<IGenre[]>([]);
-  const [actors, setActors] = useState<IActor[]>([allActors[0]]);
+  const [actors, setActors] = useState<IActor[]>([]);
   const [directors, setDirectors] = useState<IActor[]>([]);
 
   return (
 
-    <div className={styles.box} hidden={props.hidden}>
+    <div className={styles.container} hidden={props.hidden}>
 
-      <div
-        className={styles.link}
-        onClick={() => setHidden({ ...hidden, update: !hidden.update })}
-      >
-        Обновить/удалить
-        <Image
-          className={hidden.update ? classNames("icon", styles.up) : "icon"}
-          src={downIcon} alt={hidden.update ? 'up' : 'down'}
-          width={12}
-          height={12}
-        />
+      <div className={styles.row}>
+
+        <div
+          className={styles.link}
+          onClick={() => setHidden({ ...hidden, update: !hidden.update })}
+        >
+          Обновить/удалить
+          <Image
+            className={hidden.update ? classNames(styles.icon, styles.up) : styles.icon}
+            src={downIcon} alt={hidden.update ? 'up' : 'down'}
+            width={16}
+            height={16}
+          />
+
+        </div>
 
       </div>
 
-      <div
-        className={styles.dropdownBox}
-        hidden={hidden.update}
-      >
+      <div className={styles.box} hidden={hidden.update}>
 
         <Select
           placeholder='Фильм'
@@ -113,47 +116,48 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       </div>
 
-      <div
-        className={styles.link}
-        onClick={() => setHidden({ ...hidden, create: !hidden.create })}
-      >
-        Создать
-        <Image
-          className={hidden.create ? classNames("icon", styles.up) : "icon"}
-          src={downIcon} alt={hidden.create ? 'up' : 'down'}
-          width={12}
-          height={12}
-        />
+      <div className={styles.row}>
+
+        <div
+          className={styles.link}
+          onClick={() => setHidden({ ...hidden, create: !hidden.create })}
+        >
+          Создать
+          <Image
+            className={hidden.update ? classNames(styles.icon, styles.up) : styles.icon}
+            src={downIcon} alt={hidden.create ? 'up' : 'down'}
+            width={16}
+            height={16}
+          />
+
+        </div>
 
       </div>
 
-      <div
-        className={styles.dropdownBox}
-        hidden={hidden.create}
-      >
+      <div className={styles.box} hidden={hidden.create}>
 
         <div className={styles.inputBox}>
-          <Input
+          <InputText
             placeholder="Русское название"
             onChange={(event) => setNewFilm({ ...newFilm, name: event.target.value })}
           />
 
-          <Input
+          <InputText
             placeholder="Английское название"
             onChange={(event) => setNewFilm({ ...newFilm, name: event.target.value })}
           />
         </div>
 
         <div className={styles.inputBox}>
-          <Input
+          <InputNumber
             placeholder="Год"
             onChange={(event) => setNewFilm({ ...newFilm, year: +event.target.value })}
-            type="number"
+            min={2000}
           />
 
-          <Input
-            placeholder="Страна"
-            onChange={(event) => setNewFilm({ ...newFilm, country: event.target.value })}
+          <InputText
+            placeholder="Слоган"
+            onChange={(event) => setNewFilm({ ...newFilm, tagline: event.target.value })}
           />
         </div>
 
@@ -162,95 +166,118 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
             placeholder='Жанр'
             options={allGenres.map(item => item.name)}
             type='multiple'
-            addCheck={(index => setGenres([...genres, allGenres[index]]))}
-            deliteCheck={(index => setGenres(genres.filter(item => item !== allGenres[index])))}
+            addCheck={index => setGenres([...genres, allGenres[index]])}
+            deliteCheck={index => setGenres(genres.filter(item => item !== allGenres[index]))}
           />
 
-          <Input
-            placeholder="Слоган"
-            onChange={(event) => setNewFilm({ ...newFilm, tagline: event.target.value })}
+          <Select
+            placeholder="Страна"
+            options={allCountries}
+            type='one'
+            addCheck={index => setNewFilm({ ...newFilm, country: allCountries[index] })}
           />
         </div>
 
         <div className={classNames(styles.inputBox, styles.fourEl)}>
-          <Input
+          <InputNumber
             placeholder="Продолжительность"
             onChange={(event) => setNewFilm({ ...newFilm, duration: +event.target.value })}
-            type="number"
+            min={0}
           />
 
-          <Input
-            placeholder="Возрастное ограничение"
-            onChange={(event) => setNewFilm({ ...newFilm, ageLimit: +event.target.value })}
-            type="number"
+          <Select
+            placeholder='Возрастной рейтинг'
+            options={allAges.map(age => `+${age}`)}
+            type='one'
+            addCheck={index => setNewFilm({ ...newFilm, ageLimit: allAges[index] })}
           />
 
-          <Input
+          <InputNumber
             placeholder="Рейтинг"
             onChange={(event) => setNewFilm({ ...newFilm, rating: +event.target.value })}
-            type="number"
+            min={0}
           />
 
-          <Input
+          <InputNumber
             placeholder="Оценка"
             onChange={(event) => setNewFilm({ ...newFilm, rating: +event.target.value })}
-            type="number"
+            min={0}
           />
         </div>
 
         <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Актеры'
-            options={allActors}
-            addItem={(actor) => {
-              setActors(actors.includes(actor) ? actors : [...actors, actor])
-              console.log(actors)
-            }
-            }
+            options={actorsData.actors}
+            addItem={actor => setActors(actors.includes(actor) ? actors : [...actors, actor])}
+            renderItem={actor => `${actor.firstName} ${actor.secondName}`}
+            compareItem={(actor, value) => actor.firstName.includes(value) || actor.secondName.includes(value)}
           />
-          <DataBlock
-            items={actors.map(actor => `${actor.firstName} ${actor.secondName}`)}
-            deliteItem={(index) => setActors(actors.filter((actor, currentIndex) => currentIndex !== index))}
-          />
+
+          {actors.length > 0 &&
+            <DataBlock
+              items={actors.map(actor => `${actor.firstName} ${actor.secondName}`)}
+              placeholder='Актеры'
+              deliteItem={index => setActors(actors.filter((actor, currentIndex) => currentIndex !== index))}
+            />
+          }
         </div>
 
         <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Режиссеры'
-            options={allActors}
-            addItem={(director) => setDirectors(directors.includes(director) ? directors : [...directors, director])}
+            options={actorsData.actors}
+            addItem={director => setDirectors(directors.includes(director) ? directors : [...directors, director])}
+            renderItem={director => `${director.firstName} ${director.secondName}`}
+            compareItem={(director, value) => director.firstName.includes(value) || director.secondName.includes(value)}
           />
-          <DataBlock
-            items={directors.map(director => `${director.firstName} ${director.secondName}`)}
-            deliteItem={(index) => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
-          />
+
+          {directors.length > 0 &&
+            <DataBlock
+              items={directors.map(director => `${director.firstName} ${director.secondName}`)}
+              placeholder='Режиссеры'
+              deliteItem={index => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
+            />
+          }
         </div>
 
         <div className={styles.inputBox}>
-          Похожие
+          <Search<IActor>
+            placeholder='Похожие фильмы'
+            options={actorsData.actors}
+            addItem={director => setDirectors(directors.includes(director) ? directors : [...directors, director])}
+            renderItem={director => `${director.firstName} ${director.secondName}`}
+            compareItem={(director, value) => director.firstName.includes(value) || director.secondName.includes(value)}
+          />
+
+          {directors.length > 0 &&
+            <DataBlock
+              items={directors.map(director => `${director.firstName} ${director.secondName}`)}
+              placeholder='Похожие фильмы'
+              deliteItem={index => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
+            />
+          }
         </div>
 
-        <div className={styles.inputBox}>
-          Тип
+        <div className={classNames(styles.inputBox, styles.oneEl)}>
+          <TextArea
+            placeholder="Описание"
+            onChange={(event) => setNewFilm({ ...newFilm, description: event.target.value })}
+          />
         </div>
 
         <div className={styles.inputBox}>
           Файлы
         </div>
-
-
-
-
-        <Input
-          placeholder="Описание"
-          onChange={(event) => setNewFilm({ ...newFilm, description: event.target.value })}
-        />
+        <div className={styles.button}>
+          <Button variant="long" effect="bordered" color="darkBlue">Создать</Button>
+        </div>
 
       </div>
 
-      <div className={styles.button}>
-        <Button variant="long" effect="bordered" color="darkBlue">Создать</Button>
-      </div>
+      {Object.values(newFilm).map(item =>
+        <p>{item}</p>
+      )}
 
     </div>
 

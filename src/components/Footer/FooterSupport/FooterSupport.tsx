@@ -1,6 +1,5 @@
-import { FC, useState } from 'react';
+import { FC, useRef } from 'react';
 import Image from 'next/image';
-import classNames from 'classnames';
 import Button from '../../Button/Button';
 import { Link } from '../../Link/Link';
 import styles from './FooterSupport.module.scss';
@@ -14,7 +13,7 @@ interface FooterSupportProps {
 
 export const FooterSupport: FC<FooterSupportProps> = (props) => {
 
-  const [hidden, SetHidden] = useState<boolean>(true);
+  const telephone = useRef<HTMLDivElement>(null);
 
   return (
 
@@ -50,7 +49,10 @@ export const FooterSupport: FC<FooterSupportProps> = (props) => {
             <Button
               variant='square'
               color={'darkBlue'}
-              onClick={() => SetHidden(!hidden)}
+              onClick={(event) => {
+                event.preventDefault();
+                telephone.current!.focus();
+              }}
             >
               <Image className="icon" src={phoneIcon} alt='icon' />
             </Button>
@@ -58,13 +60,17 @@ export const FooterSupport: FC<FooterSupportProps> = (props) => {
 
         </div>
 
-        <div className={hidden ? classNames(styles.telephone, styles.hidden) : styles.telephone}>
+        <div
+          className={styles.telephone}
+          tabIndex={-1}
+          ref={telephone}
+        >
 
           <Button
             variant='medium'
             href={"tel:+73422554561"}
             color={'darkBlue'}
-            onClick={(event) => { event.preventDefault(); SetHidden(!hidden); }}
+            onClick={(event) => event.preventDefault()}
           >
             +7 342 255-45-61
           </Button>

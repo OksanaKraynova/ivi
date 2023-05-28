@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { Input } from './Input';
+import { InputText } from './InputText';
 
 const placeholder = "Введите ответ";
 const minSize = 6;
@@ -8,12 +8,12 @@ const smallResponse = "Ответ";
 const error = `Минимум ${minSize} символов, вы ввели`;
 const bigResponse = "Написанный ответ";
 
-describe("Инпут", () => {
+describe("ИнпутТекст", () => {
 
   test("Изменение подписи, минимальный размер не указан", () => {
 
     render(
-      <Input placeholder={placeholder} />);
+      <InputText placeholder={placeholder} />);
 
     expect(screen.getByText(placeholder)).toHaveClass("placholder");
 
@@ -32,7 +32,7 @@ describe("Инпут", () => {
   test(`Изменение подписи и сообщения об ошибке, минимальный размер ${minSize}`, () => {
 
     render(
-      <Input placeholder={placeholder} minSize={minSize} />);
+      <InputText placeholder={placeholder} minSize={minSize} />);
 
     expect(screen.getByText(placeholder)).toHaveClass("placholder");
     expect(screen.queryByText(`${error} 0`)).toBeNull();

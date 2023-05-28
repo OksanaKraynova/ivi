@@ -1,0 +1,72 @@
+.box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #1f1b2e;
+  border: 1px solid #afafaf;
+  border-radius: 8px;
+}
+
+.input {
+  width: 100%;
+  padding: 24px 12px 8px;
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  color: #FFFFFF;
+  background-color: #1f1b2e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:read-only {
+    color: #b1b1b1;
+  }
+
+  &:not(:focus) {
+    cursor: pointer;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+.button {
+  padding: 12px 6px;
+  background-color: #100e19;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1f1b2e;
+  }
+}
+
+.left {
+  border-radius: 8px 0 0 8px;
+  border-right: 1px solid #b1b1b1;
+}
+
+.right {
+  border-radius: 0 8px 8px 0;
+  border-left: 1px solid #b1b1b1;
+}
+
+.placholder {
+  width: calc(100% - 64px);
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 32px;
+  color: #a5a1b2;
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overText {
+  top: 8px;
+  left: 32px;
+  font-size: 12px;
+  line-height: 12px;
+}

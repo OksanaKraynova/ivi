@@ -1,0 +1,22 @@
+.innerBox {
+  display: block;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.listTitle {
+  font-weight: 500;
+}
+
+@media (max-width: 799px) {
+
+  .innerBox:last-child {
+    margin-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+  }
+}

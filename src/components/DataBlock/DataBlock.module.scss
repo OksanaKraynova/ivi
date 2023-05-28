@@ -1,7 +1,10 @@
 .box {
-  padding: 0 0 12px 12px;
+  padding: 18px 12px 12px;
   background-color: #1f1b2e;
+  border: 1px solid #afafaf;
   border-radius: 8px;
+  position: relative;
+  min-height: 36px;
 }
 
 .button {
@@ -32,4 +35,14 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.placholder {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 12px;
+  line-height: 12px;
+  color: #a5a1b2;
+  pointer-events: none;
 }

@@ -24,7 +24,7 @@ interface FooterNavbarNavProps {
 
 export const FooterNavbarNav: FC<FooterNavbarNavProps> = (props) => {
 
-  const [closed, SetClosed] = useState<boolean>(true);
+  const [closed, setClosed] = useState<boolean>(true);
 
   return (
 
@@ -43,7 +43,7 @@ export const FooterNavbarNav: FC<FooterNavbarNavProps> = (props) => {
 
       <Button
         variant={'minimal'}
-        onClick={() => { SetClosed(!closed); props.onClick() }}
+        onClick={() => { setClosed(!closed); props.onClick() }}
       >
         <div className={closed ? styles.button : classNames(styles.button, styles.active)}>
           <Image className="icon" src={closed ? moreIcon : closeIcon} alt='icon' width={21} height={21} />
