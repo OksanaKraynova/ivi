@@ -1,19 +1,16 @@
 import { IItemLink } from '@/types/IItemLink';
-import styles from './FooterNavbarDropdownList.module.scss';
 import { FC } from 'react';
 import { List } from '../../List';
 import { Link } from '../../Link/Link';
-
-interface dropdownBlock {
-  title?: string;
-  list: IItemLink[];
-}
+import { FooterNavbarDropdownListColumn } from '../FooterNavbarDropdownListColumn/FooterNavbarDropdownList';
+import { IDropdownBlock } from '@/types/IDropdownBlock';
+import styles from './FooterNavbarDropdownList.module.scss';
 
 interface FooterNavbarDropdownListProps {
   subTitle?: IItemLink;
-  firstColumn: dropdownBlock;
-  secondColumn?: dropdownBlock[];
-  thirdColumn?: dropdownBlock[];
+  firstColumn: IDropdownBlock;
+  secondColumn?: IDropdownBlock[];
+  thirdColumn?: IDropdownBlock[];
 }
 
 export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (props) => {
@@ -50,7 +47,6 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
                 href={item.link}
                 color={'grey'}
               />
-
             }
           />
 
@@ -60,70 +56,11 @@ export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (prop
           props.secondColumn !== undefined &&
 
           < div className={styles.rightCol}>
-
-            <div className={styles.innerBox}>
-
-              {props.secondColumn.map((block, blockIndex) =>
-
-                <div key={blockIndex} className={styles.list}>
-
-                  <List<IItemLink>
-                    title={
-                      block.title === undefined ?
-                        undefined :
-                        <p className={styles.listTitle}>{block.title}</p>
-                    }
-                    list={block.list}
-                    renderItem={(item, index) =>
-
-                      <Link
-                        key={index}
-                        text={item.text}
-                        href={item.link}
-                        color={'grey'}
-                      />
-
-                    }
-                  />
-
-                </div>
-
-              )}
-
-            </div>
+            <FooterNavbarDropdownListColumn column={props.secondColumn} />
 
             {
               props.thirdColumn !== undefined &&
-
-              <div className={styles.innerBox}>
-
-                {props.thirdColumn.map((block, index) =>
-
-                  <div key={index} className={styles.list}>
-
-                    <List<IItemLink>
-                      title={
-                        block.title === undefined ?
-                          undefined :
-                          <p className={styles.listTitle}>{block.title}</p>
-                      }
-                      list={block.list}
-                      renderItem={(item, index) =>
-
-                        <Link
-                          key={index}
-                          text={item.text}
-                          href={item.link}
-                          color={'grey'}
-                        />
-
-                      }
-                    />
-
-                  </div>
-                )}
-
-              </div>
+              <FooterNavbarDropdownListColumn column={props.thirdColumn} />
             }
 
           </div>
