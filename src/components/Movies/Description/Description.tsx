@@ -12,16 +12,16 @@ const Description = () => {
     
     return (
         <div className={styles.desc}>
-            <div className={styles.title}>Фильмы смотреть онлайн</div>
+            <div className={styles.title}>{t.titleMoviePage}</div>
             <div className={!show ? styles.text : styles.show}  >
-                {t.map((el: { text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }, i: React.Key | null | undefined) => (
-                    <p key={i}>{el.text}</p>
+                {t.text.map((el, i: React.Key | null | undefined) => (
+                    <p key={i}>{el}</p>
                 ))}
              
              
             </div>
             <button className={styles.desc__btn} onClick={() => setShow(!show) }>
-                {show ? 'Скрыть' : 'Развернуть'}
+                {show ? t.hide : t.deploy}
             </button>
         </div>
     );

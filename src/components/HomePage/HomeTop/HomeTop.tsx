@@ -3,8 +3,11 @@ import MovieBlock from '../../MovieBlock/MovieBlock';
 import { TopCard } from '../../TopCard/TopCard';
 import styles from './HomeTop.module.scss';
 import 'swiper/css';
-import topIcon from "@/public/icons/top.svg"
+import topIcon from "../../../../public/icons/top.svg"
 import sample from "@/public/img/sample.jpg"
+import { useRouter } from 'next/router';
+import en from '@/locales/titles/en';
+import ru from '@/locales/titles/ru';
 
 const top = [
   {
@@ -59,14 +62,16 @@ const top = [
 ];
 
 export const HomeTop = () => {
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
   return (
 
     <div className={styles.box}>
 
       <div className={styles.title}>
         <Image className="icon" src={topIcon} alt='top10' />
-        за неделю
+        {t.week}
       </div>
 
       <MovieBlock<Parameters<typeof TopCard>[0]>
