@@ -1,6 +1,7 @@
 .box {
   position: relative;
   background-color: #1f1b2e;
+  border: 1px solid #afafaf;
   border-radius: 8px;
 }
 
@@ -14,7 +15,6 @@
   line-height: 15px;
   color: #FFFFFF;
   background-color: #1f1b2e;
-  border-radius: 8px;
   resize: none;
 
   &::-webkit-scrollbar {

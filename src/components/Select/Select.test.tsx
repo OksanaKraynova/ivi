@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom'
 import { Select } from './Select';
 
@@ -11,68 +12,78 @@ describe("Селект", () => {
 
   test("Один выбор", () => {
 
-    render(
-      <Select options={options} placeholder={placeholder} type="one" />);
+    act(() => render(
+      <Select options={options} placeholder={placeholder} type="one" />
+    ));
 
     const input = screen.getByRole("textbox");
-    const div = input.closest("div")!;
+    const div = input.closest("div")!.closest("div")!;
+    const button = input.closest("div")!.getElementsByClassName("button")[0];
 
     expect(input).toHaveValue("");
     expect(screen.getByText(placeholder)).toHaveClass("placholder");
     expect(screen.getByText(options[0]).closest("div")).not.toBeVisible();
 
-    fireEvent.click(div);
+    act(() => userEvent.click(button));
 
     expect(input).toHaveValue("");
     expect(screen.getByText(options[0]).closest("div")).toBeVisible();
 
-    fireEvent.click(screen.getByText(options[0]));
+    act(() => userEvent.click(screen.getByText(options[0])));
 
     expect(input).toHaveValue(options[0]);
     expect(screen.getByText(options[0]).closest("div")).toBeVisible();
 
-    fireEvent.click(screen.getByText(options[1]));
+    act(() => userEvent.click(screen.getByText(options[1])));
 
     expect(input).toHaveValue(options[1]);
 
-    fireEvent.click(screen.getByText(options[1]));
+    act(() => userEvent.click(screen.getByText(options[1])));
+    act(() => fireEvent.blur(div));
 
     expect(input).toHaveValue(options[1]);
+    expect(screen.getByText(options[0]).closest("div")).not.toBeVisible();
 
-    fireEvent.click(div);
-    fireEvent.click(screen.getByText(options[1]));
+    act(() => userEvent.click(button));
+    expect(input).toHaveValue(options[1]);
+    expect(screen.getByText(options[0]).closest("div")).toBeVisible();
+
+    act(() => userEvent.click(button));
     expect(screen.getByText(options[0]).closest("div")).not.toBeVisible();
   });
 
   test("Множественный выбор", () => {
 
-    render(
-      <Select options={options} placeholder={placeholder} type="multiple" />);
+    act(() => render(
+      <Select options={options} placeholder={placeholder} type="multiple" />
+    ));
 
     const input = screen.getByRole("textbox");
-    const div = input.closest("div")!;
+    const div = input.closest("div")!.closest("div")!;
+    const button = input.closest("div")!.getElementsByClassName("button")[0];
 
     expect(input).toHaveValue("");
     expect(screen.getByText(placeholder)).toHaveClass("placholder");
     expect(screen.getByText(options[0]).closest("div")).not.toBeVisible();
 
-    fireEvent.click(div);
+    act(() => userEvent.click(button));
 
     expect(input).toHaveValue("");
     expect(screen.getByText(options[0]).closest("div")).toBeVisible();
 
-    fireEvent.click(screen.getByText(options[0]));
-    fireEvent.click(screen.getByText(options[1]));
+    act(() => userEvent.click(screen.getByText(options[0])));
+    act(() => userEvent.click(screen.getByText(options[1])));
 
     expect(input).toHaveValue([options[0], options[1]].join(", "));
     expect(screen.getByText(options[0]).closest("div")).toBeVisible();
 
-    fireEvent.click(screen.getByText(options[1]));
-    fireEvent.click(screen.getByText(options[2]));
+    act(() => userEvent.click(screen.getByText(options[1])));
+    act(() => userEvent.click(screen.getByText(options[2])));
 
     expect(input).toHaveValue([options[0], options[2]].join(", "));
 
-    fireEvent.click(div);
+    act(() => userEvent.click(button));
+
     expect(input).toHaveValue([options[0], options[2]].join(", "));
     expect(screen.getByText(options[0]).closest("div")).not.toBeVisible();
   });

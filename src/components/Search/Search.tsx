@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Input } from '../Input/Input';
+import { InputText } from '../InputText/InputText';
 import { List } from '../List';
 import styles from './Search.module.scss';
 import searchIcon from "../../../public/icons/search.svg"
@@ -20,10 +20,15 @@ export default function Search<T>(props: SearchProps<T>) {
 
   return (
 
-    <div className={styles.box} >
+    <div
+      className={styles.box}
+      tabIndex={-1}
+      onFocus={() => setVisibile(true)}
+      onBlur={() => setVisibile(false)}
+    >
 
-      <div className={styles.input} onClick={() => setVisibile(!visibile)}>
-        <Input
+      <div className={styles.input}>
+        <InputText
           placeholder={props.placeholder}
           required={props.required ?? false}
           buttonIcon={searchIcon.src}
@@ -31,26 +36,24 @@ export default function Search<T>(props: SearchProps<T>) {
         />
       </div>
 
-      <div className={styles.list} hidden={!visibile}>
+      <div className={styles.list} hidden={!visibile || value.length < 3}>
 
-        {value.length >= 3 &&
-          <List<T>
-            list={props.options.filter(item => props.compareItem(item, value))}
-            renderItem={(item, index) =>
-              <p
-                key={index}
-                className={styles.option}
-                onClick={() => props.addItem && props.addItem(item)}
-              >
-                {props.renderItem(item)}
-              </p>
-            }
-          />
-        }
+        <List<T>
+          list={props.options.filter(item => props.compareItem(item, value))}
+          renderItem={(item, index) =>
+            <p
+              key={index}
+              className={styles.option}
+              onClick={() => { props.addItem && props.addItem(item); console.log(item) }}
+            >
+              {props.renderItem(item)}
+            </p>
+          }
+        />
 
       </div>
 
-    </div>
+    </div >
 
   );
 };

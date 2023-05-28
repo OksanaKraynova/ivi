@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.row {
+  margin: 48px 0 26px;
+}
+
 .box {
   margin: auto;
   margin-top: 26px;
@@ -9,19 +13,21 @@
 }
 
 .link {
-  margin: 48px 0 26px;
-  display: flex;
-  gap: 6px;
-  align-items: center;
+  display: inline-block;
   cursor: pointer;
   font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
   font-size: 15px;
-  line-height: 15px;
+  line-height: 16px;
   color: #FFFFFF;
 
   &:hover {
     opacity: 0.48;
   }
+}
+
+.icon {
+  padding: 2px;
+  margin-left: 6px;
 }
 
 .up {
@@ -49,7 +55,7 @@
 }
 
 .fourEl {
-  grid-template-columns: calc(25% - 8px) calc(25% - 8px) calc(25% - 8px) calc(25% - 8px);
+  grid-template-columns: calc(25% - 9px) calc(25% - 9px) calc(25% - 9px) calc(25% - 9px);
 }
 
 .button {

@@ -16,7 +16,7 @@ interface ContentDescriptonProps {
 
 export const ContentDescripton: FC<ContentDescriptonProps> = (props) => {
 
-  const [hidden, SetHidden] = useState<boolean>(true);
+  const [hidden, setHidden] = useState<boolean>(true);
 
   return (
 
@@ -81,7 +81,7 @@ export const ContentDescripton: FC<ContentDescriptonProps> = (props) => {
 
       <p
         className={styles.sign}
-        onClick={() => SetHidden(!hidden)}
+        onClick={() => setHidden(!hidden)}
       >
         {hidden ? `Детали о ${props.type.toLowerCase()}е` : "Свернуть детали"}
       </p>

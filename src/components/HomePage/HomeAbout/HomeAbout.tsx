@@ -13,7 +13,7 @@ const advantages = [
 
 export const HomeAbout = () => {
 
-  const [hidden, SetHidden] = useState<boolean>(true);
+  const [hidden, setHidden] = useState<boolean>(true);
 
   return (
 
@@ -56,7 +56,7 @@ export const HomeAbout = () => {
 
       <p
         className={styles.subTitle}
-        onClick={() => SetHidden(!hidden)}
+        onClick={() => setHidden(!hidden)}
       >
         {hidden ? "Развернуть" : "Свернуть"}
       </p>

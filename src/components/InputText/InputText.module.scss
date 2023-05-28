@@ -1,21 +1,23 @@
 .box {
   position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  background-color: #1f1b2e;
+  border: 1px solid #afafaf;
+  border-radius: 8px;
 }
 
 .input {
   width: 100%;
-  padding: 24px 12px 8px;
+  padding: 24px 6px 8px;
   font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
   font-size: 15px;
   line-height: 15px;
   color: #FFFFFF;
   background-color: #1f1b2e;
-  border-radius: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 
   &:read-only {
     color: #b1b1b1;
@@ -26,14 +28,7 @@
   }
 }
 
-.inputButton {
-  padding-right: 24px;
-}
-
 .button {
-  position: absolute;
-  right: 12px;
-  top: calc(50% - 10px);
   padding: 4px;
   background-color: #100e19;
   border-radius: 50%;
@@ -46,11 +41,15 @@
 }
 
 .placholder {
+  width: calc(100% - 24px);
   position: absolute;
   top: calc(50% - 10px);
   left: 12px;
   color: #a5a1b2;
   pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .error {

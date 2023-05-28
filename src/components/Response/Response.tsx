@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import Image from 'next/image';
 import Button from "../Button/Button";
-import { Input } from "../Input/Input";
+import { InputText } from "../InputText/InputText";
 import styles from './Response.module.scss';
 import userIcon from "../../../public/icons/user.svg"
 
@@ -14,7 +14,7 @@ export const Response: FC<ResponseProps> = (props) => {
 
   const minSize = 10;
 
-  const [comment, SetComment] = useState<string>("");
+  const [comment, setComment] = useState<string>("");
 
   return (
 
@@ -23,10 +23,10 @@ export const Response: FC<ResponseProps> = (props) => {
       <Image className={styles.icon} src={userIcon} alt='user-icon' />
 
       <div className={styles.inputBox}>
-        <Input
+        <InputText
           placeholder={props.placeholder}
           minSize={minSize}
-          onChange={(event) => SetComment(event.target.value)}
+          onChange={(event) => setComment(event.target.value)}
         />
       </div>
 

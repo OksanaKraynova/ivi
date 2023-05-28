@@ -10,7 +10,7 @@ interface TextAreaProps {
 
 export const TextArea: FC<TextAreaProps> = (props) => {
 
-  const [placeholderEffect, SetPlacholderEffect] = useState<string | null>(null);
+  const [placeholderEffect, setPlacholderEffect] = useState<string | null>(null);
 
   return (
 
@@ -22,16 +22,16 @@ export const TextArea: FC<TextAreaProps> = (props) => {
         onChange={(event) => {
           props.onChange && props.onChange(event);
           event.target.value.length > 0 ?
-            SetPlacholderEffect(styles.overText) :
-            SetPlacholderEffect(null);
+            setPlacholderEffect(styles.overText) :
+            setPlacholderEffect(null);
         }}
         onFocus={(event) => {
           if (event.target.value.length === 0)
-            SetPlacholderEffect(styles.overText);
+            setPlacholderEffect(styles.overText);
         }}
         onBlur={(event) => {
           if (event.target.value.length === 0)
-            SetPlacholderEffect(null);
+            setPlacholderEffect(null);
         }}
       />
 

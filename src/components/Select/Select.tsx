@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import classNames from 'classnames';
-import { Input } from '../Input/Input';
+import { InputText } from '../InputText/InputText';
 import { List } from '../List';
 import styles from './Select.module.scss';
 import upIcon from "../../../public/icons/up.svg"
@@ -39,10 +39,15 @@ export const Select: FC<SelectProps> = (props) => {
 
   return (
 
-    <div className={styles.box} >
+    <div className={styles.box}
+      tabIndex={-1}
+      onClick={() => setVisibile(true)}
+      onBlur={() => setVisibile(false)}
+    >
 
-      <div className={styles.input} onClick={() => setVisibile(!visibile)}>
-        <Input
+      <div className={styles.input}>
+
+        <InputText
           placeholder={props.placeholder}
           disabled={true}
           required={props.required ?? false}
@@ -50,13 +55,12 @@ export const Select: FC<SelectProps> = (props) => {
           value={checked.join(", ")}
           buttonIcon={upIcon.src}
           buttonClass={visibile ? styles.button : undefined}
+          onClick={(event) => { setVisibile(!visibile); event.stopPropagation(); }}
         />
       </div>
 
-      <div
-        className={styles.list}
-        hidden={!visibile}
-      >
+      <div className={styles.list} hidden={!visibile}>
+
         <List<string>
           list={props.options}
           renderItem={(item, index) =>

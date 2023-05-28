@@ -1,10 +1,10 @@
-import { Input } from './Input'
+import { InputText } from './InputText'
 import type { Meta, StoryObj } from '@storybook/react';
 import closeIcon from '../../../public/icons/close.svg';
 
-const meta: Meta<typeof Input> = {
-    title: 'Input',
-    component: Input,
+const meta: Meta<typeof InputText> = {
+    title: 'InputText',
+    component: InputText,
     tags: ['autodocs'],
     argTypes: {
         placeholder: {
@@ -38,15 +38,6 @@ const meta: Meta<typeof Input> = {
             type: { name: 'string', required: false },
             description: 'Программно введеный текст'
         },
-        type: {
-            type: { name: 'string', required: false },
-            description: 'Тип инпута',
-            options: ["number"],
-            control: {
-                type: 'select'
-            },
-            defaultValue: "text"
-        },
         minSize: {
             type: { name: 'number', required: false },
             defaultValue: 0,
@@ -65,7 +56,7 @@ const meta: Meta<typeof Input> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof InputText>;
 
 export const Example: Story = {
     args: {

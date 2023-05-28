@@ -10,7 +10,7 @@ interface FooterNavbarProps {
 
 export const FooterNavbar: FC<FooterNavbarProps> = (props) => {
 
-  const [hidden, SetHidden] = useState<boolean>(true);
+  const [hidden, setHidden] = useState<boolean>(true);
   return (
 
     <>
@@ -23,7 +23,7 @@ export const FooterNavbar: FC<FooterNavbarProps> = (props) => {
 
       <FooterNavbarNav
         activePage={props.activePage}
-        onClick={() => { SetHidden(!hidden) }}
+        onClick={() => setHidden(!hidden)}
       />
 
     </>
