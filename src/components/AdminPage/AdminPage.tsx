@@ -18,8 +18,8 @@ export default function AdminPage() {
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const defaultHidden = Array.from({ length: breadCrumbs.length }).
-    map((item, index) => { return index === currentIndex ? false : true });
+  const defaultHidden = Array.from({ length: breadCrumbs.length })
+    .map((item, index) => { return index === currentIndex ? false : true });
 
   const [hidden, setHidden] = useState<boolean[]>(defaultHidden);
 

@@ -1,17 +1,19 @@
 import { GetServerSidePropsContext } from "next";
 import { IContent } from "@/types/IContent";
-import contentData from "../../../src/json/content.json"
 import Header from "@/src/components/Header/Header";
 import { Footer } from "@/src/components/Footer/Footer";
 import { Content as ContentBlock } from "@/src/components/Content/Content";
+import { queryData } from "@/src/functions/queryData";
+import { Urls } from "@/types/Urls";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+
   const id = context.params?.id;
-  const content = contentData.content.find(content => content.id === id) ?? null;
+  const content: IContent = await queryData("get", Urls.SERVER_PORT, Urls.ONE_MOVIE + `/${id}`);
 
   return {
     props:
-      { content: content }
+      { content: content || null }
   };
 }
 

@@ -14,9 +14,12 @@ interface ContentExtraCommentsProps {
 
 export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
 
-  const [hidden, setHidden] = useState<boolean[]>(new Array(props.content.comments.length).fill(true));
+  const [hidden, setHidden] =
+    useState<boolean[]>(new Array(props.content.comments.length).fill(true));
 
-  const comments = commentsDataParent.comments.filter(comment => props.content.comments.includes(comment.id));
+  const comments = commentsDataParent.comments
+    .filter(comment => props.content.comments.includes(comment.id));
+
   const commentsLimit = 10;
   const commentsChidrens = comments.
     map(comment => { return getChildrensNumber(comment.id, commentsDataParent.comments); });

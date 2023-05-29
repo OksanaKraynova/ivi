@@ -1,4 +1,6 @@
-export function getParagraphs(text: string): string[] {
+export function getParagraphs(text: string | null): string[] {
+  if (text === null)
+    return [];
   let paragraph = "";
   let paragraphs = new Array<string>;
   for (let char of text) {

@@ -25,14 +25,14 @@ export const ContentTitle: FC<ContentTitleProps> = (props) => {
       <div className={styles.props}>
         <a className={props.textClass}>{props.content.year}</a>
         <p className={props.textClass}>
-          {getDuration(props.content.type, props.content.duration)}
+          {props.content.duration}
         </p>
-        <p className={props.textClass}>{`${props.content.ageLimit}+`}</p>
+        <p className={props.textClass}>{props.content.age}</p>
       </div>
 
       <div className={styles.props}>
-        <a className={props.textClass}>{props.content.country}</a>
-        {props.content.genres.map((ganr, index) =>
+        {/* <a className={props.textClass}>{props.content.country}</a> */}
+        {props.content.ganres.map((ganr, index) =>
           <a
             key={index}
             className={classNames(props.textClass, styles.dot)}

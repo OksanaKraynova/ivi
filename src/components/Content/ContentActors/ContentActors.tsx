@@ -1,16 +1,14 @@
 import { FC } from "react";
 import { IContent } from "@/types/IContent";
 import { LinkAvatar } from "@/src/components/LinkAvatar/LinkAvatar";
-import { IActor } from "@/types/IActor";
 
 interface ContentActorsProps {
     content: IContent;
-    actors: IActor[];
 }
 
 export const ContentActors: FC<ContentActorsProps> = (props) => {
-    let color: "green" | "grey";
-    props.content.rating < 7 ? (color = "grey") : (color = "green");
+
+    const color = +props.content.rating < 7 ? "grey" : "green";
 
     return (
         <>
@@ -23,20 +21,20 @@ export const ContentActors: FC<ContentActorsProps> = (props) => {
                 color={color}
             />
 
-            {props.content.actors.map((actorId, index) => {
-                let actor = props.actors.find((actor) => actor.id === actorId);
-                if (index > 4) return;
-                if (actor !== undefined)
+            {props.content.creators
+                .find(creators => creators.job === "Актер")?.persons
+                ?.map((actor, index) => {
+                    if (index > 4) return;
                     return (
                         <LinkAvatar
                             key={index}
-                            textUnderImg={[actor.firstName, actor.secondName]}
+                            textUnderImg={actor.name.split(" ")}
                             href=""
-                            img={actor.img}
+                            img={actor.photo[0].file_path}
                             form="square"
                         />
                     );
-            })}
+                })}
         </>
     );
 };

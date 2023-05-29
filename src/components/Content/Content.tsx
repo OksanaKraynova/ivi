@@ -13,8 +13,6 @@ import { ContentComments } from "./ContentComments/ContentComments";
 import { ContentDevices } from "./ContentDevices/ContentDevices";
 import { BreadCrumbs } from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
-import actorsData from "../../json/actors.json"
-import commentsData from "../../json/comments-children.json"
 
 interface ContentProps {
   content: IContent;
@@ -37,13 +35,13 @@ export const Content: FC<ContentProps> = (props) => {
       <BreadCrumbs
         prevPages={[
           { text: `${props.content.type}ы`, link: "" },
-          { text: props.content.genres[0], link: "" }
+          { text: props.content.ganres[0], link: "" }
         ]}
       />
 
       <div className={styles.box}>
 
-        <ContentTrailer img={props.content.cover} />
+        <ContentTrailer img={props.content.coverImage[0].path} />
 
         <ContentTitle
           content={props.content}
@@ -52,11 +50,11 @@ export const Content: FC<ContentProps> = (props) => {
         />
 
         <div className={styles.actors}>
-          <ContentActors content={props.content} actors={actorsData.actors} />
+          <ContentActors content={props.content} />
         </div>
 
         <ContentDescripton
-          tagline={props.content.tagline}
+          tagline={props.content.slogan}
           description={props.content.description}
           type={props.content.type}
           textClass={styles.text}
@@ -79,7 +77,6 @@ export const Content: FC<ContentProps> = (props) => {
         <ContentCreators
           content={props.content}
           linkClass={classNames(styles.title, styles.link)}
-          actors={actorsData.actors}
         />
       </div>
 
@@ -99,7 +96,6 @@ export const Content: FC<ContentProps> = (props) => {
           content={props.content}
           linkClass={classNames(styles.title, styles.link)}
           textClass={styles.text}
-          comments={commentsData.comments}
         />
 
       </div>
@@ -119,7 +115,7 @@ export const Content: FC<ContentProps> = (props) => {
         prevPages={[
           { text: "Мой Иви", link: "/" },
           { text: `${props.content.type}ы`, link: "" },
-          { text: props.content.genres[0], link: "" }
+          { text: props.content.ganres[0], link: "" }
         ]}
       />
 

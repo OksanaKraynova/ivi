@@ -1,19 +1,24 @@
+import { IImage } from "./IImage";
+import { IJob } from "./IJob";
+
 export interface IContent {
-  id: string,
+  id: number,
   name: string,
-  type: string, // type: "Фильм" | "Сериал" | "Мультфильм",
+  name_translate: string | null,
+  type: string,
   year: number,
-  cover: string,
-  trailer: string,
-  country: string,
-  genres: string[],
-  director: number,
-  actors: number[],
-  similar: number, // количество похожих
-  duration: number,
-  ageLimit: number,
-  tagline: string,
-  description: string,
+  coverImage: IImage[],
+  creators: IJob[],
+  // country: string,
+  ganres: string[],
+  // similar: number,
+  duration: string,
+  age: string,
+  slogan: string,
+  description: string | null,
+  count: number,
   comments: number[],
-  rating: number
+  rating: string,
+  estimation: number,
+  video_quality: string | null,
 }

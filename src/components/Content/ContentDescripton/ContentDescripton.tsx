@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
 import Image from 'next/image';
-import { IContent } from '@/types/IContent';
 import { getParagraphs } from '@/src/functions/getParagraphs';
 import branchRight from "@/public/icons/branch-right.svg"
 import branchLeft from "@/public/icons/branch-left.svg"
@@ -8,7 +7,7 @@ import styles from './ContentDescripton.module.scss';
 
 interface ContentDescriptonProps {
   tagline: string;
-  description: string;
+  description: string | null;
   type: string;
   textClass: string;
   borderedClass: string;
