@@ -1,0 +1,272 @@
+{
+  "age": "18+",
+  "comments": [],
+  "count": 0,
+  "coverImage": [
+    {
+      "id": 1,
+      "path": "uploadedFiles/image/movie/1/796152255fd5cf83e50041faf1edf22d"
+    }
+  ],
+  "creators": [
+    {
+      "job": "Режиссер",
+      "persons": [
+        {
+          "birth_date": "10 сентября, 1968 • Дева • 54 года",
+          "birth_place": "Хатфилд, Хартвордшир, Англия, Великобритания",
+          "ganres": "Боевик, Комедия, Короткометражка",
+          "height": "1.8 м",
+          "id": 1,
+          "movies": [
+            "73",
+            " 1995 — 2025"
+          ],
+          "name": "Гай Ричи",
+          "photo": [
+            {
+              "file_id": 1,
+              "file_name": "796152255fd5cf83e50041faf1edf22d",
+              "file_path": "uploadedFiles/image/movie/1/796152255fd5cf83e50041faf1edf22d",
+              "file_person_id": 1
+            }
+          ],
+          "spouse": "",
+          "translate": "Guy Ritchie",
+          "work": "Режиссер, Сценарист, Продюсер, Актер"
+        }
+      ]
+    },
+    {
+      "job": "Актер",
+      "persons": [
+        {
+          "birth_date": "4 ноября, 1969 • Скорпион • 53 года",
+          "birth_place": "Увалд, Техас, США",
+          "ganres": "Комедия, Драма, Криминал",
+          "height": "1.82 м",
+          "id": 2,
+          "movies": [
+            "234",
+            " 1987 — 2023"
+          ],
+          "name": "Мэттью МакКонахи",
+          "photo": [
+            {
+              "file_id": 3,
+              "file_name": "bc393a1bd82a467a31be781dd81fae80",
+              "file_path": "uploadedFiles/image/person/2/bc393a1bd82a467a31be781dd81fae80",
+              "file_person_id": 2
+            }
+          ],
+          "spouse": "",
+          "translate": "Matthew McConaughey",
+          "work": "Актер, Продюсер, Режиссер, Сценарист"
+        },
+        {
+          "birth_date": "10 апреля, 1980 • Овен • 43 года",
+          "birth_place": "Ньюкасл-апон-Тайн, Англия, Великобритания",
+          "ganres": "Драма, Триллер, Боевик",
+          "height": "1.85 м",
+          "id": 3,
+          "movies": [
+            "61",
+            " 1989 — 2023"
+          ],
+          "name": "Чарли Ханнэм",
+          "photo": [
+            {
+              "file_id": 4,
+              "file_name": "eaa71ad8702b15fe3979bb4032b7a701",
+              "file_path": "uploadedFiles/image/person/3/eaa71ad8702b15fe3979bb4032b7a701",
+              "file_person_id": 3
+            }
+          ],
+          "spouse": "",
+          "translate": "Charlie Hunnam",
+          "work": "Актер, Продюсер"
+        },
+        {
+          "birth_date": "5 февраля, 1987 • Водолей • 36 лет",
+          "birth_place": "Бетонг, Саравак, Малайзия",
+          "ganres": "Боевик, Драма, Комедия",
+          "height": "1.86 м",
+          "id": 4,
+          "movies": [
+            "38",
+            " 2013 — 2024"
+          ],
+          "name": "Генри Голдинг",
+          "photo": [
+            {
+              "file_id": 5,
+              "file_name": "c3c91c7c2b1d64f4b5caedb7979e16df",
+              "file_path": "uploadedFiles/image/person/4/c3c91c7c2b1d64f4b5caedb7979e16df",
+              "file_person_id": 4
+            }
+          ],
+          "spouse": "",
+          "translate": "Henry Golding",
+          "work": "Актер"
+        },
+        {
+          "birth_date": "9 сентября, 1960 • Дева • 62 года",
+          "birth_place": "Лондон, Англия, Великобритания",
+          "ganres": "Комедия, Драма, Мелодрама",
+          "height": "1.79 м",
+          "id": 5,
+          "movies": [
+            "208",
+            " 1982 — 2023"
+          ],
+          "name": "Хью Грант",
+          "photo": [
+            {
+              "file_id": 6,
+              "file_name": "50a1db9f90b07f5cc57f5275c9f5c6d2",
+              "file_path": "uploadedFiles/image/person/5/50a1db9f90b07f5cc57f5275c9f5c6d2",
+              "file_person_id": 5
+            }
+          ],
+          "spouse": "",
+          "translate": "Hugh Grant",
+          "work": "Актер"
+        },
+        {
+          "birth_date": "15 декабря, 1981 • Стрелец • 41 год",
+          "birth_place": "Эссекс, Англия, Великобритания",
+          "ganres": "Драма, Криминал, Триллер",
+          "height": "1.73 м",
+          "id": 6,
+          "movies": [
+            "80",
+            " 1992 — 2023"
+          ],
+          "name": "Мишель Докери",
+          "photo": [
+            {
+              "file_id": 7,
+              "file_name": "eb3f8a640d8ab43b03cbba0c138f0227",
+              "file_path": "uploadedFiles/image/person/6/eb3f8a640d8ab43b03cbba0c138f0227",
+              "file_person_id": 6
+            }
+          ],
+          "spouse": "",
+          "translate": "Michelle Dockery",
+          "work": "Актриса"
+        },
+        {
+          "birth_date": "25 декабря, 1978 • Козерог • 44 года",
+          "birth_place": "Бостон, Массачусетс, США",
+          "ganres": "Драма, Комедия, Триллер",
+          "height": "1.79 м",
+          "id": 7,
+          "movies": [
+            "42",
+            " 2008 — 2022"
+          ],
+          "name": "Джереми Стронг",
+          "photo": [
+            {
+              "file_id": 8,
+              "file_name": "3c8ec91c6540ca8de9b765098224b30b",
+              "file_path": "uploadedFiles/image/person/7/3c8ec91c6540ca8de9b765098224b30b",
+              "file_person_id": 7
+            }
+          ],
+          "spouse": "",
+          "translate": "Jeremy Strong",
+          "work": "Актер, Продюсер"
+        },
+        {
+          "birth_date": "9 июня, 1968 • Близнецы • 54 года",
+          "birth_place": "Лондон, Англия, Великобритания",
+          "ganres": "Драма, Криминал, Триллер",
+          "height": "1.74 м",
+          "id": 8,
+          "movies": [
+            "154",
+            " 1978 — 2023"
+          ],
+          "name": "Эдди Марсан",
+          "photo": [
+            {
+              "file_id": 9,
+              "file_name": "97ed04264365b82ba77a78c59ec9f493",
+              "file_path": "uploadedFiles/image/person/8/97ed04264365b82ba77a78c59ec9f493",
+              "file_person_id": 8
+            }
+          ],
+          "spouse": "",
+          "translate": "Eddie Marsan",
+          "work": "Актер"
+        },
+        {
+          "birth_date": "24 марта, 1986 • Овен • 37 лет",
+          "birth_place": "Лондон, Англия, Великобритания",
+          "ganres": "Боевик, Триллер, Драма",
+          "height": "1.74 м",
+          "id": 9,
+          "movies": [
+            "20",
+            " 1996 — 2023"
+          ],
+          "name": "Джейсон Вонг",
+          "photo": [
+            {
+              "file_id": 10,
+              "file_name": "2aa68b346a690a5dba1abbb5a3986d25",
+              "file_path": "uploadedFiles/image/person/9/2aa68b346a690a5dba1abbb5a3986d25",
+              "file_person_id": 9
+            }
+          ],
+          "spouse": "",
+          "translate": "Jason Wong",
+          "work": "Актер"
+        },
+        {
+          "birth_date": "31 мая, 1976 • Близнецы • 46 лет",
+          "birth_place": "Дублин, Ирландия",
+          "ganres": "Драма, Триллер, Криминал",
+          "height": "1.78 м",
+          "id": 10,
+          "movies": [
+            "167",
+            " 1995 — 2024"
+          ],
+          "name": "Колин Фаррелл",
+          "photo": [
+            {
+              "file_id": 11,
+              "file_name": "3995531f5a0922dcb5f9c13727c05a7d",
+              "file_path": "uploadedFiles/image/person/10/3995531f5a0922dcb5f9c13727c05a7d",
+              "file_person_id": 10
+            }
+          ],
+          "spouse": "",
+          "translate": "Colin Farrell",
+          "work": "Актер, Продюсер"
+        }
+      ]
+    }
+  ],
+  "description": null,
+  "duration": "113 мин. / 01:53",
+  "estimation": 1382575,
+  "ganres": [
+    "Криминал",
+    "Криминал",
+    "Комедия",
+    "Комедия",
+    "Боевик",
+    "Боевик"
+  ],
+  "id": 1,
+  "name": "Джентльмены",
+  "name_translate": null,
+  "rating": "8.5",
+  "slogan": "«Criminal. Class»",
+  "type": "movie",
+  "video_quality": null,
+  "year": 2019
+}

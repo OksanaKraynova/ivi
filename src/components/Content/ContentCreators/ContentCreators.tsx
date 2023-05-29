@@ -1,28 +1,15 @@
 import { FC } from 'react';
 import { IContent } from '@/types/IContent';
-import styles from './ContentCreators.module.scss';
 import { LinkAvatar } from '@/src/components/LinkAvatar/LinkAvatar';
-import { IActor } from '@/types/IActor';
 import Link from 'next/link';
+import styles from './ContentCreators.module.scss';
 
 interface ContentCreatorsProps {
   content: IContent;
   linkClass: string;
-  actors: IActor[];
 }
 
 export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
-  const director = props.actors.find(actor => actor.id === props.content.director);
-  const directorLink = director === undefined ?
-    <></> :
-    <LinkAvatar
-      textUnderImg={[director.firstName, director.secondName]}
-      href=""
-      img={director.img}
-      form="circle"
-    >
-      <p>режиссёр</p>
-    </LinkAvatar>
 
   return (
 
@@ -38,20 +25,18 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
 
         <div className={styles.visible}>
 
-          {directorLink}
-
-          {props.content.actors.map((actorId, index) => {
-            let actor = props.actors.find(actor => actor.id === actorId);
-            if (index > 8) return;
-            if (actor !== undefined)
+          {props.content.creators
+            .find(creators => creators.job === "Режиссер")?.persons
+            ?.map((actor, index) => {
+              if (index > 8) return;
               return (
                 <div className={styles.item}>
 
                   <LinkAvatar
                     key={index}
-                    textUnderImg={[actor.firstName, actor.secondName]}
+                    textUnderImg={actor.name.split(" ")}
                     href=""
-                    img={actor.img}
+                    img={actor.photo[0].file_path}
                     form="circle"
                   >
                     <p>актёр</p>
@@ -59,7 +44,28 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
 
                 </div>
               )
-          })}
+            })}
+
+          {props.content.creators
+            .find(creators => creators.job === "Актер")?.persons
+            ?.map((actor, index) => {
+              if (index > 8) return;
+              return (
+                <div className={styles.item}>
+
+                  <LinkAvatar
+                    key={index}
+                    textUnderImg={actor.name.split(" ")}
+                    href=""
+                    img={actor.photo[0].file_path}
+                    form="circle"
+                  >
+                    <p>актёр</p>
+                  </LinkAvatar>
+
+                </div>
+              )
+            })}
 
         </div>
 

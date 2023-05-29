@@ -13,28 +13,17 @@ interface ContentCommentsProps {
   content: IContent;
   linkClass: string;
   textClass: string;
-  comments: IComment[];
 }
 
 export const ContentComments: FC<ContentCommentsProps> = (props) => {
 
-  const comments = props.content.comments.reduce((comments, commentId) => {
-    let currentComment = props.comments.find(comment => comment.id === commentId);
-
-    if (currentComment !== undefined)
-      comments.push(currentComment);
-
-    return comments;
-
-  }, new Array<IComment>);
-
-  const commentsBlock = comments.length > 0 ?
+  const commentsBlock = props.content.comments.length > 0 ?
 
     <MovieBlock<IComment>
       blockClass={styles.block}
       spaceBetween={24}
       slidesPerView={4}
-      listCardsProps={comments}
+      listCardsProps={props.content.comments}
       breakpoints={
         {
           0: { slidesPerView: 1, spaceBetween: 24 },

@@ -17,12 +17,12 @@ import actorsData from "../../../json/actors.json";
 import { InputNumber } from '../../InputNumber/InputNumber';
 
 const allGenres: IGenre[] = [
-  { id: 1, name: "Ужас", englishName: "Horror" },
-  { id: 2, name: "Драма", englishName: "Drama" },
-  { id: 3, name: "Комедия", englishName: "Comedy" },
-  { id: 4, name: "Триллер", englishName: "Thriller" },
-  { id: 5, name: "Романтика", englishName: "Romance" },
-  { id: 6, name: "Дорама", englishName: "Dorama" }
+  { id: 1, name: "Ужас", translate: "Horror" },
+  { id: 2, name: "Драма", translate: "Drama" },
+  { id: 3, name: "Комедия", translate: "Comedy" },
+  { id: 4, name: "Триллер", translate: "Thriller" },
+  { id: 5, name: "Романтика", translate: "Romance" },
+  { id: 6, name: "Дорама", translate: "Dorama" }
 ];
 
 const allCountries: string[] = [
@@ -39,32 +39,32 @@ interface AdminPageFilmsProps {
 
 export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
-  const defaultFilm: IContent = {
-    id: "",
-    name: "",
-    type: "",
-    year: 0,
-    cover: "",
-    trailer: "",
-    country: "",
-    genres: [],
-    director: 0,
-    actors: [],
-    similar: 0,
-    duration: 0,
-    ageLimit: 0,
-    tagline: "",
-    description: "",
-    comments: [],
-    rating: 0
-  };
+  // const defaultFilm: IContent = {
+  //   id: -1,
+  //   name: "",
+  //   type: "",
+  //   year: -1,
+  //   cover: "",
+  //   trailer: "",
+  //   country: "",
+  //   genres: [],
+  //   director: -1,
+  //   actors: [],
+  //   similar: -1,
+  //   duration: "",
+  //   ageLimit: -1,
+  //   tagline: "",
+  //   description: "",
+  //   comments: [],
+  //   rating: ""
+  // };
 
   const [hidden, setHidden] =
     useState<{ update: boolean, create: boolean }>({ update: true, create: true });
 
   const [film, setFilm] = useState<IGenre | null>(null);
   const [upadateFilm, setUpdateFilm] = useState<IGenre | null>(null);
-  const [newFilm, setNewFilm] = useState<IContent>(defaultFilm);
+  // const [newFilm, setNewFilm] = useState<IContent>(defaultFilm);
   const [genres, setGenres] = useState<IGenre[]>([]);
   const [actors, setActors] = useState<IActor[]>([]);
   const [directors, setDirectors] = useState<IActor[]>([]);
@@ -107,10 +107,10 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
           upadateFilm !== null && film !== null &&
           <AdminPageUpdateName
             name={film.name}
-            englishName={film.englishName}
+            englishName={film.translate}
             delite={true}
             onChangeName={(event) => setUpdateFilm({ ...upadateFilm, name: event.target.value })}
-            onChangeEnglishName={(event) => setUpdateFilm({ ...upadateFilm, englishName: event.target.value })}
+            onChangeEnglishName={(event) => setUpdateFilm({ ...upadateFilm, translate: event.target.value })}
           />
         }
 
@@ -134,7 +134,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       </div>
 
-      <div className={styles.box} hidden={hidden.create}>
+      {/* <div className={styles.box} hidden={hidden.create}>
 
         <div className={styles.inputBox}>
           <InputText
@@ -277,7 +277,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       {Object.values(newFilm).map(item =>
         <p>{item}</p>
-      )}
+      )} */}
 
     </div>
 

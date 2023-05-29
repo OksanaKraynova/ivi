@@ -4,13 +4,12 @@ import styles from './ContentRating.module.scss';
 import classNames from 'classnames';
 
 interface ContentRatingProps {
-  rating: number;
+  rating: string;
   textClass: string;
 }
 
 export const ContentRating: FC<ContentRatingProps> = (props) => {
-  let color: "green" | "grey";
-  props.rating < 7 ? color = "grey" : color = "green";
+  const color = +props.rating < 7 ? "grey" : "green";
 
   return (
 

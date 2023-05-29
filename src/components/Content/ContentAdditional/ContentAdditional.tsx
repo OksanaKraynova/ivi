@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { IContent } from '@/types/IContent';
 import styles from './ContentAdditional.module.scss';
-import { LinkAvatar } from '@/src/components/LinkAvatar/LinkAvatar';
 import Link from 'next/link';
 
 interface ContentAdditionalProps {
