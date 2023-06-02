@@ -1,17 +1,18 @@
 import { GetServerSidePropsContext } from "next";
 import { IContent } from "@/types/IContent";
-import contentData from "../../../src/json/content.json"
 import { ContentExtra } from "@/src/components/ContentExtra/ContentExtra";
-import Header from "@/src/components/Header/Header";
-import { Footer } from "@/src/components/Footer/Footer";
+import Layout from "@/src/components/Layout/Layout";
+import { getData } from "@/src/functions/getData";
+import { Urls } from "@/types/Urls";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+
   const id = context.params?.id;
-  const content = contentData.content.find(content => content.id === id) ?? null;
+  const content: IContent =
+    await getData(Urls.SERVER_PORT, Urls.ONE_MOVIE + `/${id}`);
 
   return {
-    props:
-      { content: content }
+    props: { content: content || null }
   };
 }
 
@@ -19,11 +20,9 @@ const Trailers = (params: { content: IContent }) => {
 
   return (
 
-    <>
-      <Header />
-      <ContentExtra content={params.content} extra={"Трейлеры"} />
-      <Footer />
-    </ >
+    <Layout>
+      <ContentExtra content={params.content} extra="Трейлеры" />
+    </Layout>
 
   );
 }

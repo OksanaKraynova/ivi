@@ -1,15 +1,14 @@
 import { GetServerSidePropsContext } from "next";
 import { IContent } from "@/types/IContent";
-import Header from "@/src/components/Header/Header";
-import { Footer } from "@/src/components/Footer/Footer";
 import { Content as ContentBlock } from "@/src/components/Content/Content";
-import { queryData } from "@/src/functions/queryData";
+import { getData } from "@/src/functions/getData";
 import { Urls } from "@/types/Urls";
+import Layout from "@/src/components/Layout/Layout";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
 
   const id = context.params?.id;
-  const content: IContent = await queryData("get", Urls.SERVER_PORT, Urls.ONE_MOVIE + `/${id}`);
+  const content = await getData<IContent>(Urls.SERVER_PORT, Urls.ONE_MOVIE + `/${id}`);
 
   return {
     props:
@@ -19,12 +18,14 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
 
 const Content = (params: { content: IContent }) => {
 
+  console.log(params.content)
+
   return (
-    <>
-      <Header />
+
+    <Layout>
       <ContentBlock content={params.content} />
-      <Footer />
-    </>
+    </Layout>
+
   );
 }
 

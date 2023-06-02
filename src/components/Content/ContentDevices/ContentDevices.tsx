@@ -5,6 +5,7 @@ import Button from '@/src/components/Button/Button';
 import styles from './ContentDevices.module.scss';
 import idadImg from "@/public/img/ipad-without-poster.png"
 import tvImg from "@/public/img/tv-without-poster.png"
+import { Urls } from '@/types/Urls';
 
 interface ContentDevicesProps {
   content: IContent;
@@ -13,6 +14,8 @@ interface ContentDevicesProps {
 }
 
 export const ContentDevices: FC<ContentDevicesProps> = (props) => {
+
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 
   return (
 
@@ -32,12 +35,28 @@ export const ContentDevices: FC<ContentDevicesProps> = (props) => {
 
         <div className={styles.tv}>
           <img className={styles.tvImg} src={tvImg.src} alt="tv" />
-          <img className={styles.tvPoster} src={props.content.coverImage[0].path} alt="poster" />
+          <img
+            className={styles.tvPoster}
+            src={
+              props.content.coverImage.length > 0 ?
+                fileUrl + props.content.coverImage[0].file_path :
+                ""
+            }
+            alt="poster"
+          />
         </div>
 
         <div className={styles.ipad}>
           <img className={styles.ipadImg} src={idadImg.src} alt="ipad" />
-          <img className={styles.tvPoster} src={props.content.coverImage[0].path} alt="poster" />
+          <img
+            className={styles.ipadPoster}
+            src={
+              props.content.coverImage.length > 0 ?
+                fileUrl + props.content.coverImage[0].file_path :
+                ""
+            }
+            alt="poster"
+          />
         </div>
 
       </div>

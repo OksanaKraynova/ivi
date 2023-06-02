@@ -8,27 +8,41 @@ import plusIcon from "../../../public/icons/plus.svg"
 interface InputNumberProps {
   placeholder?: string;
   required?: boolean;
+  integer?: boolean;
   min?: number;
   max?: number;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  error?: boolean;
+  onChange?: (count: string) => void;
 }
 
 export const InputNumber: FC<InputNumberProps> = (props) => {
 
+  const integer = props.integer ?? false;
+
   const [count, setCount] = useState<number | null>(null);
   const [placeholderEffect, setPlacholderEffect] = useState<string | null>(null);
 
-  function setNumber(number: number | null, residual: number, min?: number, max?: number) {
-    let nextNumber = number ?? 0;
+  function getNextNumber(number: number, residual: number, min?: number, max?: number): number {
+    let nextNumber = number;
     nextNumber = nextNumber + residual;
     nextNumber = min !== undefined && nextNumber < min ? min : nextNumber;
     nextNumber = max !== undefined && nextNumber > max ? max : nextNumber;
-    setCount(nextNumber);
+    return nextNumber;
+  }
+
+  function addNumber(number: string, residual: number, min?: number, max?: number): number {
+    let nextNumber = integer ? +(number.replace(".", "")) : +number;
+    return getNextNumber(nextNumber, residual, min, max);
+  }
+
+  function changeNumber(number: number | null, residual: number, min?: number, max?: number): number {
+    let nextNumber = number ?? 0;
+    return getNextNumber(nextNumber, residual, min, max);
   }
 
   return (
 
-    <div className={styles.box}>
+    <div className={props.error ? classNames(styles.box, styles.red) : styles.box}>
 
       <Image
         className={classNames(styles.button, styles.left)}
@@ -36,17 +50,22 @@ export const InputNumber: FC<InputNumberProps> = (props) => {
         alt='минус'
         width={20}
         height={49}
-        onClick={() => setNumber(count, -1, props.min, props.max)}
+        onClick={() => {
+          const nextNumber = changeNumber(count, -1, props.min, props.max);
+          props.onChange && props.onChange(nextNumber.toString());
+          setCount(nextNumber);
+          setPlacholderEffect(styles.overText);
+        }}
       />
 
       <input
         type='number'
-        className={styles.input}
+        className={props.error ? classNames(styles.input, styles.red) : styles.input}
         value={count ?? ""}
         required={props.required ?? false}
         onChange={(event) => {
-          props.onChange && props.onChange(event);
-          setNumber(+event.target.value, 0, props.min, props.max);
+          props.onChange && props.onChange(event.target.value);
+          setCount(addNumber(event.target.value, 0, props.min, props.max));
           event.target.value.length > 0 && setPlacholderEffect(styles.overText);
         }}
         onFocus={(event) =>
@@ -65,7 +84,12 @@ export const InputNumber: FC<InputNumberProps> = (props) => {
         alt='плюс'
         width={20}
         height={49}
-        onClick={() => setNumber(count, 1, props.min, props.max)}
+        onClick={() => {
+          const nextNumber = changeNumber(count, 1, props.min, props.max);
+          props.onChange && props.onChange(nextNumber.toString());
+          setCount(nextNumber);
+          setPlacholderEffect(styles.overText);
+        }}
       />
 
       <div className={classNames(styles.placholder, placeholderEffect)}>

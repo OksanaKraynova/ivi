@@ -12,6 +12,7 @@ interface InputTextProps {
   readOnly?: boolean;
   value?: string;
   minSize?: number;
+  error?: boolean;
   onClick?: ((event: React.MouseEvent<HTMLImageElement, MouseEvent>) => void) |
   (() => void);
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -32,10 +33,10 @@ export const InputText: FC<InputTextProps> = (props) => {
 
   return (
 
-    <div className={styles.box}>
+    <div className={props.error ? classNames(styles.box, styles.red) : styles.box}>
 
       <input
-        className={styles.input}
+        className={props.error ? classNames(styles.input, styles.red) : styles.input}
         value={props.value}
         disabled={props.disabled ?? false}
         required={props.required ?? false}

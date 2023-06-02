@@ -11,6 +11,7 @@ interface BreadCrumbsProps {
 }
 
 export const BreadCrumbs: FC<BreadCrumbsProps> = (props) => {
+
   const page = props.page === undefined ?
     <></> :
     <p className={classNames(styles.text, styles.dot)}>{props.page}</p>
@@ -19,7 +20,7 @@ export const BreadCrumbs: FC<BreadCrumbsProps> = (props) => {
     <div className={styles.box}>
 
       <List<IItemLink>
-        list={props.prevPages}
+        list={props.prevPages.filter(item => item !== null)}
         renderItem={(item, index) =>
           <Link
             key={index}

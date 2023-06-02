@@ -19,17 +19,19 @@ export const ContentExtra: FC<ContentExtraProps> = (props) => {
 
   let content: React.ReactElement;
   props.extra === "Создатели" ?
-    content = <ContentExtraPerson content={props.content} /> :
+    content = <ContentExtraPerson contentId={props.content.id} /> :
     props.extra === "Отзывы" ?
       content = <ContentExtraComments content={props.content} /> :
       content = <ContentExtraComments content={props.content} />;
 
   if (props.content === null) {
+
     return (
       <div className={classNames(styles.container, "container")}>
         Пусто
       </div>
     )
+
   };
 
   return (

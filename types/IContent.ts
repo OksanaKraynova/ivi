@@ -1,3 +1,4 @@
+import { IComment } from "./IComment";
 import { IImage } from "./IImage";
 import { IJob } from "./IJob";
 
@@ -9,7 +10,7 @@ export interface IContent {
   year: number,
   coverImage: IImage[],
   creators: IJob[],
-  // country: string,
+  countries: string[],
   ganres: string[],
   // similar: number,
   duration: string,
@@ -17,7 +18,7 @@ export interface IContent {
   slogan: string,
   description: string | null,
   count: number,
-  comments: number[],
+  comments: IComment[],
   rating: string,
   estimation: number,
   video_quality: string | null,

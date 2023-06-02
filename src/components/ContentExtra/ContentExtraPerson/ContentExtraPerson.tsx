@@ -1,26 +1,24 @@
-import { IContent } from "@/types/IContent";
 import styles from './ContentExtraPerson.module.scss';
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { LinkAvatar } from "../../LinkAvatar/LinkAvatar";
-import actorsData from "../../../json/actors.json"
+import { getData } from "@/src/functions/getData";
+import { Urls } from "@/types/Urls";
+import { IJob } from '@/types/IJob';
+import { IData } from '@/types/IData';
 
 interface ContentExtraPersonProps {
-  content: IContent;
+  contentId: number;
 }
 
 export const ContentExtraPerson: FC<ContentExtraPersonProps> = (props) => {
 
-  const director = actorsData.actors.find(actor => actor.id === props.content.director);
-  const directorLink = director === undefined ?
-    <></> :
-    <div className={styles.creator}>
-      <LinkAvatar
-        textUnderImg={[director.firstName, director.secondName]}
-        href=""
-        img={director.img}
-        form="circleBig"
-      />
-    </div>
+  const [jobs, setCreators] = useState<IJob[]>([]);
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+
+  useEffect(() => {
+    getData<IData<IJob[]>>(Urls.SERVER_PORT, Urls.ALL_PERSONS + `/${props.contentId}`)
+      .then(response => setCreators(response.items));
+  }, []);
 
   return (
 
@@ -29,27 +27,56 @@ export const ContentExtraPerson: FC<ContentExtraPersonProps> = (props) => {
       <p className={styles.title}>Режиссёр</p>
 
       <div className={styles.creators}>
-        {directorLink}
-      </div>
+
+        {jobs.find(creators => creators.job === "Режиссер")
+          ?.persons
+          ?.map((actor, index) => {
+            return (
+              <div key={index} className={styles.creator}>
+
+                <LinkAvatar
+                  textUnderImg={actor.name.split(" ")}
+                  href=""
+                  img={
+                    actor.photo.length > 0 ?
+                      fileUrl + actor.photo[0].file_path :
+                      ""
+                  }
+                  form="circleBig"
+                >
+                </LinkAvatar>
+
+              </div>
+            )
+          })}
+
+      </div >
 
       <p className={styles.title}>Актёры</p>
 
       <div className={styles.creators}>
 
-        {props.content.actors.map(actorId => {
-          let actor = actorsData.actors.find(actor => actor.id === actorId);
-          if (actor !== undefined)
+        {jobs.find(creators => creators.job === "Актер")
+          ?.persons
+          ?.map((actor, index) => {
             return (
-              <div className={styles.creator}>
+              <div key={index} className={styles.creator}>
+
                 <LinkAvatar
-                  textUnderImg={[actor.firstName, actor.secondName]}
+                  textUnderImg={actor.name.split(" ")}
                   href=""
-                  img={actor.img}
+                  img={
+                    actor.photo.length > 0 ?
+                      fileUrl + actor.photo[0].file_path :
+                      ""
+                  }
                   form="circleBig"
-                />
+                >
+                </LinkAvatar>
+
               </div>
             )
-        })}
+          })}
 
       </div>
 

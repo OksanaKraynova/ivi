@@ -9,19 +9,25 @@ import shareIcon from "@/public/icons/share.svg"
 import freeMoviesIcon from "@/public/icons/folder.svg"
 
 interface ContentTrailerProps {
-  img: string;
+  video: string;
 }
 
 export const ContentTrailer: FC<ContentTrailerProps> = (props) => {
+
+  const trailer = "https://www.youtube.com/embed/D3TR8-LAz8M";
+
   return (
 
     <>
 
       <div className={styles.box}>
 
-        <video className={styles.video} controls={true} >
-          <source src="https://widgets.kinopoisk.ru/discovery/film/4412061/trailer/187431" />
-        </video>
+        <iframe
+          className={styles.video}
+          src={trailer}
+          allowFullScreen
+        />
+
 
         <div className={styles.size}>
           <Image className={styles.icon} src={fullSizeIcon} alt='full size' />

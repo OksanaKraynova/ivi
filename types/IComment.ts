@@ -1,7 +1,7 @@
 export interface IComment {
   id: number,
-  userName: string,
-  date: string,
+  author_id: string,
+  createdAt: string,
   comment: string,
-  parentComment: number | null
+  parent: number | null
 }

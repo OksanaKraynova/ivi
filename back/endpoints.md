@@ -1,6 +1,6 @@
 RUN: docker compose up
 
-API URL - http://localhost:3000
+API URL - http://localhost:8081
 
 ## 1. MOVIE
   ### GET ALL MOVIES WITH FILTERS (V)
@@ -126,7 +126,10 @@ API URL - http://localhost:3000
 
 ## 4. PERSONS
   ### GET MOVIE PERSONS WITH FILTER (V)
-    - GET - /v1/person/MOVIE_ID
+    - GET - /v1/persons/MOVIE_ID
+  
+  ### GET PERSON BY ID (V)
+    - GET - /v1/person/PERSON_ID
 
 ## 5. COMMENTS
   ### GET MOVIE COMMENTS WITH FILTERS (V)

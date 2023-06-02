@@ -20,6 +20,11 @@ interface ContentProps {
 
 export const Content: FC<ContentProps> = (props) => {
 
+  const firstCrumbs = { text: "Мой Иви", link: "/" };
+  const secondCrumbs = [{ text: `${props.content.type}ы`, link: "" }];
+  props.content.ganres.length > 0 &&
+    secondCrumbs.push({ text: props.content.ganres[0], link: "" });
+
   if (props.content === null) {
     return (
       <div className={classNames(styles.container, "container")}>
@@ -32,16 +37,17 @@ export const Content: FC<ContentProps> = (props) => {
 
     <div className={classNames(styles.container, "container")}>
 
-      <BreadCrumbs
-        prevPages={[
-          { text: `${props.content.type}ы`, link: "" },
-          { text: props.content.ganres[0], link: "" }
-        ]}
-      />
+      <BreadCrumbs prevPages={secondCrumbs} />
 
       <div className={styles.box}>
 
-        <ContentTrailer img={props.content.coverImage[0].path} />
+        <ContentTrailer
+          video={
+            props.content.coverImage.length > 0 ?
+              props.content.coverImage[0].file_path :
+              ""
+          }
+        />
 
         <ContentTitle
           content={props.content}
@@ -112,11 +118,7 @@ export const Content: FC<ContentProps> = (props) => {
 
       <BreadCrumbs
         page={props.content.name}
-        prevPages={[
-          { text: "Мой Иви", link: "/" },
-          { text: `${props.content.type}ы`, link: "" },
-          { text: props.content.ganres[0], link: "" }
-        ]}
+        prevPages={[firstCrumbs, ...secondCrumbs]}
       />
 
     </div >

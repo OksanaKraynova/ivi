@@ -3,6 +3,7 @@ import { IContent } from '@/types/IContent';
 import { LinkAvatar } from '@/src/components/LinkAvatar/LinkAvatar';
 import Link from 'next/link';
 import styles from './ContentCreators.module.scss';
+import { Urls } from '@/types/Urls';
 
 interface ContentCreatorsProps {
   content: IContent;
@@ -10,6 +11,8 @@ interface ContentCreatorsProps {
 }
 
 export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
+
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 
   return (
 
@@ -28,18 +31,20 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
           {props.content.creators
             .find(creators => creators.job === "Режиссер")?.persons
             ?.map((actor, index) => {
-              if (index > 8) return;
               return (
-                <div className={styles.item}>
+                <div key={index} className={styles.item}>
 
                   <LinkAvatar
-                    key={index}
                     textUnderImg={actor.name.split(" ")}
                     href=""
-                    img={actor.photo[0].file_path}
+                    img={
+                      actor.photo.length > 0 ?
+                        fileUrl + actor.photo[0].file_path :
+                        ""
+                    }
                     form="circle"
                   >
-                    <p>актёр</p>
+                    <p className={styles.job}>режиссер</p>
                   </LinkAvatar>
 
                 </div>
@@ -51,16 +56,19 @@ export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
             ?.map((actor, index) => {
               if (index > 8) return;
               return (
-                <div className={styles.item}>
+                <div key={index} className={styles.item}>
 
                   <LinkAvatar
-                    key={index}
                     textUnderImg={actor.name.split(" ")}
                     href=""
-                    img={actor.photo[0].file_path}
+                    img={
+                      actor.photo.length > 0 ?
+                        fileUrl + actor.photo[0].file_path :
+                        ""
+                    }
                     form="circle"
                   >
-                    <p>актёр</p>
+                    <p className={styles.job}>актёр</p>
                   </LinkAvatar>
 
                 </div>

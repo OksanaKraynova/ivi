@@ -1,4 +1,4 @@
 export interface IImage {
   id: number,
-  path: string
+  file_path: string
 }

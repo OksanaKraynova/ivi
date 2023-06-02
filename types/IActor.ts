@@ -1,9 +1,9 @@
-import { IPersonPhoto } from "./IPersonPhoto";
+import { IImage } from "./IImage";
 
 export interface IActor {
   id: number,
   name: string,
   translate: string,
-  photo: IPersonPhoto[],
+  photo: IImage[],
   movies: string[],
 }

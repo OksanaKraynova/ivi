@@ -10,6 +10,7 @@ interface SelectProps {
   placeholder: string;
   type: "multiple" | "one";
   required?: boolean;
+  error?: boolean;
   addCheck?: (index: number) => void;
   deliteCheck?: (index: number) => void;
 }
@@ -52,6 +53,7 @@ export const Select: FC<SelectProps> = (props) => {
           disabled={true}
           required={props.required ?? false}
           readOnly={true}
+          error={props.error}
           value={checked.join(", ")}
           buttonIcon={upIcon.src}
           buttonClass={visibile ? styles.button : undefined}

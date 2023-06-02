@@ -1,12 +1,15 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ContentExtraCommentsTree } from "../ContentExtraCommentsTree/ContentExtraCommentsTree";
 import { Response } from "../../Response/Response";
 import Button from "../../Button/Button";
-import { IContent } from "@/types/IContent";
 import { addCommentTree } from "@/src/functions/addCommentTree";
 import { getChildrensNumber } from "@/src/functions/getChildrensNumber";
 import styles from './ContentExtraComments.module.scss';
-import commentsDataParent from "../../../json/comments-children.json"
+import { IComment } from "@/types/IComment";
+import { Urls } from "@/types/Urls";
+import { getData } from "@/src/functions/getData";
+import { IData } from "@/types/IData";
+import { IContent } from "@/types/IContent";
 
 interface ContentExtraCommentsProps {
   content: IContent;
@@ -14,24 +17,20 @@ interface ContentExtraCommentsProps {
 
 export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
 
-  const [hidden, setHidden] =
-    useState<boolean[]>(new Array(props.content.comments.length).fill(true));
-
-  const comments = commentsDataParent.comments
-    .filter(comment => props.content.comments.includes(comment.id));
+  const [comments, setComments] = useState<IComment[]>(props.content.comments);
+  const [hidden, setHidden] = useState<boolean[]>(new Array(comments.length).fill(true));
 
   const commentsLimit = 10;
-  const commentsChidrens = comments.
-    map(comment => { return getChildrensNumber(comment.id, commentsDataParent.comments); });
+  // const commentsChidrens = comments.map(comment => { return getChildrensNumber(comment.id) });
 
   let newIndex = 0;
   let commentsInBlock = 0;
 
-  while (commentsInBlock < commentsLimit) {
-    hidden[newIndex] = false;
-    commentsInBlock += commentsChidrens[newIndex] + 1;
-    newIndex++;
-  }
+  // while (commentsInBlock < commentsLimit) {
+  //   hidden[newIndex] = false;
+  //   commentsInBlock += commentsChidrens[newIndex] + 1;
+  //   newIndex++;
+  // }
 
   const [currentIndex, setCurrentIndex] = useState<number>(newIndex);
 
@@ -39,7 +38,12 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
 
     <>
 
-      <Response placeholder="Написать отзыв" buttonColor="pink" />
+      <Response
+        placeholder="Написать отзыв"
+        buttonColor="pink"
+        parentType="movie"
+        parentId={props.content.id}
+      />
 
       {comments.map((comment, index) =>
 
@@ -49,7 +53,6 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
             addCommentTree(
               comment,
               [],
-              commentsDataParent.comments,
               (comment, childes) =>
                 <ContentExtraCommentsTree
                   key={comment.id}
@@ -64,7 +67,7 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
 
       <div className={styles.button}>
 
-        <Button
+        {/* <Button
           variant="long"
           effect="bordered"
           onClick={() => {
@@ -80,7 +83,7 @@ export const ContentExtraComments: FC<ContentExtraCommentsProps> = (props) => {
           disabled={currentIndex === hidden.length}
         >
           Показать еще
-        </Button>
+        </Button> */}
 
       </div>
 
