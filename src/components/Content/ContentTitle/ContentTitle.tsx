@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import { IContent } from '@/types/IContent';
-import { getDuration } from '@/src/functions/getDuration';
 import styles from './ContentTitle.module.scss';
 import classNames from 'classnames';
 import soundIcon from "@/public/icons/sound.svg"
@@ -14,6 +13,7 @@ interface ContentTitleProps {
 }
 
 export const ContentTitle: FC<ContentTitleProps> = (props) => {
+
   return (
 
     <div className={styles.box}>

@@ -46,7 +46,11 @@ const promos: Parameters<typeof PromoPoster>[0][] = [
   }
 ];
 
-export const HomePromos = () => {
+interface HomePromosProps {
+  locale?: string
+}
+
+export default function HomePromos(props: HomePromosProps) {
 
   return (
 
@@ -60,7 +64,12 @@ export const HomePromos = () => {
         delay: 5000,
         disableOnInteraction: false,
       }}
-      renderItem={(item) => <PromoPoster {...item} />}
+      renderItem={(item) =>
+        <PromoPoster
+          {...item}
+          button={props.locale === "en" ? "Show collection" : "Показать подборку"}
+        />
+      }
     />
 
   );

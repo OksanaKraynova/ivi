@@ -1,24 +1,26 @@
 import MovieBlock from '../MovieBlock/MovieBlock';
-import styles from './HomePage.module.scss';
-import 'swiper/css';
+import classNames from 'classnames';
+import { useRouter } from 'next/router';
 import Card from '../Card/Card';
 import { HomeAbout } from './HomeAbout/HomeAbout';
-import { HomePromos } from './HomePromos/HomePromos';
+import HomePromos from './HomePromos/HomePromos';
 import { HomeTop } from './HomeTop/HomeTop';
 import { HomeButtons } from './HomeButtons/HomeButtons';
-import { useRouter } from 'next/router';
 import en from '@/locales/titles/en';
 import ru from '@/locales/titles/ru';
-import classNames from 'classnames';
+import styles from './HomePage.module.scss';
+import 'swiper/css';
 
 export const HomePage = () => {
-  const router = useRouter()
-  const { locale } = router
-  const t = locale === 'ru' ? ru : en
+
+  const { locale } = useRouter();
+  const t = locale === "ru" ? ru : en;
+
   return (
+
     <div className={classNames(styles.container, "container")}>
 
-      <HomePromos />
+      <HomePromos locale={locale} />
 
       <HomeButtons />
 
@@ -67,5 +69,7 @@ export const HomePage = () => {
       />
 
     </div>
+
   );
+
 };

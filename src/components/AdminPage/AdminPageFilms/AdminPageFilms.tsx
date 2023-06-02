@@ -6,7 +6,7 @@ import { Select } from '../../Select/Select';
 import AdminPageUpdateName from '../AdminPageUpdateName/AdminPageUpdateName';
 import { InputText } from '../../InputText/InputText';
 import Search from '../../Search/Search';
-import { IContent } from '@/types/IContent';
+import { IContentPost } from '@/types/IContentPost';
 import { DataBlock } from '../../DataBlock/DataBlock';
 import { IActor } from '@/types/IActor';
 import Button from '../../Button/Button';
@@ -15,6 +15,8 @@ import styles from './AdminPageFilms.module.scss';
 import downIcon from "@/public/icons/down.svg"
 import actorsData from "../../../json/actors.json";
 import { InputNumber } from '../../InputNumber/InputNumber';
+import { IContent } from '@/types/IContent';
+import { ICountry } from '@/types/ICountry';
 
 const allGenres: IGenre[] = [
   { id: 1, name: "Ужас", translate: "Horror" },
@@ -25,49 +27,94 @@ const allGenres: IGenre[] = [
   { id: 6, name: "Дорама", translate: "Dorama" }
 ];
 
-const allCountries: string[] = [
-  "Россия", "СССР", "Южная Корея", "Северная Корея", "Уругвай", "Индия", "Китай"
+const allCountries: ICountry[] = [
+  { id: 1, name: "Россия" },
+  { id: 2, name: "СССР" },
+  { id: 3, name: "Южная Корея" },
+  { id: 4, name: "Северная Корея" },
+  { id: 5, name: "Уругвай" },
+  { id: 6, name: "Индия" },
+  { id: 7, name: "Китай" }
 ];
 
-const allAges: number[] = [
-  0, 6, 12, 18, 21
+const allAges: string[] = [
+  "0+", "6+", "12+", "18+"
 ];
 
 interface AdminPageFilmsProps {
   hidden: boolean;
 }
 
+interface Filled {
+  name: boolean,
+  year: boolean,
+  directors: boolean,
+  actors: boolean,
+  countries: boolean,
+  ganres: boolean,
+  film_time: boolean,
+  age: boolean,
+}
+
 export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
-  // const defaultFilm: IContent = {
-  //   id: -1,
-  //   name: "",
-  //   type: "",
-  //   year: -1,
-  //   cover: "",
-  //   trailer: "",
-  //   country: "",
-  //   genres: [],
-  //   director: -1,
-  //   actors: [],
-  //   similar: -1,
-  //   duration: "",
-  //   ageLimit: -1,
-  //   tagline: "",
-  //   description: "",
-  //   comments: [],
-  //   rating: ""
-  // };
+  const defaultFilm: IContentPost = {
+    name: "",//
+    name_translate: null,
+    type: "movie",
+    year: 0,//
+    files: [],
+    directors: [],//
+    actors: [],//
+    countries: [],//
+    ganres: [],//
+    film_time: "",//
+    age: "",//
+    slogan: "",
+    description: null,
+    rating: 0,
+    estimation: 0,
+    video_quality: "FullHD, HD",
+  };
+
+  const defaulFilled: Filled = {
+    name: false,
+    year: false,
+    directors: false,
+    actors: false,
+    countries: false,
+    ganres: false,
+    film_time: false,
+    age: false,
+  }
 
   const [hidden, setHidden] =
     useState<{ update: boolean, create: boolean }>({ update: true, create: true });
 
-  const [film, setFilm] = useState<IGenre | null>(null);
-  const [upadateFilm, setUpdateFilm] = useState<IGenre | null>(null);
-  // const [newFilm, setNewFilm] = useState<IContent>(defaultFilm);
-  const [genres, setGenres] = useState<IGenre[]>([]);
-  const [actors, setActors] = useState<IActor[]>([]);
+  const [film, setFilm] = useState<IContent | null>(null);
+  const [upadateFilm, setUpdateFilm] = useState<IContent | null>(null);
+  const [newFilm, setNewFilm] = useState<IContentPost>(defaultFilm);
+  // const [files, setFiles] = useState<IGenre[]>([]);
   const [directors, setDirectors] = useState<IActor[]>([]);
+  const [actors, setActors] = useState<IActor[]>([]);
+  const [genres, setGenres] = useState<IGenre[]>([]);
+  const [countries, setCountries] = useState<ICountry[]>([]);
+  const [filled, setFilled] = useState<Filled>(defaulFilled);
+  const [sending, setSending] = useState<boolean>(false);
+
+  function sendFilm() {
+    if (Object.values(filled).includes(false)) {
+      setSending(true);
+      return
+    }
+    setNewFilm(defaultFilm);
+    setDirectors([]);
+    setActors([]);
+    setGenres([]);
+    setCountries([]);
+    setFilled(defaulFilled);
+    setSending(false);
+  }
 
   return (
 
@@ -93,24 +140,27 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       <div className={styles.box} hidden={hidden.update}>
 
-        <Select
+        {/* <Search<IContent>
           placeholder='Фильм'
           options={allGenres.map(item => item.name)}
-          type='one'
-          addCheck={(index => {
-            setFilm(allGenres[index]);
-            setUpdateFilm(allGenres[index]);
-          })}
-        />
+          addItem={film => {
+            setFilm(film);
+            setUpdateFilm(film);
+          }}
+          renderItem={film => film.name}
+          compareItem={(film, value) => film.name.includes(value) ||
+            (film.name_translate !== null && film.name_translate.includes(value))
+          }
+        /> */}
 
         {
           upadateFilm !== null && film !== null &&
           <AdminPageUpdateName
             name={film.name}
-            englishName={film.translate}
+            englishName={film.name_translate}
             delite={true}
             onChangeName={(event) => setUpdateFilm({ ...upadateFilm, name: event.target.value })}
-            onChangeEnglishName={(event) => setUpdateFilm({ ...upadateFilm, translate: event.target.value })}
+            onChangeEnglishName={(event) => setUpdateFilm({ ...upadateFilm, name_translate: event.target.value })}
           />
         }
 
@@ -124,7 +174,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         >
           Создать
           <Image
-            className={hidden.update ? classNames(styles.icon, styles.up) : styles.icon}
+            className={hidden.create ? classNames(styles.icon, styles.up) : styles.icon}
             src={downIcon} alt={hidden.create ? 'up' : 'down'}
             width={16}
             height={16}
@@ -134,12 +184,16 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       </div>
 
-      {/* <div className={styles.box} hidden={hidden.create}>
+      <div className={styles.box} hidden={hidden.create}>
 
         <div className={styles.inputBox}>
           <InputText
             placeholder="Русское название"
-            onChange={(event) => setNewFilm({ ...newFilm, name: event.target.value })}
+            error={!filled.name && sending}
+            onChange={(event) => {
+              setNewFilm({ ...newFilm, name: event.target.value });
+              filled.name = event.target.value.length > 0;
+            }}
           />
 
           <InputText
@@ -151,61 +205,91 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         <div className={styles.inputBox}>
           <InputNumber
             placeholder="Год"
-            onChange={(event) => setNewFilm({ ...newFilm, year: +event.target.value })}
+            integer={true}
+            error={!filled.year && sending}
+            onChange={(value) => {
+              setNewFilm({ ...newFilm, year: +value });
+              filled.year = value.length > 0;
+            }}
             min={2000}
           />
 
           <InputText
             placeholder="Слоган"
-            onChange={(event) => setNewFilm({ ...newFilm, tagline: event.target.value })}
+            onChange={(event) => setNewFilm({ ...newFilm, slogan: event.target.value })}
           />
         </div>
 
         <div className={styles.inputBox}>
           <Select
             placeholder='Жанр'
+            error={!filled.ganres && sending}
             options={allGenres.map(item => item.name)}
             type='multiple'
-            addCheck={index => setGenres([...genres, allGenres[index]])}
-            deliteCheck={index => setGenres(genres.filter(item => item !== allGenres[index]))}
+            addCheck={index => {
+              setGenres([...genres, allGenres[index]]);
+              filled.ganres = genres.length + 1 > 0;
+            }}
+            deliteCheck={index => {
+              setGenres(genres.filter(item => item !== allGenres[index]));
+              filled.ganres = genres.length - 1 > 0;
+            }}
           />
 
           <Select
             placeholder="Страна"
-            options={allCountries}
-            type='one'
-            addCheck={index => setNewFilm({ ...newFilm, country: allCountries[index] })}
+            error={!filled.countries && sending}
+            options={allCountries.map(item => item.name)}
+            type='multiple'
+            addCheck={index => {
+              setCountries([...countries, allCountries[index]]);
+              filled.countries = countries.length + 1 > 0;
+            }}
+            deliteCheck={index => {
+              setCountries(countries.filter(item => item !== allCountries[index]));
+              filled.countries = countries.length - 1 > 0;
+            }}
           />
         </div>
 
         <div className={classNames(styles.inputBox, styles.fourEl)}>
           <InputNumber
             placeholder="Продолжительность"
-            onChange={(event) => setNewFilm({ ...newFilm, duration: +event.target.value })}
+            integer={true}
+            error={!filled.film_time && sending}
+            onChange={value => {
+              setNewFilm({ ...newFilm, film_time: value });
+              filled.film_time = value.length > 0;
+            }}
             min={0}
           />
 
           <Select
             placeholder='Возрастной рейтинг'
-            options={allAges.map(age => `+${age}`)}
+            error={!filled.age && sending}
+            options={allAges}
             type='one'
-            addCheck={index => setNewFilm({ ...newFilm, ageLimit: allAges[index] })}
+            addCheck={index => {
+              setNewFilm({ ...newFilm, age: allAges[index] });
+              filled.age = true;
+            }}
           />
 
           <InputNumber
             placeholder="Рейтинг"
-            onChange={(event) => setNewFilm({ ...newFilm, rating: +event.target.value })}
+            onChange={(value) => setNewFilm({ ...newFilm, rating: +value })}
             min={0}
           />
 
           <InputNumber
             placeholder="Оценка"
-            onChange={(event) => setNewFilm({ ...newFilm, rating: +event.target.value })}
+            integer={true}
+            onChange={(value) => setNewFilm({ ...newFilm, estimation: +value })}
             min={0}
           />
         </div>
 
-        <div className={styles.inputBox}>
+        {/* <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Актеры'
             options={actorsData.actors}
@@ -239,9 +323,9 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
               deliteItem={index => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
             />
           }
-        </div>
+        </div> */}
 
-        <div className={styles.inputBox}>
+        {/* <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Похожие фильмы'
             options={actorsData.actors}
@@ -257,7 +341,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
               deliteItem={index => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
             />
           }
-        </div>
+        </div> */}
 
         <div className={classNames(styles.inputBox, styles.oneEl)}>
           <TextArea
@@ -269,15 +353,23 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         <div className={styles.inputBox}>
           Файлы
         </div>
+
         <div className={styles.button}>
-          <Button variant="long" effect="bordered" color="darkBlue">Создать</Button>
+          <Button
+            variant="long"
+            effect="bordered"
+            color="darkBlue"
+            onClick={() => sendFilm()}
+          >
+            Создать
+          </Button>
         </div>
 
       </div>
 
       {Object.values(newFilm).map(item =>
         <p>{item}</p>
-      )} */}
+      )}
 
     </div>
 

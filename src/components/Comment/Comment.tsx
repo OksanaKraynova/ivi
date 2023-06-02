@@ -8,6 +8,7 @@ import likeIcon from "../../../public/icons/like.svg"
 import disLikeIcon from "../../../public/icons/dislike.svg"
 import messegeIcon from "../../../public/icons/message.svg"
 import messegeOffIcon from "../../../public/icons/message-off.svg"
+import { getDate } from '@/src/functions/getDate';
 
 interface CommentProps {
   comment: IComment;
@@ -20,8 +21,8 @@ export const Comment: FC<CommentProps> = (props) => {
   const [hidden, setHidden] = useState<boolean>(false);
 
   const userNameIcon =
-    props.comment.userName.length > 0 ?
-      props.comment.userName[0].toLowerCase() : " ";
+    props.comment.author_id.length > 0 ?
+      props.comment.author_id[0].toLowerCase() : " ";
 
   const coloIcon =
     /[a-n]/.test(userNameIcon) ? "red" :
@@ -31,7 +32,7 @@ export const Comment: FC<CommentProps> = (props) => {
 
   function addResponse(): void {
     setResponse(
-      <Response placeholder="Ответить" buttonColor="lightGrey" />
+      <Response placeholder="Ответить" buttonColor="lightGrey" parentType={'comment'} parentId={0} />
     );
   }
 
@@ -59,8 +60,8 @@ export const Comment: FC<CommentProps> = (props) => {
           </>
         }
 
-        <p className={styles.title}>{props.comment.userName}</p>
-        <p className={styles.date}>{props.comment.date}</p>
+        <p className={styles.title}>{props.comment.author_id}</p>
+        <p className={styles.date}>{getDate(props.comment.createdAt)}</p>
         <p className={styles.comment}>{props.comment.comment}</p>
 
         <div className={styles.likeBox}>

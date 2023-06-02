@@ -126,3 +126,10 @@ main {
     margin-bottom: 90px;
   }
 }
+
+
+.div {
+  padding: 10px;
+  background-color: aquamarine;
+  border-bottom: 1px solid rebeccapurple;
+}

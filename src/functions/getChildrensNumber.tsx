@@ -1,22 +1,23 @@
 import { IComment } from "@/types/IComment";
+import { getData } from "./getData";
+import { Urls } from "@/types/Urls";
+import { IData } from "@/types/IData";
 
-export function getChildrensNumber(id: number, comments: IComment[]): number {
+export function getChildrensNumber(id: number): number {
 
   let childrens = 0;
-  let comment = comments.find(comment => comment.id === id);
 
-  if (comment !== undefined) {
+  getData<IData<IComment[]>>(Urls.COMMENTS_PORT, Urls.ALL_COMMENTS_API, { parent: id })
+    .then(data => {
 
-    let commentChildrens = comments.filter(comment => comment.parentComment === id);
+      if (data.count > 0) {
+        childrens += data.count;
 
-    if (commentChildrens.length > 0) {
-      childrens += commentChildrens.length;
-
-      for (let comment of commentChildrens) {
-        childrens += getChildrensNumber(comment.id, comments);
+        for (let comment of data.items)
+          childrens += getChildrensNumber(comment.id);
       }
-    }
-  }
+
+    });
 
   return childrens;
 }

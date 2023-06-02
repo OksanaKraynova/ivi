@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { InputText } from '../InputText/InputText';
 import { List } from '../List';
 import styles from './Search.module.scss';
@@ -8,15 +8,16 @@ interface SearchProps<T> {
   options: T[];
   placeholder: string;
   required?: boolean;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   addItem?: (item: T) => void;
   renderItem: (item: T) => string;
-  compareItem: (item: T, value: string) => boolean;
+  compareItem?: (item: T, value: string) => boolean;
 }
 
 export default function Search<T>(props: SearchProps<T>) {
 
   const [visibile, setVisibile] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
+  const [options, setOptions] = useState<T[] | null>(null);
 
   return (
 
@@ -32,14 +33,21 @@ export default function Search<T>(props: SearchProps<T>) {
           placeholder={props.placeholder}
           required={props.required ?? false}
           buttonIcon={searchIcon.src}
-          onChange={(event) => setValue(event.target.value)}
+          onChange={event => {
+            props.compareItem !== undefined &&
+              setOptions(props.options.filter(item => props.compareItem!(item, event.target.value)));
+            props.onChange && props.onChange(event);
+          }}
         />
       </div>
 
-      <div className={styles.list} hidden={!visibile || value.length < 3}>
+      <div
+        className={styles.list}
+        hidden={!visibile || (options === null ? props.options.length == 0 : options.length == 0)}
+      >
 
         <List<T>
-          list={props.options.filter(item => props.compareItem(item, value))}
+          list={options === null ? props.options : options}
           renderItem={(item, index) =>
             <p
               key={index}
