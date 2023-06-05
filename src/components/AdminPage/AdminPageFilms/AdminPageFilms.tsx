@@ -43,11 +43,6 @@ type IContentPost = {
   name_translate: string | null,
   type: string,
   year: number,
-  files: number[],
-  directors: number[],
-  actors: number[],
-  countries: number[],
-  ganres: number[],
   film_time: string,
   age: string,
   slogan: string,
@@ -69,11 +64,6 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
     name_translate: null,
     type: "movie",
     year: 0,//
-    files: [],
-    directors: [],//
-    actors: [],//
-    countries: [],//
-    ganres: [],//
     film_time: "",//
     age: "",//
     slogan: "",
@@ -135,12 +125,15 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       return;
     }
 
-    newFilm.countries = filmCountries.map(country => country.id);
-    newFilm.ganres = filmGenres.map(genre => genre.id);
-    newFilm.actors = filmActors.map(actor => actor.id);
-    newFilm.directors = filmDirectors.map(director => director.id);
+    const postFilm = {
+      countries: filmCountries.map(country => country.id),
+      ganres: filmGenres.map(genre => genre.id),
+      actors: filmActors.map(actor => actor.id),
+      directors: filmDirectors.map(director => director.id),
+      ...newFilm,
+    }
 
-    sendData("post", Urls.ONE_MOVIE, newFilm)
+    sendData("post", Urls.ONE_MOVIE, postFilm)
       .then(status => console.log(status))
       .catch(error => console.log(error));
 
@@ -372,7 +365,10 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
             placeholder='Актеры'
             options={actors}
             onChange={(event) => searchCreators(event.target.value, "actor")}
-            addItem={actor => setFilmActors(filmActors.includes(actor) ? filmActors : [...filmActors, actor])}
+            addItem={actor => {
+              setFilmActors(filmActors.includes(actor) ? filmActors : [...filmActors, actor]);
+              filled.actors = true;
+            }}
             renderItem={actor => actor.name}
           />
 
@@ -391,10 +387,12 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
             placeholder='Режиссеры'
             options={directors}
             onChange={(event) => searchCreators(event.target.value, "director")}
-            addItem={director =>
+            addItem={director => {
               setFilmDirectors(filmDirectors.includes(director) ?
                 filmDirectors :
-                [...filmDirectors, director])}
+                [...filmDirectors, director]);
+              filled.directors = true;
+            }}
             renderItem={director => director.name}
           />
 
@@ -462,10 +460,6 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         </div>
 
       </div>
-
-      {/* {Object.values(newFilm).map(item =>
-        <p>{item}</p>
-      )} */}
 
     </div>
 
