@@ -1,8 +1,7 @@
 import styles from './BreadCrumbs.module.scss';
-import { FC } from 'react';
-import { IItemLink } from '@/types/IItemLink';
-import { List } from '../../../../src/components/List';
-import { Link } from '../../../../src/components/Link/Link';
+import IItemLink from '@/types/IItemLink';
+import List from '../../../../src/components/List';
+import Link from '../../../../src/components/Link/Link';
 import classNames from 'classnames';
 
 interface BreadCrumbsProps {
@@ -10,7 +9,7 @@ interface BreadCrumbsProps {
   prevPages: IItemLink[];
 }
 
-export const BreadCrumbs: FC<BreadCrumbsProps> = (props) => {
+export default function BreadCrumbs(props: BreadCrumbsProps) {
 
   const page = props.page === undefined ?
     <></> :

@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { ContentDescripton } from './ContentDescripton';
+import ContentDescripton from './ContentDescripton';
 
 const tagline = "Убийца ли садовник?";
 const descriptionFirstParagraph = "Очень интересный сериал!";

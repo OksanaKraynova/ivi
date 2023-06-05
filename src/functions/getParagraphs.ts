@@ -1,4 +1,4 @@
-export function getParagraphs(text: string | null): string[] {
+export default function getParagraphs(text: string | null): string[] {
   if (text === null)
     return [];
   let paragraph = "";

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './TopCard.module.scss';
@@ -24,7 +23,7 @@ interface TopCardProps {
   index: number;
 }
 
-export const TopCard: FC<TopCardProps> = (props) => {
+export default function TopCard(props: TopCardProps) {
 
   let numbers = Array.from(props.index.toString()).filter(item => Number.isInteger(+item));
 

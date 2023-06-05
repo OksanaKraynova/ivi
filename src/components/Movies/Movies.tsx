@@ -12,11 +12,11 @@ const Movies = () => {
     const [movies, setMovies] = useState([])
     const url = '';
 
-    fetch(url)
-        .then((resp) => resp.json())
-        .catch(function (error) {
-            console.log(error);
-        });
+    // fetch(url)
+    //     .then((resp) => resp.json())
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
     return (
         <div className={styles.wrapper}>
             <Crumb />

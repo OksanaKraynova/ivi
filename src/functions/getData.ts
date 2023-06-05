@@ -1,7 +1,7 @@
-import { Urls } from "@/types/Urls";
+import Urls from "@/types/Urls";
 import axios from "axios";
 
-export async function getData<T>(
+export default async function getData<T>(
   port: string,
   queryUrl: string,
   params?: { [param: string]: string | number }

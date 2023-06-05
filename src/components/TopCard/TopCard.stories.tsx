@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TopCard } from './TopCard';
+import TopCard from './TopCard';
 import sample from "../../../public/img/sample.jpg"
 
 const meta: Meta<typeof TopCard> = {

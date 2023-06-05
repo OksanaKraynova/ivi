@@ -1,12 +1,12 @@
-import { IItemLink } from '@/types/IItemLink';
-import { Link } from '../../Link/Link';
-import { FooterDesktopNav } from '../FooterDesktopNav/FooterDesktopNav';
-import { FooterSupport } from '../FooterSupport/FooterSupport';
-import { FooterSub } from '../FooterSub/FooterSub';
-import { FooterDesktopButtonsDevice } from '../FooterDesktopButtonsDevice/FooterDesktopButtonsDevice';
-import { FooterButtonsIcon } from '../FooterButtonsIcon/FooterButtonsIcon';
-import styles from './FooterDesktop.module.scss';
 import classNames from 'classnames';
+import IItemLink from '@/types/IItemLink';
+import Link from '../../Link/Link';
+import FooterDesktopNav from '../FooterDesktopNav/FooterDesktopNav';
+import FooterSupport from '../FooterSupport/FooterSupport';
+import FooterSub from '../FooterSub/FooterSub';
+import FooterDesktopButtonsDevice from '../FooterDesktopButtonsDevice/FooterDesktopButtonsDevice';
+import FooterButtonsIcon from '../FooterButtonsIcon/FooterButtonsIcon';
+import styles from './FooterDesktop.module.scss';
 
 const aboutList: IItemLink[] = [
   { text: "О компании", link: "https://corp.ivi.ru" },
@@ -29,7 +29,8 @@ const sectionsList: IItemLink[] = [
   { text: "Что посмотреть", link: "https://www.ivi.ru/goodmovies" }
 ];
 
-export const FooterDesktop = () => {
+export default function FooterDesktop() {
+
   return (
 
     <>

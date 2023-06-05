@@ -1,13 +1,12 @@
 import Layout from "@/src/components/Layout/Layout";
 import Movies from "@/src/components/Movies/Movies";
-import { Urls } from "@/types/Urls";
+import Urls from "@/types/Urls";
 import axios from "axios";
 import React, { useState } from "react";
 
 const test = () => {
 
-  const [user, setUser] = useState<{ email: string, password: string, login: string }>
-    ({ email: "test@mail.com", password: "123456", login: "login" })
+  const user = { email: "test@mail.com", password: "123456", login: "login" };
 
   async function signIn() {
     const url = "http://178.208.64.187:8081/v1/signIn"
@@ -16,7 +15,7 @@ const test = () => {
       email: user.email,
       password: user.password,
     })
-      .then(response => console.log(response.data))
+      .then(response => console.log(response))
       .catch(error => console.log(error));
     return response;
   }
@@ -29,7 +28,7 @@ const test = () => {
       email: user.email,
       password: user.password,
     })
-      .then(response => console.log(response.data))
+      .then(response => console.log(response))
       .catch(error => console.log(error));
     return response;
   }
@@ -58,10 +57,10 @@ const test = () => {
     const response = axios.post(url, {
       movie_id: 1,
       author_id: 1,
-      comment: "Movie:1,Author:1,Comment:1",
-      parent: null
+      comment: "Parent:5,Author:1,Comment:1",
+      parent: "5"
     })
-      .then(response => console.log(response.data))
+      .then(response => console.log(response))
       .catch(error => console.log(error));
     return response;
   }
@@ -70,7 +69,7 @@ const test = () => {
     const url = "http://178.208.64.187:8081/v1/movie"
 
     const response = axios.post(url, {
-      name: "Форрест Гамп2",
+      name: "Форрест Гамп3",
       name_translate: "Forrest Gump",
       type: "movie",
       description: "Один из самых известных фильмов Роберта Земекиса «Форрест Гамп» по ...!",
@@ -79,14 +78,14 @@ const test = () => {
       film_time: "2 ч. 16 мин",
       age: "+16",
       video_quality: "FullHD,HD",
-      // files: [1, 2],
-      // countries: [1, 2],
-      // ganres: [1, 2],
-      // directors: [1, 2],
+      files: [1, 2],
+      countries: [1, 2],
+      ganres: [1, 2],
+      directors: [1, 2],
       rating: 8.5,
       estimation: 500
     })
-      .then(response => console.log(response.data))
+      .then(response => console.log(response))
       .catch(error => console.log(error));
     return response;
   }
@@ -98,7 +97,7 @@ const test = () => {
       name: "Криминал",
       translate: "Crime"
     })
-      .then(response => console.log(response.data))
+      .then(response => console.log(response))
       .catch(error => console.log(error));
     return response;
   }
@@ -124,16 +123,25 @@ const test = () => {
       rating: 8.5,
       estimation: 500
     })
-      .then(response => console.log(response.data))
+      .then(response => console.log(response))
       .catch(error => console.log(error));
     return response;
   }
 
   async function filmDelete() {
-    const url = "http://178.208.64.187:8081/v1/movie/5"
+    const url = "http://178.208.64.187:8081/v1/movie/4"
 
     const response = axios.delete(url)
-      .then(response => console.log(response.data))
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+    return response;
+  }
+
+  async function filmFilter() {
+    const url = "http://178.208.64.187:8081/v1/movie/5"
+
+    const response = axios.get(url)
+      .then(response => console.log(response))
       .catch(error => console.log(error));
     return response;
   }
@@ -233,6 +241,14 @@ const test = () => {
           onClick={() => filmDelete()}
         >
           Удалить фильм
+        </button>
+      </div>
+
+      <div className="div">
+        <button
+          onClick={() => filmFilter()}
+        >
+          Фильтр
         </button>
       </div>
 

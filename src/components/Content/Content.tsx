@@ -1,24 +1,23 @@
-import { FC } from "react";
 import classNames from "classnames";
-import { IContent } from "@/types/IContent";
-import { ContentTrailer } from "./ContentTrailer/ContentTrailer";
-import { ContentTitle } from "./ContentTitle/ContentTitle";
-import { ContentActors } from "./ContentActors/ContentActors";
-import { ContentDescripton } from "./ContentDescripton/ContentDescripton";
-import { ContentRating } from "./ContentRating/ContentRating";
-import { ContentSimilar } from "./ContentSimilar/ContentSimilar";
-import { ContentCreators } from "./ContentCreators/ContentCreators";
-import { ContentAdditional } from "./ContentAdditional/ContentAdditional";
-import { ContentComments } from "./ContentComments/ContentComments";
-import { ContentDevices } from "./ContentDevices/ContentDevices";
-import { BreadCrumbs } from "./BreadCrumbs/BreadCrumbs";
+import IContent from "@/types/IContent";
+import ContentTrailer from "./ContentTrailer/ContentTrailer";
+import ContentTitle from "./ContentTitle/ContentTitle";
+import ContentActors from "./ContentActors/ContentActors";
+import ContentDescripton from "./ContentDescripton/ContentDescripton";
+import ContentRating from "./ContentRating/ContentRating";
+import ContentSimilar from "./ContentSimilar/ContentSimilar";
+import ContentCreators from "./ContentCreators/ContentCreators";
+import ContentAdditional from "./ContentAdditional/ContentAdditional";
+import ContentComments from "./ContentComments/ContentComments";
+import ContentDevices from "./ContentDevices/ContentDevices";
+import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
 
 interface ContentProps {
   content: IContent;
 }
 
-export const Content: FC<ContentProps> = (props) => {
+export default function Content(props: ContentProps) {
 
   const firstCrumbs = { text: "Мой Иви", link: "/" };
   const secondCrumbs = [{ text: `${props.content.type}ы`, link: "" }];
@@ -41,13 +40,7 @@ export const Content: FC<ContentProps> = (props) => {
 
       <div className={styles.box}>
 
-        <ContentTrailer
-          video={
-            props.content.coverImage.length > 0 ?
-              props.content.coverImage[0].file_path :
-              ""
-          }
-        />
+        <ContentTrailer />
 
         <ContentTitle
           content={props.content}

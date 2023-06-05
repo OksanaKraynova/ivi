@@ -1,6 +1,6 @@
-import { IActor } from "./IActor";
+import IActor from "./IActor";
 
-export interface IJob {
+export default interface IJob {
   job: string,
   persons: IActor[]
 }

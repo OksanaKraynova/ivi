@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames";
 import styles from './AdminPage.module.scss';
 import AdminPageGenres from "./AdminPageGenres/AdminPageGenres";
 import AdminPageFilms from "./AdminPageFilms/AdminPageFilms";
+import IGenre from "@/types/IGenre";
+import getData from "@/src/functions/getData";
+import IData from "@/types/IData";
+import Urls from "@/types/Urls";
 
 const breadCrumbs = [
   "Фильмы",
@@ -11,17 +15,18 @@ const breadCrumbs = [
 
 export default function AdminPage() {
 
-  if (breadCrumbs.length === 0)
-    return (
-      <div className={classNames(styles.container, "container")} />
-    );
-
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-
+  const defaultCurrentIndex = 0;
   const defaultHidden = Array.from({ length: breadCrumbs.length })
-    .map((item, index) => { return index === currentIndex ? false : true });
+    .map((item, index) => { return index === defaultCurrentIndex ? false : true });
 
   const [hidden, setHidden] = useState<boolean[]>(defaultHidden);
+  const [currentIndex, setCurrentIndex] = useState<number>(defaultCurrentIndex);
+  const [genres, setGenres] = useState<IGenre[]>([]);
+
+  useEffect(() => {
+    getData<IData<IGenre[]>>(Urls.SERVER_PORT, Urls.ALL_GANRES)
+      .then(data => setGenres(data.items));
+  }, []);
 
   return (
 
@@ -32,7 +37,7 @@ export default function AdminPage() {
         {breadCrumbs.map((item, index) =>
           <p
             key={index}
-            className={styles.link}
+            className={index === currentIndex ? classNames(styles.link, styles.active) : styles.link}
             onClick={() => {
               hidden[currentIndex] = true;
               setCurrentIndex(index);
@@ -46,9 +51,9 @@ export default function AdminPage() {
 
       </div>
 
-      <AdminPageFilms hidden={hidden[0]} />
+      <AdminPageFilms hidden={hidden[0]} genres={genres} />
 
-      <AdminPageGenres hidden={hidden[1]} />
+      <AdminPageGenres hidden={hidden[1]} genres={genres} />
 
     </div >
 

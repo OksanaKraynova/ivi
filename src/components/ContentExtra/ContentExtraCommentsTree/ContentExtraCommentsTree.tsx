@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { Comment } from '../../Comment/Comment';
-import { IComment } from "@/types/IComment";
+import React from "react";
+import Comment from '../../Comment/Comment';
+import IComment from "@/types/IComment";
 import styles from './ContentExtraCommentsTree.module.scss';
 
 interface ContentExtraCommentsTreeProps {
@@ -8,7 +8,7 @@ interface ContentExtraCommentsTreeProps {
   childes: React.ReactElement[];
 }
 
-export const ContentExtraCommentsTree: FC<ContentExtraCommentsTreeProps> = (props) => {
+export default function ContentExtraCommentsTree(props: ContentExtraCommentsTreeProps) {
 
   return (
 

@@ -1,9 +1,3 @@
-import { IComment } from "@/types/IComment";
-import { getData } from "./getData";
-import { IData } from "@/types/IData";
-import { Urls } from "@/types/Urls";
-
-
 const months: string[] = [
   "января",
   "февраля",
@@ -19,7 +13,7 @@ const months: string[] = [
   "декабря"
 ];
 
-export function getDate(date: string): string {
+export default function getDate(date: string): string {
 
   return date
     .slice(0, 10)

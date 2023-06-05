@@ -1,11 +1,11 @@
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import MovieBlock from '../../MovieBlock/MovieBlock';
-import { TopCard } from '../../TopCard/TopCard';
+import TopCard from '../../TopCard/TopCard';
 import styles from './HomeTop.module.scss';
 import 'swiper/css';
 import topIcon from "../../../../public/icons/top.svg"
 import sample from "@/public/img/sample.jpg"
-import { useRouter } from 'next/router';
 import en from '@/locales/titles/en';
 import ru from '@/locales/titles/ru';
 
@@ -61,10 +61,12 @@ const top = [
   }
 ];
 
-export const HomeTop = () => {
+export default function HomeTop() {
+
   const router = useRouter()
   const { locale } = router
   const t = locale === 'ru' ? ru : en
+
   return (
 
     <div className={styles.box}>

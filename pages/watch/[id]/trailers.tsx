@@ -1,9 +1,9 @@
 import { GetServerSidePropsContext } from "next";
-import { IContent } from "@/types/IContent";
-import { ContentExtra } from "@/src/components/ContentExtra/ContentExtra";
+import IContent from "@/types/IContent";
+import ContentExtra from "@/src/components/ContentExtra/ContentExtra";
 import Layout from "@/src/components/Layout/Layout";
-import { getData } from "@/src/functions/getData";
-import { Urls } from "@/types/Urls";
+import getData from "@/src/functions/getData";
+import Urls from "@/types/Urls";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
 

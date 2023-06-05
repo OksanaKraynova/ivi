@@ -1,9 +1,9 @@
-import { IImage } from "./IImage";
+import IImage from "./IImage";
 
-export interface IActor {
+export default interface IActor {
   id: number,
   name: string,
   translate: string,
-  photo: IImage[],
-  movies: string[],
+  photo?: IImage[],
+  movies?: string[],
 }

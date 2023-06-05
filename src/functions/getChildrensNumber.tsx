@@ -1,9 +1,9 @@
-import { IComment } from "@/types/IComment";
-import { getData } from "./getData";
-import { Urls } from "@/types/Urls";
-import { IData } from "@/types/IData";
+import IComment from "@/types/IComment";
+import getData from "./getData";
+import Urls from "@/types/Urls";
+import IData from "@/types/IData";
 
-export function getChildrensNumber(id: number): number {
+export default function getChildrensNumber(id: number): number {
 
   let childrens = 0;
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PromoPoster } from './PromoPoster';
+import PromoPoster from './PromoPoster';
 import cornPoster from "../../../public/img/corn-poster.jpg"
 import cornTitle from "../../../public/img/corn-title.png"
 

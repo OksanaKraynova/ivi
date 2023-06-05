@@ -1,4 +1,4 @@
-import { getParagraphs } from "./getParagraphs"
+import getParagraphs from "./getParagraphs"
 
 const threeParagraphs = "Первый абзац\nВторой абзац\nТретий абзац";
 const oneParagraphs = "Первый абзац";

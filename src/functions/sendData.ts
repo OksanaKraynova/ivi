@@ -1,15 +1,13 @@
-import { Urls } from "@/types/Urls";
+import Urls from "@/types/Urls";
 import axios from "axios";
 
-export async function sendData(
+export default async function sendData(
   metod: "post" | "delete" | "patch",
-  port: string,
   queryUrl: string,
-  params?: { [param: string]: string | number | null }
+  params?: { [param: string]: string | number | number[] | null } | FormData
 ): Promise<number> {
 
-  const baseUrl = Urls.SERVER_URL;
-  const url = baseUrl + ":" + port + queryUrl;
+  const url = Urls.SERVER_URL + ":" + Urls.SERVER_PORT + queryUrl;
 
   const promise = axios({
     method: metod,

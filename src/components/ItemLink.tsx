@@ -1,6 +1,5 @@
-import { FC } from 'react';
-import { IItemLink } from '@/types/IItemLink';
-import { Link } from './Link/Link';
+import IItemLink from '@/types/IItemLink';
+import Link from './Link/Link';
 
 interface ItemLinkProps {
   item: IItemLink;
@@ -9,7 +8,7 @@ interface ItemLinkProps {
   onMouseOver?: () => void;
 }
 
-export const ItemLink: FC<ItemLinkProps> = (props) => {
+export default function ItemLink(props: ItemLinkProps) {
   return (
     <Link
       text={props.item.text}

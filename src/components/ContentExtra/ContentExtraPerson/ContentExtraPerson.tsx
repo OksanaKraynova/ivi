@@ -1,16 +1,16 @@
 import styles from './ContentExtraPerson.module.scss';
-import { FC, useEffect, useState } from "react";
-import { LinkAvatar } from "../../LinkAvatar/LinkAvatar";
-import { getData } from "@/src/functions/getData";
-import { Urls } from "@/types/Urls";
-import { IJob } from '@/types/IJob';
-import { IData } from '@/types/IData';
+import { useEffect, useState } from "react";
+import LinkAvatar from "../../LinkAvatar/LinkAvatar";
+import getData from "@/src/functions/getData";
+import Urls from "@/types/Urls";
+import IJob from '@/types/IJob';
+import IData from '@/types/IData';
 
 interface ContentExtraPersonProps {
   contentId: number;
 }
 
-export const ContentExtraPerson: FC<ContentExtraPersonProps> = (props) => {
+export default function ContentExtraPerson(props: ContentExtraPersonProps) {
 
   const [jobs, setCreators] = useState<IJob[]>([]);
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;

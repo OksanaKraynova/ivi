@@ -1,6 +1,8 @@
-export interface IComment {
+import IUser from "./IUser";
+
+export default interface IComment {
   id: number,
-  author_id: string,
+  author: IUser[],
   createdAt: string,
   comment: string,
   parent: number | null

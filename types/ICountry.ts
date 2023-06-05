@@ -1,4 +1,4 @@
-export interface ICountry {
+export default interface ICountry {
   id: number;
   name: string;
 }

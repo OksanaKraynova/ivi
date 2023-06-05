@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 import Image from 'next/image';
 import styles from './InputText.module.scss';
@@ -18,7 +18,7 @@ interface InputTextProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const InputText: FC<InputTextProps> = (props) => {
+export default function InputText(props: InputTextProps) {
 
   const minSize = props.minSize ?? 0;
   const defaultEffect = props.value !== undefined && props.value.length > 0 ?
@@ -75,7 +75,7 @@ export const InputText: FC<InputTextProps> = (props) => {
         />
       }
 
-      <div className={classNames(styles.placholder, placeholderEffect, defaultEffect)}>
+      <div className={classNames(styles.placeholder, placeholderEffect, defaultEffect)}>
         {props.placeholder}
       </div>
 

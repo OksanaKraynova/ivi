@@ -1,7 +1,7 @@
-import { FC, useRef } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import Button from '../../Button/Button';
-import { Link } from '../../Link/Link';
+import Link from '../../Link/Link';
 import styles from './FooterSupport.module.scss';
 import mailIcon from "@/public/icons/mail.svg"
 import phoneIcon from "@/public/icons/phone.svg"
@@ -11,7 +11,7 @@ interface FooterSupportProps {
   buttonBoxClass: string;
 }
 
-export const FooterSupport: FC<FooterSupportProps> = (props) => {
+export default function FooterSupport(props: FooterSupportProps) {
 
   const telephone = useRef<HTMLDivElement>(null);
 

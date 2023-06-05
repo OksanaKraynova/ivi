@@ -1,11 +1,10 @@
-import { FC } from "react";
 import Image from 'next/image';
 import Link from "next/link";
 import classNames from "classnames";
-import { IContent } from "@/types/IContent";
-import { ContentExtraHeder } from "./ContentExtraHeder/ContentExtraHeder";
-import { ContentExtraPerson } from "./ContentExtraPerson/ContentExtraPerson";
-import { ContentExtraComments } from "./ContentExtraComments/ContentExtraComments";
+import IContent from "@/types/IContent";
+import ContentExtraHeder from "./ContentExtraHeder/ContentExtraHeder";
+import ContentExtraPerson from "./ContentExtraPerson/ContentExtraPerson";
+import ContentExtraComments from "./ContentExtraComments/ContentExtraComments";
 import Card from "../Card/Card";
 import styles from './ContentExtra.module.scss';
 import leftIcon from "@/public/icons/to-left.svg"
@@ -15,7 +14,7 @@ interface ContentExtraProps {
   extra: "Создатели" | "Отзывы" | "Трейлеры";
 }
 
-export const ContentExtra: FC<ContentExtraProps> = (props) => {
+export default function ContentExtra(props: ContentExtraProps) {
 
   let content: React.ReactElement;
   props.extra === "Создатели" ?

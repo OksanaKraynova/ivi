@@ -1,11 +1,11 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import Image from 'next/image';
 import Button from "../Button/Button";
-import { InputText } from "../InputText/InputText";
+import InputText from "../InputText/InputText";
+import Urls from "@/types/Urls";
+import sendData from "@/src/functions/sendData";
 import styles from './Response.module.scss';
 import userIcon from "../../../public/icons/user.svg"
-import { Urls } from "@/types/Urls";
-import { sendData } from "@/src/functions/sendData";
 
 interface ResponseProps {
   placeholder: string;
@@ -14,7 +14,7 @@ interface ResponseProps {
   parentId: number;
 }
 
-export const Response: FC<ResponseProps> = (props) => {
+export default function Response(props: ResponseProps) {
 
   const minSize = 10;
 
@@ -35,7 +35,7 @@ export const Response: FC<ResponseProps> = (props) => {
       parent: parentId
     }
 
-    sendData("post", Urls.SERVER_PORT, Urls.ALL_COMMENTS, params)
+    sendData("post", Urls.ALL_COMMENTS, params)
       .then(status => status === 200 && setComment(""))
       .catch(error => console.log(error));
   }

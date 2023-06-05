@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 import styles from './TextArea.module.scss';
 
@@ -8,7 +8,7 @@ interface TextAreaProps {
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const TextArea: FC<TextAreaProps> = (props) => {
+export default function TextArea(props: TextAreaProps) {
 
   const [placeholderEffect, setPlacholderEffect] = useState<string | null>(null);
 

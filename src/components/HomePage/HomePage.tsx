@@ -1,17 +1,17 @@
-import MovieBlock from '../MovieBlock/MovieBlock';
-import classNames from 'classnames';
 import { useRouter } from 'next/router';
+import classNames from 'classnames';
+import MovieBlock from '../MovieBlock/MovieBlock';
 import Card from '../Card/Card';
-import { HomeAbout } from './HomeAbout/HomeAbout';
+import HomeAbout from './HomeAbout/HomeAbout';
 import HomePromos from './HomePromos/HomePromos';
-import { HomeTop } from './HomeTop/HomeTop';
-import { HomeButtons } from './HomeButtons/HomeButtons';
-import en from '@/locales/titles/en';
-import ru from '@/locales/titles/ru';
+import HomeTop from './HomeTop/HomeTop';
+import HomeButtons from './HomeButtons/HomeButtons';
 import styles from './HomePage.module.scss';
 import 'swiper/css';
+import en from '@/locales/titles/en';
+import ru from '@/locales/titles/ru';
 
-export const HomePage = () => {
+export default function HomePage() {
 
   const { locale } = useRouter();
   const t = locale === "ru" ? ru : en;

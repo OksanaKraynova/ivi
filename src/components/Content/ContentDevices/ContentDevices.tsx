@@ -1,11 +1,10 @@
-import { FC } from 'react';
-import { IContent } from '@/types/IContent';
+import IContent from '@/types/IContent';
 import classNames from 'classnames';
 import Button from '@/src/components/Button/Button';
+import Urls from '@/types/Urls';
 import styles from './ContentDevices.module.scss';
-import idadImg from "@/public/img/ipad-without-poster.png"
-import tvImg from "@/public/img/tv-without-poster.png"
-import { Urls } from '@/types/Urls';
+import idadImg from "@/public/img/ipad-without-poster.png";
+import tvImg from "@/public/img/tv-without-poster.png";
 
 interface ContentDevicesProps {
   content: IContent;
@@ -13,7 +12,7 @@ interface ContentDevicesProps {
   textClass: string;
 }
 
-export const ContentDevices: FC<ContentDevicesProps> = (props) => {
+export default function ContentDevices(props: ContentDevicesProps) {
 
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 

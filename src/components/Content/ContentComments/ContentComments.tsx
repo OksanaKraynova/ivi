@@ -1,11 +1,10 @@
-import { FC } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import Button from '../../Button/Button';
 import MovieBlock from '../../MovieBlock/MovieBlock';
-import { Comment } from '../../Comment/Comment';
-import { IContent } from '@/types/IContent';
-import { IComment } from '@/types/IComment';
+import Comment from '../../Comment/Comment';
+import IContent from '@/types/IContent';
+import IComment from '@/types/IComment';
 import styles from './ContentComments.module.scss';
 import 'swiper/css';
 
@@ -15,7 +14,7 @@ interface ContentCommentsProps {
   textClass: string;
 }
 
-export const ContentComments: FC<ContentCommentsProps> = (props) => {
+export default function ContentComments(props: ContentCommentsProps) {
 
   const commentsBlock = props.content.comments.length > 0 ?
 
