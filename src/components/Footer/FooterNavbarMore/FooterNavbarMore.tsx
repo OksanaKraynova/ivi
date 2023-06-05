@@ -1,12 +1,13 @@
 import { default as LinkNext } from 'next/link';
 import Image from 'next/image';
+import classNames from 'classnames';
 import Button from '../../Button/Button';
-import { Link } from '../../Link/Link';
-import { FooterSupport } from '../FooterSupport/FooterSupport';
-import { FooterButtonsIcon } from '../FooterButtonsIcon/FooterButtonsIcon';
-import { FooterNavbarDropdown } from '../FooterNavbarDropdown/FooterNavbarDropdown';
-import { FooterNavbarDropdownList } from '../FooterNavbarDropdownList/FooterNavbarDropdownList';
-import { IItemLink } from '@/types/IItemLink';
+import Link from '../../Link/Link';
+import FooterSupport from '../FooterSupport/FooterSupport';
+import FooterNavbarDropdown from '../FooterNavbarDropdown/FooterNavbarDropdown';
+import FooterNavbarDropdownList from '../FooterNavbarDropdownList/FooterNavbarDropdownList';
+import FooterButtonsIcon from '../FooterButtonsIcon/FooterButtonsIcon';
+import IItemLink from '@/types/IItemLink';
 import styles from './FooterNavbarMore.module.scss';
 import filmsIcon from "@/public/icons/camera.svg"
 import serialsIcon from "@/public/icons/folders.svg"
@@ -18,7 +19,6 @@ import supportIcon from "@/public/icons/dialog.svg"
 import subLogo from "@/public/icons/diamond.svg"
 import sertificateLogo from "@/public/icons/reward.svg"
 import devicesLogo from "@/public/icons/devices/devices.svg"
-import classNames from 'classnames';
 
 const buttonsFirst = [
   { logo: subLogo, text: "Подключить подписку" },
@@ -396,7 +396,7 @@ const dropdownSupport: Parameters<typeof FooterNavbarDropdown<Parameters<typeof 
   dropdownBlock: (item) => <div className={styles.support}><FooterSupport {...item} /></div>
 };
 
-export const FooterNavbarMore = () => {
+export default function FooterNavbarMore() {
 
   return (
 

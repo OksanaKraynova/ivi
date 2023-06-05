@@ -1,5 +1,4 @@
-import { FC } from 'react';
-import { IContent } from '@/types/IContent';
+import IContent from '@/types/IContent';
 import MovieBlock from '../../MovieBlock/MovieBlock';
 import Card from '../../Card/Card';
 
@@ -9,7 +8,7 @@ interface ContentSimilarProps {
   sliderlass: string;
 }
 
-export const ContentSimilar: FC<ContentSimilarProps> = (props) => {
+export default function ContentSimilar(props: ContentSimilarProps) {
 
   return (
 

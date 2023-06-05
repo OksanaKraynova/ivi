@@ -1,6 +1,6 @@
-import { IItemLink } from "./IItemLink";
+import IItemLink from "./IItemLink";
 
-export interface IDropdownBlock {
+export default interface IDropdownBlock {
   title?: string;
   list: IItemLink[];
 }

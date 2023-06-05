@@ -1,4 +1,4 @@
-import { DataBlock } from './DataBlock'
+import DataBlock from './DataBlock'
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof DataBlock> = {

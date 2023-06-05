@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Button from '@/src/components/Button/Button';
 import styles from './ContentRating.module.scss';
 import classNames from 'classnames';
@@ -8,7 +7,8 @@ interface ContentRatingProps {
   textClass: string;
 }
 
-export const ContentRating: FC<ContentRatingProps> = (props) => {
+export default function ContentRating(props: ContentRatingProps) {
+
   const color = +props.rating < 7 ? "grey" : "green";
 
   return (

@@ -4,7 +4,7 @@ interface ListProps<T> {
   title?: React.ReactElement | React.ReactNode;
 }
 
-export function List<T>(props: ListProps<T>) {
+export default function List<T>(props: ListProps<T>) {
 
   return (
 

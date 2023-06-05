@@ -1,4 +1,4 @@
-import { InputNumber } from './InputNumber'
+import InputNumber from './InputNumber'
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof InputNumber> = {

@@ -1,9 +1,8 @@
-import { IItemLink } from '@/types/IItemLink';
-import { FC } from 'react';
-import { List } from '../../List';
-import { Link } from '../../Link/Link';
-import { FooterNavbarDropdownListColumn } from '../FooterNavbarDropdownListColumn/FooterNavbarDropdownList';
-import { IDropdownBlock } from '@/types/IDropdownBlock';
+import IItemLink from '@/types/IItemLink';
+import List from '../../List';
+import Link from '../../Link/Link';
+import FooterNavbarDropdownListColumn from '../FooterNavbarDropdownListColumn/FooterNavbarDropdownListColumn';
+import IDropdownBlock from '@/types/IDropdownBlock';
 import styles from './FooterNavbarDropdownList.module.scss';
 
 interface FooterNavbarDropdownListProps {
@@ -13,7 +12,8 @@ interface FooterNavbarDropdownListProps {
   thirdColumn?: IDropdownBlock[];
 }
 
-export const FooterNavbarDropdownList: FC<FooterNavbarDropdownListProps> = (props) => {
+export default function FooterNavbarDropdownList
+  (props: FooterNavbarDropdownListProps) {
 
   const firstLink = props.subTitle === undefined ?
     <></> :

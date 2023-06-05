@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import Button from '../Button/Button';
@@ -13,7 +12,7 @@ interface PromoPosterProps {
   href: string;
 }
 
-export const PromoPoster: FC<PromoPosterProps> = (props) => {
+export default function PromoPoster(props: PromoPosterProps) {
 
   return (
 

@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
-import { InputText } from '../InputText/InputText';
-import { List } from '../List';
+import InputText from '../InputText/InputText';
+import List from '../List';
 import styles from './Search.module.scss';
 import searchIcon from "../../../public/icons/search.svg"
 
@@ -16,7 +16,7 @@ interface SearchProps<T> {
 
 export default function Search<T>(props: SearchProps<T>) {
 
-  const [visibile, setVisibile] = useState<boolean>(false);
+  const [hidden, setHidden] = useState<boolean>(true);
   const [options, setOptions] = useState<T[] | null>(null);
 
   return (
@@ -24,8 +24,8 @@ export default function Search<T>(props: SearchProps<T>) {
     <div
       className={styles.box}
       tabIndex={-1}
-      onFocus={() => setVisibile(true)}
-      onBlur={() => setVisibile(false)}
+      onFocus={() => setHidden(false)}
+      onBlur={() => setHidden(true)}
     >
 
       <div className={styles.input}>
@@ -43,7 +43,7 @@ export default function Search<T>(props: SearchProps<T>) {
 
       <div
         className={styles.list}
-        hidden={!visibile || (options === null ? props.options.length == 0 : options.length == 0)}
+        hidden={hidden || (options === null ? props.options.length === 0 : options.length === 0)}
       >
 
         <List<T>

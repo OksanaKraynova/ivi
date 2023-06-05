@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { InputText } from '../../InputText/InputText';
+import InputText from '../../InputText/InputText';
 import styles from './AdminPageUpdateName.module.scss';
 import Button from '../../Button/Button';
 
@@ -9,6 +9,8 @@ interface AdminPageUpdateNameProps {
   delite: boolean;
   onChangeName: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeEnglishName: (event: ChangeEvent<HTMLInputElement>) => void;
+  onSabmit: () => void;
+  onDelite?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function AdminPageUpdateName(props: AdminPageUpdateNameProps) {
@@ -51,10 +53,24 @@ export default function AdminPageUpdateName(props: AdminPageUpdateNameProps) {
 
       <div className={styles.propsBox}>
         <div className={styles.inputBox}>
-          <Button variant="long" effect="bordered" color="darkBlue">Обновить</Button>
+
+          <Button
+            variant="long"
+            effect="bordered"
+            color="darkBlue"
+            onClick={props.onSabmit}
+          >
+            Обновить
+          </Button>
 
           {props.delite &&
-            <Button variant="long" effect="bordered" color="darkBlue">Удалить</Button>
+            <Button
+              variant="long"
+              effect="bordered"
+              color="darkBlue"
+            >
+              Удалить
+            </Button>
           }
         </div>
       </div>

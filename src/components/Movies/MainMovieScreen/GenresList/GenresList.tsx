@@ -1,7 +1,6 @@
 import React from 'react';
 import MovieBlock from '../../../MovieBlock/MovieBlock';
 import DarkBlueWrapper from '../../../DarkBlueWrapper/DarkBlueWrapper';
-import { genres } from '../../../../data/genresMovieLink'
 import CardItemGenre from './CardItemGenre';
 import { useRouter } from 'next/router';
 import ru from '@/locales/genresMovie/en';

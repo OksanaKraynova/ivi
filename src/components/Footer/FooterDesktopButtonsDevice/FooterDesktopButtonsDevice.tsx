@@ -13,7 +13,8 @@ const buttons = [
   { logo: devicesLogo, text: "", device: "Все устройства" }
 ]
 
-export const FooterDesktopButtonsDevice = () => {
+export default function FooterDesktopButtonsDevice() {
+
   return (
 
     <>

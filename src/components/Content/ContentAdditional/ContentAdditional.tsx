@@ -1,5 +1,4 @@
-import { FC } from 'react';
-import { IContent } from '@/types/IContent';
+import IContent from '@/types/IContent';
 import styles from './ContentAdditional.module.scss';
 import Link from 'next/link';
 
@@ -9,7 +8,7 @@ interface ContentAdditionalProps {
   linkClass: string;
 }
 
-export const ContentAdditional: FC<ContentAdditionalProps> = (props) => {
+export default function ContentAdditional(props: ContentAdditionalProps) {
 
   return (
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './dropLinks.module.scss'
-import { Link } from '@/src/components/Link/Link';
+import Link from '@/src/components/Link/Link';
 
 const DropLinksBorder = ({ arr }: any) => {
     return (

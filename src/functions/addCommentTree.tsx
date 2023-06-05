@@ -1,9 +1,9 @@
-import { IComment } from "@/types/IComment";
-import { getData } from "./getData";
-import { IData } from "@/types/IData";
-import { Urls } from "@/types/Urls";
+import IComment from "@/types/IComment";
+import getData from "./getData";
+import IData from "@/types/IData";
+import Urls from "@/types/Urls";
 
-export function addCommentTree(
+export default function addCommentTree(
   comment: IComment,
   childes: React.ReactElement[],
   renderComment: (comment: IComment, childes: React.ReactElement[]) => React.ReactElement

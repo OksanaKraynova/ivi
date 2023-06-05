@@ -1,14 +1,13 @@
-import { IContent } from "@/types/IContent";
+import Link from "@/src/components/Link/Link";
+import IContent from "@/types/IContent";
 import styles from './ContentExtraHeder.module.scss';
-import { Link } from "@/src/components/Link/Link";
-import { FC } from "react";
 
 interface ContentExtraHederProps {
   content: IContent;
   extra: "Создатели" | "Отзывы" | "Трейлеры";
 }
 
-export const ContentExtraHeder: FC<ContentExtraHederProps> = (props) => {
+export default function ContentExtraHeder(props: ContentExtraHederProps) {
 
   const extraProps = {
     Создатели:

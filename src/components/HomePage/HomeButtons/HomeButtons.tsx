@@ -1,13 +1,13 @@
+import { useRouter } from 'next/router';
 import Button from '../../Button/Button';
 import Image from 'next/image';
 import styles from './HomeButtons.module.scss';
 import importantIcon from "../../../../public/icons/lightning.svg"
 import giftIcon from "../../../../public/icons/gift.svg"
-import { useRouter } from 'next/router';
 import en from '@/locales/titles/en';
 import ru from '@/locales/titles/ru';
 
-export const HomeButtons = () => {
+export default function HomeButtons() {
   const router = useRouter()
   const { locale } = router
   const t = locale === 'ru' ? ru : en

@@ -1,7 +1,6 @@
 import { default as LinkNext } from 'next/link';
 import styles from './Link.module.scss';
 import classNames from 'classnames';
-import { FC } from 'react';
 
 interface LinkProps {
   text: string;
@@ -12,7 +11,7 @@ interface LinkProps {
   onMouseOver?: () => void;
 }
 
-export const Link: FC<LinkProps> = (props) => {
+export default function Link(props: LinkProps) {
   let className = classNames(styles.link, styles[props.color]);
 
   props.linkClass === undefined ?

@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import InputText from './InputText';
+import InputText from './InputFile';
 
 const placeholder = "Введите ответ";
 const minSize = 6;
@@ -15,17 +15,17 @@ describe("ИнпутТекст", () => {
     render(
       <InputText placeholder={placeholder} />);
 
-    expect(screen.getByText(placeholder)).toHaveClass("placeholder");
+    expect(screen.getByText(placeholder)).toHaveClass("placholder");
 
     const input = screen.getByRole("textbox");
     fireEvent.change(input, { target: { value: smallResponse } });
 
-    expect(screen.getByText(placeholder)).toHaveClass("placeholder overText");
+    expect(screen.getByText(placeholder)).toHaveClass("placholder overText");
     expect(input).toHaveValue(smallResponse);
 
     fireEvent.change(input, { target: { value: bigResponse } });
 
-    expect(screen.getByText(placeholder)).toHaveClass("placeholder overText");
+    expect(screen.getByText(placeholder)).toHaveClass("placholder overText");
     expect(input).toHaveValue(bigResponse);
   });
 

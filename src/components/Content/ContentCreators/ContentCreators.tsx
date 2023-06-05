@@ -1,16 +1,15 @@
-import { FC } from 'react';
-import { IContent } from '@/types/IContent';
-import { LinkAvatar } from '@/src/components/LinkAvatar/LinkAvatar';
+import IContent from '@/types/IContent';
+import LinkAvatar from '@/src/components/LinkAvatar/LinkAvatar';
 import Link from 'next/link';
 import styles from './ContentCreators.module.scss';
-import { Urls } from '@/types/Urls';
+import Urls from '@/types/Urls';
 
 interface ContentCreatorsProps {
   content: IContent;
   linkClass: string;
 }
 
-export const ContentCreators: FC<ContentCreatorsProps> = (props) => {
+export default function ContentCreators(props: ContentCreatorsProps) {
 
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 

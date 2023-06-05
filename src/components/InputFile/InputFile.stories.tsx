@@ -1,4 +1,4 @@
-import InputText from './InputText'
+import InputText from './InputFile'
 import type { Meta, StoryObj } from '@storybook/react';
 import closeIcon from '../../../public/icons/close.svg';
 

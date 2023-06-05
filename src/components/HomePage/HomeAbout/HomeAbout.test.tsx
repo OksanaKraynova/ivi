@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { HomeAbout } from './HomeAbout';
+import HomeAbout from './HomeAbout';
 
 const visibleText = "Онлайн-кинотеатр Иви: фильмы в хорошем качестве всегда приносят настоящее удовольствие";
 const hiddenText = "просмотр онлайн контента хорошего разрешения без регистрации и смс.";

@@ -1,49 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
-import { IGenre } from '@/types/IGenre';
-import { Select } from '../../Select/Select';
+import IGenre from '@/types/IGenre';
+import Select from '../../Select/Select';
 import AdminPageUpdateName from '../AdminPageUpdateName/AdminPageUpdateName';
-import { InputText } from '../../InputText/InputText';
+import InputText from '../../InputText/InputText';
 import Search from '../../Search/Search';
-import { IContentPost } from '@/types/IContentPost';
-import { DataBlock } from '../../DataBlock/DataBlock';
-import { IActor } from '@/types/IActor';
+import DataBlock from '../../DataBlock/DataBlock';
+import IActor from '@/types/IActor';
 import Button from '../../Button/Button';
-import { TextArea } from '../../TextArea/TextArea';
+import TextArea from '../../TextArea/TextArea';
 import styles from './AdminPageFilms.module.scss';
 import downIcon from "@/public/icons/down.svg"
-import actorsData from "../../../json/actors.json";
-import { InputNumber } from '../../InputNumber/InputNumber';
-import { IContent } from '@/types/IContent';
-import { ICountry } from '@/types/ICountry';
+import InputNumber from '../../InputNumber/InputNumber';
+import IContent from '@/types/IContent';
+import ICountry from '@/types/ICountry';
+import getData from '@/src/functions/getData';
+import IData from '@/types/IData';
+import Urls from '@/types/Urls';
+import sendData from '@/src/functions/sendData';
+import InputFile from '../../InputFile/InputFile';
 
-const allGenres: IGenre[] = [
-  { id: 1, name: "Ужас", translate: "Horror" },
-  { id: 2, name: "Драма", translate: "Drama" },
-  { id: 3, name: "Комедия", translate: "Comedy" },
-  { id: 4, name: "Триллер", translate: "Thriller" },
-  { id: 5, name: "Романтика", translate: "Romance" },
-  { id: 6, name: "Дорама", translate: "Dorama" }
-];
-
-const allCountries: ICountry[] = [
-  { id: 1, name: "Россия" },
-  { id: 2, name: "СССР" },
-  { id: 3, name: "Южная Корея" },
-  { id: 4, name: "Северная Корея" },
-  { id: 5, name: "Уругвай" },
-  { id: 6, name: "Индия" },
-  { id: 7, name: "Китай" }
-];
-
-const allAges: string[] = [
-  "0+", "6+", "12+", "18+"
-];
-
-interface AdminPageFilmsProps {
-  hidden: boolean;
-}
+const ages: string[] = ["0+", "6+", "12+", "18+"];
 
 interface Filled {
   name: boolean,
@@ -54,6 +32,34 @@ interface Filled {
   ganres: boolean,
   film_time: boolean,
   age: boolean,
+}
+
+interface collection<T> {
+  collection: T[];
+}
+
+type IContentPost = {
+  name: string,
+  name_translate: string | null,
+  type: string,
+  year: number,
+  files: number[],
+  directors: number[],
+  actors: number[],
+  countries: number[],
+  ganres: number[],
+  film_time: string,
+  age: string,
+  slogan: string,
+  description: string | null,
+  rating: number,
+  estimation: number,
+  video_quality: string | null,
+}
+
+interface AdminPageFilmsProps {
+  hidden: boolean;
+  genres: IGenre[];
 }
 
 export default function AdminPageFilms(props: AdminPageFilmsProps) {
@@ -91,29 +97,94 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
   const [hidden, setHidden] =
     useState<{ update: boolean, create: boolean }>({ update: true, create: true });
 
-  const [film, setFilm] = useState<IContent | null>(null);
-  const [upadateFilm, setUpdateFilm] = useState<IContent | null>(null);
-  const [newFilm, setNewFilm] = useState<IContentPost>(defaultFilm);
-  // const [files, setFiles] = useState<IGenre[]>([]);
-  const [directors, setDirectors] = useState<IActor[]>([]);
-  const [actors, setActors] = useState<IActor[]>([]);
-  const [genres, setGenres] = useState<IGenre[]>([]);
   const [countries, setCountries] = useState<ICountry[]>([]);
+  const [actors, setActors] = useState<IActor[]>([]);
+  const [directors, setDirectors] = useState<IActor[]>([]);
+
+  const [film, setFilm] = useState<IContent>();
+  const [upadatedFilm, setUpdatedFilm] = useState<{ name: string, name_translate: string | null }>();
+
+  const [newFilm, setNewFilm] = useState<IContentPost>(defaultFilm);
+  const [files, setFiles] = useState<FormData>(new FormData());
+  const [filmDirectors, setFilmDirectors] = useState<IActor[]>([]);
+  const [filmActors, setFilmActors] = useState<IActor[]>([]);
+  const [filmGenres, setFilmGenres] = useState<IGenre[]>([]);
+  const [filmCountries, setFilmCountries] = useState<ICountry[]>([]);
+
   const [filled, setFilled] = useState<Filled>(defaulFilled);
   const [sending, setSending] = useState<boolean>(false);
 
-  function sendFilm() {
+  useEffect(() => {
+    getData<IData<ICountry[]>>(Urls.SERVER_PORT, Urls.ALL_COUNTRIES)
+      .then(data => setCountries(data.items));
+  }, []);
+
+  function searchCreators(value: string, job: "actor" | "director") {
+    value.length > 2 ?
+      // getData<IData<IActor[]>>(Urls.SERVER_PORT, Urls.ALL_PERSONS_FILTER, { search: value })
+      //   .then(data => setActors(data.items)) :
+      getData<collection<IActor>>(Urls.SERVER_PORT, Urls.ALL_PERSONS_FILTER, { search: value })
+        .then(data => job === "actor" ? setActors(data.collection) : setDirectors(data.collection)) :
+      job === "actor" ? setActors([]) : setDirectors([]);
+  }
+
+  function createFilm() {
+
     if (Object.values(filled).includes(false)) {
       setSending(true);
-      return
+      return;
     }
+
+    sendData("post", Urls.ONE_MOVIE, newFilm)
+      .then(status => console.log(status))
+      .catch(error => console.log(error));
+
     setNewFilm(defaultFilm);
-    setDirectors([]);
-    setActors([]);
-    setGenres([]);
-    setCountries([]);
+    setFilmDirectors([]);
+    setFilmActors([]);
+    setFilmGenres([]);
+    setFilmCountries([]);
+    setFiles(new FormData());
     setFilled(defaulFilled);
     setSending(false);
+  }
+
+  function updateFilm() {
+
+    if (
+      upadatedFilm === undefined ||
+      film === undefined ||
+      (film?.name === upadatedFilm?.name && film?.name_translate === upadatedFilm?.name_translate)
+    ) return;
+
+    sendData("patch", Urls.ONE_MOVIE + `/${film?.id}`, upadatedFilm)
+      .then(status => console.log(status))
+      .catch(error => console.log(error));
+
+    setFilm(undefined);
+    setUpdatedFilm(undefined);
+  }
+
+  function deliteFilm() {
+
+    if (
+      upadatedFilm === undefined ||
+      film === undefined ||
+      (film?.name === upadatedFilm?.name && film?.name_translate === upadatedFilm?.name_translate)
+    ) return;
+
+    sendData("delete", Urls.ONE_MOVIE + `/${film?.id}`)
+      .then(status => console.log(status))
+      .catch(error => console.log(error));
+
+    setFilm(undefined);
+    setUpdatedFilm(undefined);
+  }
+
+  function sendFile() {
+    sendData("post", Urls.UPLOAD_FILES, files)
+      .then(status => console.log(status))
+      .catch(error => console.log(error));
   }
 
   return (
@@ -154,13 +225,15 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         /> */}
 
         {
-          upadateFilm !== null && film !== null &&
+          upadatedFilm !== undefined && film !== undefined &&
           <AdminPageUpdateName
             name={film.name}
             englishName={film.name_translate}
             delite={true}
-            onChangeName={(event) => setUpdateFilm({ ...upadateFilm, name: event.target.value })}
-            onChangeEnglishName={(event) => setUpdateFilm({ ...upadateFilm, name_translate: event.target.value })}
+            onChangeName={(event) => setUpdatedFilm({ ...upadatedFilm, name: event.target.value })}
+            onChangeEnglishName={(event) => setUpdatedFilm({ ...upadatedFilm, name_translate: event.target.value })}
+            onSabmit={updateFilm}
+            onDelite={deliteFilm}
           />
         }
 
@@ -224,30 +297,30 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
           <Select
             placeholder='Жанр'
             error={!filled.ganres && sending}
-            options={allGenres.map(item => item.name)}
+            options={props.genres.map(item => item.name)}
             type='multiple'
             addCheck={index => {
-              setGenres([...genres, allGenres[index]]);
-              filled.ganres = genres.length + 1 > 0;
+              setFilmGenres([...filmGenres, props.genres[index]]);
+              filled.ganres = filmGenres.length + 1 > 0;
             }}
             deliteCheck={index => {
-              setGenres(genres.filter(item => item !== allGenres[index]));
-              filled.ganres = genres.length - 1 > 0;
+              setFilmGenres(filmGenres.filter(item => item !== props.genres[index]));
+              filled.ganres = filmGenres.length - 1 > 0;
             }}
           />
 
           <Select
             placeholder="Страна"
             error={!filled.countries && sending}
-            options={allCountries.map(item => item.name)}
+            options={countries.map(item => item.name)}
             type='multiple'
             addCheck={index => {
-              setCountries([...countries, allCountries[index]]);
-              filled.countries = countries.length + 1 > 0;
+              setFilmCountries([...filmCountries, countries[index]]);
+              filled.countries = filmCountries.length + 1 > 0;
             }}
             deliteCheck={index => {
-              setCountries(countries.filter(item => item !== allCountries[index]));
-              filled.countries = countries.length - 1 > 0;
+              setFilmCountries(filmCountries.filter(item => item !== countries[index]));
+              filled.countries = filmCountries.length - 1 > 0;
             }}
           />
         </div>
@@ -267,10 +340,10 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
           <Select
             placeholder='Возрастной рейтинг'
             error={!filled.age && sending}
-            options={allAges}
+            options={ages}
             type='one'
             addCheck={index => {
-              setNewFilm({ ...newFilm, age: allAges[index] });
+              setNewFilm({ ...newFilm, age: ages[index] });
               filled.age = true;
             }}
           />
@@ -289,20 +362,21 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
           />
         </div>
 
-        {/* <div className={styles.inputBox}>
+        <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Актеры'
-            options={actorsData.actors}
-            addItem={actor => setActors(actors.includes(actor) ? actors : [...actors, actor])}
-            renderItem={actor => `${actor.firstName} ${actor.secondName}`}
-            compareItem={(actor, value) => actor.firstName.includes(value) || actor.secondName.includes(value)}
+            options={actors}
+            onChange={(event) => searchCreators(event.target.value, "actor")}
+            addItem={actor => setFilmActors(filmActors.includes(actor) ? filmActors : [...filmActors, actor])}
+            renderItem={actor => actor.name}
           />
 
-          {actors.length > 0 &&
+          {
+            filmActors.length > 0 &&
             <DataBlock
-              items={actors.map(actor => `${actor.firstName} ${actor.secondName}`)}
+              items={filmActors.map(actor => `${actor.name} ${actor.translate}`)}
               placeholder='Актеры'
-              deliteItem={index => setActors(actors.filter((actor, currentIndex) => currentIndex !== index))}
+              deliteItem={index => setFilmActors(filmActors.filter((actor, currentIndex) => currentIndex !== index))}
             />
           }
         </div>
@@ -310,20 +384,24 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         <div className={styles.inputBox}>
           <Search<IActor>
             placeholder='Режиссеры'
-            options={actorsData.actors}
-            addItem={director => setDirectors(directors.includes(director) ? directors : [...directors, director])}
-            renderItem={director => `${director.firstName} ${director.secondName}`}
-            compareItem={(director, value) => director.firstName.includes(value) || director.secondName.includes(value)}
+            options={directors}
+            onChange={(event) => searchCreators(event.target.value, "director")}
+            addItem={director =>
+              setFilmDirectors(filmDirectors.includes(director) ?
+                filmDirectors :
+                [...filmDirectors, director])}
+            renderItem={director => director.name}
           />
 
-          {directors.length > 0 &&
+          {
+            filmDirectors.length > 0 &&
             <DataBlock
-              items={directors.map(director => `${director.firstName} ${director.secondName}`)}
+              items={filmDirectors.map(director => `${director.name} ${director.translate}`)}
               placeholder='Режиссеры'
-              deliteItem={index => setDirectors(directors.filter((director, currentIndex) => currentIndex !== index))}
+              deliteItem={index => setFilmDirectors(filmDirectors.filter((director, currentIndex) => currentIndex !== index))}
             />
           }
-        </div> */}
+        </div>
 
         {/* <div className={styles.inputBox}>
           <Search<IActor>
@@ -351,7 +429,20 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         </div>
 
         <div className={styles.inputBox}>
-          Файлы
+          <InputFile
+            placeholder="Обложка"
+            accept="image/*"
+            onChange={(file) => files.append("file", file)}
+          />
+
+          <Button
+            variant="long"
+            effect="bordered"
+            color="darkBlue"
+            onClick={() => sendFile()}
+          >
+            Загрузить
+          </Button>
         </div>
 
         <div className={styles.button}>
@@ -359,7 +450,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
             variant="long"
             effect="bordered"
             color="darkBlue"
-            onClick={() => sendFilm()}
+            onClick={() => createFilm()}
           >
             Создать
           </Button>
@@ -367,9 +458,9 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       </div>
 
-      {Object.values(newFilm).map(item =>
+      {/* {Object.values(newFilm).map(item =>
         <p>{item}</p>
-      )}
+      )} */}
 
     </div>
 

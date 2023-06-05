@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { DataBlock } from './DataBlock';
+import DataBlock from './DataBlock';
 
 let items = [
   "Один", "Два", "Три", "Четыре", "Пять"

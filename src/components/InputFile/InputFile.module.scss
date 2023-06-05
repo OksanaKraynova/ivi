@@ -1,0 +1,33 @@
+.box {
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  background-color: #1f1b2e;
+  border: 1px solid #afafaf;
+  border-radius: 8px;
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  color: #afafaf;
+}
+
+.input {
+  width: 100%;
+  padding: 16px 6px;
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  color: #afafaf;
+  background-color: #1f1b2e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+
+  &::file-selector-button {
+    display: none;
+  }
+
+  &:hover {
+    color: #ffffff;
+  }
+}

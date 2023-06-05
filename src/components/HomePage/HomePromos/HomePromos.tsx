@@ -1,5 +1,5 @@
 import MovieBlock from '../../MovieBlock/MovieBlock';
-import { PromoPoster } from '../../PromoPoster/PromoPoster';
+import PromoPoster from '../../PromoPoster/PromoPoster';
 import cornPoster from "@/public/img/corn-poster.jpg"
 import cornTitle from "@/public/img/corn-title.png"
 import ghostPoster from "@/public/img/ghost-poster.jpg"

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Comment } from './Comment';
+import Comment from './Comment';
 
 const meta: Meta<typeof Comment> = {
   title: 'Comment',
@@ -27,11 +27,11 @@ type Story = StoryObj<typeof Comment>;
 export const Example: Story = {
   args: {
     comment: {
-      id: 123,
-      userName: "userName",
-      date: "17 мая 2023",
+      id: 1,
+      author_id: "1",
+      createdAt: "2023-01-17-16",
       comment: "Комментарий",
-      parentComment: null
+      parent: null
     },
     type: "full"
   },

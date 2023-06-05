@@ -1,78 +1,63 @@
 import { useState } from 'react';
-import { IGenre } from '@/types/IGenre';
-import { Select } from '../../Select/Select';
+import IGenre from '@/types/IGenre';
+import Select from '../../Select/Select';
 import AdminPageUpdateName from '../AdminPageUpdateName/AdminPageUpdateName';
 import styles from './AdminPageGenres.module.scss';
 import Search from '../../Search/Search';
-import { getData } from '@/src/functions/getData';
-import { Urls } from '@/types/Urls';
-import { IData } from '@/types/IData';
-
-const allGenres: IGenre[] = [
-  { id: 1, name: "Ужас", translate: "Horror" },
-  { id: 2, name: "Драма", translate: "Drama" },
-  { id: 3, name: "Комедия", translate: "Comedy" },
-  { id: 4, name: "Триллер", translate: "Thriller" },
-  { id: 5, name: "Романтика", translate: "Romance" },
-  { id: 6, name: "Дорама", translate: "Dorama" },
-  { id: 7, name: "Ужас", translate: "Horror" },
-  { id: 8, name: "Драма", translate: "Drama" },
-  { id: 9, name: "Комедия", translate: "Comedy" },
-  { id: 10, name: "Триллер", translate: "Thriller" },
-  { id: 11, name: "Романтика", translate: "Romance" },
-  { id: 12, name: "Дорама", translate: "Dorama" }
-];
+import getData from '@/src/functions/getData';
+import Urls from '@/types/Urls';
+import IData from '@/types/IData';
+import sendData from '@/src/functions/sendData';
 
 interface AdminPageGenresProps {
   hidden: boolean;
+  genres: IGenre[];
 }
 
 export default function AdminPageGenres(props: AdminPageGenresProps) {
 
-  const [genre, setGenre] = useState<IGenre | null>(null);
-  const [newGenre, setNewGenre] = useState<IGenre | null>(null);
-  const [allGenress, setAllGenress] = useState<IGenre[]>([]);
+  const [genre, setGenre] = useState<IGenre>();
+  const [upadatedGenre, setUpadatedGenre] = useState<{ name: string, translate: string | null }>();
 
-  function searchGenres(limit: number) {
-    limit > 0 ?
-      getData<IData<IGenre[]>>(Urls.SERVER_PORT, Urls.ALL_GANRES, { limit: limit.toString() })
-        .then(data => setAllGenress(data.items)) :
-      setAllGenress([]);
+  function updateGenre() {
+
+    if (
+      upadatedGenre === undefined ||
+      genre === undefined ||
+      (genre?.name === upadatedGenre?.name && genre?.translate === upadatedGenre?.translate)
+    ) return;
+
+    sendData("patch", Urls.ALL_GANRES + `/${genre?.id}`, upadatedGenre)
+      .then(status => console.log(status))
+      .catch(error => console.log(error));
+
+    setUpadatedGenre(undefined);
+    setGenre(undefined);
   }
 
   return (
 
     <div className={styles.box} hidden={props.hidden}>
 
-      <Search<IGenre>
+      <Select
         placeholder='Жанр'
-        options={allGenress}
-        onChange={(event) => searchGenres(+event.target.value)}
-        addItem={genre => {
-          setGenre(genre);
-          setNewGenre(genre);
+        options={props.genres.map(item => item.name)}
+        type='one'
+        addCheck={(index) => {
+          setGenre(props.genres[index]);
+          setUpadatedGenre({ name: props.genres[index].name, translate: props.genres[index].translate });
         }}
-        renderItem={genre => genre.name}
       />
 
-      {/* <Select
-        placeholder='Жанр'
-        options={allGenres.map(item => item.name)}
-        type='one'
-        addCheck={(index => {
-          setGenre(allGenres[index]);
-          setNewGenre(allGenres[index]);
-        })}
-      /> */}
-
       {
-        newGenre !== null && genre !== null &&
+        upadatedGenre !== undefined && genre !== undefined &&
         <AdminPageUpdateName
           name={genre.name}
           englishName={genre.translate}
           delite={false}
-          onChangeName={(event) => setNewGenre({ ...newGenre, name: event.target.value })}
-          onChangeEnglishName={(event) => setNewGenre({ ...newGenre, translate: event.target.value })}
+          onChangeName={(event) => setUpadatedGenre({ ...upadatedGenre, name: event.target.value })}
+          onChangeEnglishName={(event) => setUpadatedGenre({ ...upadatedGenre, translate: event.target.value })}
+          onSabmit={updateGenre}
         />
       }
 

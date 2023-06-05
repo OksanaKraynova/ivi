@@ -1,6 +1,5 @@
-import { FC } from 'react';
 import Link from 'next/link';
-import { ImgBox } from '../ImgBox';
+import ImgBox from '../ImgBox';
 import classNames from 'classnames';
 import styles from './LinkAvatar.module.scss';
 
@@ -16,7 +15,7 @@ interface LinkAvatarProps {
   onMouseOver?: () => void;
 }
 
-export const LinkAvatar: FC<LinkAvatarProps> = (props) => {
+export default function LinkAvatar(props: LinkAvatarProps) {
   let contentClass: string;
   props.color === undefined ?
     contentClass = styles.content :

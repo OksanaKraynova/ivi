@@ -50,13 +50,13 @@ const Countries = () => {
         <div className={styles.container}>
             <ButtonFilter img={show ? '/icons/up.svg' : '/icons/down.svg'} text='Страны' onClick={() => setShow(!show)} className='btn' />
             {show &&
-            <div >
-                <BgWrapper className={styles.dop}  >
-                    <ListCountries />
-                    <ListChoose list={list} />
-                </BgWrapper>
-            </div>
-                
+                <div >
+                    <BgWrapper className={styles.dop}  >
+                        <ListCountries />
+                        <ListChoose list={list} />
+                    </BgWrapper>
+                </div>
+
             }
         </div>
     );

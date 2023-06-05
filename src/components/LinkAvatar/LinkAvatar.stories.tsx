@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LinkAvatar } from './LinkAvatar';
+import LinkAvatar from './LinkAvatar';
 import textStyles from '../Link/Link.module.scss';
 
 const meta: Meta<typeof LinkAvatar> = {

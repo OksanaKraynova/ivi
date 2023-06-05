@@ -11,11 +11,12 @@ interface FooterNavbarDropdownProps<T> {
   dropdownBlock: (item: T) => React.ReactNode;
 }
 
-export function FooterNavbarDropdown<T>(props: FooterNavbarDropdownProps<T>) {
+export default function FooterNavbarDropdown<T>(props: FooterNavbarDropdownProps<T>) {
 
   const [hidden, setHidden] = useState<boolean>(true);
 
   return (
+
     <>
 
       <div
@@ -43,5 +44,7 @@ export function FooterNavbarDropdown<T>(props: FooterNavbarDropdownProps<T>) {
       </div>
 
     </>
+
   );
+
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './dropLink.module.scss'
-import { Link } from '@/src/components/Link/Link';
+import Link from '@/src/components/Link/Link';
 interface IDropLink {
     links: { url: string; title: string; }[]
     title: string

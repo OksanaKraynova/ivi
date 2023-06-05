@@ -7,16 +7,16 @@ import en from '@/locales/header/en';
 import HeaderMovieBlock from './HeaderMovieBlock/HeaderMovieBlock';
 import HeaderSerailBlock from './HeaderSerialBlock/HeaderSerailBlock';
 import HeaderCartoonBlock from './HeaderCatroonBlock/HeaderCartoonBlock';
-import { Link } from '../../Link/Link';
+import Link from '../../Link/Link';
 
 const HeaderNav = () => {
     const router = useRouter()
     const { locale } = router
     const t = locale === 'ru' ? ru : en
     return (
-        <div className={styles.nav}>     
+        <div className={styles.nav}>
             <Link href='/' color='white' text={t.myIvi} />
-            <Link href='/'  color='white' text={t.new}/>
+            <Link href='/' color='white' text={t.new} />
             <HeaderMovieBlock />
             <HeaderSerailBlock />
             <HeaderCartoonBlock />

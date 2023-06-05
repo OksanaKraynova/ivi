@@ -1,6 +1,6 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { getParagraphs } from '@/src/functions/getParagraphs';
+import getParagraphs from '@/src/functions/getParagraphs';
 import branchRight from "@/public/icons/branch-right.svg"
 import branchLeft from "@/public/icons/branch-left.svg"
 import styles from './ContentDescripton.module.scss';
@@ -13,7 +13,7 @@ interface ContentDescriptonProps {
   borderedClass: string;
 }
 
-export const ContentDescripton: FC<ContentDescriptonProps> = (props) => {
+export default function ContentDescripton(props: ContentDescriptonProps) {
 
   const [hidden, setHidden] = useState<boolean>(true);
 

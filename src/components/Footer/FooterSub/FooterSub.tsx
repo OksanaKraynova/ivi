@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Image from 'next/image';
 import Button from '../../Button/Button';
 import styles from './FooterSub.module.scss';
@@ -8,7 +7,8 @@ interface FooterSubProps {
   textClass: string;
 }
 
-export const FooterSub: FC<FooterSubProps> = (props) => {
+export default function FooterSub(props: FooterSubProps) {
+
   return (
 
     <>

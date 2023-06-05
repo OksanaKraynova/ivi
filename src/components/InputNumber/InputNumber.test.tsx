@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { InputNumber } from './InputNumber';
+import InputNumber from './InputNumber';
 
 const placeholder = "Введите число";
 const min = 5;
@@ -15,7 +15,7 @@ describe("ИнпутНамбер", () => {
 
     act(() => render(<InputNumber placeholder={placeholder} />));
 
-    expect(screen.getByText(placeholder)).toHaveClass("placholder");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder");
 
     const minus = screen.getAllByRole("img")[0];
     const plus = screen.getAllByRole("img")[1];
@@ -24,11 +24,11 @@ describe("ИнпутНамбер", () => {
     act(() => fireEvent.change(input, { target: { value: lessNumber } }));
 
     expect(input).toHaveValue(lessNumber);
-    expect(screen.getByText(placeholder)).toHaveClass("placholder overText");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder overText");
 
     act(() => fireEvent.change(input, { target: { value: moreNumber } }));
 
-    expect(screen.getByText(placeholder)).toHaveClass("placholder overText");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder overText");
     expect(input).toHaveValue(moreNumber);
 
     act(() => fireEvent.click(plus));
@@ -45,7 +45,7 @@ describe("ИнпутНамбер", () => {
 
     act(() => render(<InputNumber placeholder={placeholder} min={min} max={max} />));
 
-    expect(screen.getByText(placeholder)).toHaveClass("placholder");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder");
 
     const minus = screen.getAllByRole("img")[0];
     const plus = screen.getAllByRole("img")[1];
@@ -53,12 +53,12 @@ describe("ИнпутНамбер", () => {
 
     act(() => fireEvent.change(input, { target: { value: lessNumber } }));
 
-    expect(screen.getByText(placeholder)).toHaveClass("placholder overText");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder overText");
     expect(input).toHaveValue(min);
 
     act(() => fireEvent.change(input, { target: { value: moreNumber } }));
 
-    expect(screen.getByText(placeholder)).toHaveClass("placholder overText");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder overText");
     expect(input).toHaveValue(max);
 
     act(() => fireEvent.click(plus));

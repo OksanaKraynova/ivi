@@ -1,13 +1,11 @@
-import ActorPage from '@/src/components/ActorPage/ActorPage';
-import { Footer } from '@/src/components/Footer/Footer';
-import Header from '@/src/components/Header/Header';
-import Layout from '@/src/components/Layout/Layout';
 import React from 'react';
+import ActorPage from '@/src/components/ActorPage/ActorPage';
+import Layout from '@/src/components/Layout/Layout';
 
 const Actor = () => {
     return (
-       <Layout>
-        <ActorPage />
+        <Layout>
+            <ActorPage />
         </Layout>
     );
 };

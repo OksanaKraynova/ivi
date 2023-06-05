@@ -1,6 +1,5 @@
-import { FC } from 'react';
 import Image from 'next/image';
-import { IContent } from '@/types/IContent';
+import IContent from '@/types/IContent';
 import styles from './ContentTitle.module.scss';
 import classNames from 'classnames';
 import soundIcon from "@/public/icons/sound.svg"
@@ -12,7 +11,7 @@ interface ContentTitleProps {
   borderedClass: string;
 }
 
-export const ContentTitle: FC<ContentTitleProps> = (props) => {
+export default function ContentTitle(props: ContentTitleProps) {
 
   return (
 

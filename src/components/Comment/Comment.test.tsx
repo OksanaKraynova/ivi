@@ -1,14 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { Comment } from './Comment';
-import { IComment } from '@/types/IComment';
+import Comment from './Comment';
+import IComment from '@/types/IComment';
 
 const comment: IComment = {
   id: 123,
-  userName: "userName",
-  date: "20.05.2023",
+  author: [{ user_id: 1, user_login: "userName" }],
+  createdAt: "20.05.2023",
   comment: "Комментарий",
-  parentComment: null
+  parent: null
 };
 
 const coloIcon = "orange";
@@ -26,7 +26,7 @@ describe("Комментарий с ответом", () => {
         type="full"
       />);
 
-    const div = screen.getByText(comment.userName).closest("div")!;
+    const div = screen.getByText(comment.author[0].user_login).closest("div")!;
     const avatar = div.children[0];
     const button = div.children[1];
 

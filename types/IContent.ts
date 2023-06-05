@@ -1,8 +1,8 @@
-import { IComment } from "./IComment";
-import { IImage } from "./IImage";
-import { IJob } from "./IJob";
+import IComment from "./IComment";
+import IImage from "./IImage";
+import IJob from "./IJob";
 
-export interface IContent {
+export default interface IContent {
   id: number,
   name: string,
   name_translate: string | null,

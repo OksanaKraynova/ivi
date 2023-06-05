@@ -1,7 +1,7 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
-import { InputText } from '../InputText/InputText';
-import { List } from '../List';
+import InputText from '../InputText/InputText';
+import List from '../List';
 import styles from './Select.module.scss';
 import upIcon from "../../../public/icons/up.svg"
 
@@ -15,7 +15,7 @@ interface SelectProps {
   deliteCheck?: (index: number) => void;
 }
 
-export const Select: FC<SelectProps> = (props) => {
+export default function Select(props: SelectProps) {
 
   const [visibile, setVisibile] = useState<boolean>(false);
   const [checked, setChecked] = useState<string[]>([]);

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 import Image from 'next/image';
 import styles from './InputNumber.module.scss';
@@ -15,7 +15,7 @@ interface InputNumberProps {
   onChange?: (count: string) => void;
 }
 
-export const InputNumber: FC<InputNumberProps> = (props) => {
+export default function InputNumber(props: InputNumberProps) {
 
   const integer = props.integer ?? false;
 
@@ -92,7 +92,7 @@ export const InputNumber: FC<InputNumberProps> = (props) => {
         }}
       />
 
-      <div className={classNames(styles.placholder, placeholderEffect)}>
+      <div className={classNames(styles.placeholder, placeholderEffect)}>
         {props.placeholder}
       </div>
 

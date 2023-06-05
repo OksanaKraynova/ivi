@@ -1,15 +1,15 @@
-import { IItemLink } from '@/types/IItemLink';
-import { FC } from 'react';
-import { List } from '../../List';
-import { Link } from '../../Link/Link';
-import { IDropdownBlock } from '@/types/IDropdownBlock';
+import IItemLink from '@/types/IItemLink';
+import List from '../../List';
+import Link from '../../Link/Link';
+import IDropdownBlock from '@/types/IDropdownBlock';
 import styles from './FooterNavbarDropdownListColumn.module.scss';
 
 interface FooterNavbarDropdownListColumnProps {
   column: IDropdownBlock[];
 }
 
-export const FooterNavbarDropdownListColumn: FC<FooterNavbarDropdownListColumnProps> = (props) => {
+export default function FooterNavbarDropdownListColumn
+  (props: FooterNavbarDropdownListColumnProps) {
 
   return (
 

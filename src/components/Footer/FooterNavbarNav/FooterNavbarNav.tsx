@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
+import classNames from 'classnames';
 import Image from 'next/image';
 import Button from '../../Button/Button';
 import styles from './FooterNavbarNav.module.scss';
@@ -8,7 +9,6 @@ import searchIcon from "@/public/icons/search-bold.svg"
 import tvIcon from "@/public/icons/devices/tv+.svg"
 import moreIcon from "@/public/icons/open.svg"
 import closeIcon from "@/public/icons/close.svg"
-import classNames from 'classnames';
 
 const navList = [
   { icon: iviIcon, text: "Мой Иви", link: "/" },
@@ -22,7 +22,7 @@ interface FooterNavbarNavProps {
   onClick: () => void;
 }
 
-export const FooterNavbarNav: FC<FooterNavbarNavProps> = (props) => {
+export default function FooterNavbarNav(props: FooterNavbarNavProps) {
 
   const [closed, setClosed] = useState<boolean>(true);
 

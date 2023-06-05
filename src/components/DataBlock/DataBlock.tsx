@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Image from 'next/image';
 import Button from '../Button/Button';
 import styles from './DataBlock.module.scss';
@@ -10,7 +9,7 @@ interface DataBlockProps {
   deliteItem?: (index: number) => void;
 }
 
-export const DataBlock: FC<DataBlockProps> = (props) => {
+export default function DataBlock(props: DataBlockProps) {
 
   return (
 

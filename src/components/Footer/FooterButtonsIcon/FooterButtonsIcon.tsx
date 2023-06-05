@@ -18,7 +18,8 @@ const icons: string[] = [
 ];
 
 
-export const FooterButtonsIcon = () => {
+export default function FooterButtonsIcon() {
+
   return (
     <>
 

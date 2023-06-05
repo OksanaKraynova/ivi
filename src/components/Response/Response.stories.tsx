@@ -1,4 +1,4 @@
-import { Response } from './Response'
+import Response from './Response'
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Response> = {

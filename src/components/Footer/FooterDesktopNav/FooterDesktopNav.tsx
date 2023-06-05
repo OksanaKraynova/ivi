@@ -1,7 +1,6 @@
-import { FC } from 'react';
-import { IItemLink } from '@/types/IItemLink';
-import { List } from '../../List';
-import { ItemLink } from '../../ItemLink';
+import IItemLink from '@/types/IItemLink';
+import List from '../../List';
+import ItemLink from '../../ItemLink';
 import styles from './FooterDesktopNav.module.scss';
 
 interface FooterDesktopNavProps {
@@ -11,7 +10,8 @@ interface FooterDesktopNavProps {
   children?: React.ReactElement | React.ReactNode;
 }
 
-export const FooterDesktopNav: FC<FooterDesktopNavProps> = (props) => {
+export default function FooterDesktopNav(props: FooterDesktopNavProps) {
+
   return (
 
     <div className={styles.linkList}>

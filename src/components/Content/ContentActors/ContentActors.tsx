@@ -1,25 +1,25 @@
-import { FC } from "react";
-import { IContent } from "@/types/IContent";
-import { LinkAvatar } from "@/src/components/LinkAvatar/LinkAvatar";
-import { Urls } from "@/types/Urls";
+import IContent from "@/types/IContent";
+import LinkAvatar from "@/src/components/LinkAvatar/LinkAvatar";
+import Urls from "@/types/Urls";
 
 interface ContentActorsProps {
     content: IContent;
 }
 
-export const ContentActors: FC<ContentActorsProps> = (props) => {
+export default function ContentActors(props: ContentActorsProps) {
 
     const color = +props.content.rating < 7 ? "grey" : "green";
     const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 
-    return (<><LinkAvatar
-        textUnderImg={["Рейтинг", "Иви"]}
-        textInsteadImg={props.content.rating.toString()}
-        href={`/watch/${props.content.id}`}
-        img=""
-        form="square"
-        color={color}
-    />
+    return (<>
+        <LinkAvatar
+            textUnderImg={["Рейтинг", "Иви"]}
+            textInsteadImg={props.content.rating.toString()}
+            href={`/watch/${props.content.id}`}
+            img=""
+            form="square"
+            color={color}
+        />
 
         {props.content.creators
             .find(creators => creators.job === "Актер")?.persons

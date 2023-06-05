@@ -1,4 +1,3 @@
-import { FC } from "react";
 import Image from 'next/image';
 import Button from "../../Button/Button";
 import styles from './ContentTrailer.module.scss';
@@ -8,13 +7,9 @@ import bookmarkIcon from "@/public/icons/bookmark.svg"
 import shareIcon from "@/public/icons/share.svg"
 import freeMoviesIcon from "@/public/icons/folder.svg"
 
-interface ContentTrailerProps {
-  video: string;
-}
+const trailer = "https://www.youtube.com/embed/D3TR8-LAz8M";
 
-export const ContentTrailer: FC<ContentTrailerProps> = (props) => {
-
-  const trailer = "https://www.youtube.com/embed/D3TR8-LAz8M";
+export default function ContentTrailer() {
 
   return (
 

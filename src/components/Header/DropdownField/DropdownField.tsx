@@ -7,7 +7,7 @@ import DropLinksBorder from '../DropdownBg/DropLinksBorder/DropLinksBorder';
 import { useRouter } from 'next/router';
 import ru from '@/locales/titles/ru';
 import en from '@/locales/titles/en';
-import { Link } from '../../Link/Link';
+import Link from '../../Link/Link';
 
 interface IField {
     text: string
@@ -32,7 +32,7 @@ const DropdownField = ({ text, genres, countries, years, dopFilter }: IField) =>
                         <DropLinks links={countries} title={t.countries} />
                         <DropLinks links={years} title={t.years} />
                     </div>
-                   </div> 
+                </div>
             </DropdownBg>
         </div>
     );
