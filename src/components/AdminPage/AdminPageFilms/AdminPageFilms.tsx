@@ -135,6 +135,11 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       return;
     }
 
+    newFilm.countries = filmCountries.map(country => country.id);
+    newFilm.ganres = filmGenres.map(genre => genre.id);
+    newFilm.actors = filmActors.map(actor => actor.id);
+    newFilm.directors = filmDirectors.map(director => director.id);
+
     sendData("post", Urls.ONE_MOVIE, newFilm)
       .then(status => console.log(status))
       .catch(error => console.log(error));
