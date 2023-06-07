@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+    genres: 'Жанры',
     movies: [
         {
             "url": "https://www.ivi.ru/movies/arthouse",
@@ -193,6 +194,48 @@ export default {
         {
             'url': 'https://www.ivi.ru/collections/ivi-originals',
             'title': 'Фильмы Иви'
+        },
+    ],
+    miniRowGenres: [
+        {
+            img: '/icons/clock.svg',
+            title: 'Драмы'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Комедии'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Боевики'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Триллеры'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Приключения'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Зарубежные'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Мелодрамы'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Фантастика'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Фентези'
+        },
+        {
+            img: '/icons/clock.svg',
+            title: 'Семейные'
         },
     ]
 }

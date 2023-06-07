@@ -33,6 +33,8 @@ const DropdownField = ({ text, genres, countries, years, dopFilter }: IField) =>
                         <DropLinks links={years} title={t.years} />
                     </div>
                 </div>
+                <DropLinksBorder arr={dopFilter} />
+                <Subscription />
             </DropdownBg>
         </div>
     );

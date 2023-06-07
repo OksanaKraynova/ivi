@@ -1,11 +1,10 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
 
-    newFilms: 'Фильмы-новинки',
-    genres: 'Жанры',
     bestMovies: 'Лучшие фильмы',
     chooseIvi: 'Выбор Иви',
     ratingIvi: 'Рейтинг Иви',
+    estimate: 'Оценки Иви',
     persons: 'Персоны',
     amediateka: 'Фильмы Amediateka',
     uhd: 'Фильмы в 4K UHD',
@@ -31,5 +30,8 @@ export default {
    nameSub: 'Подписка Иви',
    button: 'Подключить',
    btnDesc: 'Отключить можно в любой момент',
-   watch: 'Смотреть на Smart TV'
+   watch: 'Смотреть на Smart TV',
+   directors: 'Режиссеры',
+   actors: 'Актеры',
+   reset: 'Сбросить фильтры'
 }

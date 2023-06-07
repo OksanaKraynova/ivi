@@ -15,8 +15,8 @@ const HeaderNav = () => {
     const t = locale === 'ru' ? ru : en
     return (
         <div className={styles.nav}>
-            <Link href='/' color='white' text={t.myIvi} />
-            <Link href='/' color='white' text={t.new} />
+            <Link href='/' color='grey' text={t.myIvi} />
+            <Link href='/' color='grey' text={t.new} />
             <HeaderMovieBlock />
             <HeaderSerailBlock />
             <HeaderCartoonBlock />

@@ -12,13 +12,9 @@ export default function FooterNavbarDropdownListColumn
   (props: FooterNavbarDropdownListColumnProps) {
 
   return (
-
     <div className={styles.innerBox}>
-
       {props.column.map((block, blockIndex) =>
-
         <div key={blockIndex} className={styles.list}>
-
           <List<IItemLink>
             title={
               block.title === undefined ?
@@ -27,22 +23,11 @@ export default function FooterNavbarDropdownListColumn
             }
             list={block.list}
             renderItem={(item, index) =>
-
-              <Link
-                key={index}
-                text={item.text}
-                href={item.link}
-                color={'grey'}
-              />
-
+              <Link key={index} text={item.text} href={item.link}  color={'grey'}  />
             }
           />
-
         </div>
-
       )}
-
     </div>
-
   );
 };

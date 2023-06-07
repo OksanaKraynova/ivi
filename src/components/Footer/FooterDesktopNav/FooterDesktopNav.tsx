@@ -11,25 +11,16 @@ interface FooterDesktopNavProps {
 }
 
 export default function FooterDesktopNav(props: FooterDesktopNavProps) {
-
   return (
-
     <div className={styles.linkList}>
-
       <List<IItemLink>
         title={<p className={props.titleClass}>{props.title}</p>}
         list={props.list}
         renderItem={(item, index) =>
-          <ItemLink
-            key={index}
-            item={item}
-            color='grey'
-          />
+          <ItemLink   key={index} item={item}  color='grey' />
         }
       />
-
       {props.children}
-
     </div>
   );
 };

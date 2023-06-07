@@ -16,13 +16,8 @@ export default function FooterNavbarDropdown<T>(props: FooterNavbarDropdownProps
   const [hidden, setHidden] = useState<boolean>(true);
 
   return (
-
     <>
-
-      <div
-        className={styles.button}
-        onClick={() => setHidden(!hidden)}
-      >
+      <div  className={styles.button}  onClick={() => setHidden(!hidden)}      >
         <Image className={styles.icon} src={props.buttonIcon} alt='icon' />
         {props.buttonTitle}
         <Image
@@ -31,20 +26,11 @@ export default function FooterNavbarDropdown<T>(props: FooterNavbarDropdownProps
           width={12}
           height={12}
         />
-
       </div>
-
-      <div
-        className={styles.dropdownBox}
-        hidden={hidden}
-      >
-
+      <div   className={styles.dropdownBox}  hidden={hidden}  >
         {props.dropdownBlock(props.dropdownBlockProps)}
-
       </div>
-
     </>
-
   );
 
 };

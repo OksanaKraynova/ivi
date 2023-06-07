@@ -5,6 +5,7 @@ export default {
     bestMovies: 'The best films',
     chooseIvi: "Ivy's choice",
     ratingIvi: 'Ivi Rating',
+    estimate: 'Estimate Ivi ',
     persons: 'Persons',
     amediateka: 'Amediateka Movies',
     uhd: 'Movies in 4K UHD',
@@ -30,5 +31,8 @@ export default {
     nameSub: "Ivy's subscription",
     button: 'Plug',
     btnDesc: 'You can disable it at any time',
-    watch: 'Watch on Smart TV'
+    watch: 'Watch on Smart TV',
+    directors: 'Directors',
+   actors: 'Actors',
+   reset: 'Reset Filters'
 }
