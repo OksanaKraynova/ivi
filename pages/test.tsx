@@ -1,10 +1,22 @@
-import Layout from "@/src/components/Layout/Layout";
-import Movies from "@/src/components/Movies/Movies";
-import Urls from "@/types/Urls";
+import Search from "@/src/components/Search/Search";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+const testData = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+]
 
 const test = () => {
+
+  const [value, setValue] = useState<string>();
+  const [values, setValues] = useState<number[]>([]);
+  let timer: NodeJS.Timeout;
+
+  useEffect(() => {
+    timer = setTimeout(() => setValues(testData.filter(item => value !== undefined && item >= +value)), 1000);
+  }, [value]);
+
+
 
   const user = { email: "test@mail.com", password: "123456", login: "login" };
 
@@ -101,7 +113,6 @@ const test = () => {
       .catch(error => console.log(error));
     return response;
   }
-
 
   async function filmUpdate() {
     const url = "http://178.208.64.187:8081/v1/movie/5"
@@ -251,6 +262,17 @@ const test = () => {
           Фильтр
         </button>
       </div>
+
+      <Search<number>
+        placeholder='Актеры'
+        options={values}
+        onChange={(event) => {
+          clearTimeout(timer);
+          setValue(event.target.value);
+        }}
+        addItem={count => setValues(values.includes(count) ? values : [...values, count])}
+        renderItem={count => count.toString()}
+      />
 
     </div>
   );

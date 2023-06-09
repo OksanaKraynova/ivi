@@ -6,9 +6,8 @@ import branchLeft from "@/public/icons/branch-left.svg"
 import styles from './ContentDescripton.module.scss';
 
 interface ContentDescriptonProps {
-  tagline: string;
-  description: string | null;
-  type: string;
+  tagline?: string | null;
+  description?: string | null;
   textClass: string;
   borderedClass: string;
 }
@@ -29,27 +28,29 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
       </div>
 
       <div className={styles.description}>
-        {getParagraphs(props.description).map((paragraph, index) => {
-          if (index > 0)
+        {
+          props.description !== undefined && props.description !== null &&
+          getParagraphs(props.description).map((paragraph, index) => {
+            if (index > 0)
+              return (
+                <p
+                  key={index}
+                  className={styles.text}
+                  hidden={hidden}
+                >
+                  {paragraph}
+                </p>
+              );
             return (
               <p
                 key={index}
                 className={styles.text}
-                hidden={hidden}
               >
                 {paragraph}
               </p>
             );
-          return (
-            <p
-              key={index}
-              className={styles.text}
-            >
-              {paragraph}
-            </p>
-          );
-        }
-        )}
+          }
+          )}
       </div>
 
       <div className={styles.props} hidden={hidden}>
@@ -82,7 +83,7 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
         className={styles.sign}
         onClick={() => setHidden(!hidden)}
       >
-        {hidden ? `Детали о ${props.type.toLowerCase()}е` : "Свернуть детали"}
+        {hidden ? "Детали о фильме" : "Свернуть детали"}
       </p>
 
     </>

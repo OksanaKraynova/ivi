@@ -13,7 +13,7 @@ interface ContentExtraPersonProps {
 export default function ContentExtraPerson(props: ContentExtraPersonProps) {
 
   const [jobs, setCreators] = useState<IJob[]>([]);
-  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.SERVER_PORT;
 
   useEffect(() => {
     getData<IData<IJob[]>>(Urls.SERVER_PORT, Urls.ALL_PERSONS + `/${props.contentId}`)
@@ -30,16 +30,16 @@ export default function ContentExtraPerson(props: ContentExtraPersonProps) {
 
         {jobs.find(creators => creators.job === "Режиссер")
           ?.persons
-          ?.map((actor, index) => {
+          ?.map((director, index) => {
             return (
               <div key={index} className={styles.creator}>
 
                 <LinkAvatar
-                  textUnderImg={actor.name.split(" ")}
+                  textUnderImg={director.name.split(" ")}
                   href=""
                   img={
-                    actor.photo.length > 0 ?
-                      fileUrl + actor.photo[0].file_path :
+                    director.photo !== undefined && director.photo.length > 0 ?
+                      fileUrl + director.photo[0].file_path :
                       ""
                   }
                   form="circleBig"
@@ -66,7 +66,7 @@ export default function ContentExtraPerson(props: ContentExtraPersonProps) {
                   textUnderImg={actor.name.split(" ")}
                   href=""
                   img={
-                    actor.photo.length > 0 ?
+                    actor.photo !== undefined && actor.photo.length > 0 ?
                       fileUrl + actor.photo[0].file_path :
                       ""
                   }

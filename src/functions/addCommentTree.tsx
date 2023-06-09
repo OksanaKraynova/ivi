@@ -11,7 +11,7 @@ export default function addCommentTree(
 
   let childe: React.ReactElement;
 
-  getData<IData<IComment[]>>(Urls.COMMENTS_PORT, Urls.ALL_COMMENTS_API, { parent: comment.id })
+  getData<IData<IComment[]>>(Urls.SERVER_PORT, Urls.ALL_COMMENTS, { parent: comment.id })
     .then(data => {
 
       if (data.count > 0) {

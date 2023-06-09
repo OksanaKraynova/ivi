@@ -12,7 +12,7 @@ export default async function sendData(
   const promise = axios({
     method: metod,
     url: url,
-    params: params
+    data: params
   })
     .then(response => response.status)
     .catch(error => error.response);

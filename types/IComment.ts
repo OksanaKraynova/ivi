@@ -5,5 +5,5 @@ export default interface IComment {
   author: IUser[],
   createdAt: string,
   comment: string,
-  parent: number | null
+  parent?: number | null
 }

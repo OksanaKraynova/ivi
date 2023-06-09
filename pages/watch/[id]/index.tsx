@@ -18,8 +18,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
 
 const Content = (params: { content: IContent }) => {
 
-  console.log(params.content)
-
   return (
 
     <Layout>

@@ -7,7 +7,6 @@ import searchIcon from "../../../public/icons/search.svg"
 interface SearchProps<T> {
   options: T[];
   placeholder: string;
-  required?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   addItem?: (item: T) => void;
   renderItem: (item: T) => string;
@@ -31,7 +30,6 @@ export default function Search<T>(props: SearchProps<T>) {
       <div className={styles.input}>
         <InputText
           placeholder={props.placeholder}
-          required={props.required ?? false}
           buttonIcon={searchIcon.src}
           onChange={event => {
             props.compareItem !== undefined &&

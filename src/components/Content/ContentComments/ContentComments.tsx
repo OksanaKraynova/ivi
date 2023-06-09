@@ -16,13 +16,15 @@ interface ContentCommentsProps {
 
 export default function ContentComments(props: ContentCommentsProps) {
 
-  const commentsBlock = props.content.comments.length > 0 ?
+  const commentsBlock = props.content.comments !== null &&
+    props.content.comments !== undefined &&
+    props.content.comments.length > 0 ?
 
     <MovieBlock<IComment>
       blockClass={styles.block}
       spaceBetween={24}
       slidesPerView={4}
-      listCardsProps={props.content.comments}
+      listCardsProps={props.content.comments.filter(comment => comment.parent === undefined || comment.parent == null)}
       breakpoints={
         {
           0: { slidesPerView: 1, spaceBetween: 24 },
@@ -51,7 +53,7 @@ export default function ContentComments(props: ContentCommentsProps) {
           href={`/watch/${props.content.id}/comments`}
         >
           Комментарии
-          <p className={styles.count}>{props.content.comments.length}</p>
+          <p className={styles.count}>{props.content.count}</p>
         </Link>
 
         <Button

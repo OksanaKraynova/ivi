@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import InputText from '../InputText/InputText';
 import List from '../List';
@@ -9,8 +9,8 @@ interface SelectProps {
   options: string[];
   placeholder: string;
   type: "multiple" | "one";
-  required?: boolean;
   error?: boolean;
+  value?: string;
   addCheck?: (index: number) => void;
   deliteCheck?: (index: number) => void;
 }
@@ -51,10 +51,9 @@ export default function Select(props: SelectProps) {
         <InputText
           placeholder={props.placeholder}
           disabled={true}
-          required={props.required ?? false}
           readOnly={true}
           error={props.error}
-          value={checked.join(", ")}
+          value={props.value ?? checked.join(", ")}
           buttonIcon={upIcon.src}
           buttonClass={visibile ? styles.button : undefined}
           onClick={(event) => { setVisibile(!visibile); event.stopPropagation(); }}

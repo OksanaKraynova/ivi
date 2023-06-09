@@ -14,7 +14,7 @@ interface ContentDevicesProps {
 
 export default function ContentDevices(props: ContentDevicesProps) {
 
-  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.SERVER_PORT + Urls.ALL_FILES;
 
   return (
 
@@ -34,28 +34,28 @@ export default function ContentDevices(props: ContentDevicesProps) {
 
         <div className={styles.tv}>
           <img className={styles.tvImg} src={tvImg.src} alt="tv" />
-          <img
-            className={styles.tvPoster}
-            src={
-              props.content.coverImage.length > 0 ?
-                fileUrl + props.content.coverImage[0].file_path :
-                ""
-            }
-            alt="poster"
-          />
+          {
+            props.content.coverImage !== undefined && props.content.coverImage !== null &&
+            props.content.coverImage.length > 0 &&
+            <img
+              className={styles.tvPoster}
+              src={fileUrl + props.content.coverImage[0].file_path}
+              alt="poster"
+            />
+          }
         </div>
 
         <div className={styles.ipad}>
           <img className={styles.ipadImg} src={idadImg.src} alt="ipad" />
-          <img
-            className={styles.ipadPoster}
-            src={
-              props.content.coverImage.length > 0 ?
-                fileUrl + props.content.coverImage[0].file_path :
-                ""
-            }
-            alt="poster"
-          />
+          {
+            props.content.coverImage !== undefined && props.content.coverImage !== null &&
+            props.content.coverImage.length > 0 &&
+            <img
+              className={styles.ipadPoster}
+              src={fileUrl + props.content.coverImage[0].file_path}
+              alt="poster"
+            />
+          }
         </div>
 
       </div>
