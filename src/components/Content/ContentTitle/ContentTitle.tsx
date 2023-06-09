@@ -24,13 +24,20 @@ export default function ContentTitle(props: ContentTitleProps) {
       <div className={styles.props}>
         <a className={props.textClass}>{props.content.year}</a>
         <p className={props.textClass}>
-          {props.content.duration}
+          {props.content.duration.replace(/ \/ .+/, "")}
         </p>
         <p className={props.textClass}>{props.content.age}</p>
       </div>
 
       <div className={styles.props}>
-        {/* <a className={props.textClass}>{props.content.country}</a> */}
+        {props.content.countries.map((country, index) =>
+          <a
+            key={index}
+            className={index > 0 ? classNames(props.textClass, styles.dot) : props.textClass}
+          >
+            {country}
+          </a>
+        )}
         {props.content.ganres.map((ganr, index) =>
           <a
             key={index}

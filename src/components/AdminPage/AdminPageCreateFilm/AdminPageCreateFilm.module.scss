@@ -1,0 +1,27 @@
+.box {
+  margin: auto;
+  margin-top: 26px;
+  max-width: 800px;
+}
+
+.inputBox {
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: calc(50% - 6px) calc(50% - 6px);
+  gap: 12px;
+}
+
+.oneEl {
+  grid-template-columns: 100%;
+}
+
+.fourEl {
+  grid-template-columns: calc(25% - 9px) calc(25% - 9px) calc(25% - 9px) calc(25% - 9px);
+}
+
+.button {
+  margin-top: 24px;
+  width: calc(50% - 6px);
+}

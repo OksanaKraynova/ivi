@@ -27,9 +27,9 @@ export default function AdminPageGenres(props: AdminPageGenresProps) {
       (genre?.name === upadatedGenre?.name && genre?.translate === upadatedGenre?.translate)
     ) return;
 
-    sendData("patch", Urls.ALL_GANRES + `/${genre?.id}`, upadatedGenre)
-      .then(status => console.log(status))
-      .catch(error => console.log(error));
+    // sendData("patch", Urls.ALL_GANRES + `/${genre?.id}`, upadatedGenre)
+    //   .then(status => console.log(status))
+    //   .catch(error => console.log(error));
 
     setUpadatedGenre(undefined);
     setGenre(undefined);

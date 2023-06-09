@@ -8,7 +8,7 @@ export default interface IContent {
   name_translate: string | null,
   type: string,
   year: number,
-  coverImage: IImage[],
+  coverImage?: IImage[],
   creators: IJob[],
   countries: string[],
   ganres: string[],

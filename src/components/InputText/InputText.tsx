@@ -8,7 +8,6 @@ interface InputTextProps {
   buttonIcon?: string;
   buttonClass?: string;
   disabled?: boolean;
-  required?: boolean;
   readOnly?: boolean;
   value?: string;
   minSize?: number;
@@ -21,52 +20,37 @@ interface InputTextProps {
 export default function InputText(props: InputTextProps) {
 
   const minSize = props.minSize ?? 0;
-  const defaultEffect = props.value !== undefined && props.value.length > 0 ?
-    styles.overText : null;
+  const value = props.value ?? "";
+  const defaultEffect = value.length > 0 ? styles.overText : undefined;
 
-  const [placeholderEffect, setPlacholderEffect] = useState<string | null>(null);
-  const [wantage, setWantage] = useState<number>(0);
-
-  const buttonClass = props.buttonClass === undefined ?
-    styles.button :
-    classNames(styles.button, props.buttonClass);
+  const [placeholderEffect, setPlacholderEffect] = useState<string>();
+  const [valueLength, setValueLength] = useState<number>(value.length);
 
   return (
 
     <div className={props.error ? classNames(styles.box, styles.red) : styles.box}>
 
       <input
+        data-custom-form="Input"
         className={props.error ? classNames(styles.input, styles.red) : styles.input}
         value={props.value}
-        disabled={props.disabled ?? false}
-        required={props.required ?? false}
-        readOnly={props.readOnly ?? false}
+        disabled={props.disabled}
+        readOnly={props.readOnly}
         onChange={(event) => {
           props.onChange && props.onChange(event);
-          (event.target.value.length > 0 && event.target.value.length < minSize) ?
-            (
-              setPlacholderEffect(classNames(styles.overText, styles.orange)),
-              setWantage(minSize - event.target.value.length)
-            ) :
-            (
-              setPlacholderEffect(styles.overText),
-              setWantage(0)
-            );
-        }}
-        onFocus={(event) => {
-          if (event.target.value.length === 0)
+          minSize > 0 && setValueLength(event.target.value.length);
+          event.target.value.length > 0 && event.target.value.length < minSize ?
+            setPlacholderEffect(classNames(styles.overText, styles.orange)) :
             setPlacholderEffect(styles.overText);
         }}
-        onBlur={(event) => {
-          if (event.target.value.length === 0)
-            setPlacholderEffect(null);
-        }}
+        onFocus={(event) => event.target.value.length === 0 && setPlacholderEffect(styles.overText)}
+        onBlur={(event) => event.target.value.length === 0 && setPlacholderEffect(undefined)}
       />
 
       {
         props.buttonIcon !== undefined &&
         <Image
-          className={buttonClass}
+          className={classNames(styles.button, props.buttonClass)}
           src={props.buttonIcon}
           alt='Кнопка'
           width={20}
@@ -75,14 +59,17 @@ export default function InputText(props: InputTextProps) {
         />
       }
 
-      <div className={classNames(styles.placeholder, placeholderEffect, defaultEffect)}>
+      <div
+        data-custom-form="Placeholder"
+        className={classNames(styles.placeholder, defaultEffect, placeholderEffect)}
+      >
         {props.placeholder}
       </div>
 
       {
-        wantage > 0 &&
+        valueLength > 0 && valueLength < minSize &&
         <div className={styles.error}>
-          {`Минимум ${minSize} символов, вы ввели ${minSize - wantage}`}
+          {`Минимум ${minSize} символов, вы ввели ${valueLength}`}
         </div>
       }
 
