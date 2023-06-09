@@ -5,7 +5,7 @@ import Button from '../../Button/Button';
 
 interface AdminPageUpdateNameProps {
   name: string;
-  englishName: string | null;
+  englishName?: string | null;
   delite: boolean;
   onChangeName: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeEnglishName: (event: ChangeEvent<HTMLInputElement>) => void;

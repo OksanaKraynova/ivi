@@ -20,8 +20,8 @@ export default function ContentExtra(props: ContentExtraProps) {
   props.extra === "Создатели" ?
     content = <ContentExtraPerson contentId={props.content.id} /> :
     props.extra === "Отзывы" ?
-      content = <ContentExtraComments content={props.content} /> :
-      content = <ContentExtraComments content={props.content} />;
+      content = <ContentExtraComments id={props.content.id} /> :
+      content = <ContentExtraComments id={props.content.id} />;
 
   if (props.content === null) {
 
@@ -42,7 +42,7 @@ export default function ContentExtra(props: ContentExtraProps) {
         href={`/watch/${props.content.id}`}
       >
         <Image className={styles.icon} src={leftIcon} alt='to left' width={20} height={20} />
-        {`К ${props.content.type.toLowerCase()}у`}
+        К фильму
       </Link>
 
       <div className={styles.row}>

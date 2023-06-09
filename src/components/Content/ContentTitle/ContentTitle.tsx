@@ -18,13 +18,13 @@ export default function ContentTitle(props: ContentTitleProps) {
     <div className={styles.box}>
 
       <p className={styles.title}>
-        {`${props.content.name} (${props.content.type} ${props.content.year})`}
+        {`${props.content.name} (фильм ${props.content.year})`}
       </p>
 
       <div className={styles.props}>
         <a className={props.textClass}>{props.content.year}</a>
         <p className={props.textClass}>
-          {props.content.duration.replace(/ \/ .+/, "")}
+          {props.content.duration?.replace(/ \/ .+/, "")}
         </p>
         <p className={props.textClass}>{props.content.age}</p>
       </div>

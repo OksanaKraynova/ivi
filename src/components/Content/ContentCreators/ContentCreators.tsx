@@ -11,7 +11,7 @@ interface ContentCreatorsProps {
 
 export default function ContentCreators(props: ContentCreatorsProps) {
 
-  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.SERVER_PORT;
 
   return (
 
@@ -29,16 +29,16 @@ export default function ContentCreators(props: ContentCreatorsProps) {
 
           {props.content.creators
             .find(creators => creators.job === "Режиссер")?.persons
-            ?.map((actor, index) => {
+            ?.map((director, index) => {
               return (
                 <div key={index} className={styles.item}>
 
                   <LinkAvatar
-                    textUnderImg={actor.name.split(" ")}
+                    textUnderImg={director.name.split(" ")}
                     href=""
                     img={
-                      actor.photo.length > 0 ?
-                        fileUrl + actor.photo[0].file_path :
+                      director.photo !== undefined && director.photo.length > 0 ?
+                        fileUrl + director.photo[0].file_path :
                         ""
                     }
                     form="circle"
@@ -61,7 +61,7 @@ export default function ContentCreators(props: ContentCreatorsProps) {
                     textUnderImg={actor.name.split(" ")}
                     href=""
                     img={
-                      actor.photo.length > 0 ?
+                      actor.photo !== undefined && actor.photo.length > 0 ?
                         fileUrl + actor.photo[0].file_path :
                         ""
                     }

@@ -12,25 +12,32 @@ import IContent from "@/types/IContent";
 import styles from './ContentExtraComments.module.scss';
 
 interface ContentExtraCommentsProps {
-  content: IContent;
+  id: number;
 }
 
 export default function ContentExtraComments(props: ContentExtraCommentsProps) {
 
-  const [comments, setComments] = useState<IComment[]>(props.content.comments);
+  const commentsLimit = 5;
+
+  const [comments, setComments] = useState<IComment[]>([]);
   const [hidden, setHidden] = useState<boolean[]>(new Array(comments.length).fill(true));
 
-  const commentsLimit = 10;
-  // const commentsChidrens = comments.map(comment => { return getChildrensNumber(comment.id) });
+  useEffect(() => {
+    getData(Urls.SERVER_PORT, Urls.ALL_COMMENTS, { movie_id: props.id, limit: commentsLimit, parent: null })
+      .then()
+  }, [])
+
+
+  const commentsChidrens = comments.map(comment => { return getChildrensNumber(comment.id) });
 
   let newIndex = 0;
   let commentsInBlock = 0;
 
-  // while (commentsInBlock < commentsLimit) {
-  //   hidden[newIndex] = false;
-  //   commentsInBlock += commentsChidrens[newIndex] + 1;
-  //   newIndex++;
-  // }
+  while (commentsInBlock < commentsLimit) {
+    hidden[newIndex] = false;
+    commentsInBlock += commentsChidrens[newIndex] + 1;
+    newIndex++;
+  }
 
   const [currentIndex, setCurrentIndex] = useState<number>(newIndex);
 
@@ -42,7 +49,7 @@ export default function ContentExtraComments(props: ContentExtraCommentsProps) {
         placeholder="Написать отзыв"
         buttonColor="pink"
         parentType="movie"
-        parentId={props.content.id}
+        parentId={props.id}
       />
 
       {comments.map((comment, index) =>
@@ -67,7 +74,7 @@ export default function ContentExtraComments(props: ContentExtraCommentsProps) {
 
       <div className={styles.button}>
 
-        {/* <Button
+        <Button
           variant="long"
           effect="bordered"
           onClick={() => {
@@ -83,7 +90,7 @@ export default function ContentExtraComments(props: ContentExtraCommentsProps) {
           disabled={currentIndex === hidden.length}
         >
           Показать еще
-        </Button> */}
+        </Button>
 
       </div>
 

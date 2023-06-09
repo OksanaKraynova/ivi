@@ -14,7 +14,7 @@ interface ContentDevicesProps {
 
 export default function ContentDevices(props: ContentDevicesProps) {
 
-  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.SERVER_PORT + Urls.ALL_FILES;
 
   return (
 
@@ -35,7 +35,7 @@ export default function ContentDevices(props: ContentDevicesProps) {
         <div className={styles.tv}>
           <img className={styles.tvImg} src={tvImg.src} alt="tv" />
           {
-            props.content.coverImage !== undefined &&
+            props.content.coverImage !== undefined && props.content.coverImage !== null &&
             props.content.coverImage.length > 0 &&
             <img
               className={styles.tvPoster}
@@ -48,7 +48,7 @@ export default function ContentDevices(props: ContentDevicesProps) {
         <div className={styles.ipad}>
           <img className={styles.ipadImg} src={idadImg.src} alt="ipad" />
           {
-            props.content.coverImage !== undefined &&
+            props.content.coverImage !== undefined && props.content.coverImage !== null &&
             props.content.coverImage.length > 0 &&
             <img
               className={styles.ipadPoster}

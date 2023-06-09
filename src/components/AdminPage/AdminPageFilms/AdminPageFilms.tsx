@@ -2,24 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
 import IGenre from '@/types/IGenre';
-import Select from '../../Select/Select';
 import AdminPageUpdateName from '../AdminPageUpdateName/AdminPageUpdateName';
-import InputText from '../../InputText/InputText';
 import Search from '../../Search/Search';
-import DataBlock from '../../DataBlock/DataBlock';
-import IActor from '@/types/IActor';
-import Button from '../../Button/Button';
-import TextArea from '../../TextArea/TextArea';
 import styles from './AdminPageFilms.module.scss';
 import downIcon from "@/public/icons/down.svg"
-import InputNumber from '../../InputNumber/InputNumber';
 import IContent from '@/types/IContent';
 import ICountry from '@/types/ICountry';
 import getData from '@/src/functions/getData';
 import IData from '@/types/IData';
 import Urls from '@/types/Urls';
 import sendData from '@/src/functions/sendData';
-import InputFile from '../../InputFile/InputFile';
 import AdminPageCreateFilm from '../AdminPageCreateFilm/AdminPageCreateFilm';
 
 const ages: string[] = ["0+", "6+", "12+", "18+"];
@@ -34,10 +26,20 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
   const [hidden, setHidden] =
     useState<{ update: boolean, create: boolean }>({ update: true, create: true });
 
+  const [films, setFilms] = useState<IContent[]>([]);
+  const [filmSearch, setFilmSearch] = useState<string>("");
   const [countries, setCountries] = useState<ICountry[]>([]);
 
   const [film, setFilm] = useState<IContent>();
-  const [upadatedFilm, setUpdatedFilm] = useState<{ name: string, name_translate: string | null }>();
+  const [upadatedFilm, setUpdatedFilm] = useState<{ name: string, name_translate?: string | null }>();
+
+  let timerFilm: NodeJS.Timeout;
+
+  useEffect(() => {
+    timerFilm = setTimeout(() => filmSearch.length > 2 &&
+      getData<IData<IContent[]>>(Urls.SERVER_PORT, Urls.ALL_MOVIES, { search: filmSearch })
+        .then(data => setFilms(data.items)), 800);
+  }, [filmSearch]);
 
   useEffect(() => {
     getData<IData<ICountry[]>>(Urls.SERVER_PORT, Urls.ALL_COUNTRIES)
@@ -52,9 +54,9 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       (film?.name === upadatedFilm?.name && film?.name_translate === upadatedFilm?.name_translate)
     ) return;
 
-    // sendData("patch", Urls.ONE_MOVIE + `/${film?.id}`, upadatedFilm)
-    //   .then(status => console.log(status))
-    //   .catch(error => console.log(error));
+    sendData("patch", Urls.ONE_MOVIE + `/${film?.id}`, upadatedFilm)
+      .then(status => console.log(status))
+      .catch(error => console.log(error));
 
     setFilm(undefined);
     setUpdatedFilm(undefined);
@@ -68,9 +70,9 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       (film?.name === upadatedFilm?.name && film?.name_translate === upadatedFilm?.name_translate)
     ) return;
 
-    // sendData("delete", Urls.ONE_MOVIE + `/${film?.id}`)
-    //   .then(status => console.log(status))
-    //   .catch(error => console.log(error));
+    sendData("delete", Urls.ONE_MOVIE + `/${film?.id}`)
+      .then(status => console.log(status))
+      .catch(error => console.log(error));
 
     setFilm(undefined);
     setUpdatedFilm(undefined);
@@ -100,18 +102,19 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       <div className={styles.box} hidden={hidden.update}>
 
-        {/* <Search<IContent>
+        <Search<IContent>
           placeholder='Фильм'
-          options={allGenres.map(item => item.name)}
+          options={films}
+          onChange={(event) => {
+            clearTimeout(timerFilm);
+            setFilmSearch(event.target.value);
+          }}
           addItem={film => {
             setFilm(film);
-            setUpdateFilm(film);
+            setUpdatedFilm(film);
           }}
           renderItem={film => film.name}
-          compareItem={(film, value) => film.name.includes(value) ||
-            (film.name_translate !== null && film.name_translate.includes(value))
-          }
-        /> */}
+        />
 
         {
           upadatedFilm !== undefined && film !== undefined &&

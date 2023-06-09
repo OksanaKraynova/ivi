@@ -20,7 +20,7 @@ interface ContentProps {
 export default function Content(props: ContentProps) {
 
   const firstCrumbs = { text: "Мой Иви", link: "/" };
-  const secondCrumbs = [{ text: `${props.content.type}ы`, link: "" }];
+  const secondCrumbs = [{ text: "Фильмы", link: "" }];
   props.content.ganres.length > 0 &&
     secondCrumbs.push({ text: props.content.ganres[0], link: "" });
 
@@ -55,12 +55,14 @@ export default function Content(props: ContentProps) {
         <ContentDescripton
           tagline={props.content.slogan}
           description={props.content.description}
-          type={props.content.type}
           textClass={styles.text}
           borderedClass={styles.bordered}
         />
 
-        <ContentRating rating={props.content.rating} textClass={styles.text} />
+        {
+          props.content.rating !== undefined && props.content.rating !== null &&
+          <ContentRating rating={props.content.rating} textClass={styles.text} />
+        }
 
       </div>
 
@@ -72,12 +74,15 @@ export default function Content(props: ContentProps) {
         />
       </div>
 
-      <div className={styles.row}>
-        <ContentCreators
-          content={props.content}
-          linkClass={classNames(styles.title, styles.link)}
-        />
-      </div>
+      {
+        props.content.creators.length > 0 &&
+        <div className={styles.row}>
+          <ContentCreators
+            content={props.content}
+            linkClass={classNames(styles.title, styles.link)}
+          />
+        </div>
+      }
 
       <div className={styles.row}>
 

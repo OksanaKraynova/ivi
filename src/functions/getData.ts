@@ -4,7 +4,7 @@ import axios from "axios";
 export default async function getData<T>(
   port: string,
   queryUrl: string,
-  params?: { [param: string]: string | number }
+  params?: { [param: string]: string | number | null }
 ): Promise<T> {
 
   const baseUrl = Urls.SERVER_URL;

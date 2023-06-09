@@ -82,7 +82,20 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
   };
 
   const [actors, setActors] = useState<IActor[]>([]);
+  const [actorSearch, setActorSearch] = useState<string>("");
   const [directors, setDirectors] = useState<IActor[]>([]);
+  const [directorSearch, setDirectorSearch] = useState<string>("");
+
+  let timerActor: NodeJS.Timeout;
+  let timerDirector: NodeJS.Timeout;
+
+  useEffect(() => {
+    timerActor = setTimeout(() => searchCreators(actorSearch, "actor"), 800);
+  }, [actorSearch]);
+
+  useEffect(() => {
+    timerDirector = setTimeout(() => searchCreators(directorSearch, "director"), 800);
+  }, [directorSearch]);
 
   const [newFilm, setNewFilm] = useState<ContentPost>(defaultFilm);
   const [filmFiles, setFilmFiles] = useState<FormData>(new FormData());
@@ -265,7 +278,10 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         <Search<IActor>
           placeholder='Актеры'
           options={actors}
-          onChange={(event) => searchCreators(event.target.value, "actor")}
+          onChange={(event) => {
+            clearTimeout(timerActor);
+            setActorSearch(event.target.value);
+          }}
           addItem={actor => {
             setFilmActors(filmActors.includes(actor) ? filmActors : [...filmActors, actor]);
             filled.actors = true;
@@ -287,7 +303,10 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         <Search<IActor>
           placeholder='Режиссеры'
           options={directors}
-          onChange={(event) => searchCreators(event.target.value, "director")}
+          onChange={(event) => {
+            clearTimeout(timerDirector);
+            setDirectorSearch(event.target.value);
+          }}
           addItem={director => {
             setFilmDirectors(filmDirectors.includes(director) ?
               filmDirectors :

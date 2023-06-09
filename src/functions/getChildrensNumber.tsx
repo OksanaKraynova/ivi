@@ -7,7 +7,7 @@ export default function getChildrensNumber(id: number): number {
 
   let childrens = 0;
 
-  getData<IData<IComment[]>>(Urls.COMMENTS_PORT, Urls.ALL_COMMENTS_API, { parent: id })
+  getData<IData<IComment[]>>(Urls.SERVER_PORT, Urls.ALL_COMMENTS, { parent: id })
     .then(data => {
 
       if (data.count > 0) {
