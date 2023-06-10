@@ -13,11 +13,6 @@ const meta: Meta<typeof Select> = {
             type: 'string',
             description: 'Подпись в поле для ввода ответа'
         },
-        required: {
-            type: { name: 'boolean', required: false },
-            defaultValue: false,
-            description: 'Обязательный для ввода'
-        },
         type: {
             type: 'string',
             description: 'Тип выбора',
@@ -25,6 +20,10 @@ const meta: Meta<typeof Select> = {
             control: {
                 type: 'select'
             }
+        },
+        error: {
+            required: false,
+            description: 'Наличие ошибки'
         },
         addCheck: {
             required: false,

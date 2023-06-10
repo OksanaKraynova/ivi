@@ -17,7 +17,7 @@ export default function ContentExtraPerson(props: ContentExtraPersonProps) {
 
   useEffect(() => {
     getData<IData<IJob[]>>(Urls.SERVER_PORT, Urls.ALL_PERSONS + `/${props.contentId}`)
-      .then(response => setCreators(response.items));
+      .then(data => data !== null && setCreators(data.items));
   }, []);
 
   return (

@@ -24,16 +24,12 @@
 .tvImg {
   position: relative;
   width: 100%;
-  max-width: 536px;
-  max-height: 272px;
   z-index: 8;
 }
 
 .ipadImg {
   position: relative;
   width: 100%;
-  max-width: 200px;
-  max-height: 136px;
   bottom: 0;
   right: 0;
   z-index: 10;
@@ -41,9 +37,9 @@
 
 .tvPoster {
   position: absolute;
-  left: 18.5%;
+  right: 19%;
   top: 1%;
-  width: 63%;
+  width: 62%;
   height: 70%;
   border-radius: 2px;
   z-index: 7;

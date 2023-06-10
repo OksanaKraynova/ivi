@@ -16,6 +16,10 @@ const meta: Meta<typeof Comment> = {
       control: {
         type: 'select'
       }
+    },
+    movietId: {
+      type: { name: 'number', required: true },
+      description: 'ID фильма для отправки комментария',
     }
   }
 };
@@ -28,11 +32,12 @@ export const Example: Story = {
   args: {
     comment: {
       id: 1,
-      author_id: "1",
+      author: [{ user_id: 1, user_login: "login" }],
       createdAt: "2023-01-17-16",
       comment: "Комментарий",
-      parent: null
+      parent: 0
     },
-    type: "full"
+    type: "full",
+    movietId: 1
   },
 };

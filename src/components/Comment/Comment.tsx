@@ -13,6 +13,7 @@ import messegeOffIcon from "../../../public/icons/message-off.svg"
 interface CommentProps {
   comment: IComment;
   type: "full" | "preview";
+  movietId: number;
 }
 
 export default function Comment(props: CommentProps) {
@@ -32,7 +33,12 @@ export default function Comment(props: CommentProps) {
 
   function addResponse(): void {
     setResponse(
-      <Response placeholder="Ответить" buttonColor="lightGrey" parentType={'comment'} parentId={0} />
+      <Response
+        placeholder="Ответить"
+        buttonColor="lightGrey"
+        movietId={props.movietId}
+        parentId={props.comment.id}
+      />
     );
   }
 

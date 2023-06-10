@@ -10,7 +10,7 @@ import userIcon from "../../../public/icons/user.svg"
 interface ResponseProps {
   placeholder: string;
   buttonColor: "pink" | "lightGrey";
-  parentType: "movie" | "comment";
+  movietId: number;
   parentId: number;
 }
 
@@ -20,27 +20,19 @@ export default function Response(props: ResponseProps) {
 
   const [comment, setComment] = useState<string>("");
 
-  function postResponse(parentType: "movie" | "comment", parentId: number) {
+  function postResponse() {
 
-    let params;
-    parentType === "movie" ? params = {
-      movie_id: parentId,
+    const data = {
+      movie_id: props.parentId,
       author_id: 1,
       comment: comment,
-      parent: null
-    } : params = {
-      movie_id: null,
-      author_id: 1,
-      comment: comment,
-      parent: parentId
-    }
+      parent: props.parentId
+    };
 
-    sendData("post", Urls.ALL_COMMENTS, params)
+    sendData("post", Urls.ALL_COMMENTS, data)
       .then(status => status === 200 && setComment(""))
       .catch(error => console.log(error));
   }
-
-
 
   return (
 
@@ -62,7 +54,7 @@ export default function Response(props: ResponseProps) {
           variant="small"
           color={props.buttonColor}
           disabled={comment.length < minSize}
-          onClick={() => postResponse(props.parentType, props.parentId)}
+          onClick={() => postResponse()}
         >
           Отправить
         </Button>

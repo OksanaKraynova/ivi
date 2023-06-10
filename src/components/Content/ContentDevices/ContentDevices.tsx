@@ -5,6 +5,7 @@ import Urls from '@/types/Urls';
 import styles from './ContentDevices.module.scss';
 import idadImg from "@/public/img/ipad-without-poster.png";
 import tvImg from "@/public/img/tv-without-poster.png";
+import noPosterImg from "@/public/img/no-poster.jpg";
 
 interface ContentDevicesProps {
   content: IContent;
@@ -14,7 +15,12 @@ interface ContentDevicesProps {
 
 export default function ContentDevices(props: ContentDevicesProps) {
 
-  const fileUrl = Urls.SERVER_URL + ":" + Urls.SERVER_PORT + Urls.ALL_FILES;
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+  const posterSrc = (props.content.coverImage !== undefined &&
+    props.content.coverImage !== null &&
+    props.content.coverImage.length > 0) ?
+    fileUrl + props.content.coverImage[0].file_path :
+    noPosterImg.src;
 
   return (
 
@@ -34,28 +40,12 @@ export default function ContentDevices(props: ContentDevicesProps) {
 
         <div className={styles.tv}>
           <img className={styles.tvImg} src={tvImg.src} alt="tv" />
-          {
-            props.content.coverImage !== undefined && props.content.coverImage !== null &&
-            props.content.coverImage.length > 0 &&
-            <img
-              className={styles.tvPoster}
-              src={fileUrl + props.content.coverImage[0].file_path}
-              alt="poster"
-            />
-          }
+          <img className={styles.tvPoster} src={posterSrc} alt="poster" />
         </div>
 
         <div className={styles.ipad}>
           <img className={styles.ipadImg} src={idadImg.src} alt="ipad" />
-          {
-            props.content.coverImage !== undefined && props.content.coverImage !== null &&
-            props.content.coverImage.length > 0 &&
-            <img
-              className={styles.ipadPoster}
-              src={fileUrl + props.content.coverImage[0].file_path}
-              alt="poster"
-            />
-          }
+          <img className={styles.ipadPoster} src={posterSrc} alt="poster" />
         </div>
 
       </div>

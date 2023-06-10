@@ -8,20 +8,14 @@ import ContentExtraComments from "./ContentExtraComments/ContentExtraComments";
 import Card from "../Card/Card";
 import styles from './ContentExtra.module.scss';
 import leftIcon from "@/public/icons/to-left.svg"
+import ContentExtraTreilers from './ContentExtraTreilers/ContentExtraTreilers';
 
 interface ContentExtraProps {
-  content: IContent;
+  content: IContent | null;
   extra: "Создатели" | "Отзывы" | "Трейлеры";
 }
 
 export default function ContentExtra(props: ContentExtraProps) {
-
-  let content: React.ReactElement;
-  props.extra === "Создатели" ?
-    content = <ContentExtraPerson contentId={props.content.id} /> :
-    props.extra === "Отзывы" ?
-      content = <ContentExtraComments id={props.content.id} /> :
-      content = <ContentExtraComments id={props.content.id} />;
 
   if (props.content === null) {
 
@@ -33,6 +27,13 @@ export default function ContentExtra(props: ContentExtraProps) {
 
   };
 
+  let content: React.ReactElement;
+  props.extra === "Создатели" ?
+    content = <ContentExtraPerson contentId={props.content.id} /> :
+    props.extra === "Отзывы" ?
+      content = <ContentExtraComments contentId={props.content.id} /> :
+      content = <ContentExtraTreilers />;
+
   return (
 
     <div className={classNames(styles.container, "container")}>
@@ -41,7 +42,7 @@ export default function ContentExtra(props: ContentExtraProps) {
         className={styles.linkIcon}
         href={`/watch/${props.content.id}`}
       >
-        <Image className={styles.icon} src={leftIcon} alt='to left' width={20} height={20} />
+        <Image className={styles.icon} src={leftIcon} alt='назад' width={20} height={20} />
         К фильму
       </Link>
 

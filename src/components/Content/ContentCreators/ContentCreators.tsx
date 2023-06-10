@@ -11,7 +11,7 @@ interface ContentCreatorsProps {
 
 export default function ContentCreators(props: ContentCreatorsProps) {
 
-  const fileUrl = Urls.SERVER_URL + ":" + Urls.SERVER_PORT;
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 
   return (
 
@@ -25,56 +25,61 @@ export default function ContentCreators(props: ContentCreatorsProps) {
 
       <div className={styles.row}>
 
-        <div className={styles.visible}>
+        {props.content.creators !== undefined && props.content.creators !== null &&
 
-          {props.content.creators
-            .find(creators => creators.job === "Режиссер")?.persons
-            ?.map((director, index) => {
-              return (
-                <div key={index} className={styles.item}>
+          <div className={styles.visible}>
 
-                  <LinkAvatar
-                    textUnderImg={director.name.split(" ")}
-                    href=""
-                    img={
-                      director.photo !== undefined && director.photo.length > 0 ?
-                        fileUrl + director.photo[0].file_path :
-                        ""
-                    }
-                    form="circle"
-                  >
-                    <p className={styles.job}>режиссер</p>
-                  </LinkAvatar>
+            {
+              props.content.creators
+                .find(creators => creators.job === "Режиссер")?.persons
+                ?.map((director, index) => {
+                  return (
+                    <div key={index} className={styles.item}>
 
-                </div>
-              )
-            })}
+                      <LinkAvatar
+                        textUnderImg={director.name.split(" ")}
+                        href=""
+                        img={
+                          director.photo !== undefined && director.photo.length > 0 ?
+                            fileUrl + director.photo[0].file_path :
+                            ""
+                        }
+                        form="circle"
+                      >
+                        <p className={styles.job}>режиссер</p>
+                      </LinkAvatar>
 
-          {props.content.creators
-            .find(creators => creators.job === "Актер")?.persons
-            ?.map((actor, index) => {
-              if (index > 8) return;
-              return (
-                <div key={index} className={styles.item}>
+                    </div>
+                  )
+                })}
 
-                  <LinkAvatar
-                    textUnderImg={actor.name.split(" ")}
-                    href=""
-                    img={
-                      actor.photo !== undefined && actor.photo.length > 0 ?
-                        fileUrl + actor.photo[0].file_path :
-                        ""
-                    }
-                    form="circle"
-                  >
-                    <p className={styles.job}>актёр</p>
-                  </LinkAvatar>
+            {
+              props.content.creators
+                .find(creators => creators.job === "Актер")?.persons
+                ?.map((actor, index) => {
+                  if (index > 8) return;
+                  return (
+                    <div key={index} className={styles.item}>
 
-                </div>
-              )
-            })}
+                      <LinkAvatar
+                        textUnderImg={actor.name.split(" ")}
+                        href=""
+                        img={
+                          actor.photo !== undefined && actor.photo.length > 0 ?
+                            fileUrl + actor.photo[0].file_path :
+                            ""
+                        }
+                        form="circle"
+                      >
+                        <p className={styles.job}>актёр</p>
+                      </LinkAvatar>
 
-        </div>
+                    </div>
+                  )
+                })}
+
+          </div>
+        }
 
         <LinkAvatar
           textUnderImg={[]}

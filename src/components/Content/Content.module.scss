@@ -9,7 +9,6 @@
 .box {
   display: grid;
   grid-template-columns: calc(65% - 18px) calc(35% - 18px);
-  grid-template-rows: auto auto 1fr auto auto auto auto;
   column-gap: 36px;
   row-gap: 24px;
   grid-template-areas:
@@ -28,17 +27,19 @@
 }
 
 .devices {
-  display: flex;
+  display: grid;
+  grid-template-columns: calc(50% - 12px) calc(50% - 12px);
+  gap: 24px;
   align-items: center;
-  justify-content: space-between;
   margin: 48px 0 24px;
 }
 
 .actors {
   display: grid;
-  grid-template-columns: calc(100%/6) calc(100%/6) calc(100%/6) calc(100%/6) calc(100%/6) calc(100%/6);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   margin: 0 12px;
   grid-area: actors;
+  overflow: hidden;
 }
 
 .title {
@@ -94,8 +95,8 @@
 @media (max-width: 969px) {
 
   .devices {
-    flex-direction: column;
-    gap: 24px;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
     justify-content: flex-start;
   }
 }
@@ -120,20 +121,20 @@
 @media (max-width: 399px) {
 
   .actors {
-    grid-template-columns: 20% 20% 20% 20% 20% 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0;
   }
 }
 
 @media (max-width: 349px) {
 
   .actors {
-    grid-template-columns: 25% 25% 25% 25% 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr 0 0;
   }
 }
 
 @media (min-width: 1280px) {
 
   .actors {
-    grid-template-columns: 20% 20% 20% 20% 20% 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0;
   }
 }

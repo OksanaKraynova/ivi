@@ -38,12 +38,12 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
   useEffect(() => {
     timerFilm = setTimeout(() => filmSearch.length > 2 &&
       getData<IData<IContent[]>>(Urls.SERVER_PORT, Urls.ALL_MOVIES, { search: filmSearch })
-        .then(data => setFilms(data.items)), 800);
+        .then(data => data !== null && setFilms(data.items)), 800);
   }, [filmSearch]);
 
   useEffect(() => {
     getData<IData<ICountry[]>>(Urls.SERVER_PORT, Urls.ALL_COUNTRIES)
-      .then(data => setCountries(data.items));
+      .then(data => data !== null && setCountries(data.items));
   }, []);
 
   function updateFilm() {

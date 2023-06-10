@@ -7,7 +7,7 @@ import bookmarkIcon from "@/public/icons/bookmark.svg"
 import shareIcon from "@/public/icons/share.svg"
 import freeMoviesIcon from "@/public/icons/folder.svg"
 
-const trailer = "https://www.youtube.com/embed/D3TR8-LAz8M";
+const trailer = "https://www.youtube.com/embed/D3TR8-LAz8M?controls=0";
 
 export default function ContentTrailer() {
 
@@ -17,11 +17,7 @@ export default function ContentTrailer() {
 
       <div className={styles.box}>
 
-        <iframe
-          className={styles.video}
-          src={trailer}
-          allowFullScreen
-        />
+        <iframe className={styles.video} src={trailer} allowFullScreen />
 
 
         <div className={styles.size}>
