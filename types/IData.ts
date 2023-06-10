@@ -1,4 +1,4 @@
 export default interface IData<T> {
-  count: number,
+  count?: number,
   items: T,
 }

@@ -32,7 +32,7 @@ const meta: Meta<typeof Link> = {
       description: 'Класс стиля ссылки',
     },
     onMouseOver: {
-      type: 'function',
+      type: { name: 'function', required: false },
       description: 'Действие при наведении на ссылку',
     },
   }

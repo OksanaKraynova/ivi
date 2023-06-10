@@ -1,21 +1,16 @@
 import React from "react";
 import styles from "./modal.module.scss";
 
-interface Props {
+interface ModalProps {
     onClose?: () => void;
     children: React.ReactNode;
 }
 
-const Modal: React.FC<Props> = ({ onClose, children }) => {
-    const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation();
-    };
+const Modal = ({ onClose, children }: ModalProps) => {
 
     return (
         <div onClick={onClose} className={styles.modalOverlay}>
-            <div onClick={handleContentClick} className={styles.modalContent}>
-                {children}
-            </div>
+            {children}
         </div>
     );
 };

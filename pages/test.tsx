@@ -8,6 +8,7 @@ const testData = [
 
 const test = () => {
 
+  const [commentIndex, setCommentIndex] = useState<number>(1);
   const [value, setValue] = useState<string>();
   const [values, setValues] = useState<number[]>([]);
   let timer: NodeJS.Timeout;
@@ -64,16 +65,18 @@ const test = () => {
   }
 
   async function comment() {
+
     const url = "http://178.208.64.187:8081/v1/comments"
 
     const response = axios.post(url, {
       movie_id: 1,
-      author_id: 1,
-      comment: "Parent:5,Author:1,Comment:1",
-      parent: "5"
+      author_id: 2,
+      comment: "Parent:0,Comment:" + commentIndex,
+      parent: "0"
     })
       .then(response => console.log(response))
       .catch(error => console.log(error));
+    setCommentIndex(commentIndex + 1);
     return response;
   }
 

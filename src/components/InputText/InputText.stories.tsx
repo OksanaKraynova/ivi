@@ -24,11 +24,6 @@ const meta: Meta<typeof InputText> = {
             defaultValue: false,
             description: 'Блокировка доступа и изменения'
         },
-        required: {
-            type: { name: 'boolean', required: false },
-            defaultValue: false,
-            description: 'Поле обязательно для ввода'
-        },
         readOnly: {
             type: { name: 'boolean', required: false },
             defaultValue: false,
@@ -42,6 +37,10 @@ const meta: Meta<typeof InputText> = {
             type: { name: 'number', required: false },
             defaultValue: 0,
             description: 'Минимальная длина вводимого текста'
+        },
+        error: {
+            required: false,
+            description: 'Наличие ошибки'
         },
         onClick: {
             type: { name: 'function', required: false },

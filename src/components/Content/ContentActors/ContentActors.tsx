@@ -10,7 +10,7 @@ export default function ContentActors(props: ContentActorsProps) {
 
     const color = props.content.rating !== null && props.content.rating !== undefined &&
         +props.content.rating < 7 ? "grey" : "green";
-    const fileUrl = Urls.SERVER_URL + ":" + Urls.SERVER_PORT;
+    const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 
     return (<>
         <LinkAvatar
@@ -22,24 +22,26 @@ export default function ContentActors(props: ContentActorsProps) {
             color={color}
         />
 
-        {props.content.creators
-            .find(creators => creators.job === "Актер")?.persons
-            ?.map((actor, index) => {
-                if (index > 4) return;
-                return (
-                    <LinkAvatar
-                        key={index}
-                        textUnderImg={actor.name.split(" ")}
-                        href=""
-                        img={
-                            actor.photo !== undefined && actor.photo.length > 0 ?
-                                fileUrl + actor.photo[0].file_path :
-                                ""
-                        }
-                        form="square"
-                    />
-                );
-            })}
+        {
+            props.content.creators !== undefined && props.content.creators !== null &&
+            props.content.creators
+                .find(creators => creators.job === "Актер")?.persons
+                ?.map((actor, index) => {
+                    if (index > 4) return;
+                    return (
+                        <LinkAvatar
+                            key={index}
+                            textUnderImg={actor.name.split(" ")}
+                            href=""
+                            img={
+                                actor.photo !== undefined && actor.photo.length > 0 ?
+                                    fileUrl + actor.photo[0].file_path :
+                                    ""
+                            }
+                            form="square"
+                        />
+                    );
+                })}
     </>
     );
 };

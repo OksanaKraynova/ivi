@@ -2,17 +2,14 @@ import { useEffect, useState } from "react";
 import ContentExtraCommentsTree from "../ContentExtraCommentsTree/ContentExtraCommentsTree";
 import Response from "../../Response/Response";
 import Button from "../../Button/Button";
-import addCommentTree from "@/src/functions/addCommentTree";
-import getChildrensNumber from "@/src/functions/getChildrensNumber";
 import getData from "@/src/functions/getData";
 import IComment from "@/types/IComment";
 import Urls from "@/types/Urls";
 import IData from "@/types/IData";
-import IContent from "@/types/IContent";
 import styles from './ContentExtraComments.module.scss';
 
 interface ContentExtraCommentsProps {
-  id: number;
+  contentId: number;
 }
 
 export default function ContentExtraComments(props: ContentExtraCommentsProps) {
@@ -20,26 +17,35 @@ export default function ContentExtraComments(props: ContentExtraCommentsProps) {
   const commentsLimit = 5;
 
   const [comments, setComments] = useState<IComment[]>([]);
-  const [hidden, setHidden] = useState<boolean[]>(new Array(comments.length).fill(true));
+  const [count, setCount] = useState<number>(0);
+  const [offset, setOffset] = useState<number>(0);
 
-  useEffect(() => {
-    getData(Urls.SERVER_PORT, Urls.ALL_COMMENTS, { movie_id: props.id, limit: commentsLimit, parent: null })
-      .then()
-  }, [])
+  useEffect(() => getComments(), []);
 
-
-  const commentsChidrens = comments.map(comment => { return getChildrensNumber(comment.id) });
-
-  let newIndex = 0;
-  let commentsInBlock = 0;
-
-  while (commentsInBlock < commentsLimit) {
-    hidden[newIndex] = false;
-    commentsInBlock += commentsChidrens[newIndex] + 1;
-    newIndex++;
+  function getComments() {
+    getData<IData<IComment[]>>(
+      Urls.SERVER_PORT,
+      Urls.ALL_COMMENTS,
+      { movie_id: props.contentId, limit: commentsLimit, parent: 0, offset: offset }
+    ).then(data => {
+      data !== null && setComments([...comments, ...data.items.map(comment => addCommentTree(comment))]);
+      data !== null && data.count !== undefined && setCount(data.count);
+    }).catch(error => console.log(error));
+    setOffset(offset + commentsLimit);
   }
 
-  const [currentIndex, setCurrentIndex] = useState<number>(newIndex);
+  function addCommentTree(comment: IComment): IComment {
+
+    const commentTree = comment;
+    commentTree.childes = [];
+
+    getData<IData<IComment[]>>(Urls.SERVER_PORT, Urls.ALL_COMMENTS, { parent: comment.id })
+      .then(data => data !== null && data.count !== undefined && data.count > 0 &&
+        data.items.forEach(item => commentTree.childes?.push(addCommentTree(item))))
+      .catch(error => console.log(error));
+
+    return commentTree;
+  }
 
   return (
 
@@ -48,51 +54,30 @@ export default function ContentExtraComments(props: ContentExtraCommentsProps) {
       <Response
         placeholder="Написать отзыв"
         buttonColor="pink"
-        parentType="movie"
-        parentId={props.id}
+        movietId={props.contentId}
+        parentId={0}
       />
 
       {comments.map((comment, index) =>
 
-        <div key={index} className={styles.commentTree} hidden={hidden[index]}>
-
-          {
-            addCommentTree(
-              comment,
-              [],
-              (comment, childes) =>
-                <ContentExtraCommentsTree
-                  key={comment.id}
-                  comment={comment}
-                  childes={childes}
-                />
-            )
-          }
-
+        <div key={index} className={styles.commentTree}>
+          <ContentExtraCommentsTree comment={comment} movietId={props.contentId} />
         </div>
       )}
 
-      <div className={styles.button}>
-
-        <Button
-          variant="long"
-          effect="bordered"
-          onClick={() => {
-            let newIndex = currentIndex;
-            let commentsInBlock = 0;
-            while (commentsInBlock < commentsLimit) {
-              hidden[newIndex] = false;
-              commentsInBlock += commentsChidrens[newIndex] + 1;
-              newIndex++;
-            }
-            setCurrentIndex(newIndex);
-          }}
-          disabled={currentIndex === hidden.length}
-        >
-          Показать еще
-        </Button>
-
-      </div>
+      {
+        comments.length > 0 &&
+        <div className={styles.button}>
+          <Button
+            variant="long"
+            effect="bordered"
+            onClick={() => getComments()}
+            disabled={count <= offset}
+          >
+            Показать еще
+          </Button>
+        </div >
+      }
 
     </>
 

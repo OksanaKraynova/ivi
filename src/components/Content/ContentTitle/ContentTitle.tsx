@@ -30,22 +30,26 @@ export default function ContentTitle(props: ContentTitleProps) {
       </div>
 
       <div className={styles.props}>
-        {props.content.countries.map((country, index) =>
-          <a
-            key={index}
-            className={index > 0 ? classNames(props.textClass, styles.dot) : props.textClass}
-          >
-            {country}
-          </a>
-        )}
-        {props.content.ganres.map((ganr, index) =>
-          <a
-            key={index}
-            className={classNames(props.textClass, styles.dot)}
-          >
-            {ganr}
-          </a>
-        )}
+        {
+          props.content.countries !== undefined && props.content.countries !== null &&
+          props.content.countries.map((country, index) =>
+            <a
+              key={index}
+              className={index > 0 ? classNames(props.textClass, styles.dot) : props.textClass}
+            >
+              {country}
+            </a>
+          )}
+        {
+          props.content.ganres !== undefined && props.content.ganres !== null &&
+          props.content.ganres.map((ganr, index) =>
+            <a
+              key={index}
+              className={classNames(props.textClass, styles.dot)}
+            >
+              {ganr}
+            </a>
+          )}
       </div>
 
       <div className={styles.props}>

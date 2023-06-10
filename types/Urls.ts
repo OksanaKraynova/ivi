@@ -1,6 +1,7 @@
 enum Urls {
   SERVER_URL = "http://178.208.64.187",
   SERVER_PORT = "8081",
+  FILES_PORT = "3004",
 
   ALL_COMMENTS = "/v1/comments",
   ALL_COUNTRIES = "/v1/country",

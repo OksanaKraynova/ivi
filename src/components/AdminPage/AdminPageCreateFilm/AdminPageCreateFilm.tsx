@@ -50,10 +50,6 @@ interface AdminPageCreateFilmProps {
   onSubmit?: () => void;
 }
 
-interface collection<T> {
-  collection: T[];
-}
-
 export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
   const defaulFilled: Filled = {
@@ -109,19 +105,18 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
   function searchCreators(value: string, job: "actor" | "director") {
     value.length > 2 ?
-      // getData<IData<IActor[]>>(Urls.SERVER_PORT, Urls.ALL_PERSONS_FILTER, { search: value })
-      //   .then(data => setActors(data.items)) :
-      getData<collection<IActor>>(Urls.SERVER_PORT, Urls.ALL_PERSONS_FILTER, { search: value })
-        .then(data => job === "actor" ? setActors(data.collection) : setDirectors(data.collection)) :
+      getData<IData<IActor[]>>(Urls.SERVER_PORT, Urls.ALL_PERSONS_FILTER, { search: value })
+        .then(data => data !== null && (job === "actor" ? setActors(data.items) : setDirectors(data.items)))
+        .catch(error => console.log(error)) :
       job === "actor" ? setActors([]) : setDirectors([]);
   }
 
   function createFilm() {
 
-    // if (Object.values(filled).includes(false)) {
-    //   setSendingError(true);
-    //   return;
-    // }
+    if (Object.values(filled).includes(false)) {
+      setSendingError(true);
+      return;
+    }
 
     const postFilm = {
       countries: filmCountries.map(country => country.id),

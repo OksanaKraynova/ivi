@@ -6,8 +6,16 @@ const meta: Meta<typeof DataBlock> = {
     component: DataBlock,
     tags: ['autodocs'],
     argTypes: {
-        list: {
+        items: {
             description: 'Список пунктов блока'
+        },
+        placeholder: {
+            type: { name: "string", required: false },
+            description: 'Подпись блока с данными'
+        },
+        deliteItem: {
+            required: false,
+            description: 'Действие при удалении данных из блока'
         }
     }
 };
@@ -18,6 +26,6 @@ type Story = StoryObj<typeof DataBlock>;
 
 export const Example: Story = {
     args: {
-        list: ["11111", "22222", "33333", "44444", "55555"],
+        items: ["11111", "22222", "33333", "44444", "55555"],
     }
 };

@@ -27,10 +27,13 @@ export default function ContentComments(props: ContentCommentsProps) {
       listCardsProps={props.content.comments.filter(comment => comment.parent === undefined || comment.parent == null)}
       breakpoints={
         {
-          0: { slidesPerView: 1, spaceBetween: 24 },
-          600: { slidesPerView: 2, spaceBetween: 24 },
-          900: { slidesPerView: 3, spaceBetween: 24 },
-          1200: { slidesPerView: 4, spaceBetween: 24 },
+          0: { slidesPerView: 1, spaceBetween: 0 },
+          480: { slidesPerView: 1.5, spaceBetween: 12 },
+          700: { slidesPerView: 2, spaceBetween: 12 },
+          800: { slidesPerView: 2.5, spaceBetween: 18 },
+          1000: { slidesPerView: 3, spaceBetween: 18 },
+          1090: { slidesPerView: 3.5, spaceBetween: 24 },
+          1280: { slidesPerView: 4, spaceBetween: 24 },
         }
       }
       renderItem={(item) => <Comment comment={item} type='preview' />}

@@ -1,0 +1,65 @@
+.trailers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  row-gap: 36px;
+  margin-top: 32px;
+}
+
+.hidden {
+  display: none;
+}
+
+.trailer {
+  flex-basis: calc(50% - 6px);
+  max-width: calc(50% - 6px);
+}
+
+.videoBox {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.video {
+  width: 100%;
+  aspect-ratio: 1.6;
+}
+
+.back {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  cursor: pointer;
+  margin-bottom: 12px;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 1059px) {
+
+  .trailer {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 899px) {
+
+  .trailer {
+    flex-basis: calc(50% - 6px);
+    max-width: calc(50% - 6px);
+  }
+}
+
+@media (max-width: 679px) {
+
+  .trailer {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}

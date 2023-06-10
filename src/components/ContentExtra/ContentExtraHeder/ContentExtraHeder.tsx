@@ -69,7 +69,7 @@ export default function ContentExtraHeder(props: ContentExtraHederProps) {
             }
             {
               index === 2 &&
-              <p className={styles.counter}>?!</p>//количество трейлеров
+              <p className={styles.counter}>2</p>
             }
           </div>
         )}

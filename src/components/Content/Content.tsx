@@ -7,22 +7,17 @@ import ContentDescripton from "./ContentDescripton/ContentDescripton";
 import ContentRating from "./ContentRating/ContentRating";
 import ContentSimilar from "./ContentSimilar/ContentSimilar";
 import ContentCreators from "./ContentCreators/ContentCreators";
-import ContentAdditional from "./ContentAdditional/ContentAdditional";
+import ContentTeasers from "./ContentTeasers/ContentTeasers";
 import ContentComments from "./ContentComments/ContentComments";
 import ContentDevices from "./ContentDevices/ContentDevices";
 import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
 
 interface ContentProps {
-  content: IContent;
+  content: IContent | null;
 }
 
 export default function Content(props: ContentProps) {
-
-  const firstCrumbs = { text: "Мой Иви", link: "/" };
-  const secondCrumbs = [{ text: "Фильмы", link: "" }];
-  props.content.ganres.length > 0 &&
-    secondCrumbs.push({ text: props.content.ganres[0], link: "" });
 
   if (props.content === null) {
     return (
@@ -31,6 +26,11 @@ export default function Content(props: ContentProps) {
       </div>
     )
   };
+
+  const firstCrumbs = { text: "Мой Иви", link: "/" };
+  const secondCrumbs = [{ text: "Фильмы", link: "" }];
+  props.content.ganres !== null && props.content.ganres !== undefined && props.content.ganres.length > 0 &&
+    secondCrumbs.push({ text: props.content.ganres[0], link: "" });
 
   return (
 
@@ -75,6 +75,7 @@ export default function Content(props: ContentProps) {
       </div>
 
       {
+        props.content.creators !== undefined && props.content.creators !== null &&
         props.content.creators.length > 0 &&
         <div className={styles.row}>
           <ContentCreators
@@ -86,7 +87,7 @@ export default function Content(props: ContentProps) {
 
       <div className={styles.row}>
 
-        <ContentAdditional
+        <ContentTeasers
           content={props.content}
           titleClass={styles.title}
           linkClass={classNames(styles.title, styles.link)}

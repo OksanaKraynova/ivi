@@ -10,7 +10,6 @@ interface SelectProps {
   placeholder: string;
   type: "multiple" | "one";
   error?: boolean;
-  value?: string;
   addCheck?: (index: number) => void;
   deliteCheck?: (index: number) => void;
 }
@@ -53,7 +52,7 @@ export default function Select(props: SelectProps) {
           disabled={true}
           readOnly={true}
           error={props.error}
-          value={props.value ?? checked.join(", ")}
+          value={checked.join(", ")}
           buttonIcon={upIcon.src}
           buttonClass={visibile ? styles.button : undefined}
           onClick={(event) => { setVisibile(!visibile); event.stopPropagation(); }}
