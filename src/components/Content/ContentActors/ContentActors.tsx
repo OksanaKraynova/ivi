@@ -12,14 +12,14 @@ interface ContentActorsProps {
 export default function ContentActors(props: ContentActorsProps) {
 
     const language = props.locale === "en" ? en : ru;
-
-    const color = props.content.rating && +props.content.rating < 7 ? "grey" : "green";
+    const rating = props.content.rating ?? "";
+    const color = +rating < 7 ? "grey" : "green";
     const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 
     return (<>
         <LinkAvatar
             textUnderImg={language.rating}
-            textInsteadImg={props.content.rating ?? "?"}
+            textInsteadImg={props.content.rating ?? ""}
             href={`/watch/${props.content.id}`}
             img=""
             form="square"

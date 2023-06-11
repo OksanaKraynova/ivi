@@ -71,10 +71,7 @@ export default function Content(props: ContentProps) {
           locale={locale}
         />
 
-        {
-          props.content.rating &&
-          <ContentRating rating={props.content.rating} textClass={styles.text} locale={locale} />
-        }
+        <ContentRating rating={props.content.rating ?? ""} textClass={styles.text} locale={locale} />
 
       </div>
       <div className={styles.row}>

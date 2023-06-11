@@ -1,14 +1,14 @@
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/src/hooks/redux';
+import { fetchGenres } from '@/src/store/reducers/genresCountriesSlice';
 import IContent from '@/types/IContent';
 import MovieBlock from '../../MovieBlock/MovieBlock';
 import Card from '../../Card/Card';
-import ru from '@/locales/content/ru';
-import en from '@/locales/content/en';
-import { useEffect, useState } from 'react';
 import getData from '@/src/functions/getData';
 import IData from '@/types/IData';
 import Urls from '@/types/Urls';
-import { useAppDispatch, useAppSelector } from '@/src/hooks/redux';
-import { fetchGenres } from '@/src/store/reducers/genresCountriesSlice';
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface ContentSimilarProps {
   content: IContent;

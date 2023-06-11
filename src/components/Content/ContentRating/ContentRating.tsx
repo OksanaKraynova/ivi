@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import Button from '@/src/components/Button/Button';
 import styles from './ContentRating.module.scss';
-import classNames from 'classnames';
 import ru from '@/locales/content/ru';
 import en from '@/locales/content/en';
 

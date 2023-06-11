@@ -51,5 +51,6 @@ export default function ContentTrailer(props: ContentTrailerProps) {
       </div>
 
     </>
+
   );
 };

@@ -1,5 +1,5 @@
-import IContent from '@/types/IContent';
 import classNames from 'classnames';
+import IContent from '@/types/IContent';
 import Button from '@/src/components/Button/Button';
 import Urls from '@/types/Urls';
 import styles from './ContentDevices.module.scss';

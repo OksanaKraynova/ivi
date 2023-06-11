@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Image from 'next/image';
 import Button from "../Button/Button";
 import InputText from "../InputText/InputText";
-import Urls from "@/types/Urls";
-import sendData from "@/src/functions/sendData";
+import Urls from "../../../types/Urls";
+import sendData from "../../functions/sendData";
 import styles from './Response.module.scss';
 import userIcon from "../../../public/icons/user.svg"
 
