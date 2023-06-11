@@ -3,6 +3,9 @@ import LinkAvatar from '@/src/components/LinkAvatar/LinkAvatar';
 import Link from 'next/link';
 import styles from './ContentCreators.module.scss';
 import Urls from '@/types/Urls';
+import { useRouter } from "next/router";
+import ru from "@/locales/content/ru";
+import en from "@/locales/content/en";
 
 interface ContentCreatorsProps {
   content: IContent;
@@ -10,7 +13,9 @@ interface ContentCreatorsProps {
 }
 
 export default function ContentCreators(props: ContentCreatorsProps) {
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 
   return (
@@ -20,7 +25,7 @@ export default function ContentCreators(props: ContentCreatorsProps) {
         className={props.linkClass}
         href={`/watch/${props.content.id}/person`}
       >
-        Актёры и создатели
+        {t.paople}
       </Link>
 
       <div className={styles.row}>
@@ -43,7 +48,7 @@ export default function ContentCreators(props: ContentCreatorsProps) {
                     }
                     form="circle"
                   >
-                    <p className={styles.job}>режиссер</p>
+                    <p className={styles.job}>{t.director}</p>
                   </LinkAvatar>
 
                 </div>
@@ -67,7 +72,7 @@ export default function ContentCreators(props: ContentCreatorsProps) {
                     }
                     form="circle"
                   >
-                    <p className={styles.job}>актёр</p>
+                    <p className={styles.job}>{t.actor}</p>
                   </LinkAvatar>
 
                 </div>

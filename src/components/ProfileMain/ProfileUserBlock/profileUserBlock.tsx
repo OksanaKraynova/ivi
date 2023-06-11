@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import styles from './profileIserBlock.module.scss'
 import ChooseUserProfile from './ChooseUserProfile/ChooseUserProfile';
 import Button from '../../Button/Button';
-import Image from 'next/image';
+import { useRouter } from 'next/router';
+import ru from '@/locales/profile/ru';
+import en from '@/locales/profile/en';
 
 const profileUserBlock = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(false)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const router = useRouter()
+    const { locale } = router
+    const t = locale === 'ru' ? ru : en
     return (
         <div>
             {isLogin ?
@@ -15,7 +21,7 @@ const profileUserBlock = () => {
                 <Button variant='minimal' color='pink' >
                     <div className={styles.btn} >
                         <img src='/icons/profile/Frame.svg' alt="icon" />
-                        Войти или зарегистрироваться
+                       {t.login}
                     </div>
                 </Button>
 

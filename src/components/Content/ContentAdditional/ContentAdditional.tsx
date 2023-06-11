@@ -1,6 +1,9 @@
 import IContent from '@/types/IContent';
 import styles from './ContentAdditional.module.scss';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import ru from '@/locales/titles/ru';
+import en from '@/locales/titles/en';
 
 interface ContentAdditionalProps {
   content: IContent;
@@ -9,7 +12,9 @@ interface ContentAdditionalProps {
 }
 
 export default function ContentAdditional(props: ContentAdditionalProps) {
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
   return (
 
     <>
@@ -17,10 +22,10 @@ export default function ContentAdditional(props: ContentAdditionalProps) {
         className={props.linkClass}
         href={`/watch/${props.content.id}/trailers`}
       >
-        Трейлеры
+        {t.trailers}
       </Link>
 
-      <p className={props.titleClass}>{" и доп. материалы"}</p>
+      <p className={props.titleClass}>{t.dop}</p>
 
       <div className={styles.row}>
 

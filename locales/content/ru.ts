@@ -1,0 +1,27 @@
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+  reviews: ' Пока нет отзывов',
+  comments: 'Комментарии',
+  leave: ' Оставить комментарий',
+  about: 'о фильме',
+  empty: 'Пусто',
+  people: ' Актёры и создатели',
+  director:'Режиссер',
+  actor: 'Актер',
+  languages: 'Языки',
+  russian:'Русский',
+  subtitles: 'Субтитры',
+  english: 'Английский',
+  quality: 'Качество',
+  details:'Детали о ',
+  collapse: 'Свернуть детали ',
+  desc: 'Приложение доступно для скачивания на iOS, Android, SmartTV и приставках',
+  on: 'Подключить устройства',
+  rating: 'Рейтинг Иви',
+  pilot: 'Интересный сюжет',
+score: 'оценок',
+estimate: 'Оценить',
+expand: 'Развернуть трейлер',
+trailer: 'Трейлер',
+free: 'Бесплатные фильмы'
+}

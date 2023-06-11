@@ -5,6 +5,9 @@ import Urls from '@/types/Urls';
 import styles from './ContentDevices.module.scss';
 import idadImg from "@/public/img/ipad-without-poster.png";
 import tvImg from "@/public/img/tv-without-poster.png";
+import { useRouter } from "next/router";
+import ru from "@/locales/content/ru";
+import en from "@/locales/content/en";
 
 interface ContentDevicesProps {
   content: IContent;
@@ -15,17 +18,19 @@ interface ContentDevicesProps {
 export default function ContentDevices(props: ContentDevicesProps) {
 
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
   return (
 
     <>
       <div className={styles.box}>
 
         <p className={props.titleClass}>{`Cмотреть «${props.content.name}» на всех устройствах`}</p>
-        <p className={props.textClass}>Приложение доступно для скачивания на iOS, Android, SmartTV и приставках</p>
+        <p className={props.textClass}>{t.desc}</p>
 
         <div className={styles.button}>
-          <Button variant='medium' href={"https://www.ivi.ru/devices"} color={'pink'}>Подключить устройства</Button>
+          <Button variant='medium' href={"https://www.ivi.ru/devices"} color={'pink'}>{t.on}</Button>
         </div>
 
       </div>

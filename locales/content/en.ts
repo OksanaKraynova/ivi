@@ -1,0 +1,27 @@
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+  reviews: 'There are no reviews yet',
+  comments: 'Comments',
+  leave: ' Leave a comment',
+  about: 'about the film',
+  empty: 'Empty',
+  people: ' Actors and creators',
+  director: 'Director',
+  actor: 'Actor',
+  languages: 'Languages',
+  russian:'Russian',
+  subtitles: 'Subtitles',
+  english: 'English',
+  quality: 'Quality',
+  details: 'Details about ',
+  collapse:  'Collapse details',
+  desc: 'The app is available for download on iOS, Android, Smart TV and set-top boxes',
+  on: 'Connect devices',
+  rating: 'Rating Ivi',
+  pilot: 'Interesting plot',
+score: 'estimation',
+estimate: 'Estimate',
+expand: 'Expand the trailer',
+trailer: 'Trailer',
+free: 'Free movies'
+}

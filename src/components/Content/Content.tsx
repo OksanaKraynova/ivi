@@ -12,13 +12,18 @@ import ContentComments from "./ContentComments/ContentComments";
 import ContentDevices from "./ContentDevices/ContentDevices";
 import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
+import { useRouter } from "next/router";
+import ru from "@/locales/content/ru";
+import en from "@/locales/content/en";
 
 interface ContentProps {
   content: IContent;
 }
 
 export default function Content(props: ContentProps) {
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
   const firstCrumbs = { text: "Мой Иви", link: "/" };
   const secondCrumbs = [{ text: `${props.content.type}ы`, link: "" }];
   props.content.ganres.length > 0 &&
@@ -27,7 +32,7 @@ export default function Content(props: ContentProps) {
   if (props.content === null) {
     return (
       <div className={classNames(styles.container, "container")}>
-        Пусто
+        {t.empty}
       </div>
     )
   };
@@ -35,23 +40,17 @@ export default function Content(props: ContentProps) {
   return (
 
     <div className={classNames(styles.container, "container")}>
-
       <BreadCrumbs prevPages={secondCrumbs} />
-
       <div className={styles.box}>
-
         <ContentTrailer />
-
         <ContentTitle
           content={props.content}
           textClass={styles.text}
           borderedClass={styles.bordered}
         />
-
         <div className={styles.actors}>
           <ContentActors content={props.content} />
         </div>
-
         <ContentDescripton
           tagline={props.content.slogan}
           description={props.content.description}
@@ -59,11 +58,8 @@ export default function Content(props: ContentProps) {
           textClass={styles.text}
           borderedClass={styles.bordered}
         />
-
         <ContentRating rating={props.content.rating} textClass={styles.text} />
-
       </div>
-
       <div className={styles.row}>
         <ContentSimilar
           content={props.content}
