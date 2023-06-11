@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Label from '../Label/Label';
 import HiddenBlock from './HiddenBlock/HiddenBlock';
 import IContent from '@/types/IContent';
@@ -24,6 +23,8 @@ const CardImage = (props: CardImageProps) => {
             fileUrl + props.content.coverImage[0].file_path :
             noImg.src;
 
+    console.log(img)
+
     return props.modal ?
 
         (
@@ -32,7 +33,7 @@ const CardImage = (props: CardImageProps) => {
                     props.label &&
                     <Label locale={props.locale} />
                 }
-                <Image alt='постер' src={img} width={153} height={235} />
+                <img alt='постер' src={img} width={153} height={235} />
                 <HiddenBlock className={styles.show} content={props.content} />
             </div>
         ) :
@@ -42,7 +43,7 @@ const CardImage = (props: CardImageProps) => {
                     props.label &&
                     <Label locale={props.locale} />
                 }
-                <Image alt='постер' src={fileUrl} width={153} height={235} />
+                <img alt='постер' src={fileUrl} width={153} height={235} />
                 <InfoBlock content={props.content} modal={false} />
             </div>
         );

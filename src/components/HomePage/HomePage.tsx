@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/src/hooks/redux';
 import { useEffect, useState } from 'react';
-import { fetchCountries, fetchGenres } from '@/src/store/reducers/genresCountriesSlice';
+import { fetchGenres } from '@/src/store/reducers/genresCountriesSlice';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import MovieBlock from '../MovieBlock/MovieBlock';
@@ -58,7 +58,6 @@ export default function HomePage() {
         .catch(error => console.log(error));
   }
 
-
   return (
 
     <div className={classNames(styles.container, "container")}>
@@ -69,7 +68,7 @@ export default function HomePage() {
 
       <HomeTop />
 
-      <HomeAbout />
+      <HomeAbout locale={locale} />
 
       {[firstGenreList, secondGenreList].map((list, index) =>
         list.genre &&

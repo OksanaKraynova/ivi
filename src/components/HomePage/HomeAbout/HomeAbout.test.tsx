@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import HomeAbout from './HomeAbout';
 
 const visibleText = "Онлайн-кинотеатр Иви: фильмы в хорошем качестве всегда приносят настоящее удовольствие";
-const hiddenText = "просмотр онлайн контента хорошего разрешения без регистрации и смс.";
+const hiddenText = "просмотр в одно касание на любом из устройств, подключенном к вашему Иви-аккаунту – от смартфонов до телевизоров с технологией Smart TV;";
 const buttonMore = "Развернуть";
 const buttonLess = "Свернуть";
 const hiddenClass = "aboutСollapsed";

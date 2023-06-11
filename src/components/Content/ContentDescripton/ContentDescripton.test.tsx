@@ -7,7 +7,7 @@ const descriptionFirstParagraph = "Очень интересный сериал!
 const descriptionSecondParagraph = "Неожиданная развязка!";
 const description = descriptionFirstParagraph + "\n" + descriptionSecondParagraph;
 const type = "сериал";
-const buttonMore = "Детали о сериале";
+const buttonMore = "Детали о фильме";
 const buttonLess = "Свернуть детали";
 
 describe("Страница фильма, блок «описания»", () => {
@@ -18,7 +18,6 @@ describe("Страница фильма, блок «описания»", () => {
       <ContentDescripton
         tagline={tagline}
         description={description}
-        type={type}
         textClass={''}
         borderedClass={''}
       />);

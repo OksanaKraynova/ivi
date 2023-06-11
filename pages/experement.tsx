@@ -6,7 +6,7 @@ const testData = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ]
 
-const test = () => {
+const experement = () => {
 
   const [commentIndex, setCommentIndex] = useState<number>(1);
   const [value, setValue] = useState<string>();
@@ -281,4 +281,4 @@ const test = () => {
   );
 };
 
-export default test;
+export default experement;

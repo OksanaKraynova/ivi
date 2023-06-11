@@ -34,7 +34,7 @@ describe("ИнпутТекст", () => {
     render(
       <InputText placeholder={placeholder} minSize={minSize} />);
 
-    expect(screen.getByText(placeholder)).toHaveClass("placholder");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder");
     expect(screen.queryByText(`${error} 0`)).toBeNull();
 
     const input = screen.getByRole("textbox");
