@@ -23,9 +23,10 @@ export default function ContentDevices(props: ContentDevicesProps) {
     props.content.name_translate : props.content.name;
 
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
-  const posterSrc = (props.content.coverImage && props.content.coverImage.length > 0) ?
-    fileUrl + props.content.coverImage[0].file_path :
-    noPosterImg.src;
+  const posterSrc = props.content.cover_img ? fileUrl + props.content.cover_img :
+    props.content.coverImage && props.content.coverImage.length > 0 ?
+      fileUrl + props.content.coverImage[0].file_path :
+      noPosterImg.src;
 
   return (
 

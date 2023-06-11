@@ -7,6 +7,8 @@ import IGenre from "@/types/IGenre";
 import getData from "@/src/functions/getData";
 import IData from "@/types/IData";
 import Urls from "@/types/Urls";
+import { useAppDispatch, useAppSelector } from "@/src/hooks/redux";
+import { fetchCountries, fetchGenres } from "@/src/store/reducers/genresCountriesSlice";
 
 const breadCrumbs = [
   "Фильмы",
@@ -15,17 +17,19 @@ const breadCrumbs = [
 
 export default function AdminPage() {
 
+  const { genres, countries, status } = useAppSelector(state => state.genresCountriesReducer);
+  const dispatch = useAppDispatch();
+
   const defaultCurrentIndex = 0;
   const defaultHidden = Array.from({ length: breadCrumbs.length })
     .map((item, index) => { return index === defaultCurrentIndex ? false : true });
 
   const [hidden, setHidden] = useState<boolean[]>(defaultHidden);
   const [currentIndex, setCurrentIndex] = useState<number>(defaultCurrentIndex);
-  const [genres, setGenres] = useState<IGenre[]>([]);
 
   useEffect(() => {
-    getData<IData<IGenre[]>>(Urls.SERVER_PORT, Urls.ALL_GANRES)
-      .then(data => data !== null && setGenres(data.items));
+    status.genres !== "resolved" && dispatch(fetchGenres());
+    status.countries !== "resolved" && dispatch(fetchCountries());
   }, []);
 
   return (
@@ -51,7 +55,7 @@ export default function AdminPage() {
 
       </div>
 
-      <AdminPageFilms hidden={hidden[0]} genres={genres} />
+      <AdminPageFilms hidden={hidden[0]} genres={genres} countries={countries} />
 
       <AdminPageGenres hidden={hidden[1]} genres={genres} />
 

@@ -31,7 +31,6 @@ export default function InputText(props: InputTextProps) {
     <div className={props.error ? classNames(styles.box, styles.red) : styles.box}>
 
       <input
-        data-custom-form="Input"
         className={props.error ? classNames(styles.input, styles.red) : styles.input}
         value={props.value}
         disabled={props.disabled}
@@ -59,10 +58,7 @@ export default function InputText(props: InputTextProps) {
         />
       }
 
-      <div
-        data-custom-form="Placeholder"
-        className={classNames(styles.placeholder, defaultEffect, placeholderEffect)}
-      >
+      <div className={classNames(styles.placeholder, defaultEffect, placeholderEffect)}>
         {props.placeholder}
       </div>
 

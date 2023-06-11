@@ -48,6 +48,7 @@ interface AdminPageCreateFilmProps {
   ages: string[];
   countries: ICountry[];
   hidden: boolean;
+  status?: string;
   onSubmit?: () => void;
 }
 
@@ -142,14 +143,6 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
     setFilmFiles(new FormData());
     setFilled(defaulFilled);
     setSendingError(false);
-
-    const form = document.querySelector<HTMLInputElement>('[data-custom-form="Form-Create-Film"]');
-    const inputs = form?.querySelectorAll<HTMLInputElement>('[data-custom-form="Input"]');
-    const placeholders = form?.querySelectorAll<HTMLDivElement>('[data-custom-form="Placeholder"]');
-
-    inputs && inputs.forEach(element => element.value = "");
-    placeholders &&
-      placeholders.forEach(element => element.className = element.className.replace(/ (\w+)_overText__(\w+)/, ""));
   }
 
   function sendFile() {
@@ -161,7 +154,6 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
   return (
 
     <div
-      data-custom-form="Form-Create-Film"
       className={styles.box}
       hidden={props.hidden}
     >
@@ -345,7 +337,7 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         </Button>
       </div>
 
-      <div className={styles.button}>
+      <div className={styles.inputBox}>
         <Button
           variant="long"
           effect="bordered"
@@ -357,6 +349,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         >
           Создать
         </Button>
+
+        <p className={styles.status}>{props.status}</p>
       </div>
 
     </div>

@@ -19,6 +19,7 @@ const ages: string[] = ["0+", "6+", "12+", "18+"];
 interface AdminPageFilmsProps {
   hidden: boolean;
   genres: IGenre[];
+  countries: ICountry[];
 }
 
 export default function AdminPageFilms(props: AdminPageFilmsProps) {
@@ -28,7 +29,6 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
   const [films, setFilms] = useState<IContent[]>([]);
   const [filmSearch, setFilmSearch] = useState<string>("");
-  const [countries, setCountries] = useState<ICountry[]>([]);
 
   const [film, setFilm] = useState<IContent>();
   const [upadatedFilm, setUpdatedFilm] = useState<{ name: string, name_translate?: string | null }>();
@@ -40,11 +40,6 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       getData<IData<IContent[]>>(Urls.SERVER_PORT, Urls.ALL_MOVIES, { search: filmSearch })
         .then(data => data !== null && setFilms(data.items)), 800);
   }, [filmSearch]);
-
-  useEffect(() => {
-    getData<IData<ICountry[]>>(Urls.SERVER_PORT, Urls.ALL_COUNTRIES)
-      .then(data => data !== null && setCountries(data.items));
-  }, []);
 
   function updateFilm() {
 
@@ -147,7 +142,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       <AdminPageCreateFilm
         genres={props.genres}
         ages={ages}
-        countries={countries}
+        countries={props.countries}
         hidden={hidden.create}
       />
 

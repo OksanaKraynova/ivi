@@ -9,6 +9,7 @@ export default interface IContent {
   type?: string | null,
   year?: number | null,
   coverImage?: IImage[] | null,
+  cover_img?: string | null,
   creators?: IJob[] | null,
   countries?: string[] | null,
   ganres?: string[] | null,
