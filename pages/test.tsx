@@ -1,10 +1,23 @@
-import Layout from "@/src/components/Layout/Layout";
-import Movies from "@/src/components/Movies/Movies";
-import Urls from "@/types/Urls";
+import Search from "@/src/components/Search/Search";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+const testData = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+]
 
 const test = () => {
+
+  const [commentIndex, setCommentIndex] = useState<number>(1);
+  const [value, setValue] = useState<string>();
+  const [values, setValues] = useState<number[]>([]);
+  let timer: NodeJS.Timeout;
+
+  useEffect(() => {
+    timer = setTimeout(() => setValues(testData.filter(item => value !== undefined && item >= +value)), 1000);
+  }, [value]);
+
+
 
   const user = { email: "test@mail.com", password: "123456", login: "login" };
 
@@ -52,16 +65,18 @@ const test = () => {
   }
 
   async function comment() {
+
     const url = "http://178.208.64.187:8081/v1/comments"
 
     const response = axios.post(url, {
       movie_id: 1,
-      author_id: 1,
-      comment: "Parent:5,Author:1,Comment:1",
-      parent: "5"
+      author_id: 2,
+      comment: "Parent:0,Comment:" + commentIndex,
+      parent: "0"
     })
       .then(response => console.log(response))
       .catch(error => console.log(error));
+    setCommentIndex(commentIndex + 1);
     return response;
   }
 
@@ -101,7 +116,6 @@ const test = () => {
       .catch(error => console.log(error));
     return response;
   }
-
 
   async function filmUpdate() {
     const url = "http://178.208.64.187:8081/v1/movie/5"
@@ -251,6 +265,17 @@ const test = () => {
           Фильтр
         </button>
       </div>
+
+      <Search<number>
+        placeholder='Актеры'
+        options={values}
+        onChange={(event) => {
+          clearTimeout(timer);
+          setValue(event.target.value);
+        }}
+        addItem={count => setValues(values.includes(count) ? values : [...values, count])}
+        renderItem={count => count.toString()}
+      />
 
     </div>
   );

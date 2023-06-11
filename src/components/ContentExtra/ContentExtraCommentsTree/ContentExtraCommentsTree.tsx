@@ -5,7 +5,7 @@ import styles from './ContentExtraCommentsTree.module.scss';
 
 interface ContentExtraCommentsTreeProps {
   comment: IComment;
-  childes: React.ReactElement[];
+  movietId: number;
 }
 
 export default function ContentExtraCommentsTree(props: ContentExtraCommentsTreeProps) {
@@ -14,13 +14,13 @@ export default function ContentExtraCommentsTree(props: ContentExtraCommentsTree
 
     <div className={styles.treeComments}>
 
-      <Comment comment={props.comment} type="full" />
+      <Comment comment={props.comment} type="full" movietId={props.movietId} />
 
       {
-        props.childes.length > 0 &&
-        <div className={styles.childeComments}>
-          {props.childes.map(childe => childe)}
-        </div>
+        props.comment.childes !== undefined &&
+        props.comment.childes.map((comment, index) =>
+          <Comment key={index} comment={comment} type="full" movietId={props.movietId} />
+        )
       }
 
     </div>

@@ -8,15 +8,15 @@ import Layout from "@/src/components/Layout/Layout";
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
 
   const id = context.params?.id;
-  const content: IContent =
-    await getData(Urls.SERVER_PORT, Urls.ONE_MOVIE + `/${id}`);
+  // const content = await getData<IContent>(Urls.SERVER_PORT, Urls.ONE_MOVIE + `/${id}`);
+  const content = await getData<IContent>("3003", "/api/movies" + `/${id}`);
 
   return {
-    props: { content: content || null }
+    props: { content: content }
   };
 }
 
-const Comments = (params: { content: IContent }) => {
+const Comments = (params: { content: IContent | null }) => {
 
   return (
 

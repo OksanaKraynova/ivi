@@ -7,7 +7,7 @@ import ContentDescripton from "./ContentDescripton/ContentDescripton";
 import ContentRating from "./ContentRating/ContentRating";
 import ContentSimilar from "./ContentSimilar/ContentSimilar";
 import ContentCreators from "./ContentCreators/ContentCreators";
-import ContentAdditional from "./ContentAdditional/ContentAdditional";
+import ContentTeasers from "./ContentTeasers/ContentTeasers";
 import ContentComments from "./ContentComments/ContentComments";
 import ContentDevices from "./ContentDevices/ContentDevices";
 import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
@@ -17,10 +17,11 @@ import ru from "@/locales/content/ru";
 import en from "@/locales/content/en";
 
 interface ContentProps {
-  content: IContent;
+  content: IContent | null;
 }
 
 export default function Content(props: ContentProps) {
+<<<<<<< HEAD
   const router = useRouter()
   const { locale } = router
   const t = locale === 'ru' ? ru : en
@@ -28,6 +29,8 @@ export default function Content(props: ContentProps) {
   const secondCrumbs = [{ text: `${props.content.type}ы`, link: "" }];
   props.content.ganres.length > 0 &&
     secondCrumbs.push({ text: props.content.ganres[0], link: "" });
+=======
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
 
   if (props.content === null) {
     return (
@@ -36,6 +39,11 @@ export default function Content(props: ContentProps) {
       </div>
     )
   };
+
+  const firstCrumbs = { text: "Мой Иви", link: "/" };
+  const secondCrumbs = [{ text: "Фильмы", link: "" }];
+  props.content.ganres !== null && props.content.ganres !== undefined && props.content.ganres.length > 0 &&
+    secondCrumbs.push({ text: props.content.ganres[0], link: "" });
 
   return (
 
@@ -54,11 +62,19 @@ export default function Content(props: ContentProps) {
         <ContentDescripton
           tagline={props.content.slogan}
           description={props.content.description}
-          type={props.content.type}
           textClass={styles.text}
           borderedClass={styles.bordered}
         />
+<<<<<<< HEAD
         <ContentRating rating={props.content.rating} textClass={styles.text} />
+=======
+
+        {
+          props.content.rating !== undefined && props.content.rating !== null &&
+          <ContentRating rating={props.content.rating} textClass={styles.text} />
+        }
+
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
       </div>
       <div className={styles.row}>
         <ContentSimilar
@@ -68,16 +84,20 @@ export default function Content(props: ContentProps) {
         />
       </div>
 
-      <div className={styles.row}>
-        <ContentCreators
-          content={props.content}
-          linkClass={classNames(styles.title, styles.link)}
-        />
-      </div>
+      {
+        props.content.creators !== undefined && props.content.creators !== null &&
+        props.content.creators.length > 0 &&
+        <div className={styles.row}>
+          <ContentCreators
+            content={props.content}
+            linkClass={classNames(styles.title, styles.link)}
+          />
+        </div>
+      }
 
       <div className={styles.row}>
 
-        <ContentAdditional
+        <ContentTeasers
           content={props.content}
           titleClass={styles.title}
           linkClass={classNames(styles.title, styles.link)}

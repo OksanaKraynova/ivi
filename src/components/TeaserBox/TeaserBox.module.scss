@@ -1,0 +1,49 @@
+.trailerBox {
+  width: 286px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "trailer trailer"
+    "title title"
+    "clock subtitle";
+  row-gap: 6px;
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.img {
+  grid-area: trailer;
+  width: 100%;
+  aspect-ratio: 1.7;
+  border-radius: 8px;
+  transition-duration: 0.2s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.title {
+  grid-area: title;
+  margin-top: 4px;
+}
+
+.subtitle {
+  grid-area: subtitle;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(255, 255, 255, .48);
+}
+
+.icon {
+  grid-area: clock;
+  margin-right: 6px;
+}
+
+@media (max-width: 326px) {
+  .trailerBox {
+    width: 100%;
+  }
+}

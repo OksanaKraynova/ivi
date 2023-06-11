@@ -47,6 +47,7 @@ const meta: Meta<typeof LinkAvatar> = {
       description: 'Действие при наведении',
     },
     children: {
+      required: false,
       description: 'Элемент внизу ссылки',
     },
   }

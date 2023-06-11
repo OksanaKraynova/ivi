@@ -10,11 +10,6 @@ const meta: Meta<typeof InputNumber> = {
             type: { name: 'string', required: false },
             description: 'Подпись в поле для ввода ответа'
         },
-        required: {
-            type: { name: 'boolean', required: false },
-            defaultValue: false,
-            description: 'Поле обязательно для ввода'
-        },
         min: {
             type: { name: 'number', required: false },
             description: 'Минимум'
@@ -22,6 +17,14 @@ const meta: Meta<typeof InputNumber> = {
         max: {
             type: { name: 'number', required: false },
             description: 'Максимум'
+        },
+        error: {
+            required: false,
+            description: 'Наличие ошибки'
+        },
+        integer: {
+            required: false,
+            description: 'Возможность вводить только целые числа'
         },
         onChange: {
             required: false,

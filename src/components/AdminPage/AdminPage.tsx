@@ -25,7 +25,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     getData<IData<IGenre[]>>(Urls.SERVER_PORT, Urls.ALL_GANRES)
-      .then(data => setGenres(data.items));
+      .then(data => data !== null && setGenres(data.items));
   }, []);
 
   return (

@@ -9,9 +9,8 @@ import ru from "@/locales/content/ru";
 import en from "@/locales/content/en";
 
 interface ContentDescriptonProps {
-  tagline: string;
-  description: string | null;
-  type: string;
+  tagline?: string | null;
+  description?: string | null;
   textClass: string;
   borderedClass: string;
 }
@@ -31,9 +30,21 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
       </div>
 
       <div className={styles.description}>
-        {getParagraphs(props.description).map((paragraph, index) => {
-          if (index > 0)
+        {
+          props.description !== undefined && props.description !== null &&
+          getParagraphs(props.description).map((paragraph, index) => {
+            if (index > 0)
+              return (
+                <p
+                  key={index}
+                  className={styles.text}
+                  hidden={hidden}
+                >
+                  {paragraph}
+                </p>
+              );
             return (
+<<<<<<< HEAD
               <p  key={index}   className={styles.text}  hidden={hidden}  >
                 {paragraph}
               </p>
@@ -45,6 +56,17 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
           );
         }
         )}
+=======
+              <p
+                key={index}
+                className={styles.text}
+              >
+                {paragraph}
+              </p>
+            );
+          }
+          )}
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
       </div>
 
       <div className={styles.props} hidden={hidden}>
@@ -77,7 +99,11 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
         className={styles.sign}
         onClick={() => setHidden(!hidden)}
       >
+<<<<<<< HEAD
         {hidden ? `${t.details} ${props.type.toLowerCase()}е` : t.collapse}
+=======
+        {hidden ? "Детали о фильме" : "Свернуть детали"}
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
       </p>
 
     </>

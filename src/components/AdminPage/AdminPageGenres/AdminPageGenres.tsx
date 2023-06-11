@@ -17,7 +17,7 @@ interface AdminPageGenresProps {
 export default function AdminPageGenres(props: AdminPageGenresProps) {
 
   const [genre, setGenre] = useState<IGenre>();
-  const [upadatedGenre, setUpadatedGenre] = useState<{ name: string, translate: string | null }>();
+  const [upadatedGenre, setUpadatedGenre] = useState<{ name: string, translate?: string | null }>();
 
   function updateGenre() {
 

@@ -13,11 +13,6 @@ const meta: Meta<typeof Search> = {
             type: 'string',
             description: 'Подпись в поле для ввода ответа'
         },
-        required: {
-            type: { name: 'boolean', required: false },
-            defaultValue: false,
-            description: 'Обязательный для ввода'
-        },
         addItem: {
             required: false,
             description: 'Действие при добавлении варианта выбора'
@@ -26,7 +21,12 @@ const meta: Meta<typeof Search> = {
             description: 'Функция для определения способа отображения элементов списка'
         },
         compareItem: {
+            required: false,
             description: 'Функция для определения способа фильтрации списка по введеному тексту'
+        },
+        onChange: {
+            required: false,
+            description: 'Действие при изменении текста в поле для ввода'
         }
     }
 };

@@ -12,9 +12,13 @@
   column-gap: 36px;
   row-gap: 24px;
   grid-template-areas:
-    "trailer title" "trailer actors" "trailer tagline"
+    "trailer title"
+    "trailer actors"
+    "trailer tagline"
     "buttons description"
-    ". props" ". sign" ". raiting";
+    ". props"
+    ". sign"
+    ". raiting";
   padding-top: 24px;
 }
 
@@ -23,20 +27,19 @@
 }
 
 .devices {
-  display: flex;
+  display: grid;
+  grid-template-columns: calc(50% - 12px) calc(50% - 12px);
+  gap: 24px;
   align-items: center;
-  justify-content: space-between;
   margin: 48px 0 24px;
 }
 
 .actors {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  height: 101px;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   margin: 0 12px;
   grid-area: actors;
+  overflow: hidden;
 }
 
 .title {
@@ -92,8 +95,8 @@
 @media (max-width: 969px) {
 
   .devices {
-    flex-direction: column;
-    gap: 24px;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
     justify-content: flex-start;
   }
 }
@@ -112,5 +115,26 @@
       "sign"
       "raiting"
       "props";
+  }
+}
+
+@media (max-width: 399px) {
+
+  .actors {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0;
+  }
+}
+
+@media (max-width: 349px) {
+
+  .actors {
+    grid-template-columns: 1fr 1fr 1fr 1fr 0 0;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .actors {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0;
   }
 }

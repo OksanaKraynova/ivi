@@ -12,17 +12,17 @@ export default function ContentExtraHeder(props: ContentExtraHederProps) {
   const extraProps = {
     Создатели:
     {
-      title: `${props.content.name}: актеры и создатели ${props.content.type.toLowerCase()}а`,
+      title: `${props.content.name}: актеры и создатели фильма`,
       index: 0
     },
     Отзывы:
     {
-      title: `Отзывы на ${props.content.type.toLowerCase()} ${props.content.name}`,
+      title: `Отзывы на фильм ${props.content.name}`,
       index: 1
     },
     Трейлеры:
     {
-      title: `Трейлеры к ${props.content.type.toLowerCase()}у ${props.content.name} смотреть онлайн`,
+      title: `Трейлеры к фильму ${props.content.name} смотреть онлайн`,
       index: 2
     }
   }
@@ -65,11 +65,11 @@ export default function ContentExtraHeder(props: ContentExtraHederProps) {
             {link}
             {
               index === 1 &&
-              <p className={styles.counter}>{props.content.comments.length}</p>
+              <p className={styles.counter}>{props.content.count}</p>
             }
             {
               index === 2 &&
-              <p className={styles.counter}>?!</p>//количество трейлеров
+              <p className={styles.counter}>2</p>
             }
           </div>
         )}

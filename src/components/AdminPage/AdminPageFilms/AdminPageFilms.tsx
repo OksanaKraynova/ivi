@@ -1,59 +1,27 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
 import IGenre from '@/types/IGenre';
-import Select from '../../Select/Select';
 import AdminPageUpdateName from '../AdminPageUpdateName/AdminPageUpdateName';
-import InputText from '../../InputText/InputText';
 import Search from '../../Search/Search';
-import DataBlock from '../../DataBlock/DataBlock';
-import IActor from '@/types/IActor';
-import Button from '../../Button/Button';
-import TextArea from '../../TextArea/TextArea';
 import styles from './AdminPageFilms.module.scss';
 import downIcon from "@/public/icons/down.svg"
-import InputNumber from '../../InputNumber/InputNumber';
 import IContent from '@/types/IContent';
 import ICountry from '@/types/ICountry';
 import getData from '@/src/functions/getData';
 import IData from '@/types/IData';
 import Urls from '@/types/Urls';
 import sendData from '@/src/functions/sendData';
+<<<<<<< HEAD
 import InputFile from '../../InputFile/InputFile';
 import { useRouter } from 'next/router';
 import ru from '@/locales/admin/ru';
 import en from '@/locales/admin/en';
+=======
+import AdminPageCreateFilm from '../AdminPageCreateFilm/AdminPageCreateFilm';
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
 
 const ages: string[] = ["0+", "6+", "12+", "18+"];
-
-interface Filled {
-  name: boolean,
-  year: boolean,
-  directors: boolean,
-  actors: boolean,
-  countries: boolean,
-  ganres: boolean,
-  film_time: boolean,
-  age: boolean,
-}
-
-interface collection<T> {
-  collection: T[];
-}
-
-type IContentPost = {
-  name: string,
-  name_translate: string | null,
-  type: string,
-  year: number,
-  film_time: string,
-  age: string,
-  slogan: string,
-  description: string | null,
-  rating: number,
-  estimation: number,
-  video_quality: string | null,
-}
 
 interface AdminPageFilmsProps {
   hidden: boolean;
@@ -62,6 +30,7 @@ interface AdminPageFilmsProps {
 
 export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
+<<<<<<< HEAD
   const defaultFilm: IContentPost = {
     name: "",//
     name_translate: null,
@@ -89,68 +58,30 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
   const router = useRouter()
   const { locale } = router
   const t = locale === 'ru' ? ru : en
+=======
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
   const [hidden, setHidden] =
     useState<{ update: boolean, create: boolean }>({ update: true, create: true });
 
+  const [films, setFilms] = useState<IContent[]>([]);
+  const [filmSearch, setFilmSearch] = useState<string>("");
   const [countries, setCountries] = useState<ICountry[]>([]);
-  const [actors, setActors] = useState<IActor[]>([]);
-  const [directors, setDirectors] = useState<IActor[]>([]);
 
   const [film, setFilm] = useState<IContent>();
-  const [upadatedFilm, setUpdatedFilm] = useState<{ name: string, name_translate: string | null }>();
+  const [upadatedFilm, setUpdatedFilm] = useState<{ name: string, name_translate?: string | null }>();
 
-  const [newFilm, setNewFilm] = useState<IContentPost>(defaultFilm);
-  const [files, setFiles] = useState<FormData>(new FormData());
-  const [filmDirectors, setFilmDirectors] = useState<IActor[]>([]);
-  const [filmActors, setFilmActors] = useState<IActor[]>([]);
-  const [filmGenres, setFilmGenres] = useState<IGenre[]>([]);
-  const [filmCountries, setFilmCountries] = useState<ICountry[]>([]);
+  let timerFilm: NodeJS.Timeout;
 
-  const [filled, setFilled] = useState<Filled>(defaulFilled);
-  const [sending, setSending] = useState<boolean>(false);
+  useEffect(() => {
+    timerFilm = setTimeout(() => filmSearch.length > 2 &&
+      getData<IData<IContent[]>>(Urls.SERVER_PORT, Urls.ALL_MOVIES, { search: filmSearch })
+        .then(data => data !== null && setFilms(data.items)), 800);
+  }, [filmSearch]);
 
   useEffect(() => {
     getData<IData<ICountry[]>>(Urls.SERVER_PORT, Urls.ALL_COUNTRIES)
-      .then(data => setCountries(data.items));
+      .then(data => data !== null && setCountries(data.items));
   }, []);
-
-  function searchCreators(value: string, job: "actor" | "director") {
-    value.length > 2 ?
-      // getData<IData<IActor[]>>(Urls.SERVER_PORT, Urls.ALL_PERSONS_FILTER, { search: value })
-      //   .then(data => setActors(data.items)) :
-      getData<collection<IActor>>(Urls.SERVER_PORT, Urls.ALL_PERSONS_FILTER, { search: value })
-        .then(data => job === "actor" ? setActors(data.collection) : setDirectors(data.collection)) :
-      job === "actor" ? setActors([]) : setDirectors([]);
-  }
-
-  function createFilm() {
-
-    if (Object.values(filled).includes(false)) {
-      setSending(true);
-      return;
-    }
-
-    const postFilm = {
-      countries: filmCountries.map(country => country.id),
-      ganres: filmGenres.map(genre => genre.id),
-      actors: filmActors.map(actor => actor.id),
-      directors: filmDirectors.map(director => director.id),
-      ...newFilm,
-    }
-
-    sendData("post", Urls.ONE_MOVIE, postFilm)
-      .then(status => console.log(status))
-      .catch(error => console.log(error));
-
-    setNewFilm(defaultFilm);
-    setFilmDirectors([]);
-    setFilmActors([]);
-    setFilmGenres([]);
-    setFilmCountries([]);
-    setFiles(new FormData());
-    setFilled(defaulFilled);
-    setSending(false);
-  }
 
   function updateFilm() {
 
@@ -184,12 +115,6 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
     setUpdatedFilm(undefined);
   }
 
-  function sendFile() {
-    sendData("post", Urls.UPLOAD_FILES, files)
-      .then(status => console.log(status))
-      .catch(error => console.log(error));
-  }
-
   return (
 
     <div className={styles.container} hidden={props.hidden}>
@@ -214,18 +139,19 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       <div className={styles.box} hidden={hidden.update}>
 
-        {/* <Search<IContent>
+        <Search<IContent>
           placeholder='Фильм'
-          options={allGenres.map(item => item.name)}
+          options={films}
+          onChange={(event) => {
+            clearTimeout(timerFilm);
+            setFilmSearch(event.target.value);
+          }}
           addItem={film => {
             setFilm(film);
-            setUpdateFilm(film);
+            setUpdatedFilm(film);
           }}
           renderItem={film => film.name}
-          compareItem={(film, value) => film.name.includes(value) ||
-            (film.name_translate !== null && film.name_translate.includes(value))
-          }
-        /> */}
+        />
 
         {
           upadatedFilm !== undefined && film !== undefined &&
@@ -260,6 +186,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       </div>
 
+<<<<<<< HEAD
       <div className={styles.box} hidden={hidden.create}>
 
         <div className={styles.inputBox}>
@@ -465,6 +392,14 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         </div>
 
       </div>
+=======
+      <AdminPageCreateFilm
+        genres={props.genres}
+        ages={ages}
+        countries={countries}
+        hidden={hidden.create}
+      />
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
 
     </div>
 

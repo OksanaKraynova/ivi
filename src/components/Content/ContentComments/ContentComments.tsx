@@ -18,22 +18,32 @@ interface ContentCommentsProps {
 }
 
 export default function ContentComments(props: ContentCommentsProps) {
+<<<<<<< HEAD
   const router = useRouter()
   const { locale } = router
   const t = locale === 'ru' ? ru : en
   const commentsBlock = props.content.comments.length > 0 ?
+=======
+
+  const commentsBlock = props.content.comments !== null &&
+    props.content.comments !== undefined &&
+    props.content.comments.length > 0 ?
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
 
     <MovieBlock<IComment>
       blockClass={styles.block}
       spaceBetween={24}
       slidesPerView={4}
-      listCardsProps={props.content.comments}
+      listCardsProps={props.content.comments.filter(comment => comment.parent === undefined || comment.parent == null)}
       breakpoints={
         {
-          0: { slidesPerView: 1, spaceBetween: 24 },
-          600: { slidesPerView: 2, spaceBetween: 24 },
-          900: { slidesPerView: 3, spaceBetween: 24 },
-          1200: { slidesPerView: 4, spaceBetween: 24 },
+          0: { slidesPerView: 1, spaceBetween: 0 },
+          480: { slidesPerView: 1.5, spaceBetween: 12 },
+          700: { slidesPerView: 2, spaceBetween: 12 },
+          800: { slidesPerView: 2.5, spaceBetween: 18 },
+          1000: { slidesPerView: 3, spaceBetween: 18 },
+          1090: { slidesPerView: 3.5, spaceBetween: 24 },
+          1280: { slidesPerView: 4, spaceBetween: 24 },
         }
       }
       renderItem={(item) => <Comment comment={item} type='preview' />}
@@ -48,10 +58,20 @@ export default function ContentComments(props: ContentCommentsProps) {
   return (
     <>
       <div className={styles.titleBox}>
+<<<<<<< HEAD
         <Link className={classNames(props.linkClass, styles.title)}
           href={`/watch/${props.content.id}/comments`}   >
           {t.comments}
           <p className={styles.count}>{props.content.comments.length}</p>
+=======
+
+        <Link
+          className={classNames(props.linkClass, styles.title)}
+          href={`/watch/${props.content.id}/comments`}
+        >
+          Комментарии
+          <p className={styles.count}>{props.content.count}</p>
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
         </Link>
 
         <Button  variant='minimal'

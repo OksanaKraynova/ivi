@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import ru from "@/locales/content/ru";
 import en from "@/locales/content/en";
 
-const trailer = "https://www.youtube.com/embed/D3TR8-LAz8M";
+const trailer = "https://www.youtube.com/embed/D3TR8-LAz8M?controls=0";
 
 export default function ContentTrailer() {
   const router = useRouter()
@@ -19,7 +19,14 @@ export default function ContentTrailer() {
   return (
     <>
       <div className={styles.box}>
+<<<<<<< HEAD
         <iframe  className={styles.video} src={trailer}  allowFullScreen  />
+=======
+
+        <iframe className={styles.video} src={trailer} allowFullScreen />
+
+
+>>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
         <div className={styles.size}>
           <Image className={styles.icon} src={fullSizeIcon} alt='full size' />
           <p className={styles.text}>{t.expand}</p>
