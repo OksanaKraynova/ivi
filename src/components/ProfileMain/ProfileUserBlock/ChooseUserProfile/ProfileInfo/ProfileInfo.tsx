@@ -11,6 +11,9 @@ import DarkBlueWrapper from "../../../../DarkBlueWrapper/DarkBlueWrapper";
 import Link from "next/link";
 import ProfileUsername from "./ProfileUsername/ProfileUsername";
 import ProfileUserContacts from "./ProfileUserContacts/ProfileUserContacts";
+import { useRouter } from 'next/router';
+import ru from '@/locales/profile/ru';
+import en from '@/locales/profile/en';
 
 interface Props {
     profile: Profile;
@@ -26,6 +29,9 @@ const ProfileInfo = ({ profile }: Props) => {
 
     const [authLogin, { isLoading, error }] = useLoginMutation();
 
+    const router = useRouter()
+    const { locale } = router
+    const t = locale === 'ru' ? ru : en
     const getUser = async () => {
         const res = await authLogin({ username, password });
         return res;
@@ -63,9 +69,7 @@ const ProfileInfo = ({ profile }: Props) => {
                     <div className={styles.edit}>
                         <Link href="/profile/profile_info" className={styles.editProfileBtn + " container"}>
                             <img alt='edit' src='/icons/profile/pencil.svg' />
-                            <span >
-                                Редактировать профлиль
-                            </span>
+                            <span >{t.edit}  </span>
                         </Link>
                     </div>
                 </DarkBlueWrapper>

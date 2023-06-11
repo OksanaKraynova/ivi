@@ -19,21 +19,14 @@ export default function ContentTrailer(props: ContentTrailerProps) {
   const trailer = "https://www.youtube.com/embed/D3TR8-LAz8M?controls=0";
 
   return (
-
     <>
-
       <div className={styles.box}>
-
-        <iframe className={styles.video} src={trailer} allowFullScreen />
-
-
+        <iframe  className={styles.video} src={trailer}  allowFullScreen  />
         <div className={styles.size}>
           <Image className={styles.icon} src={fullSizeIcon} alt='full size' />
           <p className={styles.text}>{language.open}</p>
         </div>
-
       </div>
-
       <div className={styles.buttons}>
 
         <Button variant={"small"} color="lightGrey">
@@ -42,15 +35,12 @@ export default function ContentTrailer(props: ContentTrailerProps) {
             <p className={styles.text}>{language.trailer}</p>
           </div>
         </Button>
-
         <Button variant={"small"} color="lightGrey">
           <Image className={styles.icon} src={bookmarkIcon} alt='bookmark' />
         </Button>
-
         <Button variant={"small"} color="lightGrey">
           <Image className={styles.icon} src={shareIcon} alt='share' />
         </Button>
-
         <Button variant={"small"} color="lightGrey">
           <div className={styles.button}>
             <Image className={styles.icon} src={freeMoviesIcon} alt='free' />

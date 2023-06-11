@@ -3,12 +3,18 @@ import styles from './chooseUserProfile.module.scss'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import { profiles, testProfile } from '../../profileData';
 import SubProfile from '../../SubProfiles/SubProfile';
+import { useRouter } from 'next/router';
+import ru from '@/locales/profile/ru';
+import en from '@/locales/profile/en';
 
 const ChooseUserProfile = () => {
+    const router = useRouter()
+    const { locale } = router
+    const t = locale === 'ru' ? ru : en
     return (
         <div>
             <div className={styles.chooseProfile}>
-                <p className={styles.text}>Выбор профиля</p>
+                <p className={styles.text}>{t.choose}</p>
                 <div className={styles.row}>
                     {profiles.map((profile) => (
                         <SubProfile key={profile.id} profile={profile} />

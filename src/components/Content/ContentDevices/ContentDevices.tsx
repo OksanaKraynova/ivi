@@ -5,7 +5,6 @@ import Urls from '@/types/Urls';
 import styles from './ContentDevices.module.scss';
 import idadImg from "@/public/img/ipad-without-poster.png";
 import tvImg from "@/public/img/tv-without-poster.png";
-import noPosterImg from "@/public/img/no-poster.jpg";
 import ru from '@/locales/content/ru';
 import en from '@/locales/content/en';
 
@@ -27,7 +26,6 @@ export default function ContentDevices(props: ContentDevicesProps) {
     props.content.coverImage && props.content.coverImage.length > 0 ?
       fileUrl + props.content.coverImage[0].file_path :
       noPosterImg.src;
-
   return (
 
     <>

@@ -1,17 +1,18 @@
 import React from 'react';
 import styles from './dopButtons.module.scss'
 import DarkBlueWrapper from '../../DarkBlueWrapper/DarkBlueWrapper';
-
-const list = [
-    { title: 'Подписки', desc: 'Перейти к подключению' },
-    { title: 'Сертификаты и промокоды', desc: 'Активировать' },
-    { title: 'Счет Иви', desc: '0 €' },
-]
+import { useRouter } from 'next/router';
+import ru from '@/locales/profile/ru';
+import en from '@/locales/profile/en';
 
 const DopButtons = () => {
+    
+    const router = useRouter()
+    const { locale } = router
+    const t = locale === 'ru' ? ru : en
     return (
         <div className={styles.row}>
-            {list.map(el => (
+            {t.list.map(el => (
                 <DarkBlueWrapper className={styles.card} key={el.title}>
                     <div className={styles.title} >{el.title}</div>
                     <div className={styles.subString}>

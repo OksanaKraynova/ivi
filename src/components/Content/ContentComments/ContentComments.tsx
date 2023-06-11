@@ -7,8 +7,9 @@ import IContent from '@/types/IContent';
 import IComment from '@/types/IComment';
 import styles from './ContentComments.module.scss';
 import 'swiper/css';
-import ru from '@/locales/content/ru';
-import en from '@/locales/content/en';
+import { useRouter } from "next/router";
+import ru from "@/locales/content/ru";
+import en from "@/locales/content/en";
 
 interface ContentCommentsProps {
   content: IContent;
@@ -18,13 +19,16 @@ interface ContentCommentsProps {
 }
 
 export default function ContentComments(props: ContentCommentsProps) {
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
+  const commentsBlock = props.content.comments.length > 0 ?
   const language = props.locale === "en" ? en : ru;
   const name = props.locale === "en" && props.content.name_translate ?
     props.content.name_translate : props.content.name;
 
   const commentsBlock = props.content.comments && props.content.comments.length > 0 ?
-
+        
     <MovieBlock<IComment>
       blockClass={styles.block}
       spaceBetween={24}
@@ -47,14 +51,16 @@ export default function ContentComments(props: ContentCommentsProps) {
     :
 
     <Link className={styles.commentAdd} href={`/watch/${props.content.id}/comments`}>
-      {language.noReviews}
+      {t.reviews}
     </Link>
 
   return (
-
     <>
-
       <div className={styles.titleBox}>
+        <Link className={classNames(props.linkClass, styles.title)}
+          href={`/watch/${props.content.id}/comments`}   >
+          {t.comments}
+          <p className={styles.count}>{props.content.comments.length}</p>
 
         <Link
           className={classNames(props.linkClass, styles.title)}
@@ -64,19 +70,15 @@ export default function ContentComments(props: ContentCommentsProps) {
           <p className={styles.count}>{props.content.count}</p>
         </Link>
 
-        <Button
-          variant='minimal'
+        <Button  variant='minimal'
           href={`/watch/${props.content.id}/comments`}
           effect="bordered">
-          {language.leaveComment}
+          {t.leave}
         </Button>
-
       </div>
 
       <p className={props.textClass}>{`${language.toMovie} «${name}»`}</p>
-
       {commentsBlock}
-
     </>
   );
 };
