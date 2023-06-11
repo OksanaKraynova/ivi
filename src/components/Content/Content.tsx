@@ -13,7 +13,6 @@ import ContentComments from "./ContentComments/ContentComments";
 import ContentDevices from "./ContentDevices/ContentDevices";
 import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
-import { useRouter } from "next/router";
 import ru from "@/locales/content/ru";
 import en from "@/locales/content/en";
 
@@ -22,13 +21,6 @@ interface ContentProps {
 }
 
 export default function Content(props: ContentProps) {
-  const router = useRouter()
-  const { locale } = router
-  const t = locale === 'ru' ? ru : en
-  const firstCrumbs = { text: "Мой Иви", link: "/" };
-  const secondCrumbs = [{ text: `${props.content.type}ы`, link: "" }];
-  props.content.ganres.length > 0 &&
-    secondCrumbs.push({ text: props.content.ganres[0], link: "" });
 
   const { locale } = useRouter();
   const language = locale === "en" ? en : ru;
@@ -36,7 +28,7 @@ export default function Content(props: ContentProps) {
   if (props.content === null) {
     return (
       <div className={classNames(styles.container, "container")}>
-        {t.empty}
+        Пусто
       </div>
     )
   };
