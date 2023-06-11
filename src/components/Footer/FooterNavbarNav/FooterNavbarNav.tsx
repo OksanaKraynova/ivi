@@ -17,26 +17,29 @@ interface FooterNavbarNavProps {
 export default function FooterNavbarNav(props: FooterNavbarNavProps) {
 
   const [closed, setClosed] = useState<boolean>(true);
-  const router = useRouter()
-  const { locale } = router
-  const t = locale === 'ru' ? ru : en
+  const { locale } = useRouter();
+  const t = locale === 'ru' ? ru : en;
+
   return (
 
     <div className={styles.box}>
+
       {t.navList.map((item, index) =>
-        <Button key={index} variant={'minimal'} href={item.link}>
+        <Button key={index} variant={'smallest'} href={item.link}>
           <div className={item.text === props.activePage ? classNames(styles.button, styles.active) : styles.button}>
             <Image className="icon" src={item.icon} alt='icon' width={21} height={21} />
             <p className={styles.text}>{item.text}</p>
           </div>
         </Button>
       )}
-      <Button   variant={'minimal'}  onClick={() => { setClosed(!closed); props.onClick() }} >
+
+      <Button variant={'smallest'} onClick={() => { setClosed(!closed); props.onClick() }} >
         <div className={closed ? styles.button : classNames(styles.button, styles.active)}>
           <Image className="icon" src={closed ? moreIcon : closeIcon} alt='icon' width={21} height={21} />
           <p className={styles.text}>{closed ? t.still : t.close}</p>
         </div>
       </Button>
     </div>
+
   );
 };

@@ -5,45 +5,37 @@ import Urls from '@/types/Urls';
 import styles from './ContentDevices.module.scss';
 import idadImg from "@/public/img/ipad-without-poster.png";
 import tvImg from "@/public/img/tv-without-poster.png";
-<<<<<<< HEAD
-import { useRouter } from "next/router";
-import ru from "@/locales/content/ru";
-import en from "@/locales/content/en";
-=======
-import noPosterImg from "@/public/img/no-poster.jpg";
->>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface ContentDevicesProps {
   content: IContent;
   titleClass: string;
   textClass: string;
+  locale?: string;
 }
 
 export default function ContentDevices(props: ContentDevicesProps) {
 
-  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
-<<<<<<< HEAD
-  const router = useRouter()
-  const { locale } = router
-  const t = locale === 'ru' ? ru : en
-=======
-  const posterSrc = (props.content.coverImage !== undefined &&
-    props.content.coverImage !== null &&
-    props.content.coverImage.length > 0) ?
-    fileUrl + props.content.coverImage[0].file_path :
-    noPosterImg.src;
+  const language = props.locale === "en" ? en : ru;
+  const name = props.locale === "en" && props.content.name_translate ?
+    props.content.name_translate : props.content.name;
 
->>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+  const posterSrc = props.content.cover_img ? fileUrl + props.content.cover_img :
+    props.content.coverImage && props.content.coverImage.length > 0 ?
+      fileUrl + props.content.coverImage[0].file_path :
+      noPosterImg.src;
   return (
 
     <>
       <div className={styles.box}>
 
-        <p className={props.titleClass}>{`Cмотреть «${props.content.name}» на всех устройствах`}</p>
-        <p className={props.textClass}>{t.desc}</p>
+        <p className={props.titleClass}>{`${language.watch} «${name}» ${language.devices}`}</p>
+        <p className={props.textClass}>{language.application}</p>
 
         <div className={styles.button}>
-          <Button variant='medium' href={"https://www.ivi.ru/devices"} color={'pink'}>{t.on}</Button>
+          <Button variant='medium' href={"https://www.ivi.ru/devices"} color={'pink'}>{language.connect}</Button>
         </div>
 
       </div>

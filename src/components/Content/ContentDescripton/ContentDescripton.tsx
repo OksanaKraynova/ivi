@@ -13,6 +13,7 @@ interface ContentDescriptonProps {
   description?: string | null;
   textClass: string;
   borderedClass: string;
+  locale?: string;
 }
 
 export default function ContentDescripton(props: ContentDescriptonProps) {
@@ -31,7 +32,7 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
 
       <div className={styles.description}>
         {
-          props.description !== undefined && props.description !== null &&
+          props.description &&
           getParagraphs(props.description).map((paragraph, index) => {
             if (index > 0)
               return (
@@ -44,7 +45,6 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
                 </p>
               );
             return (
-<<<<<<< HEAD
               <p  key={index}   className={styles.text}  hidden={hidden}  >
                 {paragraph}
               </p>
@@ -56,7 +56,6 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
           );
         }
         )}
-=======
               <p
                 key={index}
                 className={styles.text}
@@ -66,12 +65,22 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
             );
           }
           )}
->>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
       </div>
 
       <div className={styles.props} hidden={hidden}>
 
         <div className={styles.row}>
+          <p className={styles.propsName}>{language.languages}</p>
+          <p className={styles.propsText}>{language.russian}</p>
+        </div>
+
+        <div className={styles.row}>
+          <p className={styles.propsName}>{language.subtitles}</p>
+          <p className={styles.propsText}>{language.english}, {language.russian}</p>
+        </div>
+
+        <div className={styles.row}>
+          <p className={styles.propsName}>{language.quality}</p>
           <p className={styles.propsName}>{t.languages}</p>
           <p className={styles.propsText}>{t.russian}</p>
         </div>
@@ -99,11 +108,9 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
         className={styles.sign}
         onClick={() => setHidden(!hidden)}
       >
-<<<<<<< HEAD
+        {hidden ? language.about : language.close}
         {hidden ? `${t.details} ${props.type.toLowerCase()}е` : t.collapse}
-=======
         {hidden ? "Детали о фильме" : "Свернуть детали"}
->>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
       </p>
 
     </>

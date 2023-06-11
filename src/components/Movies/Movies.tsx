@@ -20,7 +20,6 @@ const Movies = () => {
         });
 
        
-        
     return (
         <div className={styles.wrapper}>
             <Crumb />

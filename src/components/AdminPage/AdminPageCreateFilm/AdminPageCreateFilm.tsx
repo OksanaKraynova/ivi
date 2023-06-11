@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import IGenre from '@/types/IGenre';
 import Select from '../../Select/Select';
@@ -13,9 +14,9 @@ import InputNumber from '../../InputNumber/InputNumber';
 import ICountry from '@/types/ICountry';
 import getData from '@/src/functions/getData';
 import Urls from '@/types/Urls';
+import IData from '@/types/IData';
 import sendData from '@/src/functions/sendData';
 import styles from './AdminPageCreateFilm.module.scss';
-import IData from '@/types/IData';
 
 interface Filled {
   name: boolean,
@@ -47,10 +48,14 @@ interface AdminPageCreateFilmProps {
   ages: string[];
   countries: ICountry[];
   hidden: boolean;
+  status?: string;
   onSubmit?: () => void;
 }
 
 export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
+
+  const { locale } = useRouter();
+  const english = locale === 'en' ? true : false;
 
   const defaulFilled: Filled = {
     name: false,
@@ -138,15 +143,6 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
     setFilmFiles(new FormData());
     setFilled(defaulFilled);
     setSendingError(false);
-
-    const form = document.querySelector<HTMLInputElement>('[data-custom-form="Form-Create-Film"]');
-    const inputs = form?.querySelectorAll<HTMLInputElement>('[data-custom-form="Input"]');
-    const placeholders = form?.querySelectorAll<HTMLDivElement>('[data-custom-form="Placeholder"]');
-
-    inputs !== undefined &&
-      inputs.forEach(element => element.value = "");
-    placeholders !== undefined &&
-      placeholders.forEach(element => element.className = element.className.replace(/ (\w+)_overText__(\w+)/, ""));
   }
 
   function sendFile() {
@@ -158,7 +154,6 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
   return (
 
     <div
-      data-custom-form="Form-Create-Film"
       className={styles.box}
       hidden={props.hidden}
     >
@@ -200,7 +195,6 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
       <div className={styles.inputBox}>
         <Select
           placeholder='Жанр'
-          value={filmGenres.map(genre => genre.name).join(", ")}
           error={!filled.ganres && sendingError}
           options={props.genres.map(item => item.name)}
           type='multiple'
@@ -216,7 +210,6 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
         <Select
           placeholder="Страна"
-          value={filmCountries.map(genre => genre.name).join(", ")}
           error={!filled.countries && sendingError}
           options={props.countries.map(item => item.name)}
           type='multiple'
@@ -245,7 +238,6 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
         <Select
           placeholder='Возрастной рейтинг'
-          value={newFilm.age}
           error={!filled.age && sendingError}
           options={props.ages}
           type='one'
@@ -287,7 +279,7 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         {
           filmActors.length > 0 &&
           <DataBlock
-            items={filmActors.map(actor => `${actor.name} ${actor.translate}`)}
+            items={filmActors.map(actor => english && actor.translate ? actor.translate : actor.name)}
             placeholder='Актеры'
             deliteItem={index => setFilmActors(filmActors.filter((actor, currentIndex) => currentIndex !== index))}
           />
@@ -314,7 +306,7 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         {
           filmDirectors.length > 0 &&
           <DataBlock
-            items={filmDirectors.map(director => `${director.name} ${director.translate}`)}
+            items={filmDirectors.map(director => english && director.translate ? director.translate : director.name)}
             placeholder='Режиссеры'
             deliteItem={index => setFilmDirectors(filmDirectors.filter((director, currentIndex) => currentIndex !== index))}
           />
@@ -345,7 +337,7 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         </Button>
       </div>
 
-      <div className={styles.button}>
+      <div className={styles.inputBox}>
         <Button
           variant="long"
           effect="bordered"
@@ -357,6 +349,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         >
           Создать
         </Button>
+
+        <p className={styles.status}>{props.status}</p>
       </div>
 
     </div>

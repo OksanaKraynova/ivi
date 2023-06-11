@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 interface ButtonProps {
     href?: string;
-    variant: "minimal" | "small" | "medium" | "large" | "huge" | "circle" | "square" | "long";
+    variant: "smallest" | "minimal" | "small" | "medium" | "large" | "huge" | "circle" | "square" | "long";
     color?: "darkBlue" | "pink" | "pinkGradient" | "lightGrey" | "img";
     effect?: "bordered" | "shine";
     disabled?: boolean;

@@ -26,6 +26,7 @@ const ages: string[] = ["0+", "6+", "12+", "18+"];
 interface AdminPageFilmsProps {
   hidden: boolean;
   genres: IGenre[];
+  countries: ICountry[];
 }
 
 export default function AdminPageFilms(props: AdminPageFilmsProps) {
@@ -65,7 +66,6 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
   const [films, setFilms] = useState<IContent[]>([]);
   const [filmSearch, setFilmSearch] = useState<string>("");
-  const [countries, setCountries] = useState<ICountry[]>([]);
 
   const [film, setFilm] = useState<IContent>();
   const [upadatedFilm, setUpdatedFilm] = useState<{ name: string, name_translate?: string | null }>();
@@ -78,17 +78,11 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         .then(data => data !== null && setFilms(data.items)), 800);
   }, [filmSearch]);
 
-  useEffect(() => {
-    getData<IData<ICountry[]>>(Urls.SERVER_PORT, Urls.ALL_COUNTRIES)
-      .then(data => data !== null && setCountries(data.items));
-  }, []);
-
   function updateFilm() {
 
     if (
-      upadatedFilm === undefined ||
-      film === undefined ||
-      (film?.name === upadatedFilm?.name && film?.name_translate === upadatedFilm?.name_translate)
+      !upadatedFilm || !film ||
+      (film.name === upadatedFilm.name && film.name_translate === upadatedFilm.name_translate)
     ) return;
 
     sendData("patch", Urls.ONE_MOVIE + `/${film?.id}`, upadatedFilm)
@@ -101,11 +95,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
   function deliteFilm() {
 
-    if (
-      upadatedFilm === undefined ||
-      film === undefined ||
-      (film?.name === upadatedFilm?.name && film?.name_translate === upadatedFilm?.name_translate)
-    ) return;
+    if (!upadatedFilm || !film) return;
 
     sendData("delete", Urls.ONE_MOVIE + `/${film?.id}`)
       .then(status => console.log(status))
@@ -154,7 +144,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         />
 
         {
-          upadatedFilm !== undefined && film !== undefined &&
+          upadatedFilm && film &&
           <AdminPageUpdateName
             name={film.name}
             englishName={film.name_translate}
@@ -396,7 +386,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
       <AdminPageCreateFilm
         genres={props.genres}
         ages={ages}
-        countries={countries}
+        countries={props.countries}
         hidden={hidden.create}
       />
 >>>>>>> ad13b723301437059aeb44914d3a8e35be64c608

@@ -5,67 +5,39 @@ import TopCard from '../../TopCard/TopCard';
 import styles from './HomeTop.module.scss';
 import 'swiper/css';
 import topIcon from "../../../../public/icons/top.svg"
-import sample from "@/public/img/sample.jpg"
+import noImg from "@/public/img/no-image.png"
 import en from '@/locales/titles/en';
 import ru from '@/locales/titles/ru';
-
-const top = [
-  {
-    img: sample.src,
-    href: "",
-    index: 1,
-  },
-  {
-    img: sample.src,
-    href: "",
-    index: 2,
-  },
-  {
-    img: sample.src,
-    href: "",
-    index: 3,
-  },
-  {
-    img: sample.src,
-    href: "",
-    index: 4,
-  },
-  {
-    img: sample.src,
-    href: "",
-    index: 5,
-  }, {
-    img: sample.src,
-    href: "",
-    index: 6,
-  },
-  {
-    img: sample.src,
-    href: "",
-    index: 7,
-  },
-  {
-    img: sample.src,
-    href: "",
-    index: 8,
-  },
-  {
-    img: sample.src,
-    href: "",
-    index: 9,
-  },
-  {
-    img: sample.src,
-    href: "",
-    index: 10,
-  }
-];
+import { useEffect, useState } from 'react';
+import IContent from '@/types/IContent';
+import getData from '@/src/functions/getData';
+import IData from '@/types/IData';
+import Urls from '@/types/Urls';
 
 export default function HomeTop() {
 
-  const router = useRouter()
-  const { locale } = router
-  const t = locale === 'ru' ? ru : en
+  const { locale } = useRouter();
+  const languaget = locale === 'en' ? en : ru;
+
+  const limitMovies = 10;
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+
+  const [topList, setTopList] = useState<Parameters<typeof TopCard>[0][]>([]);
+
+  useEffect(() => {
+    getData<IData<IContent[]>>(Urls.SERVER_PORT, Urls.ALL_MOVIES, { sorting: "rating", limit: limitMovies })
+      .then(data => data &&
+        setTopList(data.items.map((content, index) => {
+          return {
+            img: content.cover_img ? fileUrl + content.cover_img :
+              content.coverImage && content.coverImage.length > 0 ? fileUrl + content.coverImage[0].file_path :
+                noImg.src,
+            href: `watch/${content.id}`,
+            index: index + 1
+          }
+        })))
+      .catch(error => console.log(error));
+  }, []);
 
   return (
 
@@ -73,7 +45,7 @@ export default function HomeTop() {
 
       <div className={styles.title}>
         <Image className="icon" src={topIcon} alt='top10' />
-        {t.week}
+        {languaget.week}
       </div>
 
       <MovieBlock<Parameters<typeof TopCard>[0]>
@@ -81,7 +53,7 @@ export default function HomeTop() {
         carsBlockClass={styles.slider}
         spaceBetween={24}
         slidesPerView={5}
-        listCardsProps={top}
+        listCardsProps={topList}
         breakpoints={
           {
             0: { slidesPerView: 1 },

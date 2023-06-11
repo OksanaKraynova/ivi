@@ -16,6 +16,7 @@ const meta: Meta<typeof LinkAvatar> = {
       description: 'Ссылка',
     },
     textUnderImg: {
+      type: 'string',
       description: 'Текст под аватаром',
     },
     textInsteadImg: {
@@ -59,7 +60,7 @@ type Story = StoryObj<typeof LinkAvatar>;
 
 export const Example: Story = {
   args: {
-    textUnderImg: ["Екатерина", "Гороховская"],
+    textUnderImg: "Екатерина Гороховская",
     href: '!#',
     img: "https://thumbs.dfs.ivi.ru/storage8/contents/1/d/350f6cb6a7ccc414fad70ebe3f27d9.jpg",
     form: "circle",

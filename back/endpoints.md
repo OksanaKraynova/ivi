@@ -127,7 +127,7 @@ API URL - http://localhost:8081
 ## 4. PERSONS
   ### GET MOVIE PERSONS WITH FILTER (V)
     - GET - /v1/persons/MOVIE_ID
-  
+
   ### GET PERSON BY ID (V)
     - GET - /v1/person/PERSON_ID
 
@@ -168,6 +168,6 @@ API URL - http://localhost:8081
 
   ### DELETE ALL ESSENCE FILES BY ESSENCE_ID (V)
     - DELETE - /v1/files/ESSENCE/ESSENCE_ID
-    
+
   ### DELETE FILE BY ID (V)
     - DELETE - /v1/file/FILE_ID

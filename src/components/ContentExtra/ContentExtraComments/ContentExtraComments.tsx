@@ -29,7 +29,7 @@ export default function ContentExtraComments(props: ContentExtraCommentsProps) {
       { movie_id: props.contentId, limit: commentsLimit, parent: 0, offset: offset }
     ).then(data => {
       data !== null && setComments([...comments, ...data.items.map(comment => addCommentTree(comment))]);
-      data !== null && data.count !== undefined && setCount(data.count);
+      data?.count && setCount(data.count);
     }).catch(error => console.log(error));
     setOffset(offset + commentsLimit);
   }
@@ -40,7 +40,7 @@ export default function ContentExtraComments(props: ContentExtraCommentsProps) {
     commentTree.childes = [];
 
     getData<IData<IComment[]>>(Urls.SERVER_PORT, Urls.ALL_COMMENTS, { parent: comment.id })
-      .then(data => data !== null && data.count !== undefined && data.count > 0 &&
+      .then(data => data !== null && data?.count && data.count > 0 &&
         data.items.forEach(item => commentTree.childes?.push(addCommentTree(item))))
       .catch(error => console.log(error));
 

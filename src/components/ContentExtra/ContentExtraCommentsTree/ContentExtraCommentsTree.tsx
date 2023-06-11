@@ -17,7 +17,7 @@ export default function ContentExtraCommentsTree(props: ContentExtraCommentsTree
       <Comment comment={props.comment} type="full" movietId={props.movietId} />
 
       {
-        props.comment.childes !== undefined &&
+        props.comment.childes &&
         props.comment.childes.map((comment, index) =>
           <Comment key={index} comment={comment} type="full" movietId={props.movietId} />
         )

@@ -32,8 +32,7 @@ export default function Search<T>(props: SearchProps<T>) {
           placeholder={props.placeholder}
           buttonIcon={searchIcon.src}
           onChange={event => {
-            props.compareItem !== undefined &&
-              setOptions(props.options.filter(item => props.compareItem!(item, event.target.value)));
+            props.compareItem && setOptions(props.options.filter(item => props.compareItem!(item, event.target.value)));
             props.onChange && props.onChange(event);
           }}
         />
@@ -50,7 +49,7 @@ export default function Search<T>(props: SearchProps<T>) {
             <p
               key={index}
               className={styles.option}
-              onClick={() => { props.addItem && props.addItem(item); console.log(item) }}
+              onClick={() => props.addItem && props.addItem(item)}
             >
               {props.renderItem(item)}
             </p>

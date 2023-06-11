@@ -1,21 +1,47 @@
 import React from 'react';
+import Image from 'next/image';
+import IContent from '@/types/IContent';
 import styles from './infoBlock.module.scss'
-import Rating from './Rating/Rating';
+import lines from '@/public/icons/lines.svg'
 
-const InfoBlock = () => {
+interface InfoBlockProps {
+    content: IContent;
+    modal: boolean;
+}
+
+const InfoBlock = (props: InfoBlockProps) => {
+
+    const className = props.modal ? styles.modal : styles.underImg;
+
     return (
-        <div className={styles.container} >
+        <div className={className} >
             <div className={styles.row}>
-                <span className={styles.num}>7,8</span>
-                <Rating />
+                {
+                    props.content.rating &&
+                    <>
+                        <span className={styles.num}>{props.content.rating}</span>
+                        <Image className={styles.icon} src={lines} alt='icon' width={28} height={28} />
+                    </>
+
+                }
+
             </div>
             <div className={styles.text}>
-                <span>2020,</span>
-                <span>США,</span><br />
-                <span>Драмы</span>
+                {
+                    props.content.year &&
+                    <span>{props.content.year}, </span>
+                }
+                {
+                    props.content.countries && props.content.countries.length > 0 &&
+                    <span>{props.content.countries[0]},</span>
+                }
+                {
+                    props.content.ganres && props.content.ganres.length > 0 &&
+                    <><br /><span>{props.content.ganres[0]}</span></>
+                }
             </div>
 
-            <div className={styles.time}>108 минут</div>
+            <div className={styles.time}>{props.content.duration?.replace(/ \/ .+/, "")}</div>
         </div>
     );
 };

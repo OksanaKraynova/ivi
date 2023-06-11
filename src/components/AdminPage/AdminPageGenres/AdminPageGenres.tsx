@@ -22,9 +22,8 @@ export default function AdminPageGenres(props: AdminPageGenresProps) {
   function updateGenre() {
 
     if (
-      upadatedGenre === undefined ||
-      genre === undefined ||
-      (genre?.name === upadatedGenre?.name && genre?.translate === upadatedGenre?.translate)
+      !upadatedGenre || !genre ||
+      (genre.name === upadatedGenre.name && genre.translate === upadatedGenre.translate)
     ) return;
 
     sendData("patch", Urls.ALL_GANRES + `/${genre?.id}`, upadatedGenre)
@@ -50,7 +49,7 @@ export default function AdminPageGenres(props: AdminPageGenresProps) {
       />
 
       {
-        upadatedGenre !== undefined && genre !== undefined &&
+        upadatedGenre && genre &&
         <AdminPageUpdateName
           name={genre.name}
           englishName={genre.translate}

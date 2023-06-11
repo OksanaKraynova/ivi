@@ -15,26 +15,25 @@ interface ContentCommentsProps {
   content: IContent;
   linkClass: string;
   textClass: string;
+  locale?: string;
 }
 
 export default function ContentComments(props: ContentCommentsProps) {
-<<<<<<< HEAD
   const router = useRouter()
   const { locale } = router
   const t = locale === 'ru' ? ru : en
   const commentsBlock = props.content.comments.length > 0 ?
-=======
+  const language = props.locale === "en" ? en : ru;
+  const name = props.locale === "en" && props.content.name_translate ?
+    props.content.name_translate : props.content.name;
 
-  const commentsBlock = props.content.comments !== null &&
-    props.content.comments !== undefined &&
-    props.content.comments.length > 0 ?
->>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
-
+  const commentsBlock = props.content.comments && props.content.comments.length > 0 ?
+        
     <MovieBlock<IComment>
       blockClass={styles.block}
       spaceBetween={24}
       slidesPerView={4}
-      listCardsProps={props.content.comments.filter(comment => comment.parent === undefined || comment.parent == null)}
+      listCardsProps={props.content.comments.filter(comment => !comment.parent || comment.parent === 0)}
       breakpoints={
         {
           0: { slidesPerView: 1, spaceBetween: 0 },
@@ -46,7 +45,7 @@ export default function ContentComments(props: ContentCommentsProps) {
           1280: { slidesPerView: 4, spaceBetween: 24 },
         }
       }
-      renderItem={(item) => <Comment comment={item} type='preview' />}
+      renderItem={(item) => <Comment comment={item} type='preview' movietId={props.content.id} />}
     />
 
     :
@@ -58,20 +57,17 @@ export default function ContentComments(props: ContentCommentsProps) {
   return (
     <>
       <div className={styles.titleBox}>
-<<<<<<< HEAD
         <Link className={classNames(props.linkClass, styles.title)}
           href={`/watch/${props.content.id}/comments`}   >
           {t.comments}
           <p className={styles.count}>{props.content.comments.length}</p>
-=======
 
         <Link
           className={classNames(props.linkClass, styles.title)}
           href={`/watch/${props.content.id}/comments`}
         >
-          Комментарии
+          {language.reviews}
           <p className={styles.count}>{props.content.count}</p>
->>>>>>> ad13b723301437059aeb44914d3a8e35be64c608
         </Link>
 
         <Button  variant='minimal'
@@ -80,7 +76,8 @@ export default function ContentComments(props: ContentCommentsProps) {
           {t.leave}
         </Button>
       </div>
-      <p className={props.textClass}>{`${t.about} «${props.content.name}»`}</p>
+
+      <p className={props.textClass}>{`${language.toMovie} «${name}»`}</p>
       {commentsBlock}
     </>
   );

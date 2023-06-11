@@ -1,23 +1,41 @@
-.block{
-       
-}
-
-.image{
-    padding: 6px 6px 0px 6px;
+.image {
     border-radius: 8px;
-    position: relative;
-    width: 100%;
     height: 240px;
     transition: transform 0.3s;
-    &:hover{
-        transform: scale(1.05);
-        .show{
-            opacity:1;
-        }
-    }
-    img{
+
+    img {
         max-width: 100%;
         border-radius: 8px;
         object-fit: cover;
+    }
+}
+
+.imageBig {
+    padding: 6px 6px 0px 6px;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+
+        .show {
+            opacity: 1;
+        }
+    }
+}
+
+.imageSmall {
+    display: inline-block;
+    text-align: left;
+
+
+    img {
+        transition-duration: 0.4s;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 }

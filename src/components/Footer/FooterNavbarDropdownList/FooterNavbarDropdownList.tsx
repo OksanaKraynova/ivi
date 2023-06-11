@@ -17,7 +17,7 @@ export default function FooterNavbarDropdownList
 
   const firstLink = props.subTitle === undefined ?
     <></> :
-    <Link  text={props.subTitle.text} href={props.subTitle.link}  color={'grey'} />
+    <Link text={props.subTitle.text} href={props.subTitle.link} color={'grey'} />
 
   return (
     <>
@@ -29,18 +29,19 @@ export default function FooterNavbarDropdownList
               props.firstColumn.title === undefined ?
                 undefined :
                 <p className={styles.listTitle}>{props.firstColumn.title}</p>
-            }  list={props.firstColumn.list}
+            } list={props.firstColumn.list}
             renderItem={(item, index) =>
 
-              <Link  key={index} text={item.text}  href={item.link}  color={'grey'}   />
+              <Link key={index} text={item.text} href={item.link} color={'grey'} />
             }
           />
         </div>
-        {  props.secondColumn !== undefined &&
+        {
+          props.secondColumn &&
           < div className={styles.rightCol}>
             <FooterNavbarDropdownListColumn column={props.secondColumn} />
             {
-              props.thirdColumn !== undefined &&
+              props.thirdColumn &&
               <FooterNavbarDropdownListColumn column={props.thirdColumn} />
             }
           </div>

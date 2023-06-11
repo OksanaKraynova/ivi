@@ -21,19 +21,19 @@ export default function Select(props: SelectProps) {
 
   function changeOneCheck(item: string, index: number) {
     setChecked([item]);
-    props.addCheck !== undefined && props.addCheck(index);
+    props.addCheck && props.addCheck(index);
   }
 
   function changeMultipleCheck(item: string, index: number) {
 
     if (checked.includes(item)) {
       setChecked(checked.filter(checkedItem => item !== checkedItem));
-      props.deliteCheck !== undefined && props.deliteCheck(index);
+      props.deliteCheck && props.deliteCheck(index);
     }
 
     else {
       setChecked([...checked, item]);
-      props.addCheck !== undefined && props.addCheck(index);
+      props.addCheck && props.addCheck(index);
     }
   }
 

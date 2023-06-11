@@ -3,6 +3,8 @@ import IItemLink from '@/types/IItemLink';
 import List from '../../../../src/components/List';
 import Link from '../../../../src/components/Link/Link';
 import classNames from 'classnames';
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface BreadCrumbsProps {
   page?: string;

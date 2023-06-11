@@ -1,27 +1,37 @@
-.container{
+.modal {
     position: absolute;
     bottom: 16px;
     left: 20px;
     color: #ededed;
     line-height: 1.3;
 }
-.row{
- display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   gap:8px;
+
+.underImg {
+    margin-top: 12px;
+
+    & .text,
+    & .time {
+        color: #b9b9b9
+    }
 }
 
-.num{
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.num {
     font-size: 24px;
     line-height: 28px;
     font-weight: 700;
 }
 
-.text{
+.text {
     margin-top: 14px;
 }
 
-.time{
+.time {
     margin-top: 6px;
 }
