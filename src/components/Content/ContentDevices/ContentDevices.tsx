@@ -6,19 +6,24 @@ import styles from './ContentDevices.module.scss';
 import idadImg from "@/public/img/ipad-without-poster.png";
 import tvImg from "@/public/img/tv-without-poster.png";
 import noPosterImg from "@/public/img/no-poster.jpg";
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface ContentDevicesProps {
   content: IContent;
   titleClass: string;
   textClass: string;
+  locale?: string;
 }
 
 export default function ContentDevices(props: ContentDevicesProps) {
 
+  const language = props.locale === "en" ? en : ru;
+  const name = props.locale === "en" && props.content.name_translate ?
+    props.content.name_translate : props.content.name;
+
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
-  const posterSrc = (props.content.coverImage !== undefined &&
-    props.content.coverImage !== null &&
-    props.content.coverImage.length > 0) ?
+  const posterSrc = (props.content.coverImage && props.content.coverImage.length > 0) ?
     fileUrl + props.content.coverImage[0].file_path :
     noPosterImg.src;
 
@@ -27,11 +32,11 @@ export default function ContentDevices(props: ContentDevicesProps) {
     <>
       <div className={styles.box}>
 
-        <p className={props.titleClass}>{`Cмотреть «${props.content.name}» на всех устройствах`}</p>
-        <p className={props.textClass}>Приложение доступно для скачивания на iOS, Android, SmartTV и приставках</p>
+        <p className={props.titleClass}>{`${language.watch} «${name}» ${language.devices}`}</p>
+        <p className={props.textClass}>{language.application}</p>
 
         <div className={styles.button}>
-          <Button variant='medium' href={"https://www.ivi.ru/devices"} color={'pink'}>Подключить устройства</Button>
+          <Button variant='medium' href={"https://www.ivi.ru/devices"} color={'pink'}>{language.connect}</Button>
         </div>
 
       </div>

@@ -9,7 +9,7 @@ const btn = {
             type: 'string',
             description: 'Форма ссылки',
             defaultValue: 'medium',
-            options: ["minimal", "small", "medium", "large", "huge", "circle", "square", "long"],
+            options: ["smallest", "minimal", "small", "medium", "large", "huge", "circle", "square", "long"],
             control: {
                 type: 'select'
             }

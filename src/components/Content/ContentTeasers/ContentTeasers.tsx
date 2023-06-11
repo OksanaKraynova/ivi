@@ -10,14 +10,19 @@ import closeIcon from "@/public/icons/close.svg";
 import MovieBlock from '../../MovieBlock/MovieBlock';
 import TeaserBox from '../../TeaserBox/TeaserBox';
 import IVideo from '@/types/IVideo';
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface ContentTeasersProps {
   content: IContent;
   titleClass: string;
   linkClass: string;
+  locale?: string;
 }
 
 export default function ContentTeasers(props: ContentTeasersProps) {
+
+  const language = props.locale === "en" ? en : ru;
 
   const mermaidVideo = "https://www.youtube.com/embed/FqZMWtbeLfQ?controls=0";
   const seeYouVideo = "https://www.youtube.com/embed/-LKuhIzUdfs?controls=0";
@@ -54,10 +59,10 @@ export default function ContentTeasers(props: ContentTeasersProps) {
         className={props.linkClass}
         href={`/watch/${props.content.id}/trailers`}
       >
-        Трейлеры
+        {language.trailers}
       </Link>
 
-      <p className={props.titleClass}>{" и доп. материалы"}</p>
+      <p className={props.titleClass}>{language.extras}</p>
 
       <MovieBlock<IVideo>
         blockClass={styles.block}

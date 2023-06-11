@@ -36,7 +36,7 @@ export default function MovieBlock<T>(
         <div className={blockClass}>
 
             {
-                title !== undefined &&
+                title &&
                 <TitleBlock title={title} img={rightIcon} />
             }
 

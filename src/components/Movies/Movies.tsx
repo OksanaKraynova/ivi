@@ -13,14 +13,12 @@ const Movies = () => {
     const url = '';
 
     fetch(url)
-        .then((resp) => resp.json())
+        .then(resp => resp.json())
         .then(data => setMovies(data))
-        .catch(function (error) {
-            console.log(error);
-        });
+        .catch(error => console.log(error));
 
-        console.log(movies);
-        
+    console.log(movies);
+
     return (
         <div className={styles.wrapper}>
             <Crumb />

@@ -8,8 +8,11 @@ interface FooterProps {
 }
 
 export default function Footer(props: FooterProps) {
+
   return (
+
     <>
+
       <div className={classNames(styles.container, "container")}>
 
         <div className={styles.desktop}>
@@ -23,5 +26,6 @@ export default function Footer(props: FooterProps) {
       </div>
 
     </>
+
   );
 };

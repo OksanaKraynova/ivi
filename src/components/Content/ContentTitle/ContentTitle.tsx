@@ -4,21 +4,29 @@ import styles from './ContentTitle.module.scss';
 import classNames from 'classnames';
 import soundIcon from "@/public/icons/sound.svg"
 import subIcon from "@/public/icons/subtitles.svg"
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface ContentTitleProps {
   content: IContent;
   textClass: string;
   borderedClass: string;
+  locale?: string;
 }
 
 export default function ContentTitle(props: ContentTitleProps) {
+
+  const language = props.locale === "en" ? en : ru;
+  const name = props.locale === "en" && props.content.name_translate ?
+    props.content.name_translate :
+    props.content.name;
 
   return (
 
     <div className={styles.box}>
 
       <p className={styles.title}>
-        {`${props.content.name} (фильм ${props.content.year})`}
+        {`${name} (${language.movie} ${props.content.year})`}
       </p>
 
       <div className={styles.props}>
@@ -31,7 +39,7 @@ export default function ContentTitle(props: ContentTitleProps) {
 
       <div className={styles.props}>
         {
-          props.content.countries !== undefined && props.content.countries !== null &&
+          props.content.countries &&
           props.content.countries.map((country, index) =>
             <a
               key={index}
@@ -41,7 +49,7 @@ export default function ContentTitle(props: ContentTitleProps) {
             </a>
           )}
         {
-          props.content.ganres !== undefined && props.content.ganres !== null &&
+          props.content.ganres &&
           props.content.ganres.map((ganr, index) =>
             <a
               key={index}

@@ -3,13 +3,18 @@ import LinkAvatar from '@/src/components/LinkAvatar/LinkAvatar';
 import Link from 'next/link';
 import styles from './ContentCreators.module.scss';
 import Urls from '@/types/Urls';
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface ContentCreatorsProps {
   content: IContent;
   linkClass: string;
+  locale?: string;
 }
 
 export default function ContentCreators(props: ContentCreatorsProps) {
+
+  const language = props.locale === "en" ? en : ru;
 
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
 
@@ -20,12 +25,13 @@ export default function ContentCreators(props: ContentCreatorsProps) {
         className={props.linkClass}
         href={`/watch/${props.content.id}/person`}
       >
-        Актёры и создатели
+        {language.creators}
       </Link>
 
       <div className={styles.row}>
 
-        {props.content.creators !== undefined && props.content.creators !== null &&
+        {
+          props.content.creators &&
 
           <div className={styles.visible}>
 
@@ -37,16 +43,12 @@ export default function ContentCreators(props: ContentCreatorsProps) {
                     <div key={index} className={styles.item}>
 
                       <LinkAvatar
-                        textUnderImg={director.name.split(" ")}
+                        textUnderImg={props.locale === "en" && director.translate ? director.translate : director.name}
                         href=""
-                        img={
-                          director.photo !== undefined && director.photo.length > 0 ?
-                            fileUrl + director.photo[0].file_path :
-                            ""
-                        }
+                        img={director.photo && director.photo.length > 0 ? fileUrl + director.photo[0].file_path : ""}
                         form="circle"
                       >
-                        <p className={styles.job}>режиссер</p>
+                        <p className={styles.job}>{language.director}</p>
                       </LinkAvatar>
 
                     </div>
@@ -62,16 +64,12 @@ export default function ContentCreators(props: ContentCreatorsProps) {
                     <div key={index} className={styles.item}>
 
                       <LinkAvatar
-                        textUnderImg={actor.name.split(" ")}
+                        textUnderImg={props.locale === "en" && actor.translate ? actor.translate : actor.name}
                         href=""
-                        img={
-                          actor.photo !== undefined && actor.photo.length > 0 ?
-                            fileUrl + actor.photo[0].file_path :
-                            ""
-                        }
+                        img={actor.photo && actor.photo.length > 0 ? fileUrl + actor.photo[0].file_path : ""}
                         form="circle"
                       >
-                        <p className={styles.job}>актёр</p>
+                        <p className={styles.job}>{language.actor}</p>
                       </LinkAvatar>
 
                     </div>
@@ -82,7 +80,7 @@ export default function ContentCreators(props: ContentCreatorsProps) {
         }
 
         <LinkAvatar
-          textUnderImg={[]}
+          textUnderImg=""
           href={`/watch/${props.content.id}/person`}
           img=""
           form="circle"

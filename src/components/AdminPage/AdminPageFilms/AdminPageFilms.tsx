@@ -49,9 +49,8 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
   function updateFilm() {
 
     if (
-      upadatedFilm === undefined ||
-      film === undefined ||
-      (film?.name === upadatedFilm?.name && film?.name_translate === upadatedFilm?.name_translate)
+      !upadatedFilm || !film ||
+      (film.name === upadatedFilm.name && film.name_translate === upadatedFilm.name_translate)
     ) return;
 
     sendData("patch", Urls.ONE_MOVIE + `/${film?.id}`, upadatedFilm)
@@ -64,11 +63,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
   function deliteFilm() {
 
-    if (
-      upadatedFilm === undefined ||
-      film === undefined ||
-      (film?.name === upadatedFilm?.name && film?.name_translate === upadatedFilm?.name_translate)
-    ) return;
+    if (!upadatedFilm || !film) return;
 
     sendData("delete", Urls.ONE_MOVIE + `/${film?.id}`)
       .then(status => console.log(status))
@@ -117,7 +112,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         />
 
         {
-          upadatedFilm !== undefined && film !== undefined &&
+          upadatedFilm && film &&
           <AdminPageUpdateName
             name={film.name}
             englishName={film.name_translate}

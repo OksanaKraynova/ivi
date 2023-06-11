@@ -36,3 +36,13 @@
     background-color: #ffffff33;
   }
 }
+
+@media (max-width: 500px) {
+  .box {
+    padding: 5px 0;
+  }
+
+  .text {
+    font-size: 10px;
+  }
+}

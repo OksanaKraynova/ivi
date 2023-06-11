@@ -48,7 +48,7 @@ export default function InputText(props: InputTextProps) {
       />
 
       {
-        props.buttonIcon !== undefined &&
+        props.buttonIcon &&
         <Image
           className={classNames(styles.button, props.buttonClass)}
           src={props.buttonIcon}

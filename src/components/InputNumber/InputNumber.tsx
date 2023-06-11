@@ -24,8 +24,8 @@ export default function InputNumber(props: InputNumberProps) {
   function getNextNumber(number: number, residual: number, min?: number, max?: number): number {
     let nextNumber = number;
     nextNumber = nextNumber + residual;
-    nextNumber = min !== undefined && nextNumber < min ? min : nextNumber;
-    nextNumber = max !== undefined && nextNumber > max ? max : nextNumber;
+    nextNumber = min && nextNumber < min ? min : nextNumber;
+    nextNumber = max && nextNumber > max ? max : nextNumber;
     return nextNumber;
   }
 

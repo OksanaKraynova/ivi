@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './LinkAvatar.module.scss';
 
 interface LinkAvatarProps {
-  textUnderImg: string[];
+  textUnderImg: string;
   textInsteadImg?: string;
   color?: "green" | "grey";
   href: string;
@@ -39,14 +39,7 @@ export default function LinkAvatar(props: LinkAvatarProps) {
 
       {content}
 
-      {props.textUnderImg.map((item, index) =>
-        <p
-          key={index}
-          className={styles.linkText}
-        >
-          {item}
-        </p>
-      )}
+      <p className={styles.linkText}>{props.textUnderImg}</p>
 
       {props.children}
 

@@ -1,19 +1,24 @@
 import IContent from '@/types/IContent';
 import MovieBlock from '../../MovieBlock/MovieBlock';
 import Card from '../../Card/Card';
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface ContentSimilarProps {
   content: IContent;
   titleClass: string;
   sliderlass: string;
+  locale?: string;
 }
 
 export default function ContentSimilar(props: ContentSimilarProps) {
 
+  const language = props.locale === "en" ? en : ru;
+
   return (
 
     <>
-      <p className={props.titleClass}>{`С фильмом «${props.content.name}» смотрят`}</p>
+      <p className={props.titleClass}>{language.similar}</p>
 
       <MovieBlock<Parameters<typeof Card>>
         blockClass={props.sliderlass}

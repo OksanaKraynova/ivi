@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import classNames from "classnames";
 import IContent from "@/types/IContent";
 import ContentTrailer from "./ContentTrailer/ContentTrailer";
@@ -12,12 +13,17 @@ import ContentComments from "./ContentComments/ContentComments";
 import ContentDevices from "./ContentDevices/ContentDevices";
 import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
 
 interface ContentProps {
   content: IContent | null;
 }
 
 export default function Content(props: ContentProps) {
+
+  const { locale } = useRouter();
+  const language = locale === "en" ? en : ru;
 
   if (props.content === null) {
     return (
@@ -27,9 +33,9 @@ export default function Content(props: ContentProps) {
     )
   };
 
-  const firstCrumbs = { text: "Мой Иви", link: "/" };
-  const secondCrumbs = [{ text: "Фильмы", link: "" }];
-  props.content.ganres !== null && props.content.ganres !== undefined && props.content.ganres.length > 0 &&
+  const firstCrumbs = { text: language.myIvi, link: "/" };
+  const secondCrumbs = [{ text: language.movies, link: "/movies" }];
+  props.content.ganres && props.content.ganres.length > 0 &&
     secondCrumbs.push({ text: props.content.ganres[0], link: "" });
 
   return (
@@ -40,16 +46,17 @@ export default function Content(props: ContentProps) {
 
       <div className={styles.box}>
 
-        <ContentTrailer />
+        <ContentTrailer locale={locale} />
 
         <ContentTitle
           content={props.content}
           textClass={styles.text}
           borderedClass={styles.bordered}
+          locale={locale}
         />
 
         <div className={styles.actors}>
-          <ContentActors content={props.content} />
+          <ContentActors content={props.content} locale={locale} />
         </div>
 
         <ContentDescripton
@@ -57,11 +64,12 @@ export default function Content(props: ContentProps) {
           description={props.content.description}
           textClass={styles.text}
           borderedClass={styles.bordered}
+          locale={locale}
         />
 
         {
-          props.content.rating !== undefined && props.content.rating !== null &&
-          <ContentRating rating={props.content.rating} textClass={styles.text} />
+          props.content.rating &&
+          <ContentRating rating={props.content.rating} textClass={styles.text} locale={locale} />
         }
 
       </div>
@@ -71,16 +79,17 @@ export default function Content(props: ContentProps) {
           content={props.content}
           titleClass={styles.title}
           sliderlass={styles.slider}
+          locale={locale}
         />
       </div>
 
       {
-        props.content.creators !== undefined && props.content.creators !== null &&
-        props.content.creators.length > 0 &&
+        props.content.creators && props.content.creators.length > 0 &&
         <div className={styles.row}>
           <ContentCreators
             content={props.content}
             linkClass={classNames(styles.title, styles.link)}
+            locale={locale}
           />
         </div>
       }
@@ -91,6 +100,7 @@ export default function Content(props: ContentProps) {
           content={props.content}
           titleClass={styles.title}
           linkClass={classNames(styles.title, styles.link)}
+          locale={locale}
         />
 
       </div>
@@ -101,6 +111,7 @@ export default function Content(props: ContentProps) {
           content={props.content}
           linkClass={classNames(styles.title, styles.link)}
           textClass={styles.text}
+          locale={locale}
         />
 
       </div>
@@ -111,6 +122,7 @@ export default function Content(props: ContentProps) {
           content={props.content}
           titleClass={styles.title}
           textClass={styles.text}
+          locale={locale}
         />
 
       </div>

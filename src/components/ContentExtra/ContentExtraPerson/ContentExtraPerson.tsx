@@ -37,11 +37,7 @@ export default function ContentExtraPerson(props: ContentExtraPersonProps) {
                 <LinkAvatar
                   textUnderImg={director.name.split(" ")}
                   href=""
-                  img={
-                    director.photo !== undefined && director.photo.length > 0 ?
-                      fileUrl + director.photo[0].file_path :
-                      ""
-                  }
+                  img={director.photo && director.photo.length > 0 ? fileUrl + director.photo[0].file_path : ""}
                   form="circleBig"
                 >
                 </LinkAvatar>
@@ -65,11 +61,7 @@ export default function ContentExtraPerson(props: ContentExtraPersonProps) {
                 <LinkAvatar
                   textUnderImg={actor.name.split(" ")}
                   href=""
-                  img={
-                    actor.photo !== undefined && actor.photo.length > 0 ?
-                      fileUrl + actor.photo[0].file_path :
-                      ""
-                  }
+                  img={actor.photo && actor.photo.length > 0 ? fileUrl + actor.photo[0].file_path : ""}
                   form="circleBig"
                 >
                 </LinkAvatar>
