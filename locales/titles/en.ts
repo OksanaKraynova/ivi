@@ -33,6 +33,13 @@ export default {
     btnDesc: 'You can disable it at any time',
     watch: 'Watch on Smart TV',
     directors: 'Directors',
-   actors: 'Actors',
-   reset: 'Reset Filters'
+    actors: 'Actors',
+    reset: 'Reset Filters',
+    notFound: 'Page not found',
+    movies: 'movies',
+    biography: 'Biography',
+    filmography: 'Full filmography',
+    look: 'Look',
+    trailers:'Trailers',
+    dop: 'and additional materials'
 }

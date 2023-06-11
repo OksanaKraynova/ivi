@@ -4,8 +4,9 @@ import getParagraphs from '@/src/functions/getParagraphs';
 import branchRight from "@/public/icons/branch-right.svg"
 import branchLeft from "@/public/icons/branch-left.svg"
 import styles from './ContentDescripton.module.scss';
-import ru from '@/locales/content/ru';
-import en from '@/locales/content/en';
+import { useRouter } from "next/router";
+import ru from "@/locales/content/ru";
+import en from "@/locales/content/en";
 
 interface ContentDescriptonProps {
   tagline?: string | null;
@@ -16,20 +17,17 @@ interface ContentDescriptonProps {
 }
 
 export default function ContentDescripton(props: ContentDescriptonProps) {
-
-  const language = props.locale === "en" ? en : ru;
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
   const [hidden, setHidden] = useState<boolean>(true);
 
   return (
-
     <>
       <div className={styles.rowCenter}>
-
         <Image className="icon" src={branchLeft} alt='branch' />
         <p className={props.textClass}>{props.tagline}</p>
         <Image className="icon" src={branchRight} alt='branch' />
-
       </div>
 
       <div className={styles.description}>
@@ -47,6 +45,17 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
                 </p>
               );
             return (
+              <p  key={index}   className={styles.text}  hidden={hidden}  >
+                {paragraph}
+              </p>
+            );
+          return (
+            <p key={index}  className={styles.text}   >
+              {paragraph}
+            </p>
+          );
+        }
+        )}
               <p
                 key={index}
                 className={styles.text}
@@ -72,6 +81,17 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
 
         <div className={styles.row}>
           <p className={styles.propsName}>{language.quality}</p>
+          <p className={styles.propsName}>{t.languages}</p>
+          <p className={styles.propsText}>{t.russian}</p>
+        </div>
+
+        <div className={styles.row}>
+          <p className={styles.propsName}>{t.subtitles}</p>
+          <p className={styles.propsText}>{t.english}, {t.russian}</p>
+        </div>
+
+        <div className={styles.row}>
+          <p className={styles.propsName}>{t.quality}</p>
           <div className={styles.quality}>
             <p className={props.borderedClass}>FullHD</p>
             <p className={props.borderedClass}>HD</p>
@@ -89,6 +109,8 @@ export default function ContentDescripton(props: ContentDescriptonProps) {
         onClick={() => setHidden(!hidden)}
       >
         {hidden ? language.about : language.close}
+        {hidden ? `${t.details} ${props.type.toLowerCase()}е` : t.collapse}
+        {hidden ? "Детали о фильме" : "Свернуть детали"}
       </p>
 
     </>

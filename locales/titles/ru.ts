@@ -33,5 +33,12 @@ export default {
    watch: 'Смотреть на Smart TV',
    directors: 'Режиссеры',
    actors: 'Актеры',
-   reset: 'Сбросить фильтры'
+   reset: 'Сбросить фильтры',
+   notFound: 'Страница не найдена',
+   movies: 'фильмов',
+biography: 'Биография',
+filmography: 'Полная фильмография',
+look: 'Смотреть',
+trailers:'Трейлеры',
+dop: 'и доп. материалы'
 }

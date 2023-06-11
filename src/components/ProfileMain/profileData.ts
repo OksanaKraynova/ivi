@@ -18,15 +18,6 @@ export interface SubProfile {
     title: string;
 }
 
-export const iconData = [
-    { url: payment, text: "Покупки" },
-    { url: code, text: "Смотреть позже" },
-    { url: history, text: "Просмотры" },
-    { url: card, text: "Способы оплаты" },
-    { url: favorite, text: "Вход по коду" },
-    { url: settings, text: "Настройки" },
-    { url: support, text: "Помощь" },
-];
 
 export const profiles: SubProfile[] = [
     {

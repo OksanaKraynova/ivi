@@ -14,7 +14,9 @@ export default function ContentRating(props: ContentRatingProps) {
 
   const language = props.locale === "en" ? en : ru;
   const color = +props.rating < 7 ? "grey" : "green";
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
   return (
 
     <div className={styles.box}>

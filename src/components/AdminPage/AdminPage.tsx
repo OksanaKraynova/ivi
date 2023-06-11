@@ -9,6 +9,9 @@ import IData from "@/types/IData";
 import Urls from "@/types/Urls";
 import { useAppDispatch, useAppSelector } from "@/src/hooks/redux";
 import { fetchCountries, fetchGenres } from "@/src/store/reducers/genresCountriesSlice";
+import { useRouter } from 'next/router';
+import ru from '@/locales/admin/ru';
+import en from '@/locales/admin/en';
 
 const breadCrumbs = [
   "Фильмы",
@@ -19,9 +22,12 @@ export default function AdminPage() {
 
   const { genres, countries, status } = useAppSelector(state => state.genresCountriesReducer);
   const dispatch = useAppDispatch();
-
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
+  
   const defaultCurrentIndex = 0;
-  const defaultHidden = Array.from({ length: breadCrumbs.length })
+  const defaultHidden = Array.from({ length: t.breadCrumbs.length })
     .map((item, index) => { return index === defaultCurrentIndex ? false : true });
 
   const [hidden, setHidden] = useState<boolean[]>(defaultHidden);
@@ -38,7 +44,7 @@ export default function AdminPage() {
 
       <div className={styles.breadCrumbs}>
 
-        {breadCrumbs.map((item, index) =>
+        {t.breadCrumbs.map((item, index) =>
           <p
             key={index}
             className={index === currentIndex ? classNames(styles.link, styles.active) : styles.link}
@@ -46,19 +52,18 @@ export default function AdminPage() {
               hidden[currentIndex] = true;
               setCurrentIndex(index);
               hidden[index] = false;
-            }}
-          >
+            }} >
             {item}
           </p>
-
         )}
-
       </div>
 
       <AdminPageFilms hidden={hidden[0]} genres={genres} countries={countries} />
 
-      <AdminPageGenres hidden={hidden[1]} genres={genres} />
 
+      <AdminPageFilms hidden={hidden[0]} genres={genres} />
+
+      <AdminPageGenres hidden={hidden[1]} genres={genres} />
     </div >
 
   );

@@ -1,15 +1,18 @@
 import React from 'react';
 import styles from './profileDopFunc.module.scss'
 import DarkBlueWrapper from '../../DarkBlueWrapper/DarkBlueWrapper';
-
-const list = [
-    { title: 'Пригласить друзей', img: '/icons/profile/share.svg' }, { title: ' Уведомления и акции', img: '/icons/profile/bell.svg' }
-]
+import { useRouter } from 'next/router';
+import ru from '@/locales/profile/ru';
+import en from '@/locales/profile/en';
 
 const ProfileDopFunc = () => {
+     
+    const router = useRouter()
+    const { locale } = router
+    const t = locale === 'ru' ? ru : en
     return (
         <div className={styles.wrapper}>
-            {list.map(el => (
+            {t.buttons.map(el => (
                 <DarkBlueWrapper key={el.title} className={styles.btn} >
                     <div className={styles.row} >
                         <img alt={el.title} src={el.img} />

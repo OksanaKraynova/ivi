@@ -13,14 +13,22 @@ import ContentComments from "./ContentComments/ContentComments";
 import ContentDevices from "./ContentDevices/ContentDevices";
 import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
-import ru from '@/locales/content/ru';
-import en from '@/locales/content/en';
+import { useRouter } from "next/router";
+import ru from "@/locales/content/ru";
+import en from "@/locales/content/en";
 
 interface ContentProps {
   content: IContent | null;
 }
 
 export default function Content(props: ContentProps) {
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'ru' ? ru : en
+  const firstCrumbs = { text: "Мой Иви", link: "/" };
+  const secondCrumbs = [{ text: `${props.content.type}ы`, link: "" }];
+  props.content.ganres.length > 0 &&
+    secondCrumbs.push({ text: props.content.ganres[0], link: "" });
 
   const { locale } = useRouter();
   const language = locale === "en" ? en : ru;
@@ -28,7 +36,7 @@ export default function Content(props: ContentProps) {
   if (props.content === null) {
     return (
       <div className={classNames(styles.container, "container")}>
-        Пусто
+        {t.empty}
       </div>
     )
   };
@@ -41,9 +49,7 @@ export default function Content(props: ContentProps) {
   return (
 
     <div className={classNames(styles.container, "container")}>
-
       <BreadCrumbs prevPages={secondCrumbs} />
-
       <div className={styles.box}>
 
         <ContentTrailer locale={locale} />
@@ -54,11 +60,9 @@ export default function Content(props: ContentProps) {
           borderedClass={styles.bordered}
           locale={locale}
         />
-
         <div className={styles.actors}>
           <ContentActors content={props.content} locale={locale} />
         </div>
-
         <ContentDescripton
           tagline={props.content.slogan}
           description={props.content.description}
@@ -73,7 +77,6 @@ export default function Content(props: ContentProps) {
         }
 
       </div>
-
       <div className={styles.row}>
         <ContentSimilar
           content={props.content}
