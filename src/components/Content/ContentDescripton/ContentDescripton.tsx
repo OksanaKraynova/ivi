@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import getParagraphs from '@/src/functions/getParagraphs';
+import styles from './ContentDescripton.module.scss';
 import branchRight from "@/public/icons/branch-right.svg"
 import branchLeft from "@/public/icons/branch-left.svg"
-import styles from './ContentDescripton.module.scss';
 import ru from '@/locales/content/ru';
 import en from '@/locales/content/en';
 

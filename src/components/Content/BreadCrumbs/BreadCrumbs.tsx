@@ -1,10 +1,8 @@
-import styles from './BreadCrumbs.module.scss';
-import IItemLink from '@/types/IItemLink';
+import classNames from 'classnames';
 import List from '../../../../src/components/List';
 import Link from '../../../../src/components/Link/Link';
-import classNames from 'classnames';
-import ru from '@/locales/content/ru';
-import en from '@/locales/content/en';
+import IItemLink from '@/types/IItemLink';
+import styles from './BreadCrumbs.module.scss';
 
 interface BreadCrumbsProps {
   page?: string;

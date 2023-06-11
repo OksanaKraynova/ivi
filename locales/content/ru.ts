@@ -29,5 +29,5 @@ export default {
     watch: 'Cмотреть',
     devices: 'на всех устройствах',
     application: 'Приложение доступно для скачивания на iOS, Android, SmartTV и приставках',
-    connect: 'Подключить устройства'
+    connect: 'Подключить устройства',
 }

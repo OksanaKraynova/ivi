@@ -1,9 +1,9 @@
-import InputText from './InputFile'
+import InputFile from './InputFile'
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof InputText> = {
-    title: 'InputText',
-    component: InputText,
+const meta: Meta<typeof InputFile> = {
+    title: 'InputFile',
+    component: InputFile,
     tags: ['autodocs'],
     argTypes: {
         placeholder: {
@@ -23,10 +23,10 @@ const meta: Meta<typeof InputText> = {
 
 export default meta;
 
-type Story = StoryObj<typeof InputText>;
+type Story = StoryObj<typeof InputFile>;
 
 export const Example: Story = {
     args: {
-        placeholder: "Написать ответ"
+        placeholder: "Обложка"
     }
 };

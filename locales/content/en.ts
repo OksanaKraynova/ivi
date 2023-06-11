@@ -10,7 +10,7 @@ export default {
     subtitles: 'Subtitles',
     english: 'English',
     quality: 'Quality',
-    about: 'About movie',
+    about: 'Details about the film',
     close: 'Close',
     rating: 'Rating Ivi',
     plot: 'Interesting story',
@@ -22,12 +22,12 @@ export default {
     creators: 'Actors and creators',
     actor: 'actor',
     director: 'director',
-    reviews: 'Reviews',
-    toMovie: 'to movie',
-    noReviews: 'No reviews',
-    leaveComment: 'Leave comment',
+    reviews: 'Comments',
+    toMovie: 'about the film',
+    noReviews: 'There are no reviews yet',
+    leaveComment: 'Leave a comment',
     watch: 'Watch',
     devices: 'on all devices',
-    application: 'The application is available for download on iOS, Android, SmartTV and set-top boxes',
-    connect: 'Connect Devices'
+    application: 'The app is available for download on iOS, Android, Smart TV and set-top boxes',
+    connect: 'Connect devices'
 }

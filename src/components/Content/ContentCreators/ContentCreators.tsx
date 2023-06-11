@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import IContent from '@/types/IContent';
 import LinkAvatar from '@/src/components/LinkAvatar/LinkAvatar';
-import Link from 'next/link';
 import styles from './ContentCreators.module.scss';
 import Urls from '@/types/Urls';
 import ru from '@/locales/content/ru';

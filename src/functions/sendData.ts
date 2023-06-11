@@ -1,4 +1,4 @@
-import Urls from "@/types/Urls";
+import Urls from "../../types/Urls";
 import axios from "axios";
 
 export default async function sendData(

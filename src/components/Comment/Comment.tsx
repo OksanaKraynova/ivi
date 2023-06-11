@@ -3,7 +3,7 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import IComment from '@/types/IComment';
 import Response from '../Response/Response';
-import getDate from '@/src/functions/getDate';
+import getDate from '../../functions/getDate';
 import styles from './Comment.module.scss';
 import likeIcon from "../../../public/icons/like.svg"
 import disLikeIcon from "../../../public/icons/dislike.svg"
