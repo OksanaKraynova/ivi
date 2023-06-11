@@ -21,7 +21,7 @@ describe("Селект", () => {
     const button = input.closest("div")!.getElementsByClassName("button")[0];
 
     expect(input).toHaveValue("");
-    expect(screen.getByText(placeholder)).toHaveClass("placholder");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder");
     expect(screen.getByText(options[0]).closest("div")).not.toBeVisible();
 
     act(() => userEvent.click(button));
@@ -63,7 +63,7 @@ describe("Селект", () => {
     const button = input.closest("div")!.getElementsByClassName("button")[0];
 
     expect(input).toHaveValue("");
-    expect(screen.getByText(placeholder)).toHaveClass("placholder");
+    expect(screen.getByText(placeholder)).toHaveClass("placeholder");
     expect(screen.getByText(options[0]).closest("div")).not.toBeVisible();
 
     act(() => userEvent.click(button));

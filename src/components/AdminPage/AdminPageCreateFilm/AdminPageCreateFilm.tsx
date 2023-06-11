@@ -183,7 +183,7 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
             setNewFilm({ ...newFilm, year: +value });
             filled.year = value.length > 0;
           }}
-          min={2000}
+          min={1000}
         />
 
         <InputText

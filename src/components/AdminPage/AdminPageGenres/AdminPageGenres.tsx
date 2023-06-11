@@ -3,10 +3,7 @@ import IGenre from '@/types/IGenre';
 import Select from '../../Select/Select';
 import AdminPageUpdateName from '../AdminPageUpdateName/AdminPageUpdateName';
 import styles from './AdminPageGenres.module.scss';
-import Search from '../../Search/Search';
-import getData from '@/src/functions/getData';
 import Urls from '@/types/Urls';
-import IData from '@/types/IData';
 import sendData from '@/src/functions/sendData';
 
 interface AdminPageGenresProps {

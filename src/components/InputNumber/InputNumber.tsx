@@ -18,24 +18,24 @@ export default function InputNumber(props: InputNumberProps) {
 
   const integer = props.integer ?? false;
 
-  const [count, setCount] = useState<number>();
+  const [count, setCount] = useState<string>("");
   const [placeholderEffect, setPlacholderEffect] = useState<string | null>(null);
 
-  function getNextNumber(number: number, residual: number, min?: number, max?: number): number {
+  function getNextNumber(number: number, residual: number, min?: number, max?: number): string {
     let nextNumber = number;
     nextNumber = nextNumber + residual;
     nextNumber = min && nextNumber < min ? min : nextNumber;
     nextNumber = max && nextNumber > max ? max : nextNumber;
-    return nextNumber;
+    return nextNumber.toString();
   }
 
-  function addNumber(number: string, residual: number, min?: number, max?: number): number {
+  function addNumber(number: string, residual: number, min?: number, max?: number): string {
     let nextNumber = integer ? +(number.replace(".", "")) : +number;
     return getNextNumber(nextNumber, residual, min, max);
   }
 
-  function changeNumber(residual: number, number?: number, min?: number, max?: number): number {
-    let nextNumber = number ?? 0;
+  function changeNumber(number: string, residual: number, min?: number, max?: number): string {
+    let nextNumber = +number;
     return getNextNumber(nextNumber, residual, min, max);
   }
 
@@ -50,7 +50,7 @@ export default function InputNumber(props: InputNumberProps) {
         width={20}
         height={49}
         onClick={() => {
-          const nextNumber = changeNumber(-1, count, props.min, props.max);
+          const nextNumber = changeNumber(count, -1, props.min, props.max);
           props.onChange && props.onChange(nextNumber.toString());
           setCount(nextNumber);
           setPlacholderEffect(styles.overText);
@@ -83,7 +83,7 @@ export default function InputNumber(props: InputNumberProps) {
         width={20}
         height={49}
         onClick={() => {
-          const nextNumber = changeNumber(1, count, props.min, props.max);
+          const nextNumber = changeNumber(count, 1, props.min, props.max);
           props.onChange && props.onChange(nextNumber.toString());
           setCount(nextNumber);
           setPlacholderEffect(styles.overText);

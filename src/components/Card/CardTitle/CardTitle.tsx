@@ -17,7 +17,7 @@ const CardTitle = (props: CardTitleProps) => {
     return (
         <div className={styles.title}>
             <Link text={props.contentName}
-                href={`/whatch/${props.contentId}`}
+                href={`/watch/${props.contentId}`}
                 color='white'
                 fontWeight={500}
             />
