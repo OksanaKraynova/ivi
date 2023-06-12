@@ -72,7 +72,7 @@ export default function ContentSimilar(props: ContentSimilarProps) {
                 1200: { slidesPerView: 7, spaceBetween: 24 },
               }
             }
-            renderItem={(content) => <Card content={content} modal={true} locale={props.locale} />}
+            renderItem={(content) => <Card content={content} modal={true} locale={props.locale} label={false} />}
           />
         </>
       }

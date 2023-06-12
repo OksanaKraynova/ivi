@@ -6,7 +6,7 @@ const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 const FilterMovieScreen = () => {
     return (
         <div className={styles.block}>
-            {/* {list.map((item, i) => <Card key={i} />)} */}
+            {/* {list.map((item, i) => <Card key={i} label={false} modal={true}/>)} */}
         </div>
     );
 };

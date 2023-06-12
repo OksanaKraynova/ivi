@@ -55,7 +55,7 @@ export default function ContentExtra(props: ContentExtraProps) {
 
         <div className={styles.card}>
 
-          <Card content={props.content} modal={false} />
+          <Card content={props.content} modal={false} label={false} />
 
         </div>
 
