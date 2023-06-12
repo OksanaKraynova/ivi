@@ -7,6 +7,7 @@ interface CardProps {
     content: IContent;
     modal: boolean;
     locale?: string;
+    label: boolean;
 }
 
 const Card = (props: CardProps) => {
@@ -16,7 +17,7 @@ const Card = (props: CardProps) => {
 
     return (
         < >
-            <CardImage content={props.content} label={false} modal={props.modal} locale={props.locale} />
+            <CardImage content={props.content} label={props.label} modal={props.modal} locale={props.locale} />
             {
                 props.modal &&
                 <CardTitle contentName={name} locale={props.locale} contentId={props.content.id} />

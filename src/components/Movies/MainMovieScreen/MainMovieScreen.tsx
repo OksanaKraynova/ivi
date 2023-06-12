@@ -19,10 +19,10 @@ const MainMovieScreen = () => {
             <GenresList />
 
             {/* <MovieBlock<Parameters<typeof Card>> title={t.bestMovies} breakpoints={{ 320: { slidesPerView: 2, spaceBetween: 5 }, 499: { slidesPerView: 3, spaceBetween: 20 }, 649: { slidesPerView: 4, spaceBetween: 10 }, 799: { slidesPerView: 5, spaceBetween: 15 }, 998: { slidesPerView: 6, spaceBetween: 10 }, 1149: { slidesPerView: 7, spaceBetween: 10 } }
-            } slidesPerView={7} spaceBetween={10} listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], []]} renderItem={() => <Card local={local}/>} />
+            } slidesPerView={7} spaceBetween={10} listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], []]} renderItem={() => <Card local={local} label={false} modal={true}/>} />
 
             <MovieBlock<Parameters<typeof Card>> title={t.ratingIvi} breakpoints={{ 320: { slidesPerView: 2, spaceBetween: 5 }, 499: { slidesPerView: 3, spaceBetween: 20 }, 649: { slidesPerView: 4, spaceBetween: 10 }, 799: { slidesPerView: 5, spaceBetween: 15 }, 998: { slidesPerView: 6, spaceBetween: 10 }, 1149: { slidesPerView: 7, spaceBetween: 10 } }
-            } listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]} slidesPerView={7} spaceBetween={10} renderItem={() => <Card local={local}/>} /> */}
+            } listCardsProps={[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]} slidesPerView={7} spaceBetween={10} renderItem={() => <Card local={local} label={false} modal={true}/>} /> */}
 
             <RatingIvi />
 

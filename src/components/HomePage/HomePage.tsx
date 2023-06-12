@@ -97,7 +97,7 @@ export default function HomePage() {
               1200: { slidesPerView: 7, spaceBetween: 24 },
             }
           }
-          renderItem={(content) => <Card content={content} modal={true} locale={locale} />}
+          renderItem={(content) => <Card content={content} modal={true} locale={locale} label={true} />}
         />
       )}
 
