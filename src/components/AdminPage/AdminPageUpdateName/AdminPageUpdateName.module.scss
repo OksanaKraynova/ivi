@@ -20,3 +20,10 @@
   grid-template-columns: calc(50% - 6px) calc(50% - 6px);
   gap: 12px;
 }
+
+@media (max-width: 599px) {
+  .inputBox {
+    grid-template-columns: 100%;
+    row-gap: 18px;
+  }
+}

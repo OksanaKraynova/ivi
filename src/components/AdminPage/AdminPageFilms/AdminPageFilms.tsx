@@ -83,7 +83,7 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
           className={styles.link}
           onClick={() => setHidden({ ...hidden, update: !hidden.update })}
         >
-          Обновить/удалить
+          {language.update}
           <Image
             className={hidden.update ? classNames(styles.icon, styles.up) : styles.icon}
             src={downIcon} alt={hidden.update ? 'up' : 'down'}

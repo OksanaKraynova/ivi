@@ -1,14 +1,19 @@
-.container{
-    display: flex;
-    justify-content: space-between;
-    width: 500px;
-    background-color: #1f1b2e;
-    padding: 15px 16px;    
-
-    border-radius: 10px;
+.container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  background-color: #1f1b2e;
+  padding: 15px 16px;
+  border-radius: 10px;
 }
 
-.input{
-    background-color: transparent;
-    color: white;
+.input {
+  width: 100%;
+  background-color: transparent;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 15px 12px;
+  }
 }

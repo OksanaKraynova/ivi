@@ -8,13 +8,13 @@
 
 .breadCrumbs {
   display: flex;
-  cursor: pointer;
 }
 
 .link {
   padding: 0 16px;
   font-weight: 500;
   border-left: 2px solid #b4b4b4;
+  cursor: pointer;
 
   &:first-child {
     padding-left: 0;
@@ -31,5 +31,11 @@
 
   &:hover {
     color: #FFFFFF;
+  }
+}
+
+@media (max-width: 599px) {
+  .container {
+    padding: 36px 12px;
   }
 }

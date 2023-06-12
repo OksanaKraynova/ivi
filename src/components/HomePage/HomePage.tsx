@@ -9,21 +9,21 @@ import HomeAbout from './HomeAbout/HomeAbout';
 import HomePromos from './HomePromos/HomePromos';
 import HomeTop from './HomeTop/HomeTop';
 import HomeButtons from './HomeButtons/HomeButtons';
-import styles from './HomePage.module.scss';
-import 'swiper/css';
-import en from '@/locales/titles/en';
-import ru from '@/locales/titles/ru';
+import Link from '../Link/Link';
 import IContent from '@/types/IContent';
 import IGenre from '@/types/IGenre';
 import getData from '@/src/functions/getData';
 import Urls from '@/types/Urls';
 import IData from '@/types/IData';
-import Link from '../Link/Link';
+import styles from './HomePage.module.scss';
+import 'swiper/css';
+import en from '@/locales/titles/en';
+import ru from '@/locales/titles/ru';
 
 export default function HomePage() {
 
   const { locale } = useRouter();
-  const languaget = locale === "en" ? en : ru;
+  const language = locale === "en" ? en : ru;
 
   const limitMovies = 20;
 
@@ -81,7 +81,7 @@ export default function HomePage() {
           lastSlide={
             <Link
               linkClass={styles.all}
-              text={languaget.viewAll}
+              text={language.viewAll}
               href={`/movies?ganre=${list.genre.id}`}
               color={'white'}
             />

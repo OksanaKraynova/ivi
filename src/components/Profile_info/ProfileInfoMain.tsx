@@ -1,37 +1,43 @@
 import React, { useState } from "react";
-import { useSearchParams } from 'next/navigation'
-import { useNavigate } from "react-router-dom";
-import styles from "./profileInfoMain.module.scss";
+import { useAppDispatch } from "@/src/hooks/redux";
+import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
+import axios from "axios";
+import Link from "next/link";
 import Image from "next/image";
 import DarkBlueInput from "../DarkBlueInput/DarkBlueInput";
-
-import arrow_img from "../../../public/icons/profile/arrow.svg"
-import Link from "next/link";
 import Button from "../Button/Button";
-import { useAppDispatch } from "@/src/hooks/redux";
-import axios from "axios";
 import Urls from "@/types/Urls";
+import styles from "./profileInfoMain.module.scss";
+import arrowIcon from "../../../public/icons/profile/arrow.svg"
+import en from '@/locales/profile/en';
+import ru from '@/locales/profile/ru';
 
-type Props = {};
 
-export default function ProfileInfoMain(props: Props) {
+export default function ProfileInfoMain() {
+
+  const router = useRouter();
+  const { locale } = router;
+  const language = locale === "en" ? en : ru;
 
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
 
   const [queryParams] = useSearchParams();
+
+  console.log(queryParams)
+
   // if (queryParams && queryParams.length > 0) {
-  //   const navigate = useNavigate()
   //   const dispatch = useAppDispatch();
 
   //   const backEndUrl = Urls.SERVER_URL + ":" + Urls.AUTHORIZATION_PORT + Urls.AUTHORIZATION_API;
 
   //   axios.get(backEndUrl, { params: queryParams })
   //     .then(res => {
-  //       dispatch(handleLogin(res.data));
-  //       navigate('/');
+  //       // dispatch(handleLogin(res.data));
+  //       router.replace('/');
   //     })
-  //     .catch(err => console.log(err.response.data))
+  //     .catch(error => console.log(error))
   // }
 
   function getVKOAuthURL() {
@@ -47,10 +53,7 @@ export default function ProfileInfoMain(props: Props) {
       v: '5.131'
     };
 
-    const qs = new URLSearchParams(options);
-
-    return `${rootUrl}?${qs.toString()}`;
-
+    router.replace(`${rootUrl}?${new URLSearchParams(options).toString()}`);
   }
 
   function getGoogleOAuthURL() {
@@ -70,40 +73,33 @@ export default function ProfileInfoMain(props: Props) {
       state: 'google'
     };
 
-    const qs = new URLSearchParams(options);
-
-    return `${rootUrl}?${qs.toString()}`;
-
+    router.replace(`${rootUrl}?${new URLSearchParams(options).toString()}`);
   }
 
   return (
 
     <div className={styles.hero + " container"}>
 
-      <div className={styles.backWrapper}>
-        <Link href="/profile" className={styles.back}>
-          <Image src={arrow_img} alt={"icon"} />
-          <span>Назад</span>
-        </Link>
-      </div>
+      <Link href="/profile" className={styles.back}>
+        <Image src={arrowIcon} alt={"icon"} width={20} height={20} />
+        <p className={styles.text}>{language.back}</p>
+      </Link>
 
       <div className={styles.infoProfile}>
 
         <form action="submit" className={styles.form}>
 
           <p className={styles.formHeadline}>
-            Войдите или зарегистрируйтесь
+            {language.login}
           </p>
           <p className={styles.formGreyText}>
-            Чтобы пользоваться сервисом на любом устройстве
+            {language.useService}
           </p>
 
           <DarkBlueInput
             type={"text"}
             value={userName}
-            handleChange={(value) => {
-              setUserName(value);
-            }}
+            handleChange={(value) => setUserName(value)}
             placeholder={"Username"}
           >
             username
@@ -112,9 +108,7 @@ export default function ProfileInfoMain(props: Props) {
           <DarkBlueInput
             type={"email"}
             value={userEmail}
-            handleChange={(value) => {
-              setUserEmail(value);
-            }}
+            handleChange={(value) => setUserEmail(value)}
             placeholder={"E-mail"}
           >
             mail@mail.ru
@@ -123,19 +117,19 @@ export default function ProfileInfoMain(props: Props) {
         </form>
 
         <Button
-          variant="small"
+          variant="long"
           effect="bordered"
           onClick={() => getGoogleOAuthURL()}
         >
-          Гугл
+          {language.signIn} Google
         </Button>
 
         <Button
-          variant="small"
+          variant="long"
           effect="bordered"
           onClick={() => getVKOAuthURL()}
         >
-          Вк
+          {language.signIn} ВКонтакте
         </Button>
 
       </div>

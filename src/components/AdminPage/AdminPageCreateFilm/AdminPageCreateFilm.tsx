@@ -55,7 +55,6 @@ interface AdminPageCreateFilmProps {
 export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
   const { locale } = useRouter();
-  const english = locale === 'en' ? true : false;
 
   const defaulFilled: Filled = {
     name: false,
@@ -279,7 +278,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         {
           filmActors.length > 0 &&
           <DataBlock
-            items={filmActors.map(actor => english && actor.translate ? actor.translate : actor.name)}
+            items={filmActors.map(actor =>
+              locale === 'en' && actor.translate ? actor.translate : actor.name)}
             placeholder='Актеры'
             deliteItem={index => setFilmActors(filmActors.filter((actor, currentIndex) => currentIndex !== index))}
           />
@@ -306,7 +306,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         {
           filmDirectors.length > 0 &&
           <DataBlock
-            items={filmDirectors.map(director => english && director.translate ? director.translate : director.name)}
+            items={filmDirectors.map(director =>
+              locale === 'en' && director.translate ? director.translate : director.name)}
             placeholder='Режиссеры'
             deliteItem={index => setFilmDirectors(filmDirectors.filter((director, currentIndex) => currentIndex !== index))}
           />
@@ -350,7 +351,7 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
           Создать
         </Button>
 
-        <p className={styles.status}>{props.status}</p>
+        {/* <p className={styles.status}>{props.status}</p> */}
       </div>
 
     </div>
