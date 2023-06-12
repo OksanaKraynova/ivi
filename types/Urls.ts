@@ -2,7 +2,7 @@ enum Urls {
   SERVER_URL = "http://178.208.64.187",
   SERVER_PORT = "8081",
   FILES_PORT = "3004",
-  AUTHORIZATION_PORT = "3005",
+  AUTHORIZATION_PORT = "5000",
 
   ALL_COMMENTS = "/v1/comments",
   ALL_COUNTRIES = "/v1/country",
@@ -17,7 +17,7 @@ enum Urls {
 
   AUTHORIZATION_API = "/api/oauth",
 
-  REDIRECT_URI = "http://localhost:5000/oAuth",
+  REDIRECT_URI = "http://localhost:3000/oAuth",
   ROOT_URL_VK = "https://oauth.vk.com/authorize",
   ROOT_URL_GOOGLE = "https://accounts.google.com/o/oauth2/v2/auth"
 }

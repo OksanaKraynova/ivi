@@ -17,7 +17,7 @@ import Urls from '@/types/Urls';
 export default function HomeTop() {
 
   const { locale } = useRouter();
-  const languaget = locale === 'en' ? en : ru;
+  const language = locale === 'en' ? en : ru;
 
   const limitMovies = 10;
   const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
@@ -45,7 +45,7 @@ export default function HomeTop() {
 
       <div className={styles.title}>
         <Image className="icon" src={topIcon} alt='top10' />
-        {languaget.week}
+        {language.week}
       </div>
 
       <MovieBlock<Parameters<typeof TopCard>[0]>

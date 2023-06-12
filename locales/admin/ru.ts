@@ -5,20 +5,21 @@ export default {
   en: 'Английское название',
   year: 'Год',
   slogan: 'Слоган',
-  genre:'Жанр',
-  country:'Страна',
+  genre: 'Жанр',
+  country: 'Страна',
   long: 'Продолжительность',
   age: 'Возрастной рейтинг',
-rating: 'Рейтинг',
-score: 'Оценка',
-actors: 'Актеры',
-director: 'Режиссеры',
-desc: 'Описание',
-wrapper: 'Обложка',
-download: 'Загрузить',
-create: 'Создать',
-breadCrumbs: [
-  "Фильмы",
-  "Жанры"
-]
+  rating: 'Рейтинг',
+  score: 'Оценка',
+  actors: 'Актеры',
+  director: 'Режиссеры',
+  desc: 'Описание',
+  wrapper: 'Обложка',
+  download: 'Загрузить',
+  create: 'Создать',
+  update: 'Обновить/Удалить',
+  breadCrumbs: [
+    "Фильмы",
+    "Жанры"
+  ]
 }

@@ -1,41 +1,73 @@
 .hero {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px;
+  padding-bottom: 250px;
 }
 
-.back{
-    display: flex;
-    align-items: center;
-    color: #a5a1b2;
+.back {
+  display: inline-flex;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.text {
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  color: #ffffff;
 }
 
 .infoProfile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
 }
 
 .formHeadline {
-    font-size: 32px;
-    line-height: 36px;
-    font-weight: 700;
-    font-style: normal;
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 700;
 }
 
 .formGreyText {
-    font-size: 15px;
-    line-height: 20px;
-    font-weight: 400;
-    font-style: normal;
-    opacity: 0.48;
-    margin-top: 4px;
+  font-size: 15px;
+  line-height: 20px;
+  color: #777777;
+}
+
+@media (max-width: 949px) {
+  .infoProfile {
+    width: 70%;
+  }
+}
+
+@media (max-width: 849px) {
+  .infoProfile {
+    width: 80%;
+  }
+
+  .formHeadline {
+    font-size: 26px;
+    line-height: 28px;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 549px) {
+  .infoProfile {
+    width: 100%;
+  }
 }

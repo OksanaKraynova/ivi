@@ -13,7 +13,12 @@
 }
 
 .link {
-  display: inline-block;
+  width: 200px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 6px;
+  border: 1px solid #555555;
   cursor: pointer;
   font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
   font-size: 15px;
@@ -21,44 +26,14 @@
   color: #FFFFFF;
 
   &:hover {
-    opacity: 0.48;
+    opacity: 0.75;
   }
 }
 
 .icon {
   padding: 2px;
-  margin-left: 6px;
 }
 
 .up {
   transform: rotate(180deg);
-}
-
-.title {
-  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-  font-size: 15px;
-  line-height: 15px;
-  color: #FFFFFF;
-}
-
-.inputBox {
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 26px;
-  display: grid;
-  grid-template-columns: calc(50% - 6px) calc(50% - 6px);
-  gap: 12px;
-}
-
-.oneEl {
-  grid-template-columns: 100%;
-}
-
-.fourEl {
-  grid-template-columns: calc(25% - 9px) calc(25% - 9px) calc(25% - 9px) calc(25% - 9px);
-}
-
-.button {
-  margin-top: 24px;
-  width: calc(50% - 6px);
 }
