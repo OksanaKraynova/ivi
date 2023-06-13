@@ -51,7 +51,9 @@ const linkListSecond: IItemLink[] = [
   { text: "Иви.рейтинг сериалы", link: "/" }
 ];
 
-const dropdownFilms: Parameters<typeof FooterNavbarDropdown<Parameters<typeof FooterNavbarDropdownList>[0]>>[0] = {
+type dropdownParams = Parameters<typeof FooterNavbarDropdown<Parameters<typeof FooterNavbarDropdownList>[0]>>[0];
+
+const dropdownFilms: dropdownParams = {
   buttonTitle: "Фильмы",
   buttonIcon: filmsIcon,
   dropdownBlockProps: {
@@ -149,7 +151,7 @@ const dropdownFilms: Parameters<typeof FooterNavbarDropdown<Parameters<typeof Fo
   dropdownBlock: (item) => <FooterNavbarDropdownList {...item} />
 };
 
-const dropdownSerials: Parameters<typeof FooterNavbarDropdown<Parameters<typeof FooterNavbarDropdownList>[0]>>[0] = {
+const dropdownSerials: dropdownParams = {
   buttonTitle: "Сериалы",
   buttonIcon: serialsIcon,
   dropdownBlockProps: {
@@ -266,7 +268,7 @@ const dropdownSerials: Parameters<typeof FooterNavbarDropdown<Parameters<typeof 
   dropdownBlock: (item) => <FooterNavbarDropdownList {...item} />
 };
 
-const dropdownAnimations: Parameters<typeof FooterNavbarDropdown<Parameters<typeof FooterNavbarDropdownList>[0]>>[0] = {
+const dropdownAnimations: dropdownParams = {
   buttonTitle: "Мультфильмы",
   buttonIcon: animationsIcon,
   dropdownBlockProps: {
@@ -377,7 +379,7 @@ const dropdownFirstList = [
   dropdownAnimations
 ];
 
-const dropdownAbout: Parameters<typeof FooterNavbarDropdown<Parameters<typeof FooterNavbarDropdownList>[0]>>[0] = {
+const dropdownAbout: dropdownParams = {
   buttonTitle: "О нас",
   buttonIcon: aboutIcon,
   dropdownBlockProps: {

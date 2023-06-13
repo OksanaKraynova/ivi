@@ -30,4 +30,7 @@ export default {
   devices: 'на всех устройствах',
   application: 'Приложение доступно для скачивания на iOS, Android, SmartTV и приставках',
   connect: 'Подключить устройства',
+  materials: 'Все материалы',
+  poster: "Постер",
+  toFilm: "К фильму",
 }

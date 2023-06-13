@@ -7,23 +7,24 @@ import { useRouter } from 'next/router';
 import ru from '@/locales/profile/ru';
 import en from '@/locales/profile/en';
 
-const ChooseUserProfile = () => {
-    const router = useRouter()
-    const { locale } = router
-    const t = locale === 'ru' ? ru : en
-    return (
-        <div>
-            <div className={styles.chooseProfile}>
-                <p className={styles.text}>{t.choose}</p>
-                <div className={styles.row}>
-                    {profiles.map((profile) => (
-                        <SubProfile key={profile.id} profile={profile} />
-                    ))}
-                </div>
-            </div>
-            <ProfileInfo profile={testProfile} />
-        </div>
-    );
-};
+export default function ChooseUserProfile() {
 
-export default ChooseUserProfile;
+  const { locale } = useRouter();
+  const t = locale === 'ru' ? ru : en
+
+  return (
+
+    <div>
+      <div className={styles.chooseProfile}>
+        <p className={styles.text}>{t.choose}</p>
+        <div className={styles.row}>
+          {profiles.map((profile) => (
+            <SubProfile key={profile.id} profile={profile} />
+          ))}
+        </div>
+      </div>
+      <ProfileInfo profile={testProfile} />
+    </div>
+
+  );
+};

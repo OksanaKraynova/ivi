@@ -1,34 +1,46 @@
-import { ActionCreator, createSlice } from "@reduxjs/toolkit";
-import { count } from "console";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import IUser from "@/types/IUser";
 
-
-interface User {
-  id: number;
-  username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  gender: string;
-  image: string;
+function initialUser() {
+  const item = typeof window !== "undefined" ? localStorage.getItem('IVIUserData') : null;
+  return item ? JSON.parse(item) : null;
 }
 
-interface UserState {
-  user: User | null;
-
+interface AuthPropsSate {
+  userData: IUser | undefined;
 }
 
-const initialState: UserState = {
-  user: null,
+const initialState: AuthPropsSate = {
+  userData: initialUser()
 }
 
 export const authorizationSlice = createSlice({
   name: 'authorization',
   initialState,
   reducers: {
-    setUser(state, action) {
-      state.user = action.payload
-    }
+    sign(state, action: PayloadAction<IUser>) {
+      action.payload.access_token && (
+        localStorage.setItem('IVIAccessToken', action.payload.access_token),
+        delete action.payload.access_token,
+        state.userData = action.payload,
+        localStorage.setItem('IVIUserData', JSON.stringify(action.payload))
+      )
+    },
+    handleLogin(state, action: PayloadAction<IUser>) {
+      action.payload.access_token && (
+        localStorage.setItem('IVIAccessToken', action.payload.access_token),
+        delete action.payload.access_token,
+        state.userData = action.payload,
+        localStorage.setItem('IVIUserData', JSON.stringify(action.payload))
+      )
+    },
+    handleLogout(state) {
+      state.userData = undefined
+      localStorage.removeItem('IVIUserData')
+      localStorage.removeItem('IVIAccessToken')
+    },
   }
 })
 
+export const { handleLogin, handleLogout } = authorizationSlice.actions;
 export default authorizationSlice.reducer;

@@ -1,42 +1,28 @@
-import React, { useState } from "react";
 import styles from "./profileMain.module.scss";
-import DarkBlueWrapper from "../DarkBlueWrapper/DarkBlueWrapper";
-import AuthModal from "./AuthModal/AuthModal";
-import SubProfile from "./SubProfiles/SubProfile";
-import ProfileInfo from "./ProfileUserBlock/ChooseUserProfile/ProfileInfo/ProfileInfo";
 import DopButtons from "./DopButtons/DopButtons";
 import ProfileCards from "./ProfileCards/ProfileCards";
-import ProfileUserBlock from "./ProfileUserBlock/profileUserBlock";
 import ProfileDopFunc from "./ProfileDopFunc/ProfileDopFunc";
+import ProfileUserBlock from "./ProfileUserBlock/ProfileUserBlock";
 
-type Props = {};
+export default function ProfileMain() {
 
-const ProfileMain = (props: Props) => {
-    const [authOpened, setAuthOpened] = useState<boolean>(false);
+  return (
 
-    const handleOpenModal = () => {
-        setAuthOpened(true);
-    };
+    <div className={`${styles.hero} container`}>
 
-    const handleCloseModal = () => {
-        setAuthOpened(false);
-    };
+      <div className={styles.heroWrapper}>
 
-    return (
-        <main className={`${styles.hero} container`}>
-            <div className={styles.heroWrapper}>
-                <ProfileUserBlock />
-                {authOpened && (
-                    <AuthModal handleCloseModal={handleCloseModal} />
-                )}
-                <div className={styles.profileMain}>
-                    <DopButtons />
-                    <ProfileDopFunc />
-                    <ProfileCards />
-                </div>
-            </div>
-        </main>
-    );
+        <ProfileUserBlock />
+
+        <div className={styles.profileMain}>
+          <DopButtons />
+          <ProfileDopFunc />
+          <ProfileCards />
+        </div>
+
+      </div>
+
+    </div>
+
+  );
 };
-
-export default ProfileMain;

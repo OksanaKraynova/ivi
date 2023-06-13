@@ -8,13 +8,14 @@ import ContentDescripton from "./ContentDescripton/ContentDescripton";
 import ContentRating from "./ContentRating/ContentRating";
 import ContentSimilar from "./ContentSimilar/ContentSimilar";
 import ContentCreators from "./ContentCreators/ContentCreators";
-import ContentTeasers from "./ContentTeasers/ContentTeasers";
+import ContentMaterials from "./ContentMaterials/ContentMaterials";
 import ContentComments from "./ContentComments/ContentComments";
 import ContentDevices from "./ContentDevices/ContentDevices";
 import BreadCrumbs from "./BreadCrumbs/BreadCrumbs";
 import styles from './Content.module.scss';
 import ru from "@/locales/content/ru";
 import en from "@/locales/content/en";
+import Custom404Page from "../Custom404Page/Custom404Page";
 
 interface ContentProps {
   content: IContent | null;
@@ -25,11 +26,9 @@ export default function Content(props: ContentProps) {
   const { locale } = useRouter();
   const language = locale === "en" ? en : ru;
 
-  if (props.content === null) {
+  if (!props.content || !props.content.id) {
     return (
-      <div className={classNames(styles.container, "container")}>
-        Пусто
-      </div>
+      <Custom404Page />
     )
   };
 
@@ -88,7 +87,7 @@ export default function Content(props: ContentProps) {
 
       <div className={styles.row}>
 
-        <ContentTeasers
+        <ContentMaterials
           content={props.content}
           titleClass={styles.title}
           linkClass={classNames(styles.title, styles.link)}

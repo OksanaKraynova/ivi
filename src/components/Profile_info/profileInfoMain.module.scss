@@ -27,25 +27,31 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 15px;
+  line-height: 20px;
+  color: #777777;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  text-align: center;
-}
-
-.formHeadline {
-  font-size: 32px;
-  line-height: 36px;
-  font-weight: 700;
-}
-
-.formGreyText {
-  font-size: 15px;
-  line-height: 20px;
-  color: #777777;
+  align-items: center;
 }
 
 @media (max-width: 949px) {

@@ -29,5 +29,8 @@ export default {
   watch: 'Watch',
   devices: 'on all devices',
   application: 'The app is available for download on iOS, Android, Smart TV and set-top boxes',
-  connect: 'Connect devices'
+  connect: 'Connect devices',
+  materials: 'All materials',
+  poster: "Poster",
+  toFilm: "To film",
 }

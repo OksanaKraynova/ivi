@@ -1,15 +1,14 @@
 import Layout from '@/src/components/Layout/Layout'
 import ProfileInfoMain from '@/src/components/Profile_info/ProfileInfoMain'
-import React from 'react'
 
-type Props = {}
+export default function SignUp() {
 
-const Profile_info = (props: Props) => {
   return (
-    <Layout>
-      <ProfileInfoMain/>
-    </Layout>
-  )
-}
 
-export default Profile_info
+    <Layout>
+      <ProfileInfoMain type="signup" />
+    </Layout>
+
+  )
+
+}

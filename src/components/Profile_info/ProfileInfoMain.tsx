@@ -3,7 +3,6 @@ import { useAppDispatch } from "@/src/hooks/redux";
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import axios from "axios";
-import Link from "next/link";
 import Image from "next/image";
 import DarkBlueInput from "../DarkBlueInput/DarkBlueInput";
 import Button from "../Button/Button";
@@ -12,33 +11,39 @@ import styles from "./profileInfoMain.module.scss";
 import arrowIcon from "../../../public/icons/profile/arrow.svg"
 import en from '@/locales/profile/en';
 import ru from '@/locales/profile/ru';
+import sendData from "@/src/functions/sendData";
+import IUser from "@/types/IUser";
+import { handleLogin } from "@/src/store/reducers/authorizationSlice";
 
+interface ProfileInfoMainProps {
+  type: "signin" | "signup";
+}
 
-export default function ProfileInfoMain() {
+export default function ProfileInfoMain(props: ProfileInfoMainProps) {
 
   const router = useRouter();
   const { locale } = router;
   const language = locale === "en" ? en : ru;
 
+  const dispatch = useAppDispatch();
+
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
   const [queryParams] = useSearchParams();
 
-  console.log(queryParams)
+  if (queryParams && queryParams.length > 0 && props.type === "signin") {
 
-  // if (queryParams && queryParams.length > 0) {
-  //   const dispatch = useAppDispatch();
+    const backEndUrl = Urls.SERVER_URL + ":" + Urls.AUTHORIZATION_PORT + Urls.AUTHORIZATION_API;
 
-  //   const backEndUrl = Urls.SERVER_URL + ":" + Urls.AUTHORIZATION_PORT + Urls.AUTHORIZATION_API;
-
-  //   axios.get(backEndUrl, { params: queryParams })
-  //     .then(res => {
-  //       // dispatch(handleLogin(res.data));
-  //       router.replace('/');
-  //     })
-  //     .catch(error => console.log(error))
-  // }
+    axios.get(backEndUrl, { params: queryParams })
+      .then(response => {
+        dispatch(handleLogin(response.data));
+        router.replace("/profile");
+      })
+      .catch(error => console.log(error));
+  }
 
   function getVKOAuthURL() {
 
@@ -76,34 +81,87 @@ export default function ProfileInfoMain() {
     router.replace(`${rootUrl}?${new URLSearchParams(options).toString()}`);
   }
 
+  function signUp() {
+
+    const newUser: IUser = {
+      login: userName,
+      email: userEmail,
+      password: userPassword,
+    };
+
+    sendData("post", Urls.AUTHORIZATION_SIGN_UP, { ...newUser })
+      .then(response => response.status === 200 && dispatch(handleLogin(response.data)))
+      .catch(error => console.log(error));
+
+    signIn();
+
+    router.replace("/profile");
+  }
+
+  function signIn() {
+
+    const user: IUser = {
+      email: userEmail,
+      password: userPassword,
+    };
+
+    sendData("post", Urls.AUTHORIZATION_SIGN_IN, { ...user })
+      .then(response => response.status === 200 && dispatch(handleLogin(response.data)))
+      .catch(error => console.log(error));
+
+    router.replace("/profile");
+  }
+
   return (
 
     <div className={styles.hero + " container"}>
 
-      <Link href="/profile" className={styles.back}>
-        <Image src={arrowIcon} alt={"icon"} width={20} height={20} />
-        <p className={styles.text}>{language.back}</p>
-      </Link>
+      <Button href="/profile" variant={"smallest"}>
+        <div className={styles.back}>
+          <Image src={arrowIcon} alt={"icon"} width={20} height={20} />
+          <p className={styles.text}>{language.back}</p>
+        </div>
+      </Button>
 
       <div className={styles.infoProfile}>
 
-        <form action="submit" className={styles.form}>
+        <p className={styles.title}>{props.type === "signin" ? language.signIn : language.signUp}</p>
+        <p className={styles.subtitle}>{language.useService}</p>
 
-          <p className={styles.formHeadline}>
-            {language.login}
-          </p>
-          <p className={styles.formGreyText}>
-            {language.useService}
-          </p>
+        {
+          props.type === "signin" &&
+          <div className={styles.buttons}>
+            <Button
+              variant="long"
+              effect="bordered"
+              onClick={() => getGoogleOAuthURL()}
+            >
+              {language.signInWith} Google
+            </Button>
 
-          <DarkBlueInput
-            type={"text"}
-            value={userName}
-            handleChange={(value) => setUserName(value)}
-            placeholder={"Username"}
-          >
-            username
-          </DarkBlueInput>
+            <Button
+              variant="long"
+              effect="bordered"
+              onClick={() => getVKOAuthURL()}
+            >
+              {language.signInWith} ВКонтакте
+            </Button>
+          </div>
+        }
+
+
+        <div className={styles.form}>
+
+          {props.type === "signup" &&
+            <DarkBlueInput
+              type={"text"}
+              value={userName}
+              handleChange={(value) => setUserName(value)}
+              placeholder={"Username"}
+            >
+              username
+            </DarkBlueInput>
+          }
 
           <DarkBlueInput
             type={"email"}
@@ -114,23 +172,24 @@ export default function ProfileInfoMain() {
             mail@mail.ru
           </DarkBlueInput>
 
-        </form>
+          <DarkBlueInput
+            type={"password"}
+            value={userPassword}
+            handleChange={(value) => setUserPassword(value)}
+            placeholder={"Password"}
+          >
+            password
+          </DarkBlueInput>
 
-        <Button
-          variant="long"
-          effect="bordered"
-          onClick={() => getGoogleOAuthURL()}
-        >
-          {language.signIn} Google
-        </Button>
+          <Button
+            variant="large"
+            effect="bordered"
+            onClick={() => props.type === "signin" ? signIn() : signUp()}
+          >
+            {props.type === "signin" ? language.signIn : language.signUp}
+          </Button>
 
-        <Button
-          variant="long"
-          effect="bordered"
-          onClick={() => getVKOAuthURL()}
-        >
-          {language.signIn} ВКонтакте
-        </Button>
+        </div>
 
       </div>
 

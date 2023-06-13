@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from "next/link";
 import classNames from "classnames";
 import IContent from "@/types/IContent";
 import ContentExtraHeder from "./ContentExtraHeder/ContentExtraHeder";
@@ -8,7 +7,12 @@ import ContentExtraComments from "./ContentExtraComments/ContentExtraComments";
 import Card from "../Card/Card";
 import styles from './ContentExtra.module.scss';
 import leftIcon from "@/public/icons/to-left.svg"
-import ContentExtraTreilers from './ContentExtraTreilers/ContentExtraTreilers';
+import ContentExtraMaterials from './ContentExtraMaterials/ContentExtraMaterials';
+import { useRouter } from 'next/router';
+import Custom404Page from '../Custom404Page/Custom404Page';
+import ru from '@/locales/content/ru';
+import en from '@/locales/content/en';
+import Button from '../Button/Button';
 
 interface ContentExtraProps {
   content: IContent | null;
@@ -17,14 +21,13 @@ interface ContentExtraProps {
 
 export default function ContentExtra(props: ContentExtraProps) {
 
-  if (props.content === null) {
+  const { locale } = useRouter();
+  const language = locale === "en" ? en : ru;
 
+  if (!props.content || !props.content.id) {
     return (
-      <div className={classNames(styles.container, "container")}>
-        Пусто
-      </div>
+      <Custom404Page />
     )
-
   };
 
   let content: React.ReactElement;
@@ -32,19 +35,18 @@ export default function ContentExtra(props: ContentExtraProps) {
     content = <ContentExtraPerson contentId={props.content.id} /> :
     props.extra === "Отзывы" ?
       content = <ContentExtraComments contentId={props.content.id} /> :
-      content = <ContentExtraTreilers />;
+      content = <ContentExtraMaterials content={props.content} locale={locale} />;
 
   return (
 
     <div className={classNames(styles.container, "container")}>
 
-      <Link
-        className={styles.linkIcon}
-        href={`/watch/${props.content.id}`}
-      >
-        <Image className={styles.icon} src={leftIcon} alt='назад' width={20} height={20} />
-        К фильму
-      </Link>
+      <Button href={`/watch/${props.content.id}`} variant={'small'}>
+        <div className={styles.linkIcon}>
+          <Image className={styles.icon} src={leftIcon} alt='назад' width={20} height={20} />
+          {language.toFilm}
+        </div>
+      </Button>
 
       <div className={styles.row}>
 

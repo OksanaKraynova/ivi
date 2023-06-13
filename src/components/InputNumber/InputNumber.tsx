@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Image from 'next/image';
 import styles from './InputNumber.module.scss';
@@ -11,6 +11,7 @@ interface InputNumberProps {
   min?: number;
   max?: number;
   error?: boolean;
+  reset?: boolean;
   onChange?: (count: string) => void;
 }
 
@@ -19,7 +20,9 @@ export default function InputNumber(props: InputNumberProps) {
   const integer = props.integer ?? false;
 
   const [count, setCount] = useState<string>("");
-  const [placeholderEffect, setPlacholderEffect] = useState<string | null>(null);
+  const [placeholderEffect, setPlacholderEffect] = useState<string>();
+
+  useEffect(() => { props.reset && (setPlacholderEffect(undefined), setCount("")) }, [props.reset]);
 
   function getNextNumber(number: number, residual: number, min?: number, max?: number): string {
     let nextNumber = number;
@@ -72,7 +75,7 @@ export default function InputNumber(props: InputNumberProps) {
         }
         onBlur={(event) =>
           event.target.value.length === 0 &&
-          setPlacholderEffect(null)
+          setPlacholderEffect(undefined)
         }
       />
 

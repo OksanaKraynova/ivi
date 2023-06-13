@@ -8,8 +8,7 @@ import Urls from "@/types/Urls";
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
 
   const id = context.params?.id;
-  // const content = await getData<IContent>(Urls.SERVER_PORT, Urls.ONE_MOVIE + `/${id}`);
-  const content = await getData<IContent>("3003", "/api/movies" + `/${id}`);
+  const content = await getData<IContent>(Urls.SERVER_PORT, Urls.ONE_MOVIE + `/${id}`);
 
   return {
     props: { content: content }

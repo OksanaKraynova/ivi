@@ -47,6 +47,7 @@ export default function AdminPage() {
             {item}
           </p>
         )}
+
       </div>
 
       <AdminPageFilms hidden={hidden[0]} genres={genres} countries={countries} locale={locale} />

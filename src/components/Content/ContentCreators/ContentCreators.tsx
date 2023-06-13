@@ -5,6 +5,7 @@ import styles from './ContentCreators.module.scss';
 import Urls from '@/types/Urls';
 import ru from "@/locales/content/ru";
 import en from "@/locales/content/en";
+import classNames from 'classnames';
 
 interface ContentCreatorsProps {
   content: IContent;
@@ -33,25 +34,31 @@ export default function ContentCreators(props: ContentCreatorsProps) {
           <div className={styles.visible}>
 
             {props.content.creators.find(creators => creators.job === "Режиссер")?.persons?.map((actor, index) => {
-              return (<div key={index} className={styles.item}>
 
-                <LinkAvatar
-                  textUnderImg={actor.name}
-                  href=""
-                  img={actor.photo && actor.photo.length > 0 ? fileUrl + actor.photo[0].file_path : ""}
-                  form="circle"
-                >
-                  <p className={styles.job}>{language.director}</p>
-                </LinkAvatar>
+              return (
 
-              </div>
+                <div key={index} className={classNames(styles.item, styles.creator)}>
+
+                  <LinkAvatar
+                    textUnderImg={actor.name}
+                    href=""
+                    img={actor.photo && actor.photo.length > 0 ? fileUrl + actor.photo[0].file_path : ""}
+                    form="circle"
+                  >
+                    <p className={styles.job}>{language.director}</p>
+                  </LinkAvatar>
+
+                </div>
               )
             })}
 
             {props.content.creators.find(creators => creators.job === "Актер")?.persons?.map((actor, index) => {
+
               if (index > 8) return;
+
               return (
-                <div key={index} className={styles.item}>
+
+                <div key={index} className={classNames(styles.item, styles.creator)}>
 
                   <LinkAvatar
                     textUnderImg={actor.name}
@@ -66,17 +73,18 @@ export default function ContentCreators(props: ContentCreatorsProps) {
               )
             })}
 
+            <div className={styles.item}>
+              <LinkAvatar
+                textUnderImg=""
+                href={`/watch/${props.content.id}/person`}
+                img=""
+                form="circle"
+                textInsteadImg='Ещё'
+              />
+            </div>
+
           </div>
         }
-
-
-        <LinkAvatar
-          textUnderImg=""
-          href={`/watch/${props.content.id}/person`}
-          img=""
-          form="circle"
-          textInsteadImg='Ещё'
-        />
 
       </div >
 

@@ -2,7 +2,7 @@
   margin-top: 12px;
 }
 
-.trailerBox {
+.materialBoxPreview {
   width: 286px;
   display: flex;
   flex-direction: column;
@@ -34,11 +34,11 @@
   color: rgba(255, 255, 255, .48);
 }
 
-.videoBox {
+.materialBox {
   width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 24px;
 }
 
@@ -47,9 +47,15 @@
   aspect-ratio: 1.6;
 }
 
+.poster {
+  max-width: 100%;
+  max-height: 75vh;
+}
+
 .icon {
   height: 30px;
   width: 30px;
+  align-self: flex-end;
 
   &:hover {
     opacity: 0.5;
@@ -57,13 +63,13 @@
 }
 
 @media (min-width: 1999px) {
-  .videoBox {
+  .materialBox {
     width: 30%;
   }
 }
 
 @media (max-width: 999px) {
-  .videoBox {
+  .materialBox {
     width: 70%;
   }
 
@@ -85,7 +91,7 @@
 }
 
 @media (max-width: 326px) {
-  .trailerBox {
+  .materialBoxPreview {
     width: 100%;
   }
 }

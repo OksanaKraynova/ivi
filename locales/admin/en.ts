@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  edit: 'Update/Delete',
   ru: 'Russian name',
   en: 'English name',
   year: 'Year',
@@ -12,14 +11,22 @@ export default {
   rating: 'Rating',
   score: 'Evaluation',
   actors: 'Actors',
-  director: 'Directors',
+  directors: 'Directors',
   desc: 'Description',
   wrapper: 'Cover',
   download: 'Download',
   create: 'Create',
-  update: 'Update/Delite',
+  update: 'Update',
+  delite: 'Delite',
   breadCrumbs: [
     "Movies",
     "Genres"
-  ]
+  ],
+  error: 'Error',
+  createdFilm: 'Movie loaded',
+  old: 'Previous name',
+  new: 'New name',
+  updatedFilm: 'Movie updated',
+  deliteFilm: 'Delite updated',
+  updatedGenre: 'Genre updated',
 }

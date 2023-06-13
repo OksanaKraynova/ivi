@@ -19,7 +19,8 @@ export default {
     { title: ' Notifications and promotions', img: '/icons/profile/bell.svg' }
   ],
   choose: 'Profile Selection',
-  login: 'Log in or register',
+  signIn: 'Log in',
+  signUp: 'Register',
   edit: 'Edit Profile',
   main: 'Main profile',
   phone: 'Add phone',
@@ -29,7 +30,7 @@ export default {
   client: 'client agreement',
   police: 'privacy policies',
   error: 'Email or password entered incorrectly',
-  signIn: 'Sign in with',
+  signInWith: 'Sign in with',
   back: 'Back',
   useService: 'To use the service on any device'
 }

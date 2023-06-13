@@ -26,6 +26,13 @@
   width: calc(50% - 6px);
 }
 
+.status {
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color: #b4b4b4;
+}
+
 @media (max-width: 999px) {
   .fourEl {
     grid-template-columns: calc(50% - 6px) calc(50% - 6px);

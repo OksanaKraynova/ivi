@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import IGenre from '@/types/IGenre';
 import Select from '../../Select/Select';
@@ -17,6 +16,9 @@ import Urls from '@/types/Urls';
 import IData from '@/types/IData';
 import sendData from '@/src/functions/sendData';
 import styles from './AdminPageCreateFilm.module.scss';
+import ru from '@/locales/admin/ru';
+import en from '@/locales/admin/en';
+import sendFile from '@/src/functions/sendFile';
 
 interface Filled {
   name: boolean,
@@ -36,7 +38,7 @@ type ContentPost = {
   year: number,
   film_time: string,
   age: string,
-  slogan: string,
+  slogan: string | null,
   description: string | null,
   rating: number,
   estimation: number,
@@ -48,13 +50,12 @@ interface AdminPageCreateFilmProps {
   ages: string[];
   countries: ICountry[];
   hidden: boolean;
-  status?: string;
-  onSubmit?: () => void;
+  locale?: string;
 }
 
 export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
-  const { locale } = useRouter();
+  const language = props.locale === 'en' ? en : ru;
 
   const defaulFilled: Filled = {
     name: false,
@@ -74,7 +75,7 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
     year: 0,//
     film_time: "",//
     age: "",//
-    slogan: "",
+    slogan: null,
     description: null,
     rating: 0,
     estimation: 0,
@@ -90,11 +91,11 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
   let timerDirector: NodeJS.Timeout;
 
   useEffect(() => {
-    timerActor = setTimeout(() => searchCreators(actorSearch, "actor"), 800);
+    timerActor = setTimeout(() => searchCreators(actorSearch, "actor"), 650);
   }, [actorSearch]);
 
   useEffect(() => {
-    timerDirector = setTimeout(() => searchCreators(directorSearch, "director"), 800);
+    timerDirector = setTimeout(() => searchCreators(directorSearch, "director"), 650);
   }, [directorSearch]);
 
   const [newFilm, setNewFilm] = useState<ContentPost>(defaultFilm);
@@ -106,6 +107,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
   const [filled, setFilled] = useState<Filled>(defaulFilled);
   const [sendingError, setSendingError] = useState<boolean>();
+  const [reset, setReset] = useState<boolean>(false);
+  const [status, setStatus] = useState<string>("");
 
   function searchCreators(value: string, job: "actor" | "director") {
     value.length > 2 ?
@@ -131,23 +134,42 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
     }
 
     sendData("post", Urls.ONE_MOVIE, postFilm)
-      .then(status => console.log(status))
-      .catch(error => console.log(error));
+      .then(response => response.status === 200 ?
+        (resetForm(), getMessegeOKPostFilm()) : getMessegeErrorPostFilm(response.status))
+      .catch(error => getMessegeErrorPostFilm(error.response.status));
 
+    resetForm();
+  }
+
+  function sendImage() {
+    sendFile(filmFiles)
+      .then(status => console.log(status))
+      .catch(error => getMessegeErrorPostFilm(error.messege));
+  }
+
+  function resetForm() {
     setNewFilm(defaultFilm);
     setFilmDirectors([]);
     setFilmActors([]);
+    setDirectorSearch("");
+    setActorSearch("");
     setFilmGenres([]);
     setFilmCountries([]);
     setFilmFiles(new FormData());
     setFilled(defaulFilled);
     setSendingError(false);
+    setReset(true);
+    setTimeout(() => setReset(false), 100);
   }
 
-  function sendFile() {
-    sendData("post", Urls.UPLOAD_FILES, filmFiles)
-      .then(status => console.log(status))
-      .catch(error => console.log(error));
+  function getMessegeOKPostFilm() {
+    setStatus(language.createdFilm);
+    setTimeout(() => setStatus(""), 3000);
+  }
+
+  function getMessegeErrorPostFilm(errorCode: number) {
+    setStatus(`${language.error}: ${errorCode}`);
+    setTimeout(() => setStatus(""), 3000);
   }
 
   return (
@@ -159,8 +181,10 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
       <div className={styles.inputBox}>
         <InputText
-          placeholder="Русское название"
+          placeholder={language.ru}
+          value={newFilm.name}
           error={!filled.name && sendingError}
+          reset={reset}
           onChange={(event) => {
             setNewFilm({ ...newFilm, name: event.target.value });
             filled.name = event.target.value.length > 0;
@@ -168,15 +192,18 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         />
 
         <InputText
-          placeholder="Английское название"
+          placeholder={language.en}
+          value={newFilm.name_translate ?? ""}
+          reset={reset}
           onChange={(event) => setNewFilm({ ...newFilm, name_translate: event.target.value })}
         />
       </div>
 
       <div className={styles.inputBox}>
         <InputNumber
-          placeholder="Год"
+          placeholder={language.year}
           integer={true}
+          reset={reset}
           error={!filled.year && sendingError}
           onChange={(value) => {
             setNewFilm({ ...newFilm, year: +value });
@@ -186,14 +213,17 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         />
 
         <InputText
-          placeholder="Слоган"
+          placeholder={language.slogan}
+          value={newFilm.slogan ?? ""}
+          reset={reset}
           onChange={(event) => setNewFilm({ ...newFilm, slogan: event.target.value })}
         />
       </div>
 
       <div className={styles.inputBox}>
         <Select
-          placeholder='Жанр'
+          placeholder={language.genre}
+          reset={reset}
           error={!filled.ganres && sendingError}
           options={props.genres.map(item => item.name)}
           type='multiple'
@@ -208,7 +238,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         />
 
         <Select
-          placeholder="Страна"
+          placeholder={language.country}
+          reset={reset}
           error={!filled.countries && sendingError}
           options={props.countries.map(item => item.name)}
           type='multiple'
@@ -225,8 +256,9 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
       <div className={classNames(styles.inputBox, styles.fourEl)}>
         <InputNumber
-          placeholder="Продолжительность"
+          placeholder={language.long}
           integer={true}
+          reset={reset}
           error={!filled.film_time && sendingError}
           onChange={value => {
             setNewFilm({ ...newFilm, film_time: value });
@@ -236,7 +268,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         />
 
         <Select
-          placeholder='Возрастной рейтинг'
+          placeholder={language.age}
+          reset={reset}
           error={!filled.age && sendingError}
           options={props.ages}
           type='one'
@@ -247,13 +280,15 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
         />
 
         <InputNumber
-          placeholder="Рейтинг"
+          placeholder={language.rating}
+          reset={reset}
           onChange={(value) => setNewFilm({ ...newFilm, rating: +value })}
           min={0}
         />
 
         <InputNumber
-          placeholder="Оценка"
+          placeholder={language.score}
+          reset={reset}
           integer={true}
           onChange={(value) => setNewFilm({ ...newFilm, estimation: +value })}
           min={0}
@@ -262,14 +297,17 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
       <div className={styles.inputBox}>
         <Search<IActor>
-          placeholder='Актеры'
+          placeholder={language.actors}
+          value={actorSearch}
           options={actors}
+          reset={reset}
+          error={!filled.actors && sendingError}
           onChange={(event) => {
             clearTimeout(timerActor);
             setActorSearch(event.target.value);
           }}
-          addItem={actor => {
-            setFilmActors(filmActors.includes(actor) ? filmActors : [...filmActors, actor]);
+          addItem={item => {
+            setFilmActors(filmActors.includes(item) ? filmActors : [...filmActors, item]);
             filled.actors = true;
           }}
           renderItem={actor => actor.name}
@@ -279,8 +317,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
           filmActors.length > 0 &&
           <DataBlock
             items={filmActors.map(actor =>
-              locale === 'en' && actor.translate ? actor.translate : actor.name)}
-            placeholder='Актеры'
+              props.locale === 'en' && actor.translate ? actor.translate : actor.name)}
+            placeholder={language.actors}
             deliteItem={index => setFilmActors(filmActors.filter((actor, currentIndex) => currentIndex !== index))}
           />
         }
@@ -288,16 +326,17 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
       <div className={styles.inputBox}>
         <Search<IActor>
-          placeholder='Режиссеры'
+          placeholder={language.directors}
+          value={directorSearch}
           options={directors}
+          reset={reset}
+          error={!filled.directors && sendingError}
           onChange={(event) => {
             clearTimeout(timerDirector);
             setDirectorSearch(event.target.value);
           }}
-          addItem={director => {
-            setFilmDirectors(filmDirectors.includes(director) ?
-              filmDirectors :
-              [...filmDirectors, director]);
+          addItem={item => {
+            setFilmDirectors(filmDirectors.includes(item) ? filmDirectors : [...filmDirectors, item]);
             filled.directors = true;
           }}
           renderItem={director => director.name}
@@ -307,8 +346,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
           filmDirectors.length > 0 &&
           <DataBlock
             items={filmDirectors.map(director =>
-              locale === 'en' && director.translate ? director.translate : director.name)}
-            placeholder='Режиссеры'
+              props.locale === 'en' && director.translate ? director.translate : director.name)}
+            placeholder={language.directors}
             deliteItem={index => setFilmDirectors(filmDirectors.filter((director, currentIndex) => currentIndex !== index))}
           />
         }
@@ -316,14 +355,16 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
 
       <div className={classNames(styles.inputBox, styles.oneEl)}>
         <TextArea
-          placeholder="Описание"
+          placeholder={language.desc}
+          value={newFilm.description ?? ""}
+          reset={reset}
           onChange={(event) => setNewFilm({ ...newFilm, description: event.target.value })}
         />
       </div>
 
       <div className={styles.inputBox}>
         <InputFile
-          placeholder="Обложка"
+          placeholder={language.wrapper}
           accept="image/*"
           onChange={(file) => filmFiles.append("file", file)}
         />
@@ -332,9 +373,9 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
           variant="long"
           effect="bordered"
           color="darkBlue"
-          onClick={() => sendFile()}
+          onClick={() => sendImage()}
         >
-          Загрузить
+          {language.download}
         </Button>
       </div>
 
@@ -343,15 +384,13 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
           variant="long"
           effect="bordered"
           color="darkBlue"
-          onClick={() => {
-            createFilm();
-            props.onSubmit && props.onSubmit();
-          }}
+          onClick={() => createFilm()}
         >
-          Создать
+          {language.create}
         </Button>
 
-        {/* <p className={styles.status}>{props.status}</p> */}
+        <p className={styles.status}>{status}</p>
+
       </div>
 
     </div>

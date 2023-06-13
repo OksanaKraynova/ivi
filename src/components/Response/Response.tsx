@@ -30,7 +30,7 @@ export default function Response(props: ResponseProps) {
     };
 
     sendData("post", Urls.ALL_COMMENTS, data)
-      .then(status => status === 200 && setComment(""))
+      .then(response => response.status === 200 && setComment(""))
       .catch(error => console.log(error));
   }
 

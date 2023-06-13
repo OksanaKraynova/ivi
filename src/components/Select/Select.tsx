@@ -10,6 +10,7 @@ interface SelectProps {
   placeholder: string;
   type: "multiple" | "one";
   error?: boolean;
+  reset?: boolean;
   addCheck?: (index: number) => void;
   deliteCheck?: (index: number) => void;
 }
@@ -18,6 +19,8 @@ export default function Select(props: SelectProps) {
 
   const [visibile, setVisibile] = useState<boolean>(false);
   const [checked, setChecked] = useState<string[]>([]);
+
+  useEffect(() => { props.reset && setChecked([]) }, [props.reset]);
 
   function changeOneCheck(item: string, index: number) {
     setChecked([item]);

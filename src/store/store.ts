@@ -5,8 +5,8 @@ import { authApi } from "../services/authService";
 import genresCountriesReducer from "./reducers/genresCountriesSlice";
 
 const rootReducer = combineReducers({
-  // authorizationReducer,
-  // [authApi.reducerPath]: authApi.reducer
+  authorizationReducer,
+  [authApi.reducerPath]: authApi.reducer,
   genresCountriesReducer
 })
 
