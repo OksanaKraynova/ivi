@@ -15,6 +15,7 @@ import sendData from '@/src/functions/sendData';
 import AdminPageCreateFilm from '../AdminPageCreateFilm/AdminPageCreateFilm';
 import ru from '@/locales/admin/ru';
 import en from '@/locales/admin/en';
+import Button from '../../Button/Button';
 
 interface AdminPageFilmsProps {
   hidden: boolean;
@@ -36,7 +37,10 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
   const [filmSearch, setFilmSearch] = useState<string>("");
 
   const [film, setFilm] = useState<IContent>();
-  const [upadatedFilm, setUpdatedFilm] = useState<{ name: string, name_translate?: string | null }>();
+  const [upadatedFilm, setUpdatedFilm] = useState<{ name: string | null, name_translate?: string | null }>();
+
+  const [reset, setReset] = useState<boolean>(false);
+  const [status, setStatus] = useState<string>("");
 
   let timerFilm: NodeJS.Timeout;
 
@@ -54,11 +58,9 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
     ) return;
 
     sendData("patch", Urls.ONE_MOVIE + `/${film?.id}`, upadatedFilm)
-      .then(status => console.log(status))
-      .catch(error => console.log(error));
-
-    setFilm(undefined);
-    setUpdatedFilm(undefined);
+      .then(status => status === 200 ?
+        (getMessegeOKUpdateFilm(language.updatedFilm), resetForm()) : getMessegeErrorUpdateFilm(status))
+      .catch(error => getMessegeErrorUpdateFilm(error.response.status));
   }
 
   function deliteFilm() {
@@ -66,11 +68,26 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
     if (!upadatedFilm || !film) return;
 
     sendData("delete", Urls.ONE_MOVIE + `/${film?.id}`)
-      .then(status => console.log(status))
-      .catch(error => console.log(error));
+      .then(status => status === 200 ?
+        (getMessegeOKUpdateFilm(language.deliteFilm), resetForm()) : getMessegeErrorUpdateFilm(status))
+      .catch(error => getMessegeErrorUpdateFilm(error.response.status));
+  }
 
+  function resetForm() {
     setFilm(undefined);
     setUpdatedFilm(undefined);
+    setReset(true);
+    setTimeout(() => setReset(false), 100);
+  }
+
+  function getMessegeOKUpdateFilm(messege: string) {
+    setStatus(messege);
+    setTimeout(() => setStatus(""), 3000);
+  }
+
+  function getMessegeErrorUpdateFilm(errorCode: number) {
+    setStatus(`${language.error}: ${errorCode}`);
+    setTimeout(() => setStatus(""), 3000);
   }
 
   return (
@@ -79,19 +96,18 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       <div className={styles.row}>
 
-        <div
-          className={styles.link}
-          onClick={() => setHidden({ ...hidden, update: !hidden.update })}
-        >
-          {language.update}
-          <Image
-            className={hidden.update ? classNames(styles.icon, styles.up) : styles.icon}
-            src={downIcon} alt={hidden.update ? 'up' : 'down'}
-            width={16}
-            height={16}
-          />
+        <Button onClick={() => setHidden({ ...hidden, update: !hidden.update })} variant={'medium'} effect='bordered'>
+          <div className={styles.link}>
+            {language.update}/{language.delite}
+            <Image
+              className={hidden.update ? classNames(styles.icon, styles.up) : styles.icon}
+              src={downIcon} alt={hidden.update ? 'up' : 'down'}
+              width={16}
+              height={16}
+            />
+          </div>
 
-        </div>
+        </Button>
 
       </div>
 
@@ -99,6 +115,8 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
         <Search<IContent>
           placeholder='Фильм'
+          reset={reset}
+          value={filmSearch}
           options={films}
           onChange={(event) => {
             clearTimeout(timerFilm);
@@ -106,21 +124,31 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
           }}
           addItem={film => {
             setFilm(film);
-            setUpdatedFilm(film);
+            setUpdatedFilm({ name: null, name_translate: null });
           }}
           renderItem={film => film.name}
         />
+
+        {
+          status.length > 0 &&
+          <div className={styles.inputBox}>
+            <p className={styles.status}>{status}</p>
+          </div>
+        }
 
         {
           upadatedFilm && film &&
           <AdminPageUpdateName
             name={film.name}
             englishName={film.name_translate}
+            newName={upadatedFilm.name}
+            newEnglishName={upadatedFilm.name_translate}
             delite={true}
+            locale={props.locale}
             onChangeName={(event) => setUpdatedFilm({ ...upadatedFilm, name: event.target.value })}
             onChangeEnglishName={(event) => setUpdatedFilm({ ...upadatedFilm, name_translate: event.target.value })}
-            onSabmit={updateFilm}
-            onDelite={deliteFilm}
+            onSabmit={() => updateFilm()}
+            onDelite={() => deliteFilm()}
           />
         }
 
@@ -128,19 +156,17 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
 
       <div className={styles.row}>
 
-        <div
-          className={styles.link}
-          onClick={() => setHidden({ ...hidden, create: !hidden.create })}
-        >
-          {language.create}
-          <Image
-            className={hidden.create ? classNames(styles.icon, styles.up) : styles.icon}
-            src={downIcon} alt={hidden.create ? 'up' : 'down'}
-            width={16}
-            height={16}
-          />
-
-        </div>
+        <Button onClick={() => setHidden({ ...hidden, create: !hidden.create })} variant={'medium'} effect='bordered'>
+          <div className={styles.link}>
+            {language.create}
+            <Image
+              className={hidden.create ? classNames(styles.icon, styles.up) : styles.icon}
+              src={downIcon} alt={hidden.create ? 'up' : 'down'}
+              width={16}
+              height={16}
+            />
+          </div>
+        </Button>
 
       </div>
 
@@ -149,9 +175,10 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
         ages={ages}
         countries={props.countries}
         hidden={hidden.create}
+        locale={props.locale}
       />
 
-    </div>
+    </div >
 
   );
 }

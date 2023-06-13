@@ -15,7 +15,7 @@ export default async function sendData(
     data: params
   })
     .then(response => response.status)
-    .catch(error => error.response);
+    .catch(error => error.response.status);
 
   return promise;
 }

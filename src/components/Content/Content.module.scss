@@ -8,7 +8,7 @@
 
 .box {
   display: grid;
-  grid-template-columns: calc(65% - 18px) calc(35% - 18px);
+  grid-template-columns: calc(60% - 18px) calc(40% - 18px);
   column-gap: 36px;
   row-gap: 24px;
   grid-template-areas:
@@ -36,10 +36,11 @@
 
 .actors {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  margin: 0 12px;
+  grid-template-columns:
+    calc(100%/6 - 5px) calc(100%/6 - 5px) calc(100%/6 - 5px) calc(100%/6 - 5px) calc(100%/6 - 5px) calc(100%/6 - 5px);
   grid-area: actors;
   overflow: hidden;
+  gap: 6px;
 }
 
 .title {
@@ -82,7 +83,7 @@
 @media (max-width: 1279px) {
 
   .box {
-    grid-template-columns: calc(65% - 12px) calc(35% - 12px);
+    grid-template-columns: calc(60% - 12px) calc(40% - 12px);
     column-gap: 24px;
     grid-template-areas:
       "title title"
@@ -121,20 +122,26 @@
 @media (max-width: 399px) {
 
   .actors {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0;
+    grid-template-columns:
+      calc(20% - 8px) calc(20% - 8px) calc(20% - 8px) calc(20% - 8px) calc(20% - 8px) 0%;
+    gap: 10px;
   }
 }
 
 @media (max-width: 349px) {
 
   .actors {
-    grid-template-columns: 1fr 1fr 1fr 1fr 0 0;
+    grid-template-columns:
+      calc(25% - 6px) calc(25% - 6px) calc(25% - 6px) calc(25% - 6px) 0% 0%;
+    gap: 8px;
   }
 }
 
 @media (min-width: 1280px) {
 
   .actors {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0;
+    grid-template-columns:
+      calc(20% - 8px) calc(20% - 8px) calc(20% - 8px) calc(20% - 8px) calc(20% - 8px) 0%;
+    gap: 10px;
   }
 }

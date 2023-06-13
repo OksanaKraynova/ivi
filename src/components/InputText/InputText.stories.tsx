@@ -3,54 +3,58 @@ import type { Meta, StoryObj } from '@storybook/react';
 import closeIcon from '../../../public/icons/close.svg';
 
 const meta: Meta<typeof InputText> = {
-    title: 'InputText',
-    component: InputText,
-    tags: ['autodocs'],
-    argTypes: {
-        placeholder: {
-            type: { name: 'string', required: false },
-            description: 'Подпись в поле для ввода ответа'
-        },
-        buttonIcon: {
-            type: { name: 'string', required: false },
-            description: 'Путь к иконке для кнопки'
-        },
-        buttonClass: {
-            type: { name: 'string', required: false },
-            description: 'Класс кнопки'
-        },
-        disabled: {
-            type: { name: 'boolean', required: false },
-            defaultValue: false,
-            description: 'Блокировка доступа и изменения'
-        },
-        readOnly: {
-            type: { name: 'boolean', required: false },
-            defaultValue: false,
-            description: 'Поле только для чтения'
-        },
-        value: {
-            type: { name: 'string', required: false },
-            description: 'Программно введеный текст'
-        },
-        minSize: {
-            type: { name: 'number', required: false },
-            defaultValue: 0,
-            description: 'Минимальная длина вводимого текста'
-        },
-        error: {
-            required: false,
-            description: 'Наличие ошибки'
-        },
-        onClick: {
-            type: { name: 'function', required: false },
-            description: 'Действие при клике на кнопку'
-        },
-        onChange: {
-            required: false,
-            description: 'Действие при введении текста'
-        }
+  title: 'InputText',
+  component: InputText,
+  tags: ['autodocs'],
+  argTypes: {
+    placeholder: {
+      type: { name: 'string', required: false },
+      description: 'Подпись в поле для ввода ответа'
+    },
+    buttonIcon: {
+      type: { name: 'string', required: false },
+      description: 'Путь к иконке для кнопки'
+    },
+    buttonClass: {
+      type: { name: 'string', required: false },
+      description: 'Класс кнопки'
+    },
+    disabled: {
+      type: { name: 'boolean', required: false },
+      defaultValue: false,
+      description: 'Блокировка доступа и изменения'
+    },
+    readOnly: {
+      type: { name: 'boolean', required: false },
+      defaultValue: false,
+      description: 'Поле только для чтения'
+    },
+    value: {
+      type: { name: 'string', required: false },
+      description: 'Программно введеный текст'
+    },
+    minSize: {
+      type: { name: 'number', required: false },
+      defaultValue: 0,
+      description: 'Минимальная длина вводимого текста'
+    },
+    error: {
+      type: { name: 'boolean', required: false },
+      description: 'Наличие ошибки'
+    },
+    reset: {
+      type: { name: 'boolean', required: false },
+      description: 'Сброс к исходному виду'
+    },
+    onClick: {
+      type: { name: 'function', required: false },
+      description: 'Действие при клике на кнопку'
+    },
+    onChange: {
+      required: false,
+      description: 'Действие при введении текста'
     }
+  }
 };
 
 export default meta;
@@ -58,8 +62,8 @@ export default meta;
 type Story = StoryObj<typeof InputText>;
 
 export const Example: Story = {
-    args: {
-        placeholder: "Написать ответ",
-        buttonIcon: closeIcon.src
-    }
+  args: {
+    placeholder: "Написать ответ",
+    buttonIcon: closeIcon.src
+  }
 };

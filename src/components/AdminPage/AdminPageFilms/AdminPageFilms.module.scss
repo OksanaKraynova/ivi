@@ -14,15 +14,11 @@
 
 .link {
   width: 200px;
-  padding: 16px;
   display: flex;
   justify-content: space-between;
-  border-radius: 6px;
-  border: 1px solid #555555;
   cursor: pointer;
   font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
   font-size: 15px;
-  line-height: 16px;
   color: #FFFFFF;
 
   &:hover {
@@ -36,4 +32,12 @@
 
 .up {
   transform: rotate(180deg);
+}
+
+.status {
+  font-family: iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color: #b4b4b4;
+  margin-top: 12px;
 }

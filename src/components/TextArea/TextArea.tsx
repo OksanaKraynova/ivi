@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './TextArea.module.scss';
 
 interface TextAreaProps {
   placeholder?: string;
-  required?: boolean;
+  reset?: boolean;
+  value?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export default function TextArea(props: TextAreaProps) {
 
-  const [placeholderEffect, setPlacholderEffect] = useState<string | null>(null);
+  const [placeholderEffect, setPlacholderEffect] = useState<string>();
+
+  useEffect(() => { props.reset && setPlacholderEffect(undefined) }, [props.reset]);
 
   return (
 
@@ -18,12 +21,12 @@ export default function TextArea(props: TextAreaProps) {
 
       <textarea
         className={styles.textArea}
-        required={props.required ?? false}
+        value={props.value ?? ""}
         onChange={(event) => {
           props.onChange && props.onChange(event);
           event.target.value.length > 0 ?
             setPlacholderEffect(styles.overText) :
-            setPlacholderEffect(null);
+            setPlacholderEffect(undefined);
         }}
         onFocus={(event) => {
           if (event.target.value.length === 0)
@@ -31,7 +34,7 @@ export default function TextArea(props: TextAreaProps) {
         }}
         onBlur={(event) => {
           if (event.target.value.length === 0)
-            setPlacholderEffect(null);
+            setPlacholderEffect(undefined);
         }}
       />
 

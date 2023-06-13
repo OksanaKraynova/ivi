@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Image from 'next/image';
 import styles from './InputText.module.scss';
@@ -9,9 +9,10 @@ interface InputTextProps {
   buttonClass?: string;
   disabled?: boolean;
   readOnly?: boolean;
-  value?: string;
+  value: string;
   minSize?: number;
   error?: boolean;
+  reset?: boolean;
   onClick?: ((event: React.MouseEvent<HTMLImageElement, MouseEvent>) => void) |
   (() => void);
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,11 +21,12 @@ interface InputTextProps {
 export default function InputText(props: InputTextProps) {
 
   const minSize = props.minSize ?? 0;
-  const value = props.value ?? "";
-  const defaultEffect = value.length > 0 ? styles.overText : undefined;
+  const defaultEffect = props.value.length > 0 ? styles.overText : undefined;
 
   const [placeholderEffect, setPlacholderEffect] = useState<string>();
-  const [valueLength, setValueLength] = useState<number>(value.length);
+  const [valueLength, setValueLength] = useState<number>(props.value.length);
+
+  useEffect(() => { props.reset && setPlacholderEffect(undefined) }, [props.reset]);
 
   return (
 

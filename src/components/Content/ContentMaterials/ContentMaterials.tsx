@@ -4,51 +4,73 @@ import Image from 'next/image';
 import IContent from '@/types/IContent';
 import Modal from '../../Modal/Modal';
 import MovieBlock from '../../MovieBlock/MovieBlock';
-import TeaserBox from '../../TeaserBox/TeaserBox';
-import styles from './ContentTeasers.module.scss';
+import MaterialBox from '../../MaterialBox/MaterialBox';
+import styles from './ContentMaterials.module.scss';
 import mermaidImg from "@/public/img/little-mermaid.jpg";
 import bongoImg from "@/public/img/see-you-again.jpg";
 import closeIcon from "@/public/icons/close.svg";
-import IVideo from '@/types/IVideo';
+import IMaterial from '@/types/IMaterial';
 import ru from '@/locales/content/ru';
 import en from '@/locales/content/en';
+import Urls from '@/types/Urls';
 
-interface ContentTeasersProps {
+interface ContentMaterialsProps {
   content: IContent;
   titleClass: string;
   linkClass: string;
   locale?: string;
 }
 
-export default function ContentTeasers(props: ContentTeasersProps) {
+export default function ContentMaterials(props: ContentMaterialsProps) {
 
   const language = props.locale === "en" ? en : ru;
+
+  const fileUrl = Urls.SERVER_URL + ":" + Urls.FILES_PORT;
+
+  const posters = props.content.cover_img ?
+    [{
+      poster: fileUrl + props.content.cover_img, name: language.poster
+    }] :
+    props.content.coverImage ?
+      props.content.coverImage.map(img => { return { poster: fileUrl + img.file_path, name: "poster" } }) :
+      [];
 
   const mermaidVideo = "https://www.youtube.com/embed/FqZMWtbeLfQ?controls=0";
   const seeYouVideo = "https://www.youtube.com/embed/-LKuhIzUdfs?controls=0";
 
-  const trailerBoxes: IVideo[] = [
+  const materialBoxes: IMaterial[] = [
+    ...posters,
     { poster: mermaidImg.src, video: mermaidVideo, name: "Русалочка", time: "2 мин." },
     { poster: bongoImg.src, video: seeYouVideo, name: "See You Again", time: "2 мин." }
-  ]
+  ];
 
-  const [video, setVideo] = useState<React.ReactElement>(<></>);
+  const [material, setMaterial] = useState<React.ReactElement>(<></>);
 
-  function openTrailer(videoUrl: string) {
-    setVideo(
-      <Modal onClose={() => setVideo(<></>)}>
-        <div className={styles.videoBox}>
+  function openMaterial(material: IMaterial) {
+
+    setMaterial(
+
+      <Modal onClose={() => setMaterial(<></>)}>
+
+        <div className={styles.materialBox}>
           <Image
             className={styles.icon}
             src={closeIcon}
             alt="закрыть"
             width={30}
             height={30}
-            onClick={() => setVideo(<></>)}
+            onClick={() => setMaterial(<></>)}
           />
-          <iframe className={styles.video} src={videoUrl} allowFullScreen />
+          {
+            material.video ?
+              <iframe className={styles.video} src={material.video} allowFullScreen />
+              :
+              <img className={styles.poster} src={material.poster} alt={material.name} />
+          }
         </div>
+
       </Modal>
+
     )
   }
 
@@ -64,11 +86,11 @@ export default function ContentTeasers(props: ContentTeasersProps) {
 
       <p className={props.titleClass}>{language.extras}</p>
 
-      <MovieBlock<IVideo>
+      <MovieBlock<IMaterial>
         blockClass={styles.block}
         spaceBetween={24}
         slidesPerView={4}
-        listCardsProps={trailerBoxes}
+        listCardsProps={materialBoxes}
         breakpoints={{
           0: { slidesPerView: 1, spaceBetween: 0 },
           480: { slidesPerView: 1.5, spaceBetween: 12 },
@@ -78,15 +100,17 @@ export default function ContentTeasers(props: ContentTeasersProps) {
           1090: { slidesPerView: 3.5, spaceBetween: 24 },
           1280: { slidesPerView: 4, spaceBetween: 24 },
         }}
-        renderItem={(video) =>
-          <TeaserBox
-            video={video}
-            clockIcon={false}
-            openTrailer={() => openTrailer(video.video)} />
+        renderItem={(material) =>
+          <div className={styles.materialBoxPreview}>
+            <MaterialBox
+              material={material}
+              clockIcon={false}
+              openMaterial={() => openMaterial(material)} />
+          </div>
         }
       />
 
-      {video}
+      {material}
 
     </>
   );
