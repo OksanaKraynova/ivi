@@ -33,8 +33,8 @@ export default function AdminPageGenres(props: AdminPageGenresProps) {
     ) return;
 
     sendData("patch", Urls.ALL_GANRES + `/${genre?.id}`, upadatedGenre)
-      .then(status => status === 200 ?
-        (getMessegeOKUpdateGenre(), resetForm()) : getMessegeErrorUpdateGenre(status))
+      .then(response => response.status === 200 ?
+        (getMessegeOKUpdateGenre(), resetForm()) : getMessegeErrorUpdateGenre(response.status))
       .catch(error => getMessegeErrorUpdateGenre(error.response.status));
   }
 

@@ -134,8 +134,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
     }
 
     sendData("post", Urls.ONE_MOVIE, postFilm)
-      .then(status => status === 200 ?
-        (resetForm(), getMessegeOKPostFilm()) : getMessegeErrorPostFilm(status))
+      .then(response => response.status === 200 ?
+        (resetForm(), getMessegeOKPostFilm()) : getMessegeErrorPostFilm(response.status))
       .catch(error => getMessegeErrorPostFilm(error.response.status));
 
     resetForm();

@@ -25,6 +25,8 @@ export default function ProfileInfoMain(props: ProfileInfoMainProps) {
   const { locale } = router;
   const language = locale === "en" ? en : ru;
 
+  const dispatch = useAppDispatch();
+
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -32,13 +34,12 @@ export default function ProfileInfoMain(props: ProfileInfoMainProps) {
   const [queryParams] = useSearchParams();
 
   if (queryParams && queryParams.length > 0 && props.type === "signin") {
-    const dispatch = useAppDispatch();
 
     const backEndUrl = Urls.SERVER_URL + ":" + Urls.AUTHORIZATION_PORT + Urls.AUTHORIZATION_API;
 
     axios.get(backEndUrl, { params: queryParams })
-      .then(res => {
-        dispatch(handleLogin(res.data));
+      .then(response => {
+        dispatch(handleLogin(response.data));
         router.replace("/profile");
       })
       .catch(error => console.log(error));
@@ -89,7 +90,7 @@ export default function ProfileInfoMain(props: ProfileInfoMainProps) {
     };
 
     sendData("post", Urls.AUTHORIZATION_SIGN_UP, { ...newUser })
-      .then(response => console.log(response))
+      .then(response => response.status === 200 && dispatch(handleLogin(response.data)))
       .catch(error => console.log(error));
 
     signIn();
@@ -105,7 +106,7 @@ export default function ProfileInfoMain(props: ProfileInfoMainProps) {
     };
 
     sendData("post", Urls.AUTHORIZATION_SIGN_IN, { ...user })
-      .then(response => console.log(response))
+      .then(response => response.status === 200 && dispatch(handleLogin(response.data)))
       .catch(error => console.log(error));
 
     router.replace("/profile");

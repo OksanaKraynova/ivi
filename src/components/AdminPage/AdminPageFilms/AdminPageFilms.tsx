@@ -58,8 +58,8 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
     ) return;
 
     sendData("patch", Urls.ONE_MOVIE + `/${film?.id}`, upadatedFilm)
-      .then(status => status === 200 ?
-        (getMessegeOKUpdateFilm(language.updatedFilm), resetForm()) : getMessegeErrorUpdateFilm(status))
+      .then(response => response.status === 200 ?
+        (getMessegeOKUpdateFilm(language.updatedFilm), resetForm()) : getMessegeErrorUpdateFilm(response.status))
       .catch(error => getMessegeErrorUpdateFilm(error.response.status));
   }
 
@@ -68,8 +68,8 @@ export default function AdminPageFilms(props: AdminPageFilmsProps) {
     if (!upadatedFilm || !film) return;
 
     sendData("delete", Urls.ONE_MOVIE + `/${film?.id}`)
-      .then(status => status === 200 ?
-        (getMessegeOKUpdateFilm(language.deliteFilm), resetForm()) : getMessegeErrorUpdateFilm(status))
+      .then(response => response.status === 200 ?
+        (getMessegeOKUpdateFilm(language.deliteFilm), resetForm()) : getMessegeErrorUpdateFilm(response.status))
       .catch(error => getMessegeErrorUpdateFilm(error.response.status));
   }
 
