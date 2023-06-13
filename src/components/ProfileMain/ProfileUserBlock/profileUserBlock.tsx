@@ -1,33 +1,46 @@
 import React, { useState } from 'react';
-import styles from './profileIserBlock.module.scss'
+import styles from './ProfileUserBlock.module.scss'
 import ChooseUserProfile from './ChooseUserProfile/ChooseUserProfile';
 import Button from '../../Button/Button';
 import { useRouter } from 'next/router';
 import ru from '@/locales/profile/ru';
 import en from '@/locales/profile/en';
+import { useAppSelector } from '@/src/hooks/redux';
 
-const profileUserBlock = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [isLogin, setIsLogin] = useState(false)
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const router = useRouter()
-    const { locale } = router
-    const t = locale === 'ru' ? ru : en
-    return (
-        <div>
-            {isLogin ?
-                <ChooseUserProfile />
-                :
-                <Button variant='minimal' color='pink' >
-                    <div className={styles.btn} >
-                        <img src='/icons/profile/Frame.svg' alt="icon" />
-                       {t.login}
-                    </div>
-                </Button>
+export default function ProfileUserBlock() {
 
-            }
-        </div>
-    );
+  const { userData } = useAppSelector(state => state.authorizationReducer);
+
+  const { locale } = useRouter()
+  const t = locale === 'ru' ? ru : en
+
+  return (
+
+    <>
+
+      {
+        userData ?
+          <ChooseUserProfile />
+          :
+          <div className={styles.buttons}>
+            <Button variant='long' color='pink' href="/profile/signin">
+              <div className={styles.button} >
+                <img src='/icons/profile/Frame.svg' alt="icon" />
+                {t.signIn}
+              </div>
+            </Button>
+
+            <Button variant='long' color='pink' href="/profile/signup">
+              <div className={styles.button} >
+                <img src='/icons/profile/Frame.svg' alt="icon" />
+                {t.signUp}
+              </div>
+            </Button>
+          </div>
+
+      }
+
+    </>
+
+  );
 };
-
-export default profileUserBlock;

@@ -4,7 +4,7 @@ import axios from "axios";
 export default async function sendData(
   metod: "post" | "delete" | "patch",
   queryUrl: string,
-  params?: { [param: string]: string | number | number[] | null } | FormData
+  params?: { [param: string]: string | number | number[] | null }
 ): Promise<number> {
 
   const url = Urls.SERVER_URL + ":" + Urls.SERVER_PORT + queryUrl;

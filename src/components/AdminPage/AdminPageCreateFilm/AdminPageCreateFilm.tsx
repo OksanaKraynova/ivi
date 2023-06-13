@@ -18,6 +18,7 @@ import sendData from '@/src/functions/sendData';
 import styles from './AdminPageCreateFilm.module.scss';
 import ru from '@/locales/admin/ru';
 import en from '@/locales/admin/en';
+import sendFile from '@/src/functions/sendFile';
 
 interface Filled {
   name: boolean,
@@ -140,8 +141,8 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
     resetForm();
   }
 
-  function sendFile() {
-    sendData("post", Urls.UPLOAD_FILES, filmFiles)
+  function sendImage() {
+    sendFile(filmFiles)
       .then(status => console.log(status))
       .catch(error => getMessegeErrorPostFilm(error.messege));
   }
@@ -372,7 +373,7 @@ export default function AdminPageCreateFilm(props: AdminPageCreateFilmProps) {
           variant="long"
           effect="bordered"
           color="darkBlue"
-          onClick={() => sendFile()}
+          onClick={() => sendImage()}
         >
           {language.download}
         </Button>

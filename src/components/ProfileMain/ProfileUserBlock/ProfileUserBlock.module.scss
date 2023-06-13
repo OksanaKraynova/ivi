@@ -1,0 +1,14 @@
+.buttons {
+  width: 200px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}

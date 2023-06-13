@@ -15,6 +15,11 @@ enum Urls {
   ALL_FILES = "/v1/files",
   UPLOAD_FILES = "/v1/upload",
 
+  AUTHORIZATION_SIGN_UP = "/v1/signUp",
+  AUTHORIZATION_SIGN_IN = "/v1/signIn",
+
+  REFRESH_TOKEN = "/v1/refresh",
+
   AUTHORIZATION_API = "/api/oauth",
 
   REDIRECT_URI = "http://localhost:3000/oAuth",

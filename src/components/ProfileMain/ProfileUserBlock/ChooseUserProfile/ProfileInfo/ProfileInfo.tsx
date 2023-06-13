@@ -1,10 +1,9 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Profile } from "../../../profileData";
 import styles from "./profileInfo.module.scss";
-import Image from "next/image";
 import { useAppSelector } from "@/src/hooks/redux";
 import { useDispatch } from "react-redux";
-import { userSlice } from "@/src/store/reducers/authorizationSlice";
+import { authorizationSlice } from "@/src/store/reducers/authorizationSlice";
 import { useLoginMutation } from "@/src/services/authService";
 import { stringify } from "querystring";
 import DarkBlueWrapper from "../../../../DarkBlueWrapper/DarkBlueWrapper";
@@ -20,8 +19,8 @@ interface Props {
 }
 
 const ProfileInfo = ({ profile }: Props) => {
-  const { user } = useAppSelector((state) => state.userReducer);
-  const { setUser } = userSlice.actions;
+  const { user } = useAppSelector((state) => state.authorizationReducer);
+  const { setUser } = authorizationSlice.actions;
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("kminchelle");
