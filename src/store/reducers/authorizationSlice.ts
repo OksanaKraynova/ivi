@@ -18,14 +18,6 @@ export const authorizationSlice = createSlice({
   name: 'authorization',
   initialState,
   reducers: {
-    sign(state, action: PayloadAction<IUser>) {
-      action.payload.access_token && (
-        localStorage.setItem('IVIAccessToken', action.payload.access_token),
-        delete action.payload.access_token,
-        state.userData = action.payload,
-        localStorage.setItem('IVIUserData', JSON.stringify(action.payload))
-      )
-    },
     handleLogin(state, action: PayloadAction<IUser>) {
       action.payload.access_token && (
         localStorage.setItem('IVIAccessToken', action.payload.access_token),

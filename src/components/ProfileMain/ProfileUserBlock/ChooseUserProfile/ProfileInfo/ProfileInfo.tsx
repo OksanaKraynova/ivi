@@ -19,8 +19,8 @@ interface Props {
 }
 
 const ProfileInfo = ({ profile }: Props) => {
-  const { user } = useAppSelector((state) => state.authorizationReducer);
-  const { setUser } = authorizationSlice.actions;
+  const { userData } = useAppSelector((state) => state.authorizationReducer);
+  const { handleLogin } = authorizationSlice.actions;
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("kminchelle");
@@ -43,7 +43,7 @@ const ProfileInfo = ({ profile }: Props) => {
         if ("data" in response) {
           const { token, ...userData } = response.data;
 
-          dispatch(setUser(userData));
+          dispatch(handleLogin(userData));
 
           localStorage.setItem("token", token);
         }
@@ -63,7 +63,7 @@ const ProfileInfo = ({ profile }: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.row}>
-        <ProfileUsername user={user} />
+        <ProfileUsername user={userData} />
         <DarkBlueWrapper center={true}>
           <div className={styles.edit}>
             <Link href="/profile/profile_info" className={styles.editProfileBtn + " container"}>
@@ -73,7 +73,7 @@ const ProfileInfo = ({ profile }: Props) => {
           </div>
         </DarkBlueWrapper>
       </div>
-      <ProfileUserContacts user={user} />
+      <ProfileUserContacts user={userData} />
     </div>
   );
 };

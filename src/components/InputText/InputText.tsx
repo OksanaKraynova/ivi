@@ -9,7 +9,7 @@ interface InputTextProps {
   buttonClass?: string;
   disabled?: boolean;
   readOnly?: boolean;
-  value: string;
+  value?: string;
   minSize?: number;
   error?: boolean;
   reset?: boolean;
@@ -21,13 +21,13 @@ interface InputTextProps {
 export default function InputText(props: InputTextProps) {
 
   const minSize = props.minSize ?? 0;
-  const defaultValueLength = props.value ? props.value.length : 0;
-  const defaultEffect = defaultValueLength > 0 ? styles.overText : undefined;
+  const valueLength = props.value ? props.value.length : 0;
+  const defaultEffect = valueLength > 0 ? styles.overText : undefined;
 
   const [placeholderEffect, setPlacholderEffect] = useState<string>();
-  const [valueLength, setValueLength] = useState<number>(defaultValueLength);
+  const [value, setValue] = useState<string>(props.value ?? "");
 
-  useEffect(() => { props.reset && setPlacholderEffect(undefined) }, [props.reset]);
+  useEffect(() => { props.reset && (setPlacholderEffect(undefined), setValue(props.value ?? "")) }, [props.reset]);
 
   return (
 
@@ -40,7 +40,7 @@ export default function InputText(props: InputTextProps) {
         readOnly={props.readOnly}
         onChange={(event) => {
           props.onChange && props.onChange(event);
-          minSize > 0 && setValueLength(event.target.value.length);
+          setValue(event.target.value);
           event.target.value.length > 0 && event.target.value.length < minSize ?
             setPlacholderEffect(classNames(styles.overText, styles.orange)) :
             setPlacholderEffect(styles.overText);
@@ -66,9 +66,9 @@ export default function InputText(props: InputTextProps) {
       </div>
 
       {
-        valueLength > 0 && valueLength < minSize &&
+        value.length > 0 && value.length < minSize &&
         <div className={styles.error}>
-          {`Минимум ${minSize} символов, вы ввели ${valueLength}`}
+          {`Минимум ${minSize} символов, вы ввели ${value.length}`}
         </div>
       }
 

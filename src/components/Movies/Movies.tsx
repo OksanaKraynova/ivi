@@ -8,28 +8,26 @@ import FilterMovieScreen from './FilterMovieScreen/FilterMovieScreen';
 
 
 const Movies = () => {
-    const [filter, setFilter] = useState(false)
-    const [movies, setMovies] = useState([])
-    const url = 'http://178.208.64.187:8081/v1/movies';
+  const [filter, setFilter] = useState(false)
+  const [movies, setMovies] = useState([])
+  const url = 'http://178.208.64.187:8081/v1/movies';
 
-    fetch(url)
-        .then((resp) => resp.json())
-        .then(data => console.log(data))
-        .catch(function (error) {
-            console.log(error);
-        });
+  fetch(url)
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
 
-       
-    return (
-        <div className={styles.wrapper}>
-            <Crumb />
-            <Description />
-            <FilterContainer />
-            {
-                filter ? <FilterMovieScreen /> : <MainMovieScreen />
-            }
-        </div>
-    );
+
+  return (
+    <div className={styles.wrapper}>
+      <Crumb />
+      <Description />
+      <FilterContainer />
+      {
+        filter ? <FilterMovieScreen /> : <MainMovieScreen />
+      }
+    </div>
+  );
 };
 
 export default Movies;

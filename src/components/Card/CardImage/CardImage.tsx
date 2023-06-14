@@ -23,8 +23,6 @@ const CardImage = (props: CardImageProps) => {
       fileUrl + props.content.coverImage[0].file_path :
       noImg.src;
 
-  console.log(img)
-
   return props.modal ?
 
     (

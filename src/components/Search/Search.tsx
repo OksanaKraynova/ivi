@@ -36,7 +36,7 @@ export default function Search<T>(props: SearchProps<T>) {
         <InputText
           placeholder={props.placeholder}
           reset={props.reset}
-          value={props.value ?? ""}
+          value={props.value}
           buttonIcon={searchIcon.src}
           error={props.error}
           onChange={event => {

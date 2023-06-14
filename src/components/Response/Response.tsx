@@ -19,6 +19,7 @@ export default function Response(props: ResponseProps) {
   const minSize = 10;
 
   const [comment, setComment] = useState<string>("");
+  const [reset, setReset] = useState<boolean>(false);
 
   function postResponse() {
 
@@ -30,8 +31,14 @@ export default function Response(props: ResponseProps) {
     };
 
     sendData("post", Urls.ALL_COMMENTS, data)
-      .then(response => response.status === 200 && setComment(""))
+      .then(response => response.status === 200 && resetInput())
       .catch(error => console.log(error));
+  }
+
+  function resetInput() {
+    setComment("");
+    setReset(true);
+    setTimeout(() => setReset(false), 100);
   }
 
   return (
@@ -43,6 +50,7 @@ export default function Response(props: ResponseProps) {
       <div className={styles.inputBox}>
         <InputText
           placeholder={props.placeholder}
+          reset={reset}
           minSize={minSize}
           onChange={(event) => setComment(event.target.value)}
           value={comment}
