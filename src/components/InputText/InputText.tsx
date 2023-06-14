@@ -21,10 +21,11 @@ interface InputTextProps {
 export default function InputText(props: InputTextProps) {
 
   const minSize = props.minSize ?? 0;
-  const defaultEffect = props.value.length > 0 ? styles.overText : undefined;
+  const defaultValueLength = props.value ? props.value.length : 0;
+  const defaultEffect = defaultValueLength > 0 ? styles.overText : undefined;
 
   const [placeholderEffect, setPlacholderEffect] = useState<string>();
-  const [valueLength, setValueLength] = useState<number>(props.value.length);
+  const [valueLength, setValueLength] = useState<number>(defaultValueLength);
 
   useEffect(() => { props.reset && setPlacholderEffect(undefined) }, [props.reset]);
 
